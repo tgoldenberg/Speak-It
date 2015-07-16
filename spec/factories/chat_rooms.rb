@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :chat_room do
-    references ""
-references ""
+    sender
+    recipient
   end
 
 end

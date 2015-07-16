@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :topic do
-    name "MyString"
-references ""
-references ""
+    name "Introduce yourself"
+    language
+    level
   end
 
 end
