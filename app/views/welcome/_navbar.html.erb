@@ -1,18 +1,10 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Dude Overflow</a>
+      <a class="navbar-brand" href="/">Speak It</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li><%=link_to 'Ask question', new_question_path %></li>
-        <% if session[:user_id] %>
-          <li><%= link_to 'Profile', current_user %></li>
-          <li> <%= link_to 'Logout', logout_path, method: 'delete' %> </li>
-          <% else %>
-            <li> <%= link_to 'Sign Up', new_user_path %>
-            <li> <%= link_to 'Login', login_path %>
-        <% end %>
       </ul>
     </div>
   </div>
