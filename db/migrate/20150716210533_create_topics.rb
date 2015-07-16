@@ -2,8 +2,8 @@ class CreateTopics < ActiveRecord::Migration
   def change
     create_table :topics do |t|
       t.string :name
-      t.language :references
-      t.level :references
+      t.references :language
+      t.references :level
 
       t.timestamps null: false
     end
