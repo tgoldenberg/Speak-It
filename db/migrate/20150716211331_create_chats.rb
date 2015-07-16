@@ -1,9 +1,9 @@
 class CreateChats < ActiveRecord::Migration
   def change
     create_table :chats do |t|
-      t.references :student, index: true, foreign_key: true
-      t.references :native_speaker, index: true, foreign_key: true
-      t.references :topic, index: true, foreign_key: true
+      t.integer :student_id
+      t.integer :native_speaker_id
+      t.integer :topic_id
 
       t.timestamps null: false
     end
