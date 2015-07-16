@@ -4,7 +4,9 @@ A user-to-user language learning / sharing web application
 Collaborators: 
 
 [Joseph Fields](https://github.com/sevennote)
+
 [Thomas Goldenberg](https://github.com/tgoldenberg)
+
 [Alex Satterly](https://github.com/alcsatt)
 
 [Our Trello Board](https://trello.com/b/2unJJ8JK/speakit-application)
