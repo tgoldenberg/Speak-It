@@ -1,10 +1,30 @@
 <html>
 <body>
-	
+
 	<div id="main-container" class="container-fluid"></div>
 	<div id= "welcome-bar" class= "row">
-		<div id= "login-col" class= "col-md-9">
-		<div id= "Speak-it-info" class= "col-md-3">
+		<div id= "login-col" class= "col-md-6">
+			<%= form_for "hello" do |f| %>
+			  <div class="form-group">
+			    <%= f.label :username, class: 'col-xs-2' %>
+			    <div class= "col-md-10">
+			      <%= f.text_field :username, class: 'form-control' %>
+			    </div>
+			  </div>
+			  <div class= "form-group">
+			    <%= f.label :password, class: 'col-xs-2' %>
+			    <div class= "col-md-10">
+			      <%= f.password_field :password, class: 'form-control' %>
+			    </div>
+			  </div>
+			  <div class= "col-md-offset-2 col-md-10">
+			    <%= f.submit "Login", class: 'btn' %>
+			  </div>
+			<% end %>
+		</div>
+		<div id= "Speak-it-info" class= "col-md-6">
+			<h2> Welcome To Speak It!</h2>
+		</div>
 	</div>
 
 </body>
