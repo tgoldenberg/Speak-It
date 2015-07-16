@@ -6,8 +6,8 @@ language = LANGUAGES.sample
 
 FactoryGirl.define do
   factory :language do
-    name language.name
-    code language.code
+    name language[:name]
+    code language[:code]
     img_url Faker::Avatar.image
   end
 end

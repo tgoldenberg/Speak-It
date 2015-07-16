@@ -17,8 +17,7 @@ level = LEVELS.sample
 
 FactoryGirl.define do
   factory :level do
-    name level.name
-    value level.value
-    language
+    name level[:name]
+    value level[:value]
   end
 end
