@@ -4,6 +4,8 @@ class CreateFeedbacks < ActiveRecord::Migration
       t.references :chat, index: true, foreign_key: true
       t.integer :rating, null: false
       t.text :comment
+      t.references :sender, index: true, foreign_key: true
+      t.references :recipient, index: true, foreign_key: true
 
       t.timestamps null: false
     end
