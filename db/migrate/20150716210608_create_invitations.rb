@@ -1,9 +1,9 @@
 class CreateInvitations < ActiveRecord::Migration
   def change
     create_table :invitations do |t|
-      t.integer :sender_id
-      t.integer :recipient_id
-      t.boolean :seen
+      t.references :sender, index: true, foreign_key: true
+      t.references :recipient, index: true, foreign_key: true
+      t.boolean :seen, default: false
 
       t.timestamps null: false
     end

@@ -3,7 +3,7 @@ class CreateLevels < ActiveRecord::Migration
     create_table :levels do |t|
       t.string :name
       t.integer :value
-      t.language :references
+      t.references :language, index: true, foreign_key: true
 
       t.timestamps null: false
     end
