@@ -4,5 +4,4 @@ FactoryGirl.define do
     native_speaker_id 2
     topic
   end
-
 end
