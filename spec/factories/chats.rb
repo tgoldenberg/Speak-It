@@ -4,5 +4,4 @@ FactoryGirl.define do
     native_id 2
     topic_id 1
   end
-
 end
