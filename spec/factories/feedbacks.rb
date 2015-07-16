@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :feedback do
-    chat nil
-rating 1
-comment "MyText"
+    chat
+    rating 1
+    comment "Great job!"
   end
 
 end

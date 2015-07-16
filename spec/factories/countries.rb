@@ -1,7 +1,9 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :country do
-    name "MyString"
-image_url "MyString"
+    name Faker::Address.country
+    image_url Faker::Avatar.image
   end
 
 end
