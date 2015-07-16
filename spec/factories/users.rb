@@ -9,18 +9,18 @@ FactoryGirl.define do
     Faker::Name.first_name + "#{n}"
   end
 
-  english = FactoryGirl.create(:language, name: "English")
-  spanish = FactoryGirl.create(:language, name: "Spanish")
-  level = FactoryGirl.create(:level, value: 1, name: "beginner")
+  # english = FactoryGirl.create(:language, name: "English")
+  # spanish = FactoryGirl.create(:language, name: "Spanish")
+  # level = FactoryGirl.create(:level, value: 1, name: "beginner")
 
   factory :user do
     username
     email
     password "password"
-    country_id 1
-    native_language_id english.id
-    study_language_id spanish.id
+    country
+    native_language
+    study_language
     avatar_url Faker::Avatar.image
-    level_id level.id
+    level
   end
 end
