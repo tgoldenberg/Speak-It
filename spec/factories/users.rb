@@ -17,10 +17,10 @@ FactoryGirl.define do
     username
     email
     password "password"
-    country
-    native_language
-    study_language
+    country_id 1
+    native_language_id 1
+    study_language_id 2
     avatar_url Faker::Avatar.image
-    level
+    level_id 1
   end
 end
