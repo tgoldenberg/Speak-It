@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150716212045) do
     t.integer  "student_id"
     t.integer  "native_speaker_id"
     t.integer  "topic_id"
+    t.integer  "chat_room_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
