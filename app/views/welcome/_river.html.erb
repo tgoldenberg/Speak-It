@@ -12,7 +12,7 @@
     <tbody>
       <% @available_users.each do |user| %>
         <tr>
-          <td> <img src= <%= user.avatar_url %> alt = "avatar"  ></td>
+          <td> <img src= <%= user.avatar_url %> alt="avatar" class="user-avatar"></td>
           <td> <%= user.username %></td>
           <td><%= user.country.try(:name) %></td>
           <td> <%= user.native_language.name %> </td>

@@ -6,12 +6,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @countries_select_array = Country.all.map {|country|[country.name,country.id]}
+    @countries_select_array = Country.all.map {|country|[country.name,country.id]}.sort
     @languages_select_array = Language.all.map {|language| [language.name,language.id]}
   end
 
   def create
-    byebug
     user = User.find_by(username: user_params[:username])
     if !user
       @user = User.new(user_params)
