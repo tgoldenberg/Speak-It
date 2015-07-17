@@ -6,8 +6,8 @@ describe Invitation do
   end
 
   it 'should not save an invitation without a sender or recipient' do
-    expect(FactoryGirl.create(:invitation, sender_id: nil)).to_not be_valid
-    expect(FactoryGirl.create(:invitation, recipient_id: nil)).to_not be_valid
+    expect(FactoryGirl.build(:invitation, sender_id: nil)).to_not be_valid
+    expect(FactoryGirl.build(:invitation, recipient_id: nil)).to_not be_valid
   end
 
   it 'should respond to sender' do
