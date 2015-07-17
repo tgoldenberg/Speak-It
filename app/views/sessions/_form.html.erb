@@ -1,4 +1,4 @@
-  <%= form_for "hello", class: 'form-horizontal' do |f| %>
+  <%= form_for @user, url: create_session_path, class: 'form-horizontal' do |f| %>
     <div class="form-group" >
       <%= f.label :username, class: 'row' %>
       <div class= "row">
