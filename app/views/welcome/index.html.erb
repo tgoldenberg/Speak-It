@@ -1,35 +1,13 @@
 <html>
-<head>
-</head>
-<body>
-	<div id="main-container" class="container"></div>
-	<div id= "welcome-bar" class= "row">
-		<div id= "login-col" class= "col-sm-3">
-			<div>
-			  <%= render partial: "sessions/form" %>
-		    </div>
-		    <% if flash[:notice] %>
-		      <p> <%= flash[:notice] %> </p>
-		    <% end %>
-		</div>
-
-		<div id= "speak-it-info" class= "col-sm-9">
-			<h2> Welcome To Speak It!</h2>
-			<% if !logged_in? %>
-		      <%= link_to 'Sign Up', new_user_path %>
-		    <% end %>
-		</div>
-	</div>
-  <div id="interact" class = "row">
-    <h2> Interact with users around the world </h2>
-  </div>
-  <div id="level-up" class = "row">
-  	<h2> Level up and master your language </h2>
-  	<ul class="nav nav-tabs">
-  	  <li role="presentation" class="active"><a href="#">Home</a></li>
-  	  <li role="presentation"><a href="#">Available</a></li>
-  	  <li role="presentation"><a href="#">Recent</a></li>
-  	</ul>
-  </div>
-</body>
+  <head>
+  </head>
+  <body>
+    <% if logged_in? %>
+      <%= render partial: "welcome/profile" %>
+      <%= render partial: "welcome/tabletab" %>
+      <%= render partial: "welcome/river" %>
+    <% else %>
+      <%= render partial: "welcome/landingpage" %>
+    <% end %>
+  </body>
 </html>
