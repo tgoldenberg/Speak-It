@@ -1,5 +1,4 @@
 require 'faker'
-require_relative 'constants'
 
 ## choose either English or Spanish randomly
 @languages = [{name: "English", code: "en"}, {name: "Spanish", code: "es"}]

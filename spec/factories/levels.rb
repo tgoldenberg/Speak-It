@@ -1,5 +1,4 @@
 require 'faker'
-require_relative 'constants'
 
 @levels = [
   {name: "beginner", value: 1},
@@ -14,10 +13,12 @@ require_relative 'constants'
   {name: "expert", value: 10}
 ]
 level = @levels.sample
+language = FactoryGirl.create(:language)
 
 FactoryGirl.define do
   factory :level do
     name level[:name]
     value level[:value]
+    language_id language.id
   end
 end
