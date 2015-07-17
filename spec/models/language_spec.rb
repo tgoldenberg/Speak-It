@@ -14,7 +14,8 @@ describe Language do
   end
 
   it 'should respond to users' do
-    expect(FactoryGirl.create(:language)).to respond_to :users
+    expect(FactoryGirl.create(:language)).to respond_to :students
+    expect(FactoryGirl.create(:language)).to respond_to :native_speakers
   end
 
   it 'should respond to topics' do

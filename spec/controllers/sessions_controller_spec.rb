@@ -29,7 +29,7 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "logs out the user" do
-      delete :destroy
+      delete :destroy, id: @registered_user.id
       expect(flash[:notice]).to eq(["Successfully logged out."])
     end
   end
