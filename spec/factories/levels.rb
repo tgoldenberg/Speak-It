@@ -1,6 +1,6 @@
 require 'faker'
 
-LEVELS = [
+@levels = [
   {name: "beginner", value: 1},
   {name: "intermediate beginner", value: 2},
   {name: "advanced beginner", value: 3},
@@ -12,12 +12,13 @@ LEVELS = [
   {name: "high advanced", value: 9},
   {name: "expert", value: 10}
 ]
-
-level = LEVELS.sample
+level = @levels.sample
+language = FactoryGirl.create(:language)
 
 FactoryGirl.define do
   factory :level do
     name level[:name]
     value level[:value]
+    language_id language.id
   end
 end

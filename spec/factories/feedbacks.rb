@@ -1,8 +1,10 @@
-FactoryGirl.define do
-  factory :feedback do
-    chat
-    rating 1
-    comment "Great job!"
-  end
+require 'faker'
 
+FactoryGirl.define do
+  chat = FactoryGirl.create(:chat)
+  factory :feedback do
+    chat_id chat.id
+    rating 1
+    comment Faker::Lorem.sentence
+  end
 end

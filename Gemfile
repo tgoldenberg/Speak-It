@@ -15,14 +15,17 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'factory_girl_rails'
-  gem 'database_cleaner'
   gem 'better_errors'
   gem 'pry'
   gem 'jasmine-rails'
   gem 'launchy'
   gem 'flog'
   gem 'bullet'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
 end
