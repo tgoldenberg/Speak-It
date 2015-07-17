@@ -5,8 +5,8 @@
 
 	<div id="main-container" class="container"></div>
 	<div id= "welcome-bar" class= "row">
-		<div id= "login-col" class= "col-sm-4">
-			<%= form_for "hello" do |f| %>
+		<div id= "login-col" class= "col-sm-3">
+			<%= form_for "hello", class: 'form-horizontal' do |f| %>
 			  <div class="form-group">
 			    <%= f.label :username, class: 'col-xs-2' %>
 			    <div class= "col-md-10">
@@ -24,7 +24,7 @@
 			  </div>
 			<% end %>
 		</div>
-		<div id= "speak-it-info" class= "col-sm-8">
+		<div id= "speak-it-info" class= "col-sm-9">
 			<h2> Welcome To Speak It!</h2>
 		</div>
 	</div>
@@ -33,6 +33,11 @@
   </div>
   <div id="level-up" class = "row">
   	<h2> Level up and master your language </h2>
+  	<ul class="nav nav-tabs">
+  	  <li role="presentation" class="active"><a href="#">Home</a></li>
+  	  <li role="presentation"><a href="#">Profile</a></li>
+  	  <li role="presentation"><a href="#">Messages</a></li>
+  	</ul>
   </div>
 </body>
 </html>
