@@ -1,5 +1,11 @@
 class WelcomeController < ApplicationController
+
   def index
-  	@user = User.new
+  	if logged_in?
+  	  @user = current_user
+  	else
+	  	@user = User.new  		
+  	end
   end
+  
 end
