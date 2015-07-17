@@ -10,12 +10,17 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       flash[:notice] = "Invalid Username or Password"
-      redirect_to login_path
+      redirect_to root_path
     end
   end
 
   def destroy
     session[:user_id] = nil
     redirect_to root_path
+  end
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :country_id, :native_language_id,
+      :study_language_id, :avatar_url, :points, :level_id)
   end
 end

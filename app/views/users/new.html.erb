@@ -1,2 +1,47 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Signup</h1>
+<% if flash[:notice] %>
+  <p> <%= flash[:notice] %> </p>
+<% end %>
+<div class = "container">
+<%= form_for @user, url: users_path, class: 'form-horizontal' do |f| %>
+  <div class="form-group" >
+    <%= f.label :username, class: 'row' %>
+    <div class= "row">
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
+  </div>
+  <div class= "form-group">
+    <%= f.label :password, class: 'row' %>
+    <div class= "row">
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+  <div class= "form-group">
+    <%= f.label :email, class: 'row' %>
+    <div class= "row">
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+  </div>
+  <div class= "form-group">
+    <%= f.label :country, class: 'row' %>
+    <div class= "row">
+      <%= f.text_field :country, class: 'form-control' %>
+    </div>
+  </div>
+  <div class= "form-group">
+    <%= f.label :native_language, class: 'row' %>
+    <div class= "row">
+      <%= f.text_field :native_language, class: 'form-control' %>
+    </div>
+  </div>
+  <div class= "form-group">
+    <%= f.label :study_language, class: 'row' %>
+    <div class= "row">
+      <%= f.text_field :study_language, class: 'form-control' %>
+    </div>
+  </div>
+  <div>
+    <%= f.submit "Submit", class: 'btn' %>
+  </div>
+ <% end %>
+ </div> 
