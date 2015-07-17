@@ -40,7 +40,6 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       5.times do
         user = FactoryGirl.create(:user)
-        FactoryGirl.create(:question, user_id: user.id)
       end
       example.run
     end

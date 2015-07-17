@@ -21,11 +21,11 @@ group :development, :test do
   gem 'launchy'
   gem 'flog'
   gem 'bullet'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
-gem :test do
-  gem 'factory_girl_rails'
+group :test do
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'database_cleaner'
 end
