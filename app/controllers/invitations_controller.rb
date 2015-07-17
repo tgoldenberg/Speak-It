@@ -13,6 +13,10 @@ class InvitationsController < ApplicationController
   end
 
   def destroy
+    @invitation = Invitation.find(params[:id])
+    @invitation.destroy
+    flash[:notice] = ["Invitation deleted."]
+    redirect_to root_path
   end
 
   private
