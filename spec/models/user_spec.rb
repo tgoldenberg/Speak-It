@@ -24,11 +24,11 @@ describe User do
     end
 
     it 'should not save a user without a native language' do
-      expect(FactoryGirl.build(:user, country_id: country.id, native_language_id: native_language.id, study_language_id: study_language.id, level_id: level.id)).to_not be_valid
+      expect(FactoryGirl.build(:user, country_id: country.id, native_language_id: nil, study_language_id: study_language.id, level_id: level.id)).to_not be_valid
     end
 
     it 'should not save a user without a study language' do
-      expect(FactoryGirl.build(:user, study_language_id: nil, country_id: country.id, native_language_id: native_language.id, study_language_id: study_language.id, level_id: level.id)).to_not be_valid
+      expect(FactoryGirl.build(:user, study_language_id: nil, country_id: country.id, native_language_id: native_language.id, level_id: level.id)).to_not be_valid
     end
 
     it 'should not save with an invalid email' do
