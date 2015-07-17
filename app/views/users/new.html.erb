@@ -22,11 +22,33 @@
       <%= f.email_field :email, class: 'form-control' %>
     </div>
   </div>
-  <div class= "form-group">
+  <div class="form-group">
+    <%= f.label :native_language %> 
+    <%= f.select(:native_language_id, options_for_select([['English', 1], ['Spanish', 2]]), {}, {class: "form-control"}) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :study_language %> 
+    <%= f.select(:study_language_id, options_for_select([['English', 1], ['Spanish', 2]]), {}, {class: "form-control"}) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :country %> 
+    <%= f.select(:country_id, options_for_select([['English', 1], ['Spanish', 2]]), {}, {class: "form-control"}) %>
+  </div>
+  <div class="form-group">
     <%= f.hidden_field :level_id, value: 1 %>
   </div>
   <div>
     <%= f.submit "Submit", class: 'btn' %>
   </div>
  <% end %>
+ </div>
+
+
+ <div class="dropdown">
+   <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Native Language
+   <span class="caret"></span></button>
+   <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+     <li role="presentation"> <%= link_to "root", root_path %> </li>
+     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">English</a></li>
+   </ul>
  </div>

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    byebug
     user = User.find_by(username: user_params[:username])
     if !user
       @user = User.new(user_params)
