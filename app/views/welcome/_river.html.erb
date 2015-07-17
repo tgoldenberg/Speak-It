@@ -10,11 +10,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @available_users.each do |user| %> 
+      <% @available_users.each do |user| %>
         <tr>
           <td> <img src= <%= user.avatar_url %> alt = "avatar"  ></td>
           <td> <%= user.username %></td>
-          <td><%= user.country.name %></td>
+          <td><%= user.country.try(:name) %></td>
           <td> <%= user.native_language.name %> </td>
           <td> <span class = "btn btn-default " > <%= link_to "Speak!", create_invitation_path(sender_id: current_user.id, recipient_id: user.id), method: "POST" %></span></td>
         </tr>
