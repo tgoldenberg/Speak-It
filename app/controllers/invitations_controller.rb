@@ -4,7 +4,7 @@ class InvitationsController < ApplicationController
     if @invitation.save
       ## use pusher to notify the other person
       flash[:notice] = ["Your invitation was successfully sent."]
-      render json: @invitation
+      render json: flash[:notice][0].to_json
     else
       ## render error message
       flash[:alert] = ["Sorry, your invitation could not be processed."]

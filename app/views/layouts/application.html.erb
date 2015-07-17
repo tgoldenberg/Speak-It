@@ -8,7 +8,19 @@
 </head>
 <body>
 
+
 <%= render partial: "welcome/navbar" %>
+
+<% if flash[:notice]%>
+  <% flash[:notice].each do |msg| %>
+    <p class="notice"> <%= msg %></p>
+  <% end %>
+<% elsif flash[:alert] %>
+  <% flash[:alert].each do |msg| %>
+    <p class="alert"> <%= msg %></p>
+  <% end %>
+<% end %>
+
 <%= yield %>
 
 </body>
