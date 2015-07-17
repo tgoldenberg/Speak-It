@@ -1,5 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Country, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Country do
+  it 'should save a valid country' do
+    expect(FactoryGirl.create(:country)).to be_valid
+  end
 end
