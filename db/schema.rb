@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20150716212045) do
   enable_extension "plpgsql"
 
   create_table "chat_rooms", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "creator_id"
+    t.integer  "invitee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "chats", force: :cascade do |t|
@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(version: 20150716212045) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.integer  "chat_id"
-    t.integer  "rating",          null: false
+    t.integer  "rating",       null: false
     t.text     "comment"
-    t.integer  "sender_id_id"
-    t.integer  "recipient_id_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "feedbacks", ["chat_id"], name: "index_feedbacks_on_chat_id", using: :btree
