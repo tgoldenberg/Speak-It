@@ -23,9 +23,8 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'should not register a user with invalid params' do
-      expect {
-        post :create, {user: FactoryGirl.attributes_for(:user, email: nil, level_id: @level.id, native_language_id: @native_language.id, study_language_id: @study_language.id, country_id: @country.id)}
-      }.to change(User, :count).by(0)
+      post :create, {user: FactoryGirl.attributes_for(:user, email: nil, level_id: @level.id, native_language_id: @native_language.id, study_language_id: @study_language.id, country_id: @country.id)}
+      expect(flash[:alert]).to eq(["A user with that name or email already exists"])
     end
   end
 
