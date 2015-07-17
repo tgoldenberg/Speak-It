@@ -3,9 +3,11 @@
   </head>
   <body>
     <% if logged_in? %>
-      <%= render partial: "welcome/profile" %>
-      <%= render partial: "welcome/tabletab" %>
-      <%= render partial: "welcome/river" %>
+      <div class="container">
+        <%= render partial: "welcome/profile" %>
+        <%= render partial: "welcome/tabletab" %>
+        <%= render partial: "welcome/river" %>
+      </div>
     <% else %>
       <%= render partial: "welcome/landingpage" %>
     <% end %>
