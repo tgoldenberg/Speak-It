@@ -10,14 +10,42 @@
       </tr>
     </thead>
     <tbody>
-      <% @available_users.each do |user| %> 
+      <% @available_users.each do |user| %>
         <tr>
           <td> <img src= <%= user.avatar_url %> alt = "avatar"  ></td>
           <td> <%= user.username %></td>
-          <td><%= user.country.name %></td>
+          <td><%= user.country.try(:name) %></td>
           <td> <%= user.native_language.name %> </td>
-          <td> <span class = "btn btn-default " > <%= link_to "Speak!", create_invitation_path(sender_id: current_user.id, recipient_id: user.id), method: "POST" %></span></td>
+          <td><%= form_for @invitation, url: create_invitation_path, method: 'post', remote: true do |f| %>
+            <%= f.hidden_field :recipient_id, value: user.id %>
+            <%= f.hidden_field :sender_id, value: current_user.id %>
+            <%= f.submit "Speak!", class: 'btn btn-default' %>
+          <% end %>
+          </td>
+          <!-- <td> <span class = "btn btn-default " > <%= link_to "Speak!", create_invitation_path(sender_id: current_user.id, recipient_id: user.id), method: "POST" %></span></td> -->
         </tr>
       <% end %>
     </tbody>
   </table>
+  <script>
+  $(function() {
+    $('.new_invitation').on('submit', function(e) {
+      e.preventDefault();
+      var target = $(e.target);
+      var recipientId = parseInt(target.find('#invitation_recipient_id').val());
+      var senderId = parseInt(target.find('#invitation_sender_id').val());
+      $.ajax({
+        url: this.action,
+        method: this.method,
+        data: {invitation: {recipient_id: recipientId, sender_id: senderId}},
+        dataType: "json"
+      })
+      .done(function(data) {
+        $('.navbar-default').after('<p class="notice">'+ data + '</p>')
+      })
+      .fail(function(err) {
+        console.log(err);
+      });
+    });
+  });
+  </script>

@@ -1,21 +1,24 @@
 #welcome-bar {
-  height: 300px;
-  border: 1px solid black
+  border: 1px solid black;
 }
 
+#login-col {
+  padding-bottom:2em;
+}
 
 #speak-it-info {
-  border: 1px solid blue
+  border: 1px solid blue;
+  padding-bottom: 2em;
 }
 
 
 #interact {
   height: 300px;
-  border: 1px solid green
+  border: 1px solid green;
 }
 
 
 #level-up {
   height: 300px;
-  border: 1px solid orange
+  border: 1px solid orange;
 }
