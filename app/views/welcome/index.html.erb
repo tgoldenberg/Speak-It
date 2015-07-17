@@ -1,9 +1,11 @@
 <html>
+<head>
+</head>
 <body>
 
-	<div id="main-container" class="container-fluid"></div>
+	<div id="main-container" class="container"></div>
 	<div id= "welcome-bar" class= "row">
-		<div id= "login-col" class= "col-md-6">
+		<div id= "login-col" class= "col-sm-4">
 			<%= form_for "hello" do |f| %>
 			  <div class="form-group">
 			    <%= f.label :username, class: 'col-xs-2' %>
@@ -22,10 +24,15 @@
 			  </div>
 			<% end %>
 		</div>
-		<div id= "Speak-it-info" class= "col-md-6">
+		<div id= "speak-it-info" class= "col-md-8">
 			<h2> Welcome To Speak It!</h2>
 		</div>
 	</div>
-
+  <div id="interact" class = "row">
+    <h2> Interact with users around the world </h2>
+  </div>
+  <div id="level-up" class = "row">
+  	<h2> Level up and master your language </h2>
+  </div>
 </body>
 </html>
