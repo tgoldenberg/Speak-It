@@ -1,26 +1,23 @@
   <table class="table">
     <thead>
+      <p> head <p>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>Avatar</th>
+        <th>Username</th>
+        <th>Country</th>
+        <th> Native Language</th>
+        <th> Chat </th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      <% @available_users.each do |user| %> 
+        <tr>
+          <td> <img src= <%= user.avatar_url %> alt = "avatar"  ></td>
+          <td> <%= user.username %></td>
+          <td><%= user.country.name %></td>
+          <td> <%= user.native_language.name %> </td>
+          <td> <span class = "btn btn-default " > <%= link_to "Speak!", create_invitation_path(sender_id: current_user.id, recipient_id: user.id), method: "POST" %></span></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>

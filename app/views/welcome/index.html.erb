@@ -4,6 +4,8 @@
   <body>
     <% if logged_in? %>
       <%= render partial: "welcome/profile" %>
+      <%= render partial: "welcome/tabletab" %>
+      <%= render partial: "welcome/river" %>
     <% else %>
       <%= render partial: "welcome/landingpage" %>
     <% end %>
