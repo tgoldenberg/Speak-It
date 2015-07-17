@@ -5,5 +5,4 @@ FactoryGirl.define do
     name Faker::Address.country
     image_url Faker::Avatar.image
   end
-
 end
