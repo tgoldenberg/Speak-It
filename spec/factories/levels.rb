@@ -1,6 +1,7 @@
 require 'faker'
+require_relative 'constants'
 
-LEVELS = [
+@levels = [
   {name: "beginner", value: 1},
   {name: "intermediate beginner", value: 2},
   {name: "advanced beginner", value: 3},
@@ -12,8 +13,7 @@ LEVELS = [
   {name: "high advanced", value: 9},
   {name: "expert", value: 10}
 ]
-
-level = LEVELS.sample
+level = @levels.sample
 
 FactoryGirl.define do
   factory :level do

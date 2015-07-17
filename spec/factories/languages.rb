@@ -1,8 +1,9 @@
 require 'faker'
+require_relative 'constants'
 
 ## choose either English or Spanish randomly
-LANGUAGES = [{name: "English", code: "en"}, {name: "Spanish", code: "es"}]
-language = LANGUAGES.sample
+@languages = [{name: "English", code: "en"}, {name: "Spanish", code: "es"}]
+language = @languages.sample
 
 FactoryGirl.define do
   factory :language do
