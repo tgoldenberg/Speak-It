@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post '/invitations' => 'invitations#create', as: 'create_invitation'
+  delete '/invitations' => 'invitations#destroy', as: 'delete_invitation'
+
   resources :users
 
   get '/login' => 'sessions#new', as: 'login'
