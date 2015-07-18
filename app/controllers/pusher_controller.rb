@@ -8,6 +8,5 @@ class PusherController < ApplicationController
     else
       render :text => 'Forbidden', :status => '403'
     end
-
   end
 end
