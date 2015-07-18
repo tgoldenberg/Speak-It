@@ -1,0 +1,35 @@
+.videos {
+  display: flex;
+
+}
+
+#smallVideos {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  @media screen and (max-height: 400px) {
+    display: none;
+  }
+  #localVideo {
+    height: 6em;
+    width: 9em;
+    background: black;
+  }
+  #remoteVideoSmall {
+    height: 6em;
+    width: 9em;
+    background: black;
+  }
+  .video-info-wrapper {
+    display: flex;
+    padding: .3em;
+    p {
+      margin-top: 6px;
+    }
+  }
+  .avatar-image-small {
+    margin: 0;
+    margin-left: 1em;
+    width: 2.5em;
+  }
+}
