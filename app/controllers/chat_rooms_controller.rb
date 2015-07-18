@@ -1,5 +1,5 @@
 class ChatRoomsController < ApplicationController
-  protect_from_forgery except: 'create'
+  protect_from_forgery except: ['create', 'update']
 
   def create
     invitation = Invitation.find_by(id: params[:invitation][:id])
@@ -19,6 +19,16 @@ class ChatRoomsController < ApplicationController
 
     redirect_to chat_room_path(@chat_room)
     # @chat_room = ChatRoom.create()
+  end
+
+  def update
+    @chat_room = ChatRoom.find_by(id: params[:id])
+    @chat_room.assign_attributes(chat_room_params)
+    if @chat_room.save
+      render json: @chat_room.to_json
+    else
+      render "Unable to update".to_json
+    end
   end
 
   def show
@@ -50,6 +60,6 @@ class ChatRoomsController < ApplicationController
   private
 
   def chat_room_params
-    params.require(:chat_room).permit(:creator_id, :invitee_id)
+    params.require(:chat_room).permit(:creator_id, :invitee_id, :completed, :turn)
   end
 end
