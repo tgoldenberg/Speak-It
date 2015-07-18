@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
   def topics
     self.level.topics
   end
+
+  def levelpercent
+    (self.level.value * 10).to_s + "%"
+  end
 end
