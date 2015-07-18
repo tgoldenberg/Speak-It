@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  before_create :assign_level
 
   has_secure_password
   belongs_to :country
@@ -23,9 +22,5 @@ class User < ActiveRecord::Base
 
   def topics
     self.level.topics
-  end
-
-  def assign_level
-    self.level_id = self.study_language.levels.first.id
   end
 end

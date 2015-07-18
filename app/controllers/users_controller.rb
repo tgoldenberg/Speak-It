@@ -16,10 +16,14 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
+        flash[:notice] = ["Successfully registered."]
         redirect_to root_path
+      else
+        flash[:alert] = ["A user with that name or email already exists"]
+        redirect_to new_user_path
       end
     else
-      flash[:notice] = "A user with that name or email already exists"
+      flash[:alert] = ["A user with that username already exists."]
       redirect_to new_user_path
     end
   end
