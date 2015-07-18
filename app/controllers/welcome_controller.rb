@@ -5,7 +5,9 @@ class WelcomeController < ApplicationController
   	  @user = current_user
       @invitation = Invitation.new
       @active_invitations = @user.received_invitations.where(seen: false).pluck('DISTINCT sender_id').map{|sender_id| Invitation.find_by(recipient_id: @user.id, sender_id: sender_id) }.reverse
-  	  @available_users = User.all.includes(:level, :country, :native_language, :study_language)
+  	  # @available_users = User.all.includes(:level, :country, :native_language, :study_language)
+     @available_users =  User.all.includes(:level, :country, :native_language,
+      :study_language).where("last_seen_at > ? and id != ?", 10.minutes.ago, current_user.id)
   	else
 	  	@user = User.new
   	end
