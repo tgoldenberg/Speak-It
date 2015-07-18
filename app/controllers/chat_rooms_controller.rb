@@ -1,4 +1,6 @@
 class ChatRoomsController < ApplicationController
+  protect_from_forgery except: 'create'
+
   def create
     invitation = Invitation.find_by(id: params[:invitation][:id])
     @chat_room = ChatRoom.create(creator_id: invitation.sender.id , invitee_id: invitation.recipient.id)

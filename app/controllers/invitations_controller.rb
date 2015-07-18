@@ -1,4 +1,6 @@
 class InvitationsController < ApplicationController
+  protect_from_forgery except: 'destroy'
+
   def create
   	@invitation = Invitation.new invitation_params
     if @invitation.save
