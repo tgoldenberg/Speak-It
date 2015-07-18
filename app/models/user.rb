@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :educational_chats, class_name: "Chat", foreign_key: :student_id
   has_many :native_speaker_chats, class_name: "Chat", foreign_key: :native_speaker_id
   has_many :sent_invitations, class_name: "Invitation", foreign_key: :sender_id
-  has_many :recieved_invitations, class_name: "Invitation", foreign_key: :recipient_id
+  has_many :received_invitations, class_name: "Invitation", foreign_key: :recipient_id
   validates :username, presence: true, uniqueness: true, length: {maximum: 20}
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i

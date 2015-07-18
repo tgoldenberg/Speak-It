@@ -22,7 +22,6 @@
             <%= f.submit "Speak!", class: 'btn btn-default' %>
           <% end %>
           </td>
-          <!-- <td> <span class = "btn btn-default " > <%= link_to "Speak!", create_invitation_path(sender_id: current_user.id, recipient_id: user.id), method: "POST" %></span></td> -->
         </tr>
       <% end %>
     </tbody>
@@ -47,5 +46,9 @@
         console.log(err);
       });
     });
+    $('.notifications').on('click', function(e) {
+      e.preventDefault();
+      $('#notification-list').toggle();
+    })
   });
   </script>
