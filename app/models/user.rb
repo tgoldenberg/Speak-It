@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true, length: {maximum: 20}
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates :password, presence: true, length: { minimum: 6}
+  # validates :password, presence: true, length: { minimum: 6}
   validates :native_language_id, presence: true
   validates :study_language_id, presence: true
 
