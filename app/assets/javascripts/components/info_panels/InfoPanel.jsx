@@ -1,7 +1,10 @@
 var InfoPanel = React.createClass({
   render: function() {
     return (
-      <h1>Info Panel</h1>
+      <div className="infoPanel">
+        <Title chat={this.props.chat} />
+        <h4>Info Panel</h4>
+      </div>
     );
   }
 });
