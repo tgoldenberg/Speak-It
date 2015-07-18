@@ -24,6 +24,9 @@ class ChatRoomsController < ApplicationController
   def update
     @chat_room = ChatRoom.find_by(id: params[:id])
     @chat_room.assign_attributes(chat_room_params)
+    if @chat_room.turn >= 5
+      @chat_room.completed = true
+    end
     if @chat_room.save
       render json: @chat_room.to_json
     else
@@ -35,9 +38,20 @@ class ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.find_by(id: params[:id])
     @first_chat = @chat_room.chats.first
     @second_chat = @chat_room.chats.last
+    @other_user = @chat_room.creator == current_user ? @chat_room.invitee : @chat_room.creator
     # assign data for handing over to ReactJS component
     @data = {chat_room: @chat_room,
             chats: @chat_room.chats,
+            current_user: {
+              user: current_user,
+              country: current_user.country,
+              language: current_user.native_language
+            },
+            other_user: {
+              user: @other_user,
+              country: @other_user.country,
+              language: @other_user.native_language
+            },
             first_chat: {
               chat: @first_chat,
               student: @first_chat.student,
