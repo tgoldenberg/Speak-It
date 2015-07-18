@@ -12,6 +12,7 @@ gem 'faker'
 gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'pusher'
+gem 'react-rails'
 
 group :development, :test do
   gem 'byebug'
