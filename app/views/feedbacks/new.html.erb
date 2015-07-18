@@ -1,2 +1,12 @@
-<h1>Feedbacks#new</h1>
-<p>Find me in app/views/feedbacks/new.html.erb</p>
+<h1>Feedback</h1>
+<%= form_for @feedback, url: create_feedback_path, method: 'post' do |f| %>
+  <%= f.label :rating %>
+  <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control"}) %>
+  <%= f.label :comment %>
+  <%= f.text_area :comment %>
+  <%= f.hidden_field :chat_id, value: @chat.id %>
+  <%= f.hidden_field :sender_id, value: current_user.id %>
+  <%= f.hidden_field :recipient_id, value: @chat.student_id %>
+  <%= f.submit "Submit Feedback", class: 'btn' %>
+<% end %>
+
