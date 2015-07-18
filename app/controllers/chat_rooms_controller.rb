@@ -16,13 +16,34 @@ class ChatRoomsController < ApplicationController
     channel = 'private-conversation.' + @chat_room.creator_id.to_s
     data = @chat_room.id
     Pusher.trigger(channel, 'create_chat_room', data.to_json)
-    
+
     redirect_to chat_room_path(@chat_room)
     # @chat_room = ChatRoom.create()
   end
 
   def show
     @chat_room = ChatRoom.find_by(id: params[:id])
+    @first_chat = @chat_room.chats.first
+    @second_chat = @chat_room.chats.last
+    @data = {chat_room: @chat_room,
+            chats: @chat_room.chats,
+            first_chat: {
+              chat: @first_chat,
+              student: @first_chat.student,
+              native_speaker: @first_chat.native_speaker,
+              topic: @first_chat.topic,
+              language: @first_chat.language,
+              level: @first_chat.level
+            },
+            second_chat: {
+              chat: @second_chat,
+              student: @second_chat.student,
+              native_speaker: @second_chat.native_speaker,
+              topic: @second_chat.topic,
+              language: @second_chat.language,
+              level: @second_chat.level
+            }
+          }
   end
 
   private
