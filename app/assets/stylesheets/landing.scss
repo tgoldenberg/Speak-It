@@ -28,7 +28,6 @@ h2 {
   border: 1px solid green;
 }
 
-
 #level-up {
   height: 300px;
   border: 1px solid orange;
@@ -36,4 +35,9 @@ h2 {
 
 span.glyphicon-globe {
     font-size: 1.5em;
+}
+
+.navbar-right {
+  display: flex;
+  margin-right: 2em;
 }
