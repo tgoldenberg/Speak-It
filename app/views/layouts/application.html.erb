@@ -53,6 +53,11 @@ $(function() {
     // re-invoke event listener to delete invitation if user clicks 'decline'
     deleteInvitation();
   });
+
+  channel.bind('create_chat_room', function(data) {
+    console.log(data);
+    window.location = "/chat_rooms/" + data;
+  });
 });
 </script>
 </body>
