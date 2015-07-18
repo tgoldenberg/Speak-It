@@ -8,7 +8,7 @@ RSpec.describe InvitationsController, type: :controller do
     @country = FactoryGirl.create(:country)
     @sender =  FactoryGirl.create(:user, native_language_id: @native_language.id, study_language_id: @study_language.id, country_id: @country.id, level_id: @level.id)
     @recipient =  FactoryGirl.create(:user, native_language_id: @native_language.id, study_language_id: @study_language.id, country_id: @country.id, level_id: @level.id)
-    @saved_invitation = FactoryGirl.build(:invitation, sender_id: @sender.id, recipient_id: @recipient_id)
+    @saved_invitation = FactoryGirl.create(:invitation, sender_id: @sender.id, recipient_id: @recipient.id)
     @invitation_id = @saved_invitation.id
   end
   describe "POST #create" do
@@ -32,12 +32,10 @@ RSpec.describe InvitationsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    it "returns http success" do
-      @saved_invitation.recipient_id = @recipient.id
-      @saved_invitation.save
-      delete :destroy, id: @saved_invitation.id
-      expect(Invitation.find_by(id: @saved_invitation.id)).to eq(nil)
+    it "deletes the invitation" do
+      expect{
+        delete :destroy, {invitation: {id: @saved_invitation.id}}
+      }.to change(Invitation, :count).by(-1)
     end
   end
-
 end
