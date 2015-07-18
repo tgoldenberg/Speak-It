@@ -52,10 +52,7 @@ var ChatRoom = React.createClass({
     return (
       <div className="container-fluid no-padding">
         {content}
-        <button onClick={this.changeTurn} className="btn btn-primary btn-lg">
-          Change Turn
-        </button>
-        <SmallVideos currentUser={this.props.current_user} otherUser={this.props.other_user} completed={this.state.completed}/>
+        <SmallVideos changeTurn={this.changeTurn} currentUser={this.props.current_user} otherUser={this.props.other_user} completed={this.state.completed}/>
       </div>
     );
   }
