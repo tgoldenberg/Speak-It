@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 20150718152409) do
   create_table "chat_rooms", force: :cascade do |t|
     t.integer  "creator_id"
     t.integer  "invitee_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "turn",       default: 0
+    t.boolean  "completed",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "chats", force: :cascade do |t|
