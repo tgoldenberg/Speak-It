@@ -2,19 +2,11 @@
   <ul id="notification-list" style="display: none">
     <% @active_invitations.each do |invitation| %>
       <li><p><%= invitation.sender.username %> <%= time_ago_in_words(invitation.created_at) %></p>
-      <form method="post" action="/chat_rooms" id="create_chat_room">
-        <input type="hidden" value="<%= invitation.id %>" name="invitation[id]"/>
-        <input type="submit" value="Accept" class="btn btn-success"/>
-      </form>
-      <button class="btn btn-danger delete_invitation" data-id="<%= invitation.id %>">Decline</button>
-        <!-- <%= form_for invitation, url: create_chat_room_path, method: 'post' do |f| %>
-          <%= f.hidden_field :id, value: invitation.id %>
-          <%= f.submit "Accept", class: 'btn btn-success' %>
-        <% end %>
-        <%= form_for invitation, url: delete_invitation_path, method: 'delete' do |f| %>
-          <%= f.hidden_field :id, value: invitation.id %>
-          <%= f.submit "Decline", class: 'btn btn-danger' %>
-        <% end %> -->
+        <form method="post" action="/chat_rooms" id="create_chat_room">
+          <input type="hidden" value="<%= invitation.id %>" name="invitation[id]"/>
+          <input type="submit" value="Accept" class="btn btn-success"/>
+        </form>
+        <button class="btn btn-danger delete_invitation" data-id="<%= invitation.id %>">Decline</button>
       </li>
     <% end %>
   </ul>
@@ -26,6 +18,7 @@
 </div>
 <script>
   $(function() {
+    // listen for user click event to delete invitation
     deleteInvitation();
   });
 </script>
