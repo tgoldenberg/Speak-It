@@ -19,11 +19,13 @@ var ChatRoom = React.createClass({
     })
     .done(function(data) {
       console.log(data);
-    })
+      var turn = data.turn;
+      var completed = data.completed;
+      this.setState({turn: turn, completed: completed})
+    }.bind(this))
     .fail(function(err) {
       console.log(err);
     });
-    this.setState({turn: turn});
   },
   render: function() {
     var content = "";
@@ -53,6 +55,7 @@ var ChatRoom = React.createClass({
         <button onClick={this.changeTurn} className="btn btn-primary btn-lg">
           Change Turn
         </button>
+        <SmallVideos currentUser={this.props.current_user} otherUser={this.props.other_user} completed={this.state.completed}/>
       </div>
     );
   }
