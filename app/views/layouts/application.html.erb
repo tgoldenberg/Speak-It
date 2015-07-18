@@ -8,7 +8,6 @@
 </head>
 <body>
 
-
 <%= render partial: "welcome/navbar" %>
 
 <% if flash[:notice]%>
@@ -20,8 +19,13 @@
     <p class="alert"> <%= msg %></p>
   <% end %>
 <% end %>
+
 <script src="//js.pusher.com/2.2/pusher.min.js"></script>
+
 <%= yield %>
+
+<script src="/assets/invitationButton.js"></script>
+
 <script>
 $(function() {
   var pusher = new Pusher('18cc5c3d4ea4757ca628');
@@ -29,14 +33,20 @@ $(function() {
   var channel = pusher.subscribe(channelName);
   channel.bind('new_invitation', function(data) {
     console.log(data);
-    // add functionality -- append to DOM
-    // append <li> tags to DOM
+    var senderId = data.invitation.sender_id;
+    var recipientId = data.invitation.recipient_id;
+    var username = data.username;
+    var partial = "";
+    partial += '<li><p>' + username + ': just now</p>' +
+      '<form method="post" action="/chat_rooms" id="create_chat_room">' +
+        '<input type="hidden" value="'+ data.invitation.id + '" name="invitation[id]"/>' +
+        '<input type="submit" value="Accept" class="btn btn-success"/>' +
+      '</form>' +
+      '<button class="btn btn-danger delete_invitation" data-id="' + data.invitation.id + '">Decline</button>' +
+    '</li>';
+    $('#notification-list').append(partial);
+    deleteInvitation();
   });
-  channel.bind('chat_acceptance', function(data) {
-    console.log(data);
-    // add functionality -- redirect user to chat room
-    // window.location = "/chat_rooms/" + data.id
-  })
 });
 
 </script>
