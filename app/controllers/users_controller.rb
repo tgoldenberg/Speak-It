@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     user = User.find_by(username: user_params[:username])
     if !user
       @user = User.new(user_params)
+      @user.level = Level.find_by(language_id: user_params[:study_language_id],
+        name: "beginner")
       if @user.save
         session[:user_id] = @user.id
         flash[:notice] = ["Successfully registered."]
