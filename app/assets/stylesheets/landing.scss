@@ -1,5 +1,6 @@
 #welcome-bar {
   border: 1px solid black;
+  display: flex;
 }
 
 #login-col {
@@ -7,10 +8,20 @@
 }
 
 #speak-it-info {
-  border: 1px solid blue;
+  border-left: 1px solid blue;
+  height: inherit;
   padding-bottom: 2em;
+
+  h2 {
+	  font-family: $title-font-family;
+	  font-weight: $title-font-weight;
+  }
 }
 
+h2 {
+  font-family: $title-font-family;
+  font-weight: $title-font-weight;
+}
 
 #interact {
   height: 300px;
