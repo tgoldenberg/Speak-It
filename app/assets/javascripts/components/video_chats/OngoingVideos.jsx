@@ -1,4 +1,8 @@
 var OngoingVideos = React.createClass({
+  handleClick: function(e) {
+    e.preventDefault();
+    this.props.changeTurn();
+  },
   render: function() {
     return (
       <div id="smallVideos">
@@ -16,6 +20,11 @@ var OngoingVideos = React.createClass({
               <p>{this.props.otherUser.user.username.toUpperCase()}</p>
               <span><img className="avatar-image-small" src={this.props.otherUser.country.image_url} alt=""/></span>
             </div>
+          </div>
+          <div className="button-holder col-sm-8">
+            <button onClick={this.handleClick} className="btn btn-primary btn-lg change-turn-button">
+              Change Turn
+            </button>
           </div>
         </div>
       </div>
