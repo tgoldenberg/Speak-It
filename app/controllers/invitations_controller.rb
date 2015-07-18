@@ -13,6 +13,9 @@ class InvitationsController < ApplicationController
   end
 
   def destroy
+    invitation = Invitation.find_by(id: params[:invitation][:id])
+    Invitation.where(sender_id: invitation.sender.id).delete_all
+    redirect_to root_path
   end
 
   private
