@@ -15,6 +15,13 @@
 	<img src= <%= @user.avatar_url %> alt="profile_pic">
 	<h2> Hey <%= @user.username %> </h2>
 	<p> <%= @user.points %> </p>
+  <ul>
+    <% if @recent_users  %>
+      <% @recent_users.each do |user| %>
+        <%= user.username %>
+      <% end %>
+    <% end %>
+  </ul>
 </div>
 <script>
   $(function() {
