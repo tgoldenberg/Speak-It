@@ -29,25 +29,22 @@ var ChatRoom = React.createClass({
     var content = "";
     switch(this.state.turn) {
       case 0:
-        content = <h1>Initial Instructions</h1>;
+        content = <InfoPanel chat={this.props.first_chat}/>;
         break;
       case 1:
-        content = <h1>First Video Chat</h1>;
+        content = <VideoChat chat={this.props.first_chat}/>;
         break;
       case 2:
-        content = <h1>Second Instruction</h1>;
+        content = <InfoPanel chat={this.props.second_chat}/>;
         break;
       case 3:
-        content = <h1>Second Video Chat</h1>;
+        content = <VideoChat chat={this.props.second_chat}/>;
         break;
       case 4:
-        content = <h1>Final Wrap Up</h1>;
-        break;
-      case 5:
-        content = <h1>Game Over</h1>;
+        content = <FinalInstructions chatRoom={this.props.chat_room}/>;
         break;
       default:
-        content = <h1>Game Stats</h1>;
+        content = <GameStats chatRoom={this.props.chat_room}/>;
         break;
     }
     return (
