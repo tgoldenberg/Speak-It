@@ -25,6 +25,7 @@ class ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.find_by(id: params[:id])
     @first_chat = @chat_room.chats.first
     @second_chat = @chat_room.chats.last
+    # assign data for handing over to ReactJS component
     @data = {chat_room: @chat_room,
             chats: @chat_room.chats,
             first_chat: {
