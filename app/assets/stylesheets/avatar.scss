@@ -1,0 +1,37 @@
+.avatar-image {
+  width: 3em;
+  margin: auto;
+}
+.avatar-info {
+  margin-left: .5em;
+  width: 9em;
+}
+.titleBar {
+  background: $blue;
+  color: white;
+  padding: 1.3em;
+  display: flex;
+}
+.avatar-wrapper {
+  display: flex;
+  margin: auto;
+
+}
+.navbar {
+  margin-bottom: 0;
+}
+.no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+.language-wrapper {
+  margin-left: 1em;
+  margin: auto;
+}
+.level-wrapper {
+  margin: auto;
+}
+.topic-wrapper {
+  margin: auto;
+  text-align: center;
+}
