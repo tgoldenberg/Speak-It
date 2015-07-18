@@ -20,8 +20,25 @@
     <p class="alert"> <%= msg %></p>
   <% end %>
 <% end %>
-
+<script src="//js.pusher.com/2.2/pusher.min.js"></script>
 <%= yield %>
+<script>
+$(function() {
+  var pusher = new Pusher('18cc5c3d4ea4757ca628');
+  var channelName = 'private-conversation.' + '<%= current_user ? current_user.id.to_s : 'null' %>';
+  var channel = pusher.subscribe(channelName);
+  channel.bind('new_invitation', function(data) {
+    console.log(data);
+    // add functionality -- append to DOM
+    // append <li> tags to DOM
+  });
+  channel.bind('chat_acceptance', function(data) {
+    console.log(data);
+    // add functionality -- redirect user to chat room
+    // window.location = "/chat_rooms/" + data.id
+  })
+});
 
+</script>
 </body>
 </html>

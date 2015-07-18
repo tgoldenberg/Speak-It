@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   post '/invitations' => 'invitations#create', as: 'create_invitation'
   delete '/invitations' => 'invitations#destroy', as: 'delete_invitation'
+  post '/pusher/auth' => 'pusher#auth'
 end

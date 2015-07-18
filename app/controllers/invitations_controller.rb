@@ -4,6 +4,9 @@ class InvitationsController < ApplicationController
     if @invitation.save
       ## use pusher to notify the other person
       flash[:notice] = ["Your invitation was successfully sent."]
+      channel = 'private-conversation.' + @invitation.recipient_id.to_s
+      data = {invitation: @invitation, username: @invitation.sender.username}
+      Pusher.trigger(channel, 'new_invitation', data.to_json)
       render json: flash[:notice][0].to_json
     else
       ## render error message
