@@ -16,7 +16,7 @@
           <td> <%= user.username %></td>
           <td><%= user.country.try(:name) %></td>
           <td> <%= user.native_language.name %> </td>
-          <td><%= form_for @invitation, url: create_invitation_path, method: 'post', remote: true do |f| %>
+          <td><%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
             <%= f.hidden_field :recipient_id, value: user.id %>
             <%= f.hidden_field :sender_id, value: current_user.id %>
             <%= f.submit "Speak!", class: 'btn btn-default' %>
@@ -46,6 +46,7 @@
         console.log(err);
       });
     });
+    
     $('.notifications').on('click', function(e) {
       e.preventDefault();
       $('#notification-list').toggle();

@@ -73,7 +73,7 @@ describe User do
     end
 
     it 'should respond to recieved invitations' do
-      expect(user).to respond_to :recieved_invitations
+      expect(user).to respond_to :received_invitations
     end
 
     it 'should respond to sent chat rooms' do
