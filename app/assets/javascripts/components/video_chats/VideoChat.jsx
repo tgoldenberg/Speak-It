@@ -1,7 +1,10 @@
 var VideoChat = React.createClass({
   render: function() {
     return (
-      <h1>First Video Chat</h1>
+      <div className="infoPanel">
+        <Title chat={this.props.chat} />
+        <h4>Video Chat</h4>
+      </div>
     );
   }
 });
