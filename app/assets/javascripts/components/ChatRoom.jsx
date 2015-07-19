@@ -57,6 +57,7 @@ var ChatRoom = React.createClass({
           currentUser={this.props.current_user}
           otherUser={this.props.other_user}
           completed={this.state.completed}
+          chatRoom={this.props.chat_room}
           turn={this.state.turn}
           />
       </div>
