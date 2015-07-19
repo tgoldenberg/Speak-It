@@ -2,14 +2,16 @@ class FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new
     @chat_room = ChatRoom.find_by(id: params[:chat_room_id])
-    @chat = @chat_room.chats.find_by(native_speaker_id: current_user.id)
+    @chat = @chat_room.chats.find_by(native_speaker_id: current_user.try(:id) )
     @ratings = [["One Star", 1], ["Two Stars", 2], ["Three Stars", 3]]
   end
 
   def create
     @feedback = Feedback.new(feedback_params)
     user = @feedback.recipient
-    user.points += @feedback.rating * 2
+    if @feedback.rating
+      user.points += @feedback.rating * 2
+    end
     if user.points >= 10
       curr_level = user.level
       user.level = Level.find_by(language_id: curr_level.language_id,
@@ -27,6 +29,7 @@ class FeedbacksController < ApplicationController
   end
 
   def show
+    @feedback = Feedback.find(params[:id])
   end
 
   private

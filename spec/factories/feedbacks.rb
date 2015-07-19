@@ -1,7 +1,7 @@
 require 'faker'
 
 FactoryGirl.define do
-  chat = FactoryGirl.create(:chat)
+  chat = FactoryGirl.build(:chat)
   factory :feedback do
     chat_id chat.id
     rating 1
