@@ -25,7 +25,14 @@
 <%= yield %>
 
 <script src="/assets/invitationButton.js"></script>
-
+<script>
+  $(document).ready(function(){
+    var removeFlash = setTimeout(function(){
+      $('.notice').remove();
+      $('.alert').remove();
+    }, 2000);
+   })
+</script>
 <script>
 $(function() {
   // initialize Pusher with api-key
@@ -43,15 +50,16 @@ $(function() {
     // create a partial to append to the <ul> in the DOM
     var partial = "";
     partial += '<li><p>' + username + ': just now</p>' +
-      '<form method="post" action="/chat_rooms" id="create_chat_room">' +
+      '<div id="flex-container"><form method="post" action="/chat_rooms" id="create_chat_room">' +
         '<input type="hidden" value="'+ data.invitation.id + '" name="invitation[id]"/>' +
         '<input type="submit" value="Accept" class="btn btn-success"/>' +
       '</form>' +
-      '<button class="btn btn-danger delete_invitation" data-id="' + data.invitation.id + '">Decline</button>' +
+      '<button class="btn btn-danger delete_invitation" data-id="' + data.invitation.id + '">Decline</button></div>' +
     '</li>';
     $('#notification-list').append(partial);
     // re-invoke event listener to delete invitation if user clicks 'decline'
     deleteInvitation();
+    removeFlash();
   });
 
   channel.bind('create_chat_room', function(data) {
@@ -60,5 +68,7 @@ $(function() {
   });
 });
 </script>
+
+
 </body>
 </html>
