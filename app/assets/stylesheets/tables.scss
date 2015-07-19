@@ -1,0 +1,27 @@
+.table {
+  thead {
+    tr {
+      background: $blue;
+      color: white;
+      th {
+        font-weight: 400;
+        line-height: 2;
+        font-size: 1.4em;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        line-height: 1.8;
+        font-size: 1.2em;
+      }
+      .header-td {
+        background: $blue;
+        color: white;
+        font-size: 1.4em;
+        line-height: 2;
+      }
+    }
+  }
+}
