@@ -2,12 +2,17 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :set_last_seen_at, if: proc { logged_in? && (session[:last_seen_at] == nil || session[:last_seen_at] < 10.minutes.ago) }
+  before_action :set_last_seen_at, if: proc { logged_in? }
 
   protected
 
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
   def set_last_seen_at
-    current_user.update_attribute(:last_seen_at, Time.now)
+    current_user.assign_attributes(last_seen_at: Time.now)
+    current_user.save
     session[:last_seen_at] = Time.now
   end
 
@@ -22,7 +27,4 @@ class ApplicationController < ActionController::Base
     !!session[:user_id]
   end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
 end
