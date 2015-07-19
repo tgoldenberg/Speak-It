@@ -45,7 +45,7 @@
 <script>
 $(function() {
   // initialize Pusher with api-key
-  var pusher = new Pusher('510b272a7e1299e4d1e7');
+  var pusher = new Pusher('18cc5c3d4ea4757ca628');
   // assign channel name with current user id
   var channelName = 'private-conversation.' + '<%= current_user ? current_user.id.to_s : 'null' %>';
   // have Pusher subscribe the channel
