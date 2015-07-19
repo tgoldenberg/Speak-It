@@ -23,20 +23,20 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :native_language %> 
+    <%= f.label :native_language %>
     <%= f.select(:native_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
   </div>
   <div class="form-group">
-    <%= f.label :study_language %> 
+    <%= f.label :study_language %>
     <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
   </div>
   <div class="form-group">
-    <%= f.label :country %> 
+    <%= f.label :country %>
     <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control"}) %>
   </div>
-  <div class="form-group">
+<!--   <div class="form-group">
     <%= f.hidden_field :level_id, value: 1 %>
-  </div>
+  </div> -->
   <div>
     <%= f.submit "Submit", class: 'btn' %>
   </div>

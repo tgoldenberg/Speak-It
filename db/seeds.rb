@@ -1,8 +1,8 @@
 require 'faker'
 
 LANGUAGES = [
-            {name: "English", code: "en", img_url: Faker::Avatar.image},
-            {name: "Spanish", code: "es", img_url: Faker::Avatar.image}]
+            {name: "English", code: "en", img_url: "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg"},
+            {name: "Spanish", code: "es", img_url: "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png"}]
 
 LEVELS = [
   {name: "beginner", value: 1},
@@ -97,6 +97,25 @@ EXPERT_TOPICS = [
   "Pick a political topic and discuss the arguments for and against it"
 ]
 
+COUNTRIES = [
+  {name: "United States", image_url: "http://freeassembly.net/wp-content/uploads/2014/04/USA-flag.jpg"},
+  {name: "Canada", image_url: "http://lenthom.ca/wp-content/uploads/2015/02/Canada-Flag.jpg"},
+  {name: "Mexico", image_url: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Mexico_(reverse).png"},
+  {name: "Spain", image_url: "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png"},
+  {name: "Argentina", image_url: "http://argentinaflag.facts.co/argentinaflagimage1.png"},
+  {name: "Columbia", image_url: "http://flaglane.com/download/colombian-flag/colombian-flag-medium.png"},
+  {name: "Peru", image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Peru_(1825-1950).svg/2000px-Flag_of_Peru_(1825-1950).svg.png" },
+  {name: "United Kingdom", image_url: "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/300px-Flag_of_the_United_Kingdom.svg.png"},
+  {name: "Venezuela", image_url: "http://flaglane.com/download/venezuelan-flag/venezuelan-flag-medium.png"},
+  {name: "Ecuador", image_url: "http://flaglane.com/download/ecuadorian-flag/ecuadorian-flag-medium.png"},
+  {name: "Cuba", image_url: "http://flaglane.com/download/cuban-flag/cuban-flag-medium.png"},
+  {name: "Uruguay", image_url: "http://flaglane.com/download/uruguayan-flag/uruguayan-flag-medium.png"},
+  {name: "Costa Rica", image_url: "http://flaglane.com/download/costa-rican-flag/costa-rican-flag-medium.png"},
+  {name: "Guatemala", image_url: "http://flaglane.com/download/guatemalan-flag/guatemalan-flag-medium.png"},
+  {name: "Panama", image_url: "http://flaglane.com/download/panamanian-flag/panamanian-flag-medium.png"},
+  {name: "Chile", image_url: "http://flaglane.com/download/chilean-flag/chilean-flag-medium.png"},
+  {name: "Dominican Republic", image_url: "http://flaglane.com/download/dominican-republic-flag/dominican-republic-flag-medium.png"}
+]
 
 TOPICS = [
     BEGINNER_TOPICS,
@@ -110,6 +129,10 @@ TOPICS = [
     HIGH_ADVANCED_TOPICS,
     EXPERT_TOPICS
 ]
+
+COUNTRIES.each do |country|
+  Country.create(name: country[:name], image_url: country[:image_url])
+end
 
 LANGUAGES.each do |language|
   new_language = Language.create(name: language[:name], code: language[:code], img_url: language[:img_url])
@@ -132,7 +155,7 @@ Language.all.each_with_index do |language, idx|
     native_language_id: language.id,
     study_language_id: study_language.id,
     level_id: study_language.levels.first.id,
-    country_id: Country.create(name: Faker::Address.country, image_url: Faker::Avatar.image).id,
+    country_id: Country.all.sample.id,
     username: Faker::Name.name,
     email: Faker::Internet.email,
     password: "password")

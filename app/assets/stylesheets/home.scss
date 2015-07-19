@@ -1,3 +1,25 @@
 .user-avatar {
 	width: 3em;
 }
+
+#available-table {
+	display: table;
+}
+
+#recent-table {
+	display: none;
+}
+
+#avatar-container {
+  display: block;
+}
+
+#profile-level {
+  display: block;
+}
+
+#language-flag {
+  height: 5em;
+  margin-top: 20px;
+  margin-bottom: 20px
+}

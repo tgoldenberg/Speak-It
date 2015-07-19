@@ -7,13 +7,15 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @countries_select_array = Country.all.map {|country|[country.name,country.id]}.sort
-    @languages_select_array = Language.all.map {|language| [language.name,language.id]}
+    @languages_select_array = Language.all.map {|language| [language.name,language.id]}.sort
   end
 
   def create
     user = User.find_by(username: user_params[:username])
     if !user
       @user = User.new(user_params)
+      @user.level = Level.find_by(language_id: user_params[:study_language_id],
+        name: "beginner")
       if @user.save
         session[:user_id] = @user.id
         flash[:notice] = ["Successfully registered."]
@@ -56,7 +58,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :country_id, :native_language_id,
-      :study_language_id, :avatar_url, :points, :level_id)
+      :study_language_id, :avatar_url, :points, :level_id, :last_seen_at)
   end
 
   def find_user
