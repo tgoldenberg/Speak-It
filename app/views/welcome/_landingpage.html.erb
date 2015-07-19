@@ -1,6 +1,6 @@
-<div id="main-container" class="container">
+<div id="main-container" class="container-fluid">
   <div id= "welcome-bar" class= "row">
-    <div id= "login-col" class= "col-sm-3">
+    <div id= "login-col" class= "col-sm-4">
       <div>
         <%= render partial: "sessions/form" %>
       </div>
@@ -11,13 +11,13 @@
       <% end %>
     </div>
 
-    <div id="speak-it-info" class="col-sm-9">
+    <div id="speak-it-info" class="col-sm-8">
       <h2 id="proxima-nova"> Welcome To Speak It!</h2>
       <%= link_to 'Sign Up', new_user_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
   <div id="interact" class="row">
-    <h2> Interact with users around the world </h2>
+    <h2 id="culture-quote"> Language is the key to unlocking a new culture </h2>
   </div>
   <div id="level-up" class="row">
     <h2> Level up and master your language </h2>
