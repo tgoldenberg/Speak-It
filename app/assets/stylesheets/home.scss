@@ -26,6 +26,7 @@
 
 #notification-list {
   position: fixed;
+  top: 10%;
   right: 10%;
   list-style-type: none;
   background-color: #F2F2F2;
@@ -46,4 +47,9 @@
 
 .glyphicon-remove-sign {
   color: red;
+}
+
+.alert {
+  position: absolute;
+  z-index: 2;
 }
