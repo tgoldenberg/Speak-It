@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Feedback do
-  let(:chat) {FactoryGirl.create(:chat)}
+  let(:chat) {Chat.create(student_id: User.first.id, native_speaker_id: User.last.id, topic_id: Topic.first.id)}
   it 'should save a valid feedback' do
     expect(FactoryGirl.create(:feedback, chat_id: chat.id)).to be_valid
   end
