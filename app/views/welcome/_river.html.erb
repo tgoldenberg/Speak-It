@@ -37,10 +37,10 @@
       </tr>
     </thead>
     <tbody>
-      <% @recent_users.each do |user| %>
+      <% @available_recent_users.each do |user| %>
         <tr>
           <td> <img src= <%= user.avatar_url %> alt="avatar" class="user-avatar"></td>
-          <td> <%= user.username %></td>
+          <td> <%= user.username %>  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></td>
           <td><%= user.country.try(:name) %></td>
           <td> <%= user.native_language.name %> </td>
           <td><%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
@@ -49,6 +49,15 @@
             <%= f.submit "Speak!", class: 'btn btn-default' %>
           <% end %>
           </td>
+        </tr>
+      <% end %>
+      <% @unavailable_recent_users.each do |user| %>
+        <tr>
+          <td> <img src= <%= user.avatar_url %> alt="avatar" class="user-avatar"></td>
+          <td> <%= user.username %>  <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></td>
+          <td><%= user.country.try(:name) %></td>
+          <td> <%= user.native_language.name %> </td>
+          <td></td>
         </tr>
       <% end %>
     </tbody>
@@ -79,7 +88,7 @@
         console.log(err);
       });
     });
-    
+
     $('.notifications').on('click', function(e) {
       e.preventDefault();
       $('#notification-list').toggle();
