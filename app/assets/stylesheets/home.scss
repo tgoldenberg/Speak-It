@@ -3,9 +3,23 @@
 }
 
 #available-table {
-	display: block;
+	display: table;
 }
 
 #recent-table {
-	display: none; 
+	display: none;
+}
+
+#avatar-container {
+  display: block;
+}
+
+#profile-level {
+  display: block;
+}
+
+#language-flag {
+  height: 3em;
+  margin-top: 20px;
+  margin-bottom: 20px
 }
