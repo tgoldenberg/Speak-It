@@ -19,7 +19,7 @@
     <div class= "row">
     	<h2 class = "col-md-6"> Hey <%= @user.username %> </h2>
       <div class = "col-md-6">
-        <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png" alt = "flag" id="language-flag">
+        <img src="<%= @user.country.image_url %>" alt="flag" id="language-flag">
       </div>
     </div>
     <div class = "row">
