@@ -34,12 +34,17 @@
     width: 2.5em;
   }
 }
+.button-holder {
+  display: flex;
+}
 .change-turn-button {
-  width: 80%;
   text-align: center;
-  margin: auto;
   height: 3.5em;
   margin-top: .6em;
+}
+.timer-holder {
+  text-align: center;
+  width: inherit;
 }
 html, body {
   height: 100%;
