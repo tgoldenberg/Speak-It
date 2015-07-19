@@ -98,23 +98,23 @@ EXPERT_TOPICS = [
 ]
 
 COUNTRIES = [
-  {name: "United States", image_url: "http://freeassembly.net/wp-content/uploads/2014/04/USA-flag.jpg"},
-  {name: "Canada", image_url: "http://lenthom.ca/wp-content/uploads/2015/02/Canada-Flag.jpg"},
-  {name: "Mexico", image_url: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Mexico_(reverse).png"},
-  {name: "Spain", image_url: "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png"},
-  {name: "Argentina", image_url: "http://argentinaflag.facts.co/argentinaflagimage1.png"},
-  {name: "Columbia", image_url: "http://flaglane.com/download/colombian-flag/colombian-flag-medium.png"},
-  {name: "Peru", image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Peru_(1825-1950).svg/2000px-Flag_of_Peru_(1825-1950).svg.png" },
-  {name: "United Kingdom", image_url: "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/300px-Flag_of_the_United_Kingdom.svg.png"},
-  {name: "Venezuela", image_url: "http://flaglane.com/download/venezuelan-flag/venezuelan-flag-medium.png"},
-  {name: "Ecuador", image_url: "http://flaglane.com/download/ecuadorian-flag/ecuadorian-flag-medium.png"},
-  {name: "Cuba", image_url: "http://flaglane.com/download/cuban-flag/cuban-flag-medium.png"},
-  {name: "Uruguay", image_url: "http://flaglane.com/download/uruguayan-flag/uruguayan-flag-medium.png"},
-  {name: "Costa Rica", image_url: "http://flaglane.com/download/costa-rican-flag/costa-rican-flag-medium.png"},
-  {name: "Guatemala", image_url: "http://flaglane.com/download/guatemalan-flag/guatemalan-flag-medium.png"},
-  {name: "Panama", image_url: "http://flaglane.com/download/panamanian-flag/panamanian-flag-medium.png"},
-  {name: "Chile", image_url: "http://flaglane.com/download/chilean-flag/chilean-flag-medium.png"},
-  {name: "Dominican Republic", image_url: "http://flaglane.com/download/dominican-republic-flag/dominican-republic-flag-medium.png"}
+  {name: "United States", image_url: "/assets/american-flag-medium.png"},
+  {name: "Canada", image_url: "/assets/canadian-flag-medium.png"},
+  {name: "Mexico", image_url: "/assets/mexican-flag-medium.png"},
+  {name: "Spain", image_url: "/assets/spanish-flag-medium.png"},
+  {name: "Argentina", image_url: "/assets/argentinian-flag-medium.png"},
+  {name: "Columbia", image_url: "/assets/colombian-flag-medium.png"},
+  {name: "Peru", image_url: "/assets/peruvian-flag-medium.png" },
+  {name: "United Kingdom", image_url: "/assets/british-flag-medium.png"},
+  {name: "Venezuela", image_url: "/assets/venezuelan-flag-medium.png"},
+  {name: "Ecuador", image_url: "/assets/ecuadorian-flag-medium.png"},
+  {name: "Cuba", image_url: "/assets/cuban-flag-medium.png"},
+  {name: "Uruguay", image_url: "/assets/uruguayan-flag-medium.png"},
+  {name: "Costa Rica", image_url: "/assets/costa-rican-flag-medium.png"},
+  {name: "Guatemala", image_url: "/assets/guatemalan-flag-medium.png"},
+  {name: "Panama", image_url: "/assets/panamanian-flag-medium.png"},
+  {name: "Chile", image_url: "/assets/chilean-flag-medium.png"},
+  {name: "Dominican Republic", image_url: "/assets/dominican-republic-flag-medium.png"}
 ]
 
 TOPICS = [
