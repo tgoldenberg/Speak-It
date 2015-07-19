@@ -1,12 +1,12 @@
-˚<h1>Feedback</h1>
+˚<h1 class="form-title">Feedback</h1>
 
 <div class="container">
 <%= form_for @feedback, url: create_feedback_path, method: 'post' do |f| %>
 <div class="form-group">
-  <div class="row">
+  <div class="row non-select">
     <%= f.label :rating %>
   </div>
-  <div class= "row">
+  <div class= "row non-select">
     <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control"}) %>
   </div>
  </div>
@@ -15,14 +15,14 @@
      <%= f.label :comment %>
    </div>
    <div class="row non-select">
-     <%= f.text_area :comment %>
+     <%= f.text_area :comment,class: 'form-control',id: 'comment-field' %>
     </div>
   </div>
 </div> 
   <%= f.hidden_field :chat_id, value: @chat.id %>
   <%= f.hidden_field :sender_id, value: current_user.id %>
   <%= f.hidden_field :recipient_id, value: @chat.student_id %>
-  <%= f.submit "Submit Feedback", class: 'btn' %>
+  <%= f.submit "Submit Feedback", class: 'btn form-button' %>
 <% end %>
 </div>
 

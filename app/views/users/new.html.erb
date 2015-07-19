@@ -7,17 +7,23 @@
   <div class="form-group">
     <div class= "row non-select">
       <%= f.label :username %>
-      <%= f.text_field :username %>
+    </div>
+    <div class="row non-select">
+      <%= f.text_field :username, class: 'form-control' %>
     </div>
   </div>
   <div class= "form-group">
-    <%= f.label :password %>
+    <div class = "row non-select">
+      <%= f.label :password %>
+    </div>
     <div class= "row non-select">
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: 'form-control' %>
     </div>
   </div>
   <div class= "form-group">
-    <%= f.label :email, class: 'row' %>
+    <div class= "row non-select">
+      <%= f.label :email %>
+    </div>
     <div class= "row non-select">
       <%= f.email_field :email, class: 'form-control' %>
     </div>
@@ -34,35 +40,13 @@
     <%= f.label :country %>
     <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control"}) %>
   </div>
-<!--   <div class="form-group">
-    <%= f.hidden_field :level_id, value: 1 %>
-  </div> -->
+    <%= f.hidden_field :level, value: 1 %>
   <div>
-    <%= f.submit "Submit", class: 'btn' %>
+    <%= f.submit "Submit", class: 'btn form-button' %>
   </div>
  <% end %>
  </div>
 
-
- ˚<h1 class="form-title">Feedback</h1>
-
- <div class="container">
- <%= form_for "hello" do |f| %>
- <div class="form-group">
-   <%= f.label :country %>
-   <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control"}) %>
-  </div>
-  <div class="form-group">
-    <div class="row non-select">
-     <%= f.label :comment%>
-    </div>
-    <div class="row non-select">
-     <%= f.text_area :comment%>
-    </div>
- </div> 
-   <%= f.submit "Submit Feedback", class: 'btn' %>
- <% end %>
- </div>
 
 
 
