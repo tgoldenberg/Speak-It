@@ -1,5 +1,5 @@
 class ChatRoomsController < ApplicationController
-  protect_from_forgery except: 'create'
+  protect_from_forgery except: ['create', 'update']
 
   def create
     invitation = Invitation.find_by(id: params[:invitation][:id])
@@ -16,18 +16,64 @@ class ChatRoomsController < ApplicationController
     channel = 'private-conversation.' + @chat_room.creator_id.to_s
     data = @chat_room.id
     Pusher.trigger(channel, 'create_chat_room', data.to_json)
-    
+
     redirect_to chat_room_path(@chat_room)
     # @chat_room = ChatRoom.create()
   end
 
+  def update
+    @chat_room = ChatRoom.find_by(id: params[:id])
+    @chat_room.assign_attributes(chat_room_params)
+    if @chat_room.turn >= 5
+      @chat_room.completed = true
+    end
+    if @chat_room.save
+      render json: @chat_room.to_json
+    else
+      render "Unable to update".to_json
+    end
+  end
+
   def show
     @chat_room = ChatRoom.find_by(id: params[:id])
+    @first_chat = @chat_room.chats.first
+    @second_chat = @chat_room.chats.last
+    @other_user = @chat_room.creator == current_user ? @chat_room.invitee : @chat_room.creator
+    # assign data for handing over to ReactJS component
+    @data = {chat_room: @chat_room,
+            chats: @chat_room.chats,
+            current_user: {
+              user: current_user,
+              country: current_user.country,
+              language: current_user.native_language
+            },
+            other_user: {
+              user: @other_user,
+              country: @other_user.country,
+              language: @other_user.native_language
+            },
+            first_chat: {
+              chat: @first_chat,
+              student: @first_chat.student,
+              native_speaker: @first_chat.native_speaker,
+              topic: @first_chat.topic,
+              language: @first_chat.language,
+              level: @first_chat.level
+            },
+            second_chat: {
+              chat: @second_chat,
+              student: @second_chat.student,
+              native_speaker: @second_chat.native_speaker,
+              topic: @second_chat.topic,
+              language: @second_chat.language,
+              level: @second_chat.level
+            }
+          }
   end
 
   private
 
   def chat_room_params
-    params.require(:chat_room).permit(:creator_id, :invitee_id)
+    params.require(:chat_room).permit(:creator_id, :invitee_id, :completed, :turn)
   end
 end
