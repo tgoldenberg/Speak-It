@@ -46,7 +46,7 @@ var ChatRoom = React.createClass({
         content = <FinalInstructions chatRoom={this.props.chat_room} changeTurn={this.changeTurn} />;
         break;
       default:
-        content = <GameStats chatRoom={this.props.chat_room}/>;
+        content = <GameStats chatRoom={this.props}/>;
         break;
     }
     return (
