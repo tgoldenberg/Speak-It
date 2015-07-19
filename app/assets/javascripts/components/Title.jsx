@@ -20,7 +20,7 @@ var Title = React.createClass({
         </div>
 
         <div className="topic-wrapper col-md-6">
-          <h2>Topic: {this.props.chat.topic.name}</h2>
+          <h2><b>Topic:</b> {this.props.chat.topic.name}</h2>
         </div>
 
         <div className="language-wrapper col-md-2">
