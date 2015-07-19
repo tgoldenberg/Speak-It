@@ -1,6 +1,1 @@
-<h2>Welcome to the Chat</h2>
-<h3>Chat Topics</h3>
-<%= @chat_room.chats.first.topic.name %><br/>
-<%= @chat_room.chats.last.topic.name %>
-
-<%= link_to 'Feedback', new_feedback_path(chat_room_id: @chat_room.id), class: 'btn btn-primary btn-lg' %>
+<%= react_component("ChatRoom", @data.to_json, class: "component") %>
