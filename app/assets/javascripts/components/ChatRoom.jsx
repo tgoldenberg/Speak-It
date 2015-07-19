@@ -31,7 +31,7 @@ var ChatRoom = React.createClass({
     var content = "";
     switch(this.state.turn) {
       case 0:
-        content = <InfoPanel chat={this.props.first_chat} changeTurn={this.changeTurn} />;
+        content = <InfoPanel chat={this.props.first_chat} first={true} changeTurn={this.changeTurn} />;
         break;
       case 1:
         content = <VideoChat chat={this.props.first_chat} changeTurn={this.changeTurn} />;
