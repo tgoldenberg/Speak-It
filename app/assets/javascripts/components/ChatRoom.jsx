@@ -2,7 +2,7 @@ var ChatRoom = React.createClass({
   getInitialState: function() {
     return {
       turn: this.props.chat_room.turn,
-      completed: this.props.chat_room.completed
+      completed: this.props.chat_room.completed,
     }
   },
   changeTurn: function() {
@@ -21,7 +21,7 @@ var ChatRoom = React.createClass({
       console.log(data);
       var turn = data.turn;
       var completed = data.completed;
-      this.setState({turn: turn, completed: completed})
+      this.setState({turn: turn, completed: completed })
     }.bind(this))
     .fail(function(err) {
       console.log(err);
@@ -52,7 +52,13 @@ var ChatRoom = React.createClass({
     return (
       <div className="container-fluid no-padding">
         {content}
-        <SmallVideos changeTurn={this.changeTurn} currentUser={this.props.current_user} otherUser={this.props.other_user} completed={this.state.completed}/>
+        <SmallVideos
+          changeTurn={this.changeTurn}
+          currentUser={this.props.current_user}
+          otherUser={this.props.other_user}
+          completed={this.state.completed}
+          turn={this.state.turn}
+          />
       </div>
     );
   }
