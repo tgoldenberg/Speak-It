@@ -1,6 +1,5 @@
 var OngoingVideos = React.createClass({
-  handleClick: function(e) {
-    e.preventDefault();
+  handleChange: function() {
     this.props.changeTurn();
   },
   render: function() {
@@ -22,9 +21,9 @@ var OngoingVideos = React.createClass({
             </div>
           </div>
           <div className="button-holder col-sm-8">
-            <button onClick={this.handleClick} className="btn btn-primary btn-lg change-turn-button">
-              Change Turn
-            </button>
+            <Timer
+              turn={this.props.turn}
+              handleChange={this.handleChange}/>
           </div>
         </div>
       </div>

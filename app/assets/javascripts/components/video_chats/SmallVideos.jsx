@@ -10,6 +10,7 @@ var SmallVideos = React.createClass({
       content = <OngoingVideos
         currentUser={this.props.currentUser}
         otherUser={this.props.otherUser}
+        turn={this.props.turn}
         changeTurn={this.changeTurn} />;
     }
     return (
