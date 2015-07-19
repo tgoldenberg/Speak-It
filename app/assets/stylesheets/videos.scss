@@ -1,12 +1,13 @@
 .videos {
   display: flex;
-
 }
 
 #smallVideos {
   position: fixed;
   bottom: 0;
   width: 100%;
+  background: #f7f7f7;
+  padding-top: 1em;
   @media screen and (max-height: 400px) {
     display: none;
   }
@@ -39,4 +40,7 @@
   margin: auto;
   height: 3.5em;
   margin-top: .6em;
+}
+html, body {
+  height: 100%;
 }
