@@ -23,7 +23,7 @@ class InvitationsController < ApplicationController
   def destroy
     invitation = Invitation.find_by(id: params[:invitation][:id])
     Invitation.where(sender_id: invitation.sender.id).delete_all
-    flash[:notice] = ["Invitation successfully deleted."]
+    # flash[:notice] = ["Invitation successfully deleted."]
     render json: flash[:notice][0].to_json
   end
 
