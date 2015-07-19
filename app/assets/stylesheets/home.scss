@@ -23,3 +23,33 @@
   margin-top: 20px;
   margin-bottom: 20px
 }
+
+#notification-list {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  list-style-type: none;
+  background-color: #F2F2F2;
+  z-index: 10;
+}
+
+#flex-container {
+  display: flex;
+}
+
+#notification-list li {
+  padding: 0.5em 2em 0.5em 0.5em;
+}
+
+.glyphicon-ok-sign {
+  color: green;
+}
+
+.glyphicon-remove-sign {
+  color: red;
+}
+
+.alert {
+  position: absolute;
+  z-index: 2;
+}

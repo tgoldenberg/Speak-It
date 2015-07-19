@@ -4,11 +4,6 @@
       <div>
         <%= render partial: "sessions/form" %>
       </div>
-      <% if flash[:notice] %>
-        <% flash[:notice].each do |msg| %>
-          <p> <%= msg %></p>
-        <% end %>
-      <% end %>
     </div>
 
     <div id="speak-it-info" class="col-sm-8">

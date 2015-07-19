@@ -2,11 +2,12 @@
   <ul id="notification-list" style="display: none">
     <% @active_invitations.each do |invitation| %>
       <li><p><%= invitation.sender.username %> <%= time_ago_in_words(invitation.created_at) %></p>
+        <div id="flex-container">
         <form method="post" action="/chat_rooms" id="create_chat_room">
           <input type="hidden" value="<%= invitation.id %>" name="invitation[id]"/>
           <input type="submit" value="Accept" class="btn btn-success"/>
         </form>
-        <button class="btn btn-danger delete_invitation" data-id="<%= invitation.id %>">Decline</button>
+        <button class="btn btn-danger delete_invitation" data-id="<%= invitation.id %>">Decline</button></div>
       </li>
     <% end %>
   </ul>
