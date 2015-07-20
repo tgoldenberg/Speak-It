@@ -31,6 +31,10 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
+group :assets do
+  gem 'therubyracer'
+end
+
 group :test do
   gem 'factory_girl_rails', :require => false
   gem 'rspec-rails'
