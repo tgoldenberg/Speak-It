@@ -10,14 +10,14 @@ var OngoingVideos = React.createClass({
             <video id="localVideo" autoPlay={true} muted={false}></video>
             <div className="video-info-wrapper">
               <p>{this.props.currentUser.user.username.toUpperCase()}</p>
-              <span><img className="avatar-image-small" src={this.props.currentUser.country.image_url} alt=""/></span>
+              <span><img className="avatar-image-small" src={this.props.currentUser.country_image} alt=""/></span>
             </div>
           </div>
           <div className="remote-video col-sm-2">
             <video id="remoteVideoSmall" autoPlay={true} muted={false}></video>
             <div className="video-info-wrapper">
               <p>{this.props.otherUser.user.username.toUpperCase()}</p>
-              <span><img className="avatar-image-small" src={this.props.otherUser.country.image_url} alt=""/></span>
+              <span><img className="avatar-image-small" src={this.props.otherUser.country_image} alt=""/></span>
             </div>
           </div>
           <div className="button-holder col-sm-8">
