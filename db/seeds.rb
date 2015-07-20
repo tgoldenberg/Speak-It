@@ -98,23 +98,23 @@ EXPERT_TOPICS = [
 ]
 
 COUNTRIES = [
-  {name: "United States", image_url: "/assets/american-flag-medium.png"},
-  {name: "Canada", image_url: "/assets/canadian-flag-medium.png"},
-  {name: "Mexico", image_url: "/assets/mexican-flag-medium.png"},
-  {name: "Spain", image_url: "/assets/spanish-flag-medium.png"},
-  {name: "Argentina", image_url: "/assets/argentinian-flag-medium.png"},
-  {name: "Columbia", image_url: "/assets/colombian-flag-medium.png"},
-  {name: "Peru", image_url: "/assets/peruvian-flag-medium.png" },
-  {name: "United Kingdom", image_url: "/assets/british-flag-medium.png"},
-  {name: "Venezuela", image_url: "/assets/venezuelan-flag-medium.png"},
-  {name: "Ecuador", image_url: "/assets/ecuadorian-flag-medium.png"},
-  {name: "Cuba", image_url: "/assets/cuban-flag-medium.png"},
-  {name: "Uruguay", image_url: "/assets/uruguayan-flag-medium.png"},
-  {name: "Costa Rica", image_url: "/assets/costa-rican-flag-medium.png"},
-  {name: "Guatemala", image_url: "/assets/guatemalan-flag-medium.png"},
-  {name: "Panama", image_url: "/assets/panamanian-flag-medium.png"},
-  {name: "Chile", image_url: "/assets/chilean-flag-medium.png"},
-  {name: "Dominican Republic", image_url: "/assets/dominican-republic-flag-medium.png"}
+  {name: "United States", image_url: "american-flag-medium.png"},
+  {name: "Canada", image_url: "canadian-flag-medium.png"},
+  {name: "Mexico", image_url: "mexican-flag-medium.png"},
+  {name: "Spain", image_url: "spanish-flag-medium.png"},
+  {name: "Argentina", image_url: "argentinian-flag-medium.png"},
+  {name: "Columbia", image_url: "colombian-flag-medium.png"},
+  {name: "Peru", image_url: "peruvian-flag-medium.png" },
+  {name: "United Kingdom", image_url: "british-flag-medium.png"},
+  {name: "Venezuela", image_url: "venezuelan-flag-medium.png"},
+  {name: "Ecuador", image_url: "ecuadorian-flag-medium.png"},
+  {name: "Cuba", image_url: "cuban-flag-medium.png"},
+  {name: "Uruguay", image_url: "uruguayan-flag-medium.png"},
+  {name: "Costa Rica", image_url: "costa-rican-flag-medium.png"},
+  {name: "Guatemala", image_url: "guatemalan-flag-medium.png"},
+  {name: "Panama", image_url: "panamanian-flag-medium.png"},
+  {name: "Chile", image_url: "chilean-flag-medium.png"},
+  {name: "Dominican Republic", image_url: "dominican-republic-flag-medium.png"}
 ]
 
 TOPICS = [
