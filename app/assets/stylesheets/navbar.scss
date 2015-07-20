@@ -3,3 +3,32 @@
   margin-top: -.2em;
   width: 2em;
 }
+
+.form-icon {
+  top: 30px;
+  left: 6px;
+  font-size: 1.2em;
+  color: #bbb;
+  margin-left: 12%;
+}
+
+#new_user {
+  .form-group {
+    margin-top: 0;
+    margin-bottom: 0;
+    input {
+      padding-left: 2em;
+      height: 2.9em;
+    }
+    .form-control {
+        width: 75%;
+        margin-left: 12%;
+    }
+  }
+  .submit-button-holder {
+    text-align: center;
+    input {
+      width: 75%;
+    }
+  }
+}
