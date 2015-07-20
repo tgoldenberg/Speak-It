@@ -5,11 +5,8 @@ class WelcomeController < ApplicationController
       @user = current_user
       @invitation = Invitation.new
       @active_invitations = @user.received_invitations.where(seen: false).pluck('DISTINCT sender_id').map{|sender_id| Invitation.find_by(recipient_id: @user.id, sender_id: sender_id) }.reverse
-
-      users = User.all.includes(:level, :country, :native_language,
-      :study_language)
-      @available_users =  users.where("last_seen_at > ? and id != ?", 10.minutes.ago, current_user.id)
-      unavailable_users = users.where("last_seen_at <= ? and id != ?", 10.minutes.ago, current_user.id)
+      @available_users = User.get_available_users(current_user)
+      unavailable_users = User.get_unavailable_users(current_user)
       @available_recent_users = []
       @unavailable_recent_users = []
       @available_users.each do |user|
