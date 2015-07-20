@@ -7,10 +7,7 @@ var InfoPanel = React.createClass({
       guidelines = <SecondChatGuidelines />;
     }
     return (
-      <div className="infoPanel">
-        <Title chat={this.props.chat} /><br/>
-        {guidelines}
-      </div>
+      <div>{guidelines}</div>
     );
   }
 });
