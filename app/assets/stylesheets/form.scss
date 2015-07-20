@@ -3,7 +3,7 @@
 }
 
 .form-title {
-    margin-left: 30px;
+  margin-left: 30px;
 	margin-bottom: 30px;
 
 }
@@ -14,4 +14,16 @@
 
 .form-button {
 	margin-top: 10px;
+}
+.new_user_signup {
+  background: $blue;
+  margin-top: -20px;
+  height: inherit;
+}
+label {
+  margin-left: 12%;
+  color: white;
+  font-size: 2em;
+  font-weight: 300;
+  line-height: 2;
 }
