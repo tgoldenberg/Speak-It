@@ -26,7 +26,11 @@ var ChatRoom = React.createClass({
       console.log(data);
       var turn = data.turn;
       var completed = data.completed;
-      this.setState({turn: turn, completed: completed })
+      var currentChat = this.state.currentChat;
+      if (data.turn == 2) {
+        currentChat = this.props.second_chat;
+      }
+      this.setState({turn: turn, completed: completed, currentChat: currentChat })
     }.bind(this))
     .fail(function(err) {
       console.log(err);

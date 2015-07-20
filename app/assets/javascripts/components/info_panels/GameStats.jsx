@@ -4,6 +4,7 @@ var GameStats = React.createClass({
       <div className="container">
         <div className="guidelines col-md-10 col-md-offset-1">
           <br/>
+          <button className="btn btn-lg btn-success"><a href={"/feedbacks/new?chat_room_id=" + this.props.chatRoom.chat_room.id} >Give Feedback</a></button><br/><br/>
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
@@ -39,22 +40,22 @@ var GameStats = React.createClass({
               </tr>
               <tr>
                 <td>Rating: </td>
-                <td colSpan="2">3: Very Good</td>
+                <td colSpan="2"></td>
               </tr>
               <tr>
                 <td>Comments: </td>
-                <td colSpan="2">Comments go here</td>
+                <td colSpan="2"></td>
               </tr>
               <tr>
                 <td colSpan="3" className="header-td">Second Chat Feedback</td>
               </tr>
               <tr>
                 <td>Rating: </td>
-                <td colSpan="2">3: Very Good</td>
+                <td colSpan="2"></td>
               </tr>
               <tr>
                 <td>Comments: </td>
-                <td colSpan="2">Comments go here</td>
+                <td colSpan="2"></td>
               </tr>
             </tbody>
           </table>

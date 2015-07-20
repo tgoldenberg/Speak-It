@@ -2,7 +2,7 @@ var Timer = React.createClass({
   getInitialState: function() {
     var seconds = 15;
     if (this.props.turn == 1 || this.props.turn == 3) {
-      seconds = 120;
+      seconds = 20;
     }
     return {
       secondsLeft: seconds,
@@ -18,7 +18,7 @@ var Timer = React.createClass({
         turn = 1;
       }
       if (turn == 0 || turn == 2) {
-        seconds = 120;
+        seconds = 20;
       }
       this.props.handleChange();
       this.setState({secondsLeft: seconds, turn: turn});
