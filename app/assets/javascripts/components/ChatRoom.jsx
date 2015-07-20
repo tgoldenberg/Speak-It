@@ -3,7 +3,12 @@ var ChatRoom = React.createClass({
     return {
       turn: this.props.chat_room.turn,
       completed: this.props.chat_room.completed,
+      visible: false,
+      currentChat: this.props.first_chat
     }
+  },
+  changeVisibility: function(value) {
+    this.setState({visible: value});
   },
   changeTurn: function() {
     var turn = this.state.turn+1;
@@ -34,13 +39,13 @@ var ChatRoom = React.createClass({
         content = <InfoPanel chat={this.props.first_chat} first={true} changeTurn={this.changeTurn} />;
         break;
       case 1:
-        content = <VideoChat chat={this.props.first_chat} changeTurn={this.changeTurn} />;
+        content = <VideoChat makeVisible={this.changeVisibility} chat={this.props.first_chat} changeTurn={this.changeTurn} />;
         break;
       case 2:
         content = <InfoPanel chat={this.props.second_chat} changeTurn={this.changeTurn} />;
         break;
       case 3:
-        content = <VideoChat chat={this.props.second_chat} changeTurn={this.changeTurn} />;
+        content = <VideoChat makeVisible={this.changeVisibility} chat={this.props.second_chat} changeTurn={this.changeTurn} />;
         break;
       case 4:
         content = <FinalInstructions chatRoom={this.props.chat_room} changeTurn={this.changeTurn} />;
@@ -51,12 +56,17 @@ var ChatRoom = React.createClass({
     }
     return (
       <div className="container-fluid no-padding">
+        <div className="infoPanel">
+          <Title chat={this.state.currentChat} />
+
         {content}
+        </div>
         <SmallVideos
           changeTurn={this.changeTurn}
           currentUser={this.props.current_user}
           otherUser={this.props.other_user}
           completed={this.state.completed}
+          chatRoom={this.props.chat_room}
           turn={this.state.turn}
           />
       </div>

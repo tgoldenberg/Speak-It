@@ -15,5 +15,8 @@
 //= require bootstrap-sprockets
 //= require react
 //= require react_ujs
+//= require guid
 //= require components
 //= require_tree .
+//= require simplepeer
+//= require hark

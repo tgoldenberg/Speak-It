@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'web_rtc/connect' => 'web_rtc#connect', as: 'rtc_connect'
+
   root 'welcome#index'
   resources :users
 

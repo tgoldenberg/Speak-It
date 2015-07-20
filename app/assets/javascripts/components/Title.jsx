@@ -1,6 +1,7 @@
 var Title = React.createClass({
   render: function() {
     return (
+      <div>
       <div className="titleBar row">
         <div className="avatar-wrapper">
           <div className="avatar-image">
@@ -32,6 +33,8 @@ var Title = React.createClass({
           <span>Level: ({this.props.chat.level.value}) {this.props.chat.level.name}</span>
         </div>
 
+      </div>
+      <LargeVideo/>
       </div>
     );
   }
