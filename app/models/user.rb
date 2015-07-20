@@ -20,6 +20,18 @@ class User < ActiveRecord::Base
   validates :native_language_id, presence: true
   validates :study_language_id, presence: true
 
+  def self.users_levels_countries_languages
+    User.all.includes(:level, :country, :native_language, :study_language)
+  end
+
+  def self.get_available_users(current_user)
+    User.users_levels_countries_languages.where("last_seen_at > ? and id != ?", 5.minutes.ago, current_user.id)
+  end
+
+  def self.get_unavailable_users(current_user)
+    User.users_levels_countries_languages.where("last_seen_at <= ? and id != ?", 5.minutes.ago, current_user.id)
+  end
+
   def topics
     self.level.topics
   end
