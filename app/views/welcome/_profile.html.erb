@@ -14,13 +14,15 @@
 </div>
 <div class="row">
   <div id= "avatar-container" class="col-md-3">
-  	<img src= <%= @user.avatar_url %> alt="profile_pic">
+    <%= image_tag(@user.avatar_url), alt: "profile_pic" %>
+  	<!-- <img src= <%= @user.avatar_url %> alt="profile_pic"> -->
   </div>
   <div id="profile-level-container" class="col-md-9">
     <div class= "row">
     	<h2 class = "col-md-6"> Hey <%= @user.username %> </h2>
       <div class = "col-md-6">
-        <img src="<%= @user.country.image_url %>" alt="flag" id="language-flag">
+        <%= image_tag(@user.country.image_url), alt: "flag", id: "language-flag" %>
+        <!-- <img src="<%= @user.country.image_url %>" alt="flag" id="language-flag"> -->
       </div>
     </div>
     <div class = "row">
