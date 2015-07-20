@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @countries_select_array = Country.all.map {|country|[country.name,country.id]}.sort
-    @languages_select_array = Language.all.map {|language| [language.name,language.id]}.sort
+    @countries_select_array = Country.countries_as_select_list
+    @languages_select_array = Language.languages_as_select_list
   end
 
   def create
