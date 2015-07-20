@@ -26,9 +26,11 @@
     }
   }
   .submit-button-holder {
-    text-align: center;
+    text-align: left;
     input {
       width: 75%;
+      margin-left: 12%;
+      min-width: 11em;
     }
   }
 }
