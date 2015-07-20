@@ -20,6 +20,34 @@ class User < ActiveRecord::Base
   validates :native_language_id, presence: true
   validates :study_language_id, presence: true
 
+  def self.users_levels_countries_languages
+    User.all.includes(:level, :country, :native_language, :study_language, :native_speaker_chats)
+  end
+
+  def self.get_available_users(current_user)
+    User.users_levels_countries_languages.where("last_seen_at > ? and id != ?", 5.minutes.ago, current_user.id)
+  end
+
+  def self.get_unavailable_users(current_user)
+    User.users_levels_countries_languages.where("last_seen_at <= ? and id != ?", 5.minutes.ago, current_user.id)
+  end
+
+  def self.get_active_invitations(current_user)
+    current_user.received_invitations.where(seen: false).pluck('DISTINCT sender_id').map{ |sender_id| Invitation.find_by(recipient_id: current_user.id, sender_id: sender_id) }.reverse
+  end
+
+  def self.find_recent_users(users, current_user)
+    recent_users = []
+    users.each do |user|
+      current_user.native_speaker_chats.each do |chat|
+        if (chat.student_id == user.id && chat.created_at > 1.weeks.ago)
+          recent_users << user
+        end
+      end
+    end
+    recent_users
+  end
+
   def topics
     self.level.topics
   end
