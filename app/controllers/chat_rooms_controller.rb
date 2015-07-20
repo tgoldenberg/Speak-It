@@ -49,7 +49,7 @@ class ChatRoomsController < ApplicationController
             current_user: {
               user: current_user,
               country: current_user.try(:country),
-              country_image: view_context.asset_path(current_user.try(:country).image_url),
+              country_image: view_context.asset_path(current_user.try(:country).try(:image_url)),
               language: current_user.try(:native_language)
             },
             other_user: {
