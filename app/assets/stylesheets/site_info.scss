@@ -1,0 +1,63 @@
+#site-information {
+  padding: 2em;
+  background: $blue;
+  color: white;
+  text-align: center;
+  padding-bottom: 4em;
+  h1 {
+    font-family: $title-font-family;
+    font-size: 3em;
+    font-weight: 300;
+    width: 80%;
+  }
+  p {
+    font-family: $sub-title-font-family;
+    font-weight: 300;
+    line-height: 1.5;
+    font-size: 1.5em;
+    width: 75%;
+  }
+}
+
+.form-control {
+  min-width: 14em;
+}
+
+#logo-container {
+  background: $blue;
+  height: 100%;
+  padding: 1em;
+  padding-left: 3em;
+  .message-logo {
+    width: 6em;
+    margin-left: .8em;
+  }
+  .message-logo.first {
+    margin-top: 14em;
+  }
+  .message-logo.second {
+    margin-top: 1em;
+  }
+  .message-logo.third {
+    margin-top: 10em;
+  }
+  .message-logo.fourth {
+
+  }
+  .message-logo.fifth {
+    margin-bottom: 10em;
+    @media screen and (max-width: 1380px) {
+      display: none;
+    }
+  }
+}
+#panel-2-holder {
+  background: $blue;
+}
+#meet-people {
+  background: $blue;
+  color: white;
+  h2.meet-people-title {
+    padding: .5em;
+  }
+}

@@ -1,32 +1,41 @@
 <div id="main-container" class="container-fluid">
   <div id= "welcome-bar" class= "row">
-    <div id= "login-col" class= "col-sm-4">
+    <div id= "login-col" class= "col-md-4">
       <div>
         <%= render partial: "sessions/form" %>
       </div>
     </div>
 
-    <div id="speak-it-info" class="col-sm-8">
-      <h2 id="proxima-nova"> Welcome To Speak It!</h2>
+    <div id="speak-it-info" class="col-md-8">
+      <h1 id="proxima-nova">SpeakIt <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"</span></h1>
+      <p>Practice language skills by talking with native speakers</p>
       <%= link_to 'Sign Up', new_user_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
-  <div id="interact" class="row">
-    <h2 id="culture-quote"> Language is the key to unlocking a new culture </h2>
+  <div class="row" id="panel-2-holder">
+    <div class="col-md-7" id="site-information">
+      <h1>Language is the key that unlocks a new culture</h1>
+      <p>A language is a living entity, not something to be learned from just learning grammar. Improve true fluency and help others do so as well through peer-to-peer learning.</p>
+    </div>
+    <div class="col-md-5 hidden-sm hidden-xs" id="logo-container">
+      <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png" class="message-logo first" alt="">
+      <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo-orange.png" class="message-logo second" alt="">
+      <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo-green.png" class="message-logo third" alt="">
+      <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo-blue.png" class="message-logo fourth" alt="">
+      <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo-dark-blue.png" class="message-logo fifth" alt="">
+    </div>
   </div>
-  <div id="level-up" class="row">
-    <h2> Level up and master your language </h2>
+  <div id="interact" class="row">
+    <h1 id="culture-quote">Our system pairs learners for shared collaboration</h1>
+    <p>Conversation topics are selected according to skill level. Increase your selection of conversation topics by improving your ranking</p>
   </div>
   <div id="meet-people" class="row">
-    <h2> Meet people around the world<h2>
+    <h2 class="meet-people-title"> Meet people around the world<h2>
     <div class="col-sm-4" id="person-1">
-      <p> hello </p>
     </div>
     <div class="col-sm-4" id="person-2">
-      <p> hello </p>
     </div>
     <div class="col-sm-4" id="person-3">
-      <p> hello </p>
     </div>
   </div>
 </div>
