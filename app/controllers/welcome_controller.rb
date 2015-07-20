@@ -4,9 +4,9 @@ class WelcomeController < ApplicationController
   	if logged_in?
       @user = current_user
       @invitation = Invitation.new
-      @active_invitations = @user.received_invitations.where(seen: false).pluck('DISTINCT sender_id').map{|sender_id| Invitation.find_by(recipient_id: @user.id, sender_id: sender_id) }.reverse
-      @available_users = User.get_available_users(current_user)
-      unavailable_users = User.get_unavailable_users(current_user)
+      @active_invitations = User.get_active_invitations(@user)
+      @available_users = User.get_available_users(@user)
+      unavailable_users = User.get_unavailable_users(@user)
       @available_recent_users = []
       @unavailable_recent_users = []
       @available_users.each do |user|
