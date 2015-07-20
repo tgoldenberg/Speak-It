@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   post 'web_rtc/connect' => 'web_rtc#connect', as: 'rtc_connect'
 
   root 'welcome#index'
-  resources :users
+  resources :users, only: [:create, :new]
 
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create', as: 'create_session'
