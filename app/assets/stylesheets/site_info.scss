@@ -1,0 +1,18 @@
+#site-information {
+  padding: 2em;
+  background: white;
+  text-align: center;
+  h1 {
+    font-family: $title-font-family;
+    font-size: 3em;
+    font-weight: 300;
+    width: 80%;
+  }
+  p {
+    font-family: $sub-title-font-family;
+    font-weight: 300;
+    line-height: 1.5;
+    font-size: 1.5em;
+    width: 75%;
+  }
+}
