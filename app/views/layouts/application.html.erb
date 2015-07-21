@@ -33,17 +33,10 @@
 <%= yield %>
 
 <script src="/assets/invitationButton.js"></script>
-<script>
-  $(document).ready(function(){
-    var removeFlash = setTimeout(function(){
-      $('.notice').remove();
-      $('.alert').remove();
-    }, 2000);
-   })
 
-</script>
 <script>
 $(function() {
+  removeFlash();
   // initialize Pusher with api-key
   var pusher = new Pusher('18cc5c3d4ea4757ca628');
   // assign channel name with current user id
@@ -52,7 +45,6 @@ $(function() {
   var channel = pusher.subscribe(channelName);
   // bind to changes in the channel and use the returned data
   channel.bind('new_invitation', function(data) {
-    console.log(data);
     var senderId = data.invitation.sender_id;
     var recipientId = data.invitation.recipient_id;
     var username = data.username;
