@@ -1,4 +1,4 @@
-var Calling = React.createClass({
+var IncomingCall = React.createClass({
   getInitialState: function() {
     return {timer: 0};
   },
@@ -8,9 +8,15 @@ var Calling = React.createClass({
     $('.calling-component').toggleClass('hidden');
     var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
-                      'Call ended</div></div>';
+                      'Missed Call</div></div>';
     $('.navbar').after(partial);
     removeFlash();
+  },
+  declineCall: function() {
+    console.log("DECLINE");
+  },
+  acceptCall: function() {
+    console.log("ACCEPT");
   },
   componentDidMount: function() {
     $('.new_invitation').on('submit', function(e) {
@@ -26,11 +32,11 @@ var Calling = React.createClass({
   render: function() {
     return (
       <div className="call-box">
-        <p className="calling-info">Calling {this.props.username}...</p>
+        <p className="calling-info">Incoming call from {this.props.username}...</p>
         <img src={this.props.avatar_url} className="call-avatar"/>
         <div className="call-timer-phone">
-          <span onClick={this.stopTimer} className="glyphicon glyphicon-earphone"></span>
-          <span className="call-timer">0:0{this.state.timer}</span>
+          <span onClick={this.acceptCall} className="glyphicon glyphicon-ok-circle"></span>
+          <span onClick={this.declineCall} className="glyphicon glyphicon-earphone delete_invitation" data-id={this.props.invitation.id}></span>
         </div>
       </div>
     );
