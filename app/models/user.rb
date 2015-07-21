@@ -25,11 +25,11 @@ class User < ActiveRecord::Base
   end
 
   def self.get_available_users(current_user)
-    User.users_levels_countries_languages.where("last_seen_at > ? and id != ?", 5.minutes.ago, current_user.id)
+    User.users_levels_countries_languages.where("last_seen_at > ? and id != ? and native_language_id = ?", 5.minutes.ago, current_user.id, current_user.study_language_id)
   end
 
   def self.get_unavailable_users(current_user)
-    User.users_levels_countries_languages.where("last_seen_at <= ? and id != ?", 5.minutes.ago, current_user.id)
+    User.users_levels_countries_languages.where("last_seen_at <= ? and id != ? and native_language_id = ?", 5.minutes.ago, current_user.id, current_user.study_language_id)
   end
 
   def self.get_missed_calls(current_user)
@@ -43,8 +43,8 @@ class User < ActiveRecord::Base
   def self.find_recent_users(users, current_user)
     recent_users = []
     users.each do |user|
-      current_user.native_speaker_chats.each do |chat|
-        if (chat.student_id == user.id && chat.created_at > 1.weeks.ago)
+      current_user.native_speaker_chats.where("created_at > ?", 1.weeks.ago).select(:student_id).distinct.each do |chat|
+        if (chat.student_id == user.id)
           recent_users << user
         end
       end
