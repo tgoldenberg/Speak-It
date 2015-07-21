@@ -40,6 +40,9 @@ class ChatRoomsController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @active_invitations = User.get_active_invitations(@user)
+    @missed_calls = User.get_missed_calls(@user)
     @chat_room = ChatRoom.find_by(id: params[:id])
     @first_chat = @chat_room.chats.first
     @second_chat = @chat_room.chats.last
