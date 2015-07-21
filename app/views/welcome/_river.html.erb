@@ -49,7 +49,7 @@
             <%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
               <%= f.hidden_field :recipient_id, value: user.id %>
               <%= f.hidden_field :sender_id, value: current_user.id %>
-              <%= f.submit "Speak!", class: 'btn btn-default' %>
+              <%= f.submit "Speak!", class: 'btn btn-default new_invitation_submit' %>
             <% end %>
           </td>
         </tr>

@@ -7,7 +7,7 @@ var OngoingVideos = React.createClass({
       <div id="smallVideos">
         <div className="videos container-fluid">
           <div className="local-video col-sm-2">
-            <video id="localVideo" autoPlay={true} muted={false}></video>
+            <video id="localVideo" autoPlay={true} muted={"muted"}></video>
             <div className="video-info-wrapper">
               <p>{this.props.currentUser.user.username.toUpperCase()}</p>
               <span><img className="avatar-image-small" src={this.props.currentUser.country_image} alt=""/></span>

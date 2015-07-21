@@ -14,9 +14,28 @@ var IncomingCall = React.createClass({
   },
   declineCall: function() {
     console.log("DECLINE");
+    var invitationId = this.props.invitation.id;
+    $.ajax({
+      url: '/invitations',
+      method: 'delete',
+      dataType: 'json',
+      data: {invitation: {recipient_id: this.props.invitation.recipient_id, sender_id: this.props.invitation.sender_id }}
+    })
+    .done(function(data) {
+      // hide the <li> tag with the buttons
+      console.log("CHANGED TO DECLINED");
+      $('.incoming-call-wrapper').hide();
+      // target.parent().hide();
+      $('#notification-list').toggle();
+    })
+    .fail(function(err) {
+      console.log(err);
+    });
+
   },
-  acceptCall: function() {
+  acceptCall: function(e) {
     console.log("ACCEPT");
+    $(e.target).parent().submit();
   },
   componentDidMount: function() {
     $('.new_invitation').on('submit', function(e) {
@@ -35,10 +54,38 @@ var IncomingCall = React.createClass({
         <p className="calling-info">Incoming call from {this.props.username}...</p>
         <img src={this.props.avatar_url} className="call-avatar"/>
         <div className="call-timer-phone">
-          <span onClick={this.acceptCall} className="glyphicon glyphicon-ok-circle"></span>
-          <span onClick={this.declineCall} className="glyphicon glyphicon-earphone delete_invitation" data-id={this.props.invitation.id}></span>
+          <form method="post" action="/chat_rooms" id="create_chat_room">
+            <input type="hidden" value={this.props.invitation.id} name="invitation[id]"/>
+              <span onClick={this.acceptCall} className="glyphicon glyphicon-ok-circle"></span>
+          </form>
+          <a href="#"><span onClick={this.declineCall} className="glyphicon glyphicon-earphone delete_invitation" data-id={this.props.invitation.id}></span></a>
         </div>
       </div>
     );
   }
 });
+
+
+// function for listening to a button click in order to delete an invitation
+// var deleteInvitation = function() {
+//   $('.delete_invitation').on('click', function(e) {
+//     var target = $(e.target);
+//     e.preventDefault();
+//     var invitationId = parseInt($(this).data('id'));
+//     // call to the invitations#destroy action
+    // $.ajax({
+    //   url: '/invitations',
+    //   method: 'delete',
+    //   dataType: 'json',
+    //   data: {invitation: {id: invitationId}}
+    // })
+    // .done(function(data) {
+    //   // hide the <li> tag with the buttons
+    //   target.parent().hide();
+    //   $('#notification-list').toggle();
+    // })
+    // .fail(function(err) {
+    //   console.log(err);
+    // });
+//   });
+// };

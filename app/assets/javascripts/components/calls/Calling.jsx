@@ -5,7 +5,7 @@ var Calling = React.createClass({
   stopTimer: function() {
     clearInterval(this.interval);
     this.setState({timer: 0});
-    $('.calling-component').toggleClass('hidden');
+    $('.calling-component').addClass('hidden');
     var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
                       'Call ended</div></div>';
@@ -13,9 +13,17 @@ var Calling = React.createClass({
     removeFlash();
   },
   componentDidMount: function() {
+    console.log($('.new_invitation_submit').attr('disabled'));
+
     $('.new_invitation').on('submit', function(e) {
+      var submitButtons = $('.new_invitation_submit')
+      // TODO - prevent invitation submit button from throwing off behavior
+      // for (i=0; i< submitButtons.length; i++) {
+      //   submitButtons[i].disabled = true;
+      // }
       this.interval = setInterval(this.tick, 1000);
     }.bind(this));
+
   },
   tick: function() {
     this.setState({timer: this.state.timer + 1});

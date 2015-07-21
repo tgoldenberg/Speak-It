@@ -3,14 +3,18 @@
   <div id= "avatar-container" class="col-md-3">
   	<img src= <%= @user.avatar_url %> alt="profile_pic">
   </div>
+
   <div id="profile-level-container" class="col-md-9">
     <div class= "row">
+
     	<h2 class = "col-md-6"> Hey <%= @user.username %> </h2>
       <div class = "col-md-6">
         <img src="<%= asset_path(@user.country.image_url) %>" alt="flag" id="language-flag" />
         <!-- <img src="<%= @user.country.image_url %>" alt="flag" id="language-flag"> -->
       </div>
+
     </div>
+
     <div class = "row">
       <p> Your Level </p>
       <div class="progress">
@@ -18,16 +22,13 @@
           <%= @user.level.value %>
         </div>
       </div>
+
       <p> Your Points </p>
       <div class="progress">
         <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style= "width: <%= @user.points %>%" > <%= @user.points %>
         </div>
       </div>
+
     </div>
+  </div>
 </div>
-<script>
-  $(function() {
-    // listen for user click event to delete invitation
-    deleteInvitation();
-  });
-</script>
