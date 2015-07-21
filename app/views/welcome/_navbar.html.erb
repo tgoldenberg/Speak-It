@@ -20,19 +20,9 @@
 <% if logged_in? %>
   <div>
     <ul id="notification-list" style="display: none">
+      <!-- <p> <%= @active_invitations %></p> -->
       <% @active_invitations.each do |invitation| %>
         <%= react_component("IncomingCall", {invitation: invitation, username: invitation.sender.username, avatar_url: invitation.sender.avatar_url}.to_json, class: 'incoming-call-wrapper') %>
-
-
-
-        <!-- <li><p><%= invitation.sender.username %> <%= time_ago_in_words(invitation.created_at) %></p>
-          <div id="flex-container">
-          <form method="post" action="/chat_rooms" id="create_chat_room">
-            <input type="hidden" value="<%= invitation.id %>" name="invitation[id]"/>
-            <input type="submit" value="Accept" class="btn btn-success"/>
-          </form>
-          <button class="btn btn-danger delete_invitation" data-id="<%= invitation.id %>">Decline</button></div>
-        </li> -->
       <% end %>
     </ul>
   </div>

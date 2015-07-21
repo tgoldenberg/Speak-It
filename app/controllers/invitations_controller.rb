@@ -22,18 +22,18 @@ class InvitationsController < ApplicationController
   end
 
   def destroy
-    invitation = Invitation.find_by(id: params[:invitation][:id])
-    invitation.declined = true
-    invitation.seen = true
-    invitation.save
-    # Invitation.where(sender_id: invitation.sender.id).delete_all
-    # flash[:notice] = ["Invitation successfully deleted."]
+    invitations = Invitation.where(sender_id: invitation_params[:sender_id], recipient_id: invitation_params[:recipient_id])
+    invitations.each do |invitation|
+      invitation.declined = true
+      invitation.seen = true
+      invitation.save
+    end
     render json: "Deleted".to_json
   end
 
   private
 
   def invitation_params
-    params.require(:invitation).permit(:recipient_id, :sender_id)
+    params.require(:invitation).permit(:recipient_id, :sender_id, :seen, :declined, :missed)
   end
 end
