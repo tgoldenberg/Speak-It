@@ -14,21 +14,27 @@ class InvitationsController < ApplicationController
     end
   end
 
-  def update
-    invitation = Invitation.find_by(id: params[:invitation][:id])
-    invitation.missed = true
-    invitation.save
-    render json: "Missed".to_json
-  end
-
-  def destroy
+  def recipient_decline
     invitations = Invitation.where(sender_id: invitation_params[:sender_id], recipient_id: invitation_params[:recipient_id])
     invitations.each do |invitation|
       invitation.declined = true
       invitation.seen = true
       invitation.save
     end
-    render json: "Deleted".to_json
+    render json: "Declined".to_json
+  end
+
+  def recipient_miss
+    invitation = Invitation.find_by(id: params[:id])
+    invitation.missed = true
+    invitation.save
+    render json: "Missed".to_json
+  end
+
+  def sender_cancel
+    invitation = Invitation.find_by(id: params[:id])
+    invitation.destroy
+    render json: "Call Cancelled".to_json
   end
 
   private

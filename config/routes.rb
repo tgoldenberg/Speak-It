@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get 'feedbacks/:id' => 'feedbacks#show', as: 'feedback'
   post '/feedbacks' => 'feedbacks#create', as: 'create_feedback'
   post '/invitations' => 'invitations#create', as: 'create_invitation'
-  put '/invitations' => 'invitations#update', as: 'update_invitation'
-  delete '/invitations' => 'invitations#destroy', as: 'delete_invitation'
+  put '/invitations/miss/:id' => 'invitations#recipient_miss', as: 'missed_invitation'
+  put '/invitations/decline/:id' => 'invitations#recipient_decline', as: 'declined_invitation'
+  delete '/invitations/:id' => 'invitations#sender_cancel', as: 'delete_invitation'
   post '/pusher/auth' => 'pusher#auth'
 end
