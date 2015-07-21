@@ -52,7 +52,6 @@ $(function() {
   var channel = pusher.subscribe(channelName);
   // bind to changes in the channel and use the returned data
   channel.bind('new_invitation', function(data) {
-    console.log(data);
     var senderId = data.invitation.sender_id;
     var recipientId = data.invitation.recipient_id;
     var username = data.username;
