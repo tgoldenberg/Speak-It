@@ -1,9 +1,30 @@
 .call-box {
-  width: 10em;
-  height: 7em;
+  min-width: 12em;
   background: white;
   border-radius: 6px;
   box-shadow: 4px 2px 2px #777;
+  text-align: center;
+  .calling-info {
+    font-family: $title-font-family;
+    font-weight: 300;
+    line-height: 2;
+    color: $blue;
+  }
+  .call-avatar {
+    border-radius: 50%;
+    width: 5em;
+  }
+  .glyphicon-earphone {
+  font-size: 1.3em;
+  float: left;
+  margin-left: 1.5em;
+  color: white;
+  border-radius: 9px;
+  background: $dark-red;
+  padding: .3em;
+  padding-left: 1em;
+  padding-right: 1em;
+  }
 }
 .call-holder {
   display: flex;
@@ -13,4 +34,18 @@
 .calling-component {
   margin-left: 4.15em;
 
+}
+.call-timer-phone {
+  background: #e6e6e6;
+  height: 3em;
+  padding-top: .5em;
+  .call-timer {
+    background: #777;
+    color: white;
+    padding: .3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 5px;
+    font-size: 1.2em;
+  }
 }
