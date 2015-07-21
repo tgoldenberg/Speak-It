@@ -12,7 +12,11 @@ var NotificationsHolder = React.createClass({
       }
     });
     this.setState({activeInvitations: result});
-    console.log("STATE", this.state);
+    var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
+                    '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
+                      'Call declined</div></div>';
+    $('.navbar').after(partial);
+    removeFlash();
   },
   render: function() {
     return (

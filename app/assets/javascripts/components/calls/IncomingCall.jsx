@@ -25,9 +25,6 @@ var IncomingCall = React.createClass({
     .done(function(data) {
       console.log("RECIPIENT DECLINES CALL", data);
       this.props.declineCall(invitationId);
-      // hide the <li> tag with the buttons
-      // $('.incoming-call-wrapper').hide();
-      // target.parent().hide();
       $('#notification-list').toggle();
     }.bind(this))
     .fail(function(err) {
