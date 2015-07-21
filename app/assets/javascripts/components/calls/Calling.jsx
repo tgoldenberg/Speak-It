@@ -19,6 +19,9 @@ var Calling = React.createClass({
   },
   tick: function() {
     this.setState({timer: this.state.timer + 1});
+    if (this.state.timer >= 10) {
+      this.stopTimer();
+    }
   },
   render: function() {
     return (
@@ -27,7 +30,7 @@ var Calling = React.createClass({
         <img src={this.props.avatar_url} className="call-avatar"/>
         <div className="call-timer-phone">
           <span onClick={this.stopTimer} className="glyphicon glyphicon-earphone"></span>
-          <span className="call-timer">{this.state.timer}</span>
+          <span className="call-timer">0:0{this.state.timer}</span>
         </div>
       </div>
     );
