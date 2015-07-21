@@ -4,12 +4,10 @@ class InvitationsController < ApplicationController
   def create
   	@invitation = Invitation.new invitation_params
     if @invitation.save
-      flash[:notice] = ["Your invitation was successfully sent."]
-      
       channel = 'private-conversation.' + @invitation.recipient_id.to_s
       data = {invitation: @invitation, username: @invitation.sender.username}
       Pusher.trigger(channel, 'new_invitation', data.to_json)
-      render json: flash[:notice][0].to_json
+      render json: "Your invitation was successfully sent.".to_json
     else
       flash[:alert] = ["Sorry, your invitation could not be processed."]
       render json: @invitation.errors.full_messages.to_json

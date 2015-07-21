@@ -15,8 +15,8 @@
 //= require bootstrap-sprockets
 //= require react
 //= require react_ujs
-//= require riverTab
 //= require invitationButton
+//= require riverTab
 //= require components
 //= require simplepeer
 //= require hark
