@@ -15,11 +15,13 @@
           <td> <%= user.username %></td>
           <td><%= user.country.try(:name) %></td>
           <td> <%= user.native_language.name %> </td>
-          <td><%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
-            <%= f.hidden_field :recipient_id, value: user.id %>
-            <%= f.hidden_field :sender_id, value: current_user.id %>
-            <%= f.submit "Speak!", class: 'btn btn-default' %>
-          <% end %>
+          <td class="call-holder">
+            <%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
+              <%= f.hidden_field :recipient_id, value: user.id %>
+              <%= f.hidden_field :sender_id, value: current_user.id %>
+              <%= f.submit "Speak!", class: 'btn btn-default' %>
+            <% end %>
+            <%= react_component("Calling", user.to_json, class: "hidden calling-component") %>
           </td>
         </tr>
       <% end %>
@@ -43,11 +45,12 @@
           <td> <%= user.username %>  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></td>
           <td><%= user.country.try(:name) %></td>
           <td> <%= user.native_language.name %> </td>
-          <td><%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
-            <%= f.hidden_field :recipient_id, value: user.id %>
-            <%= f.hidden_field :sender_id, value: current_user.id %>
-            <%= f.submit "Speak!", class: 'btn btn-default' %>
-          <% end %>
+          <td>
+            <%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
+              <%= f.hidden_field :recipient_id, value: user.id %>
+              <%= f.hidden_field :sender_id, value: current_user.id %>
+              <%= f.submit "Speak!", class: 'btn btn-default' %>
+            <% end %>
           </td>
         </tr>
       <% end %>
@@ -67,7 +70,10 @@
   $(function() {
     $('.new_invitation').on('submit', function(e) {
       e.preventDefault();
+
       var target = $(e.target);
+      target.parent().find('.calling-component').toggleClass('hidden');
+
       var recipientId = parseInt(target.find('#invitation_recipient_id').val());
       var senderId = parseInt(target.find('#invitation_sender_id').val());
       $.ajax({
@@ -77,12 +83,7 @@
         dataType: "json"
       })
       .done(function(data) {
-        var partial = '<div class="notice"><div class="alert alert-success" role="alert">' +
-        '<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>' +
-          data +
-        '</div></div>';
-        $('.navbar-default').after(partial);
-        removeFlash();
+        console.log(data);
       })
       .fail(function(err) {
         console.log(err);
