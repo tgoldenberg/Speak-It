@@ -15,7 +15,7 @@ class InvitationsController < ApplicationController
   end
 
   def recipient_decline
-    invitations = Invitation.where(sender_id: invitation_params[:sender_id], recipient_id: invitation_params[:recipient_id])
+    invitations = Invitation.where(sender_id: invitation_params[:sender_id], recipient_id: invitation_params[:recipient_id], seen: false)
     invitations.each do |invitation|
       invitation.declined = true
       invitation.seen = true

@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def self.get_active_invitations(current_user)
-    current_user.received_invitations.where(seen: false, missed: false, declined: false).pluck('DISTINCT sender_id').map{ |sender_id| Invitation.find_by(recipient_id: current_user.id, sender_id: sender_id) }.reverse
+    current_user.received_invitations.where(seen: false, missed: false, declined: false).pluck('DISTINCT sender_id').map{ |sender_id| Invitation.find_by(recipient_id: current_user.id, sender_id: sender_id, seen: false, declined: false, missed: false) }.reverse
   end
 
   def self.find_recent_users(users, current_user)
