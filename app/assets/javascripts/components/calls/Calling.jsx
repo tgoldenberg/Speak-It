@@ -6,6 +6,11 @@ var Calling = React.createClass({
     clearInterval(this.interval);
     this.setState({timer: 0});
     $('.calling-component').toggleClass('hidden');
+    var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
+                    '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
+                      'Call ended</div></div>';
+    $('.navbar').after(partial);
+    removeFlash();
   },
   componentDidMount: function() {
     $('.new_invitation').on('submit', function(e) {
