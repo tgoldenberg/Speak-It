@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     User.users_levels_countries_languages.where("last_seen_at <= ? and id != ?", 5.minutes.ago, current_user.id)
   end
 
+  def self.get_missed_calls(current_user)
+    Invitation.where(recipient: current_user, seen: false, missed: true, declined: false).order(created_at: :desc)
+  end
+
   def self.get_active_invitations(current_user)
     current_user.received_invitations.where(seen: false).pluck('DISTINCT sender_id').map{ |sender_id| Invitation.find_by(recipient_id: current_user.id, sender_id: sender_id) }.reverse
   end

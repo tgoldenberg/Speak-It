@@ -3,6 +3,7 @@ class ChatRoomsController < ApplicationController
 
   def create
     invitation = Invitation.find_by(id: params[:invitation][:id])
+    invitation.update_attributes(seen: true)
     @chat_room = ChatRoom.new(creator_id: invitation.sender.id , invitee_id: invitation.recipient.id)
     if @chat_room.save
       @first_chat = Chat.create(student_id: invitation.recipient.id,
@@ -12,7 +13,7 @@ class ChatRoomsController < ApplicationController
         native_speaker_id: invitation.recipient.id,
         topic_id: invitation.sender.topics.sample.id, chat_room_id: @chat_room.id)
       @chat_room.chats << @first_chat << @second_chat
-      Invitation.where(sender_id: invitation.sender.id).delete_all
+      # Invitation.where(sender_id: invitation.sender.id).delete_all
 
       channel = 'private-conversation.' + @chat_room.creator_id.to_s
       data = @chat_room.id

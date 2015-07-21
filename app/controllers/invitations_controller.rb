@@ -14,9 +14,19 @@ class InvitationsController < ApplicationController
     end
   end
 
+  def update
+    invitation = Invitation.find_by(id: params[:invitation][:id])
+    invitation.missed = true
+    invitation.save
+    render json: "Missed".to_json
+  end
+
   def destroy
     invitation = Invitation.find_by(id: params[:invitation][:id])
-    Invitation.where(sender_id: invitation.sender.id).delete_all
+    invitation.declined = true
+    invitation.seen = true
+    invitation.save
+    # Invitation.where(sender_id: invitation.sender.id).delete_all
     # flash[:notice] = ["Invitation successfully deleted."]
     render json: "Deleted".to_json
   end
