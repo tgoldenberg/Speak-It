@@ -29,4 +29,13 @@
       <% end %>
     </ul>
   </div>
+  <div>
+    <ul id="missed-call-list" style="display: none">
+      <% @missed_calls.each do |invitation| %>
+        <li>
+          <p>Missed call from <%= invitation.sender.username %> about <%= time_ago_in_words(invitation.created_at) %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
