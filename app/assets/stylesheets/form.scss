@@ -29,7 +29,7 @@
 .new_user_signup {
   background: $blue;
   margin-top: -20px;
-  height: inherit;
+  height: initial;
 }
 #new_user {
   .form-group {
@@ -59,9 +59,9 @@ i.registration-icon {
   color: #bbb;
 }
 .image-box {
-  width: 8%;
+  width: 10%;
   height: 4em;
-  background: black;
+  background: $blue;
   margin-left: 5%;
   margin-top: 0.7em;
   border-radius: 2px;
@@ -69,6 +69,10 @@ i.registration-icon {
     height: 2em;
     width: 11%;
   }
+
+}
+img.image-box#avatar-image {
+  width: 6.5em;
 }
 label {
   margin: auto;
@@ -95,4 +99,3 @@ label {
   }
 
 }
-

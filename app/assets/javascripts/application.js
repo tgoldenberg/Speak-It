@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require react
 //= require react_ujs
+//= require md5
 //= require invitationButton
 //= require riverTab
 //= require components
