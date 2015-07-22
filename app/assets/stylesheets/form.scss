@@ -3,8 +3,13 @@
 }
 
 .form-title {
-  margin-left: 30px;
-	margin-bottom: 30px;
+  text-align: center;
+  padding-top: 1.3em;
+  padding-bottom: 1.4em;
+  color: white;
+  font-family: $title-font-family;
+  font-weight: $title-font-weight;
+  line-height: 2;
 
 }
 
@@ -19,6 +24,9 @@
   background: $blue;
   margin-top: -20px;
   height: inherit;
+  .left-form {
+    text-align: center;
+  }
 }
 label {
   margin-left: 12%;
@@ -27,3 +35,13 @@ label {
   font-weight: 300;
   line-height: 2;
 }
+#left-form {
+  float: right;
+  margin: 0;
+}
+#right-form {
+  float: left;
+  margin: 0;
+  margin-left: 0;
+}
+
