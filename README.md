@@ -26,3 +26,11 @@ To experience our app first hand click on the link to heroku here. https://aqueo
 
 <img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/joseph_dashboard.png">
 
+#### After you connect via chat you will be lead to a webcam where you will speak with a timer with the user first in your study language then you native language you will be given a timer to speak based on your level of language.
+
+
+
+
+
+
+
