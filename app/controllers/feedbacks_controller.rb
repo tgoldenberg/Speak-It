@@ -13,12 +13,12 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     user = @feedback.recipient
     if @feedback.rating
-      user.points += @feedback.rating * 2
+      user.points += @feedback.rating * 10
     end
-    if user.points >= 10
+    if user.points >= 100
       curr_level = user.level
       user.level = Level.find_by(language_id: curr_level.language_id,
-        value: curr_level.value + 1) if user.level.value < 10
+        value: curr_level.value + 1) if user.level.value < 100
       user.points = 0
     end
     user.save
