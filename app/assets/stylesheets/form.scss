@@ -1,16 +1,22 @@
 .non-select {
   margin: 0px;
+  text-align: center;
 }
 
 .form-title {
   text-align: center;
-  padding-top: 1.3em;
-  padding-bottom: 1.4em;
+  padding-top: .3em;
   color: white;
   font-family: $title-font-family;
   font-weight: $title-font-weight;
   line-height: 2;
+  background: darken($blue, 10%);
+  font-size: 4em;
 
+}
+.message-box-logo {
+  width: 1em;
+  margin-top: -40px;
 }
 
 #comment-field {
@@ -24,24 +30,69 @@
   background: $blue;
   margin-top: -20px;
   height: inherit;
-  .left-form {
-    text-align: center;
+}
+#new_user {
+  .form-group {
+    .form-control {
+      width: 50%;
+      margin-top: 1em;
+      padding-left: 3em;
+    }
+  }
+
+  .form-control#select-box {
+    max-width: 30em;
+    margin-left: 25.5%;
+    min-width: 22em;
+    height: 2.9em;
+    @media screen and (max-width: 970px) {
+      min-width: 11em;
+      max-width: 15em;
+    }
+
+  }
+}
+i.registration-icon {
+  top: 55px;
+  font-size: 1.4em;
+  right: 22.5%;
+  color: #bbb;
+}
+.image-box {
+  width: 8%;
+  height: 4em;
+  background: black;
+  margin-left: 5%;
+  margin-top: 0.7em;
+  border-radius: 2px;
+  @media screen and (max-width: 1000px) {
+    height: 2em;
+    width: 11%;
   }
 }
 label {
-  margin-left: 12%;
+  margin: auto;
   color: white;
+  font-size: 1.5em;
+  font-weight: 300;
+  width: 50%;
+  text-align: left;
+  margin-left: 2%;
+}
+#form-button {
+  @include button(darken($blue, 50%), flat);
+  height: 2em;
   font-size: 2em;
   font-weight: 300;
-  line-height: 2;
-}
-#left-form {
-  float: right;
-  margin: 0;
-}
-#right-form {
-  float: left;
-  margin: 0;
-  margin-left: 0;
+  margin-left: 25.5%;
+  width: 50%;
+  margin-top: 1em;
+  @media screen and (max-width: 900px) {
+    min-width: 10em;
+  }
+  @media screen and (max-width: 500px) {
+    min-width: 5em;
+  }
+
 }
 

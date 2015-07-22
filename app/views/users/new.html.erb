@@ -1,52 +1,73 @@
 <div class="new_user_signup">
-  <h1 class="form-title">Signup</h1>
-  <% if flash[:notice] %>
-    <p> <%= flash[:notice] %> </p>
-  <% end %>
+  <h1 class="form-title">Sign Up <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"</span></h1>
   <div class="container">
     <%= form_for @user, url: users_path, class: 'form-horizontal' do |f| %>
 
       <div class="form-group">
         <div class="row non-select">
+          <i class="glyphicon glyphicon-user registration-icon"></i>
           <%= f.text_field :username, class: 'form-control', placeholder: "username" %>
-        </div>
-      </div><br/>
-
-      <div class= "form-group">
-        <div class= "row non-select">
-          <%= f.password_field :password, class: 'form-control', placeholder: "password" %>
-        </div>
-      </div><br/>
-
-      <div class= "form-group">
-        <div class= "row non-select">
-          <%= f.email_field :email, class: 'form-control', placeholder: "email" %>
-        </div>
-      </div><br/>
-      <div class="row">
-        <div class="form-group col-md-6 left-form">
-          <div class="row non-select">
-            <%= f.label :native_language %>
-          </div>
-          <%= f.select(:native_language_id, options_for_select(@languages_select_array), {}, {class: "form-control", id: 'left-form'}) %>
-        </div>
-
-        <div class="form-group col-md-6 right-form">
-          <div class="row non-select">
-            <%= f.label :study_language %>
-          </div>
-          <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control", id: "right-form"}) %>
         </div>
       </div>
 
-      <div class="form-group">
-        <%= f.label :country %>
-        <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control"}) %>
+      <div class= "form-group">
+        <div class= "row non-select">
+          <i class="glyphicon glyphicon-lock registration-icon"></i>
+          <%= f.password_field :password, class: 'form-control', placeholder: "password" %>
+        </div>
+      </div>
+
+      <div class= "form-group">
+        <div class= "row non-select">
+          <i class="glyphicon glyphicon-envelope registration-icon"></i>
+          <%= f.email_field :email, class: 'form-control', placeholder: "email" %>
+        </div>
       </div><br/>
 
-        <%= f.hidden_field :level, value: 1 %>
+      <div class="form-group row">
+        <div class="non-select">
+          <%= f.label :native_language %>
+        </div>
+        <div class="container">
+          <%= f.select(:native_language_id, options_for_select(@languages_select_array), {}, {class: "form-control col-xs-6", id: "select-box"}) %>
+          <div class="image-box col-xs-6"></div>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+        <div class="non-select">
+          <%= f.label :study_language %>
+        </div>
+        <div class="container">
+          <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control col-xs-6",  id: "select-box"}) %>
+          <div class="image-box col-xs-6"></div>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <div class="non-select">
+          <%= f.label :country %>
+          <div class="container">
+            <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control col-xs-6", id: "select-box"}) %>
+            <div class="image-box col-xs-6"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="non-select">
+          <%= f.label :avatar_url, value: "Avatar" %>
+          <div class="container">
+            <%= f.text_field :username, placeholder: "Your Gravatar Name", id: "select-box", class: "form-control col-xs-6" %>
+            <div class="image-box col-xs-6"></div>
+          </div>
+        </div>
+      </div>
+      <%= f.hidden_field :level, value: 1 %>
       <div>
-        <%= f.submit "Submit", class: 'btn form-button' %>
+        <%= f.submit "Submit", class: 'btn btn-lg btn-primary form-control', id: 'form-button' %>
       </div>
     <% end %>
   </div>

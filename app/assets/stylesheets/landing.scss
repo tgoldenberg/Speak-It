@@ -2,6 +2,9 @@
   background-image: url(https://download.unsplash.com/photo-1427348693976-99e4aca06bb9);
   background-size: cover;
 }
+#main-container {
+  background: lighten($blue, 50%);
+}
 
 #login-col {
   padding-bottom: 2.5em;
