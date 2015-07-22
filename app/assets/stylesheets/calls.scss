@@ -1,9 +1,4 @@
-.invitation-form-holder {
 
-}
-#init-chat-button {
-
-}
 .call-box {
   position: absolute;
   min-width: 12em;
@@ -18,6 +13,7 @@
     line-height: 2;
     color: $blue;
   }
+
   .call-avatar {
     border-radius: 50%;
     width: 5em;
@@ -37,6 +33,19 @@
     background: green;
   }
 }
+.call-box:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid white;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  left: 93px;
+  top: -15px;
+}
 .call-holder {
   display: flex;
   width: 5em;
@@ -54,7 +63,7 @@
   border-bottom-right-radius: 3px;
   padding-bottom: .3em;
   .call-timer {
-    margin-top: 2px;
+    margin-top: 5px;
     background: #777;
     color: white;
     padding: .3em;

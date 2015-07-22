@@ -57,7 +57,7 @@ var IncomingCall = React.createClass({
   },
   tick: function() {
     this.setState({timer: this.state.timer + 1});
-    if (this.state.timer >= 5) {
+    if (this.state.timer >= 12) {
       this.stopTimer();
     }
   },
@@ -65,7 +65,7 @@ var IncomingCall = React.createClass({
     return (
       <div className="call-box">
         <p className="calling-info">Incoming call from {this.props.invitation.sender.username}...</p>
-        <img src={this.props.invitation.sender.avatar_url} className="call-avatar"/>
+        <img src={this.props.invitation.sender.avatar_url} className="call-avatar pulse"/>
         <div className="call-timer-phone">
           <form method="post" action="/chat_rooms" id="create_chat_room">
             <input type="hidden" value={this.props.invitation.invitation.id} name="invitation[id]"/>
