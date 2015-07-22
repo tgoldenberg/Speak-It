@@ -7,6 +7,7 @@ class Language < ActiveRecord::Base
   has_many :native_speakers, class_name: "User", foreign_key: :native_language_id
 
   def self.languages_as_select_list
-    Language.all.map{ |language| [language.name,language.id] }.sort
+    # Language.all.map{ |language| [language.name,language.id] }.sort
+    Language.order(:name).pluck(:name, :id)
   end
 end
