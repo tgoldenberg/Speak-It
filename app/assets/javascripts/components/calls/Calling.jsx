@@ -26,7 +26,7 @@ var Calling = React.createClass({
     clearInterval(this.interval);
   },
   componentDidMount: function() {
-    // this.interval = setInterval(this.tick, 1000);
+    this.interval = setInterval(this.tick, 1000);
   },
   tick: function() {
     this.setState({timer: this.state.timer + 1});
@@ -38,7 +38,7 @@ var Calling = React.createClass({
     return (
       <div className="call-box">
         <p className="calling-info">Calling {this.props.user.username}...</p>
-        <img src={this.props.user.avatar_url} className="call-avatar"/>
+        <img src={this.props.user.avatar_url} className="call-avatar animated pulse"/>
         <div className="call-timer-phone">
           <span onClick={this.handleClick} className="glyphicon glyphicon-earphone"></span>
           <span className="call-timer">0:0{this.state.timer}</span>

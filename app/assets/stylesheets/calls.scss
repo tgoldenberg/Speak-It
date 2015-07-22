@@ -49,8 +49,12 @@
 .call-timer-phone {
   background: #e6e6e6;
   height: 3em;
-  padding-top: .5em;
+  padding-top: .3em;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding-bottom: .3em;
   .call-timer {
+    margin-top: 2px;
     background: #777;
     color: white;
     padding: .3em;
@@ -58,5 +62,23 @@
     padding-right: 1em;
     border-radius: 5px;
     font-size: 1.2em;
+    vertical-align: -webkit-baseline-middle;
   }
+}
+@-webkit-keyframes pulse_animation {
+  0% { -webkit-transform: scale(1); }
+  30% { -webkit-transform: scale(1); }
+  40% { -webkit-transform: scale(1.08); }
+  50% { -webkit-transform: scale(1); }
+  60% { -webkit-transform: scale(1); }
+  70% { -webkit-transform: scale(1.05); }
+  80% { -webkit-transform: scale(1); }
+  100% { -webkit-transform: scale(1); }
+}
+.pulse {
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
