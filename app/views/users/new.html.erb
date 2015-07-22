@@ -29,10 +29,9 @@
           <%= f.label :native_language %>
         </div>
         <div class="container">
-          <%= f.select(:native_language_id, options_for_select(@languages_select_array), {}, {class: "form-control col-xs-6", id: "select-box"}) %>
-          <div class="image-box col-xs-6"></div>
+          <%= f.select(:native_language_id, options_for_select(@languages_select_array), {},{class: "form-control col-xs-6", id: "select-box", onChange: "createFlag(this);"}) %>
+          <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box col-xs-6"></img>
         </div>
-
       </div>
 
       <div class="form-group row">
@@ -40,8 +39,8 @@
           <%= f.label :study_language %>
         </div>
         <div class="container">
-          <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control col-xs-6",  id: "select-box"}) %>
-          <div class="image-box col-xs-6"></div>
+          <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control col-xs-6",  id: "select-box", onChange: "createFlag(this);"}) %>
+          <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box col-xs-6"></img>
         </div>
       </div>
 
@@ -50,8 +49,8 @@
         <div class="non-select">
           <%= f.label :country %>
           <div class="container">
-            <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control col-xs-6", id: "select-box"}) %>
-            <div class="image-box col-xs-6"></div>
+            <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control col-xs-6", id: "select-box", onChange: "createFlagForCountry(this);"}) %>
+            <img src="/assets/argentinian-flag-medium.png" class="image-box col-xs-6"></img>
           </div>
         </div>
       </div>
@@ -59,12 +58,10 @@
       <div class="form-group row">
         <div class="non-select">
           <%= f.label :avatar_url, value: "Avatar" %>
-          <div class="container">
-            <%= f.text_field :username, placeholder: "Your Gravatar Name", id: "select-box", class: "form-control col-xs-6" %>
-            <div class="image-box col-xs-6"></div>
-          </div>
+          <%= react_component("AvatarGrabber") %>
         </div>
       </div>
+      <%= f.hidden_field :avatar_url, value: "https://i1.wp.com/design.atlassian.com/1.4/images/avatars/default-user/192/user-avatar-blue-96%402x.png?ssl=1", id: "hidden-avatar-field" %>
       <%= f.hidden_field :level, value: 1 %>
       <div>
         <%= f.submit "Submit", class: 'btn btn-lg btn-primary form-control', id: 'form-button' %>
