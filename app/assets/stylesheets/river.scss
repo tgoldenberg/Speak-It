@@ -26,6 +26,50 @@
     }
   }
 }
+#recent-table {
+  td.available-cell, th.available-cell {
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+  thead {
+    tr {
+      th {
+      }
+    }
+  }
+  tbody {
+    tr {
+      border-left: 1px solid #e6e6e6;
+      border-right: 1px solid #e6e6e6;
+      td {
+        .glyphicon.glyphicon-ok {
+            color: green;
+            font-size: 1.4em;
+          }
+        .glyphicon-remove-sign {
+            color: darken(red, 15%);
+            padding: 1px;
+            font-size: 2.3em;
+            margin-left: 10%;
+            @media screen and (max-width: 600px) {
+              display: none;
+            }
+        }
+        #init-chat-button {
+          background: lighten($blue, 8%);
+          height: 3em;
+          font-size: 1em;
+          width: 100%;
+
+        }
+      }
+      td.call-holder {
+        width: 100%;
+      }
+    }
+  }
+}
 .invitation-form-holder {
   width: inherit;
 }

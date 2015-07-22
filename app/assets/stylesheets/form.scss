@@ -69,6 +69,9 @@ i.registration-icon {
     height: 2em;
     width: 11%;
   }
+  @media screen and (max-width: 860px) {
+    display: none;
+  }
 
 }
 img.image-box#avatar-image {
