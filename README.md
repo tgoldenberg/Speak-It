@@ -22,10 +22,7 @@ Click sign up to login and fill out the form.
 
 <img src="">
 
-You will be redirected to your dashboard. Find an avaiable user and click on the Speak! button. After the user excepts your request the video chat will begin.
+You will be redirected to your dashboard. Find an avaiable user and click the chat button.
 
 <img src="">
 
-
-
-<img src="">
