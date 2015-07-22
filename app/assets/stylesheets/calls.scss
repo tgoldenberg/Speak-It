@@ -1,5 +1,19 @@
+#notification-list {
+  .call-box.no-calls {
+    padding: .7em;
+    p {
+      color: darken($blue, 20%);
+
+    }
+  }
+}
+#missed-call-list .call-box {
+  padding: .7em;
+}
 .call-box {
+  position: absolute;
   min-width: 12em;
+  max-width: 14em;
   background: white;
   border-radius: 6px;
   box-shadow: 4px 2px 2px #777;
@@ -10,6 +24,7 @@
     line-height: 2;
     color: $blue;
   }
+
   .call-avatar {
     border-radius: 50%;
     width: 5em;
@@ -29,6 +44,19 @@
     background: green;
   }
 }
+.call-box:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid white;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  left: 93px;
+  top: -15px;
+}
 .call-holder {
   display: flex;
   width: 5em;
@@ -41,8 +69,12 @@
 .call-timer-phone {
   background: #e6e6e6;
   height: 3em;
-  padding-top: .5em;
+  padding-top: .3em;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding-bottom: .3em;
   .call-timer {
+    margin-top: 5px;
     background: #777;
     color: white;
     padding: .3em;
@@ -50,5 +82,50 @@
     padding-right: 1em;
     border-radius: 5px;
     font-size: 1.2em;
+    vertical-align: -webkit-baseline-middle;
   }
+}
+@-webkit-keyframes pulse_animation {
+  0% { -webkit-transform: scale(1); }
+  30% { -webkit-transform: scale(1); }
+  40% { -webkit-transform: scale(1.08); }
+  50% { -webkit-transform: scale(1); }
+  60% { -webkit-transform: scale(1); }
+  70% { -webkit-transform: scale(1.05); }
+  80% { -webkit-transform: scale(1); }
+  100% { -webkit-transform: scale(1); }
+}
+.pulse {
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+.gradient-pulse {
+ background: linear-gradient(105deg, #662424, #e33317);
+background-size: 400% 400%;
+color: white;
+
+-webkit-animation: gradient-pulse 1s ease infinite;
+-moz-animation: gradient-pulse 1s ease infinite;
+animation: gradient-pulse 1s ease infinite;
+
+}
+
+@-webkit-keyframes gradient-pulse {
+    0%{background-position:15% 0%}
+    50%{background-position:86% 100%}
+    100%{background-position:15% 0%}
+}
+@-moz-keyframes gradient-pulse {
+    0%{background-position:15% 0%}
+    50%{background-position:86% 100%}
+    100%{background-position:15% 0%}
+}
+@keyframes gradient-pulse {
+    0%{background-position:15% 0%}
+    50%{background-position:86% 100%}
+    100%{background-position:15% 0%}
 }

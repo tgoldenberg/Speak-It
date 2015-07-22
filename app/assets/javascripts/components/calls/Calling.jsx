@@ -38,7 +38,7 @@ var Calling = React.createClass({
     return (
       <div className="call-box">
         <p className="calling-info">Calling {this.props.user.username}...</p>
-        <img src={this.props.user.avatar_url} className="call-avatar"/>
+        <img src={this.props.user.avatar_url} className="call-avatar pulse"/>
         <div className="call-timer-phone">
           <span onClick={this.handleClick} className="glyphicon glyphicon-earphone"></span>
           <span className="call-timer">0:0{this.state.timer}</span>

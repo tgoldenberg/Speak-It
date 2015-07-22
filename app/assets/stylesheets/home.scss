@@ -25,19 +25,23 @@ body {
   right: 10%;
   list-style-type: none;
   z-index: 10;
-  background: $blue;
   color: white;
   padding: 7px;
   border-radius: 3px;
   text-align: center;
+  .call-box:before {
+    left:77px;
+  }
+  .call-box {
+    right: -73px;
+  }
 }
 #missed-call-list {
   position: fixed;
-  right: 2%;
+  right: 13%;
   list-style-type: none;
   z-index: 10;
-  background: $blue;
-  color: white;
+  color: darken($blue, 20%);
   padding: 7px;
   border-radius: 3px;
   text-align: center;

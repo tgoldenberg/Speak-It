@@ -29,7 +29,7 @@ var NotificationsHolder = React.createClass({
     channel.bind('new_invitation', function(data) {
       console.log("NEW INVITATION", data);
       this.setState({activeInvitations: [data.invitation]});
-      $('.notifications').addClass('shiny');
+      $('.notifications').addClass('gradient-pulse');
     }.bind(this));
   },
   render: function() {

@@ -7,17 +7,22 @@ var IncomingCallHolder = React.createClass({
   },
   render: function() {
     var incomingCalls = this.props.incomingCalls;
-    var content = <li className="list-item">No incoming calls</li>
+    var content;
+    var callList;
     if (this.props.incomingCalls.length > 0) {
-      content = incomingCalls.map(function(call, idx) {
+      callList = incomingCalls.map(function(call, idx) {
         return <IncomingCall invitation={call} key={idx} callTimeout={this.callTimeout} declineCall={this.declineCall} />
       }.bind(this));
+        content = <ul id="notification-list" style={{display: 'none'}}>
+          <div>{callList}</div>
+        </ul>;
+    } else {
+      content = <ul id="notification-list" style={{display: 'none'}}><div className="call-box no-calls"><p>No active calls</p></div></ul>;
     }
+
     return (
       <div>
-        <ul id="notification-list" style={{display: 'none'}}>
-          {content}
-        </ul>
+        {content}
       </div>
     );
   }
