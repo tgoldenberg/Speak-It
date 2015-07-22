@@ -11,7 +11,7 @@ var removeFlash = function() {
 };
 
 var removeGradientPulse = function() {
-  $('.notifications, .glyphicon-earphone').on('click', function(e) {
+  $('.notifications').on('click', function(e) {
     $('.notifications').removeClass('gradient-pulse');
   });
 }

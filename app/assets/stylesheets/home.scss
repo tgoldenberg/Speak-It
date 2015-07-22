@@ -38,11 +38,10 @@ body {
 }
 #missed-call-list {
   position: fixed;
-  right: 2%;
+  right: 15%;
   list-style-type: none;
   z-index: 10;
-  background: $blue;
-  color: white;
+  color: darken($blue, 20%);
   padding: 7px;
   border-radius: 3px;
   text-align: center;

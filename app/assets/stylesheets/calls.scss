@@ -1,4 +1,15 @@
+#notification-list {
+  .call-box.no-calls {
+    padding: .7em;
+    p {
+      color: darken($blue, 20%);
 
+    }
+  }
+}
+#missed-call-list .call-box {
+  padding: .7em;
+}
 .call-box {
   position: absolute;
   min-width: 12em;
@@ -93,28 +104,28 @@
 }
 
 .gradient-pulse {
-  background: linear-gradient(172deg, #662424, #4b2466);
+ background: linear-gradient(105deg, #662424, #e33317);
 background-size: 400% 400%;
 color: white;
 
--webkit-animation: gradient-pulse 2s ease infinite;
--moz-animation: gradient-pulse 2s ease infinite;
-animation: gradient-pulse 2s ease infinite;
+-webkit-animation: gradient-pulse 1s ease infinite;
+-moz-animation: gradient-pulse 1s ease infinite;
+animation: gradient-pulse 1s ease infinite;
 
 }
 
 @-webkit-keyframes gradient-pulse {
-    0%{background-position:22% 0%}
-    50%{background-position:79% 100%}
-    100%{background-position:22% 0%}
+    0%{background-position:15% 0%}
+    50%{background-position:86% 100%}
+    100%{background-position:15% 0%}
 }
 @-moz-keyframes gradient-pulse {
-    0%{background-position:22% 0%}
-    50%{background-position:79% 100%}
-    100%{background-position:22% 0%}
+    0%{background-position:15% 0%}
+    50%{background-position:86% 100%}
+    100%{background-position:15% 0%}
 }
 @keyframes gradient-pulse {
-    0%{background-position:22% 0%}
-    50%{background-position:79% 100%}
-    100%{background-position:22% 0%}
+    0%{background-position:15% 0%}
+    50%{background-position:86% 100%}
+    100%{background-position:15% 0%}
 }

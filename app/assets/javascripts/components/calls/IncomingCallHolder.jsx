@@ -14,10 +14,10 @@ var IncomingCallHolder = React.createClass({
         return <IncomingCall invitation={call} key={idx} callTimeout={this.callTimeout} declineCall={this.declineCall} />
       }.bind(this));
         content = <ul id="notification-list" style={{display: 'none'}}>
-          {callList}
+          <div>{callList}</div>
         </ul>;
     } else {
-      content = <ul id="notification-list" className="no-messages" style={{display: 'none'}}><li>No active calls</li></ul>;
+      content = <ul id="notification-list" style={{display: 'none'}}><div className="call-box no-calls"><p>No active calls</p></div></ul>;
     }
 
     return (
