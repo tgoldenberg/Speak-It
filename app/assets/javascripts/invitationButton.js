@@ -17,6 +17,9 @@ var createStars = function(e) {
   for (i=0; i<value; i++) {
     $(stars[i]).addClass('bounceIn').removeClass('hidden');
   }
+  var total = 10 - $('.hidden').length;
+  console.log("total", total);
+  $('#hidden_rating_field').val(total);
 }
 
 var createFlag = function(e) {

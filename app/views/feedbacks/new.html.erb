@@ -10,7 +10,7 @@
     <div class= "row non-select">
       <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control", onChange: "createStars(this);"}) %>
       <div class="stars-container">
-        <span class="glyphicon glyphicon-star animated hidden"></span>
+        <span class="glyphicon glyphicon-star animated"></span>
         <span class="glyphicon glyphicon-star animated hidden"></span>
         <span class="glyphicon glyphicon-star animated hidden"></span>
       </div>
@@ -21,9 +21,9 @@
       <p class="feedback-instruction">On a scale of 1-3 stars, how was the learner's vocabulary?</p>
     </div>
     <div class= "row non-select">
-      <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control"}) %>
+      <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control", onChange: "createStars(this);"}) %>
       <div class="stars-container">
-        <span class="glyphicon glyphicon-star animated hidden"></span>
+        <span class="glyphicon glyphicon-star animated"></span>
         <span class="glyphicon glyphicon-star animated hidden"></span>
         <span class="glyphicon glyphicon-star animated hidden"></span>
       </div>
@@ -34,14 +34,15 @@
       <p class="feedback-instruction">On a scale of 1-3 stars, how descriptive was the learner?</p>
     </div>
     <div class= "row non-select">
-      <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control"}) %>
+      <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control", onChange: "createStars(this);"}) %>
       <div class="stars-container">
-        <span class="glyphicon glyphicon-star animated hidden"></span>
+        <span class="glyphicon glyphicon-star animated"></span>
         <span class="glyphicon glyphicon-star animated hidden"></span>
         <span class="glyphicon glyphicon-star animated hidden"></span>
       </div>
     </div>
    </div>
+   <%= f.hidden_field :rating, value: 0, id: "hidden_rating_field" %>
    <div class="form-group">
      <div class="row non-select">
        <p class="feedback-instruction">Feel free to leave a comment for the learner. Remember to be kind, actionable, and specific in your feedback.</p>
