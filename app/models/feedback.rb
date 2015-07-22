@@ -3,4 +3,23 @@ class Feedback < ActiveRecord::Base
   validates_presence_of :rating
   belongs_to :sender, class_name: "User"
   belongs_to :recipient, class_name: "User"
+
+  RESET_POINTS = 0
+  POINTS_ADJUSTMENT_FACTOR = 10
+  MAX_POINTS_FOR_LEVEL = 100
+
+  def self.possible_ratings_for_select_list
+    [["One Star", 1], ["Two Stars", 2], ["Three Stars", 3]]
+  end
+
+  def self.adjust_level_points_for_user(feedback, user)
+    user.points += feedback.rating * POINTS_ADJUSTMENT_FACTOR if feedback.rating
+    if user.points >= MAX_POINTS_FOR_LEVEL
+      curr_level = user.level
+      user.level = Level.find_by(language_id: curr_level.language_id,
+        value: curr_level.value + 1) if user.level.value < MAX_POINTS_FOR_LEVEL
+      user.points = RESET_POINTS
+    end
+    user.save
+  end
 end
