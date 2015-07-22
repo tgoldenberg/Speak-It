@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   post 'web_rtc/connect' => 'web_rtc#connect', as: 'rtc_connect'
 
   root 'welcome#index'
-  resources :users
+  resources :users, only: [:create, :new]
 
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create', as: 'create_session'
@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'feedbacks/:id' => 'feedbacks#show', as: 'feedback'
   post '/feedbacks' => 'feedbacks#create', as: 'create_feedback'
   post '/invitations' => 'invitations#create', as: 'create_invitation'
-  delete '/invitations' => 'invitations#destroy', as: 'delete_invitation'
+  put '/invitations/miss/:id' => 'invitations#recipient_miss', as: 'missed_invitation'
+  put '/invitations/decline/:id' => 'invitations#recipient_decline', as: 'declined_invitation'
+  delete '/invitations/:id' => 'invitations#sender_cancel', as: 'delete_invitation'
   post '/pusher/auth' => 'pusher#auth'
+  put '/invitations/seen' => 'invitations#update_seen', as: 'make_invitation_seen'
 end

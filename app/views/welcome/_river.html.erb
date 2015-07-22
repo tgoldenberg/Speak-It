@@ -15,11 +15,8 @@
           <td> <%= user.username %></td>
           <td><%= user.country.try(:name) %></td>
           <td> <%= user.native_language.name %> </td>
-          <td><%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
-            <%= f.hidden_field :recipient_id, value: user.id %>
-            <%= f.hidden_field :sender_id, value: current_user.id %>
-            <%= f.submit "Speak!", class: 'btn btn-default' %>
-          <% end %>
+          <td class="call-holder">
+            <%= react_component("Invitation", {user: user, currentUser: current_user}.to_json, class: "invitation-form-holder") %>
           </td>
         </tr>
       <% end %>
@@ -43,11 +40,12 @@
           <td> <%= user.username %>  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></td>
           <td><%= user.country.try(:name) %></td>
           <td> <%= user.native_language.name %> </td>
-          <td><%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
-            <%= f.hidden_field :recipient_id, value: user.id %>
-            <%= f.hidden_field :sender_id, value: current_user.id %>
-            <%= f.submit "Speak!", class: 'btn btn-default' %>
-          <% end %>
+          <td>
+            <%= form_for @invitation, url: create_invitation_path, method: 'post' do |f| %>
+              <%= f.hidden_field :recipient_id, value: user.id %>
+              <%= f.hidden_field :sender_id, value: current_user.id %>
+              <%= f.submit "Speak!", class: 'btn btn-default new_invitation_submit' %>
+            <% end %>
           </td>
         </tr>
       <% end %>
@@ -62,36 +60,3 @@
       <% end %>
     </tbody>
   </table>
-
-
-
-
-
-
-  <script>
-  $(function() {
-    $('.new_invitation').on('submit', function(e) {
-      e.preventDefault();
-      var target = $(e.target);
-      var recipientId = parseInt(target.find('#invitation_recipient_id').val());
-      var senderId = parseInt(target.find('#invitation_sender_id').val());
-      $.ajax({
-        url: this.action,
-        method: this.method,
-        data: {invitation: {recipient_id: recipientId, sender_id: senderId}},
-        dataType: "json"
-      })
-      .done(function(data) {
-        $('.navbar-default').after('<p class="notice">'+ data + '</p>')
-      })
-      .fail(function(err) {
-        console.log(err);
-      });
-    });
-
-    $('.notifications').on('click', function(e) {
-      e.preventDefault();
-      $('#notification-list').toggle();
-    })
-  });
-  </script>

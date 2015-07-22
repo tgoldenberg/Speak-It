@@ -1,26 +1,30 @@
-// function for listening to a button click in order to delete an invitation
-var deleteInvitation = function() {
-  $('.delete_invitation').on('click', function(e) {
-    console.log("CLICK");
-    var target = $(e.target);
+var removeFlash = function() {
+  setTimeout(function(){
+    $('.notice').remove();
+    $('.alert').remove();
+  }, 3500);
+};
+var toggleNotifications = function() {
+  $('.notifications').on('click', function(e) {
     e.preventDefault();
-    var invitationId = parseInt($(this).data('id'));
-    // call to the invitations#destroy action
-    $.ajax({
-      url: '/invitations',
-      method: 'delete',
-      dataType: 'json',
-      data: {invitation: {id: invitationId}}
-    })
-    .done(function(data) {
-      // hide the <li> tag with the buttons
-      console.log(data);
-      console.log(target);
-      target.parent().hide();
-      $('#notification-list').toggle();
-    })
-    .fail(function(err) {
-      console.log(err);
-    });
+    $('#notification-list').toggle();
+  });
+  $('.missed').on('click', function(e) {
+    e.preventDefault();
+    if ($('#missed-call-list').hasClass('hidden')) {
+      var currentUser = $('.data').data('id');
+      $.ajax({
+        method: "put",
+        url: "/invitations/seen",
+        data: {invitation: {recipient_id: currentUser}}
+      })
+      .done(function(data) {
+        console.log(data);
+      })
+      .fail(function(err) {
+        console.log(err);
+      });
+    }
+    $('#missed-call-list').toggleClass('hidden');
   });
 };

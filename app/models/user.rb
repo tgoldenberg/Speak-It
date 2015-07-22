@@ -25,22 +25,26 @@ class User < ActiveRecord::Base
   end
 
   def self.get_available_users(current_user)
-    User.users_levels_countries_languages.where("last_seen_at > ? and id != ?", 5.minutes.ago, current_user.id)
+    User.users_levels_countries_languages.where("last_seen_at > ? and id != ? and native_language_id = ? and study_language_id = ?", 5.minutes.ago, current_user.id, current_user.study_language_id, current_user.native_language_id)
   end
 
   def self.get_unavailable_users(current_user)
-    User.users_levels_countries_languages.where("last_seen_at <= ? and id != ?", 5.minutes.ago, current_user.id)
+    User.users_levels_countries_languages.where("last_seen_at <= ? and id != ? and native_language_id = ? and study_language_id = ?", 5.minutes.ago, current_user.id, current_user.study_language_id, current_user.native_language_id)
+  end
+
+  def self.get_missed_calls(current_user)
+    Invitation.where(recipient: current_user, seen: false, missed: true, declined: false).order(created_at: :desc)
   end
 
   def self.get_active_invitations(current_user)
-    current_user.received_invitations.where(seen: false).pluck('DISTINCT sender_id').map{ |sender_id| Invitation.find_by(recipient_id: current_user.id, sender_id: sender_id) }.reverse
+    current_user.received_invitations.where(seen: false, missed: false, declined: false).pluck('DISTINCT sender_id').map{ |sender_id| Invitation.find_by(recipient_id: current_user.id, sender_id: sender_id, seen: false, declined: false, missed: false) }.reverse
   end
 
   def self.find_recent_users(users, current_user)
     recent_users = []
     users.each do |user|
-      current_user.native_speaker_chats.each do |chat|
-        if (chat.student_id == user.id && chat.created_at > 1.weeks.ago)
+      current_user.native_speaker_chats.where("created_at > ?", 1.weeks.ago).select(:student_id).distinct.each do |chat|
+        if (chat.student_id == user.id)
           recent_users << user
         end
       end

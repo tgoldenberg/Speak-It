@@ -1,57 +1,28 @@
 class UsersController < ApplicationController
 
-  def index
-    @users = User.all
-  end
-
   def new
     @user = User.new
-    @countries_select_array = Country.all.map {|country|[country.name,country.id]}.sort
-    @languages_select_array = Language.all.map {|language| [language.name,language.id]}.sort
+    @countries_select_array = Country.countries_as_select_list
+    @languages_select_array = Language.languages_as_select_list
   end
 
   def create
     user = User.find_by(username: user_params[:username])
     if !user
       @user = User.new(user_params)
-      @user.level = Level.find_by(language_id: user_params[:study_language_id],
-        name: "beginner")
+      @user.level = Level.find_beginner_language(user_params[:study_language_id])
       if @user.save
         session[:user_id] = @user.id
         flash[:notice] = ["Successfully registered."]
         redirect_to root_path
       else
-        flash[:alert] = ["A user with that name or email already exists"]
+        flash[:alert] = ["A user with that username or email already exists"]
         redirect_to new_user_path
       end
     else
       flash[:alert] = ["A user with that username already exists."]
       redirect_to new_user_path
     end
-  end
-
-  def edit
-    find_user
-  end
-
-  def update
-    find_user
-    @user.assign_attributes(user_params)
-    if @user.save
-      redirect_to @user
-    else
-      render :edit
-    end
-  end
-
-  def show
-    find_user
-  end
-
-  def destroy
-    find_user
-    @user.destroy if @user
-    redirect_to root_path
   end
 
   private
@@ -61,7 +32,4 @@ class UsersController < ApplicationController
       :study_language_id, :avatar_url, :points, :level_id, :last_seen_at)
   end
 
-  def find_user
-    @user = User.find_by(id: params[:id])
-  end
 end

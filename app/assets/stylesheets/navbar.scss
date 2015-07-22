@@ -3,7 +3,18 @@
   margin-top: -.2em;
   width: 2em;
 }
-
+.shiny {
+  background: red;
+}
+.list-item {
+  font-family: $sub-title-font-family;
+  font-weight: 400;
+  font-size: 1.4em;
+  line-height: 1.4;
+}
+.notification-date {
+  font-size: .8em;
+}
 .form-icon {
   top: 30px;
   left: 6px;

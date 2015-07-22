@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="data" data-id="<%= current_user ? current_user.id : nil %>"></div>
 
 <%= render partial: "welcome/navbar" %>
 
@@ -33,43 +34,14 @@
 <%= yield %>
 
 <script src="/assets/invitationButton.js"></script>
-<script>
-  $(document).ready(function(){
-    var removeFlash = setTimeout(function(){
-      $('.notice').remove();
-      $('.alert').remove();
-    }, 2000);
-   })
 
-</script>
 <script>
 $(function() {
-  // initialize Pusher with api-key
+  removeFlash();
+  toggleNotifications();
   var pusher = new Pusher('18cc5c3d4ea4757ca628');
-  // assign channel name with current user id
   var channelName = 'private-conversation.' + '<%= current_user ? current_user.id.to_s : 'null' %>';
-  // have Pusher subscribe the channel
   var channel = pusher.subscribe(channelName);
-  // bind to changes in the channel and use the returned data
-  channel.bind('new_invitation', function(data) {
-    console.log(data);
-    var senderId = data.invitation.sender_id;
-    var recipientId = data.invitation.recipient_id;
-    var username = data.username;
-    // create a partial to append to the <ul> in the DOM
-    var partial = "";
-    partial += '<li><p>' + username + ': just now</p>' +
-      '<div id="flex-container"><form method="post" action="/chat_rooms" id="create_chat_room">' +
-        '<input type="hidden" value="'+ data.invitation.id + '" name="invitation[id]"/>' +
-        '<input type="submit" value="Accept" class="btn btn-success"/>' +
-      '</form>' +
-      '<button class="btn btn-danger delete_invitation" data-id="' + data.invitation.id + '">Decline</button></div>' +
-    '</li>';
-    $('#notification-list').append(partial);
-    // re-invoke event listener to delete invitation if user clicks 'decline'
-    deleteInvitation();
-    // removeFlash();
-  });
 
   channel.bind('create_chat_room', function(data) {
     console.log(data);

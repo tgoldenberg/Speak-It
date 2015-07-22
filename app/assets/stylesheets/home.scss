@@ -30,19 +30,29 @@ body {
 
 #notification-list {
   position: fixed;
-  top: 9%;
   right: 10%;
   list-style-type: none;
-  background-color: #D3D3D3;
   z-index: 10;
+  background: $blue;
+  color: white;
+  padding: 7px;
+  border-radius: 3px;
+  text-align: center;
+}
+#missed-call-list {
+  position: fixed;
+  right: 2%;
+  list-style-type: none;
+  z-index: 10;
+  background: $blue;
+  color: white;
+  padding: 7px;
+  border-radius: 3px;
+  text-align: center;
 }
 
 #flex-container {
   display: flex;
-}
-
-#notification-list li {
-  padding: 0.5em 2em 0.5em 0.5em;
 }
 
 .glyphicon-ok-sign {
