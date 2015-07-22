@@ -1,7 +1,10 @@
 class FeedbacksController < ApplicationController
   def new
+    @user = current_user
     @feedback = Feedback.new
     @chat_room = ChatRoom.find_by(id: params[:chat_room_id])
+    @active_invitations = User.get_active_invitations(@user)
+    @missed_calls = User.get_missed_calls(@user)
     @chat = @chat_room.chats.find_by(native_speaker_id: current_user.try(:id) )
     @ratings = [["One Star", 1], ["Two Stars", 2], ["Three Stars", 3]]
   end
