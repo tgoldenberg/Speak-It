@@ -10,6 +10,12 @@ var removeFlash = function() {
   }, 3500);
 };
 
+var removeGradientPulse = function() {
+  $('.notifications, .glyphicon-earphone').on('click', function(e) {
+    $('.notifications').removeClass('gradient-pulse');
+  });
+}
+
 var createStars = function(e) {
   var value = parseInt($(e)[0].value);
   var stars = $(e).next().children();

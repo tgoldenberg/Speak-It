@@ -40,6 +40,7 @@ var IncomingCall = React.createClass({
       console.log("RECIPIENT DECLINES CALL", data);
       this.props.declineCall(invitationId);
       $('#notification-list').toggle();
+
     }.bind(this))
     .fail(function(err) {
       console.log(err);

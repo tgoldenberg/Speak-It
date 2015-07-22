@@ -39,6 +39,7 @@
 $(function() {
   removeFlash();
   toggleNotifications();
+  removeGradientPulse();
   var pusher = new Pusher('18cc5c3d4ea4757ca628');
   var channelName = 'private-conversation.' + '<%= current_user ? current_user.id.to_s : 'null' %>';
   var channel = pusher.subscribe(channelName);
