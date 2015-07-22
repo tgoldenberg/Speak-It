@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
   	@invitation = Invitation.new invitation_params
     if @invitation.save
       channel = 'private-conversation.' + @invitation.recipient_id.to_s
-      data = {invitation: @invitation, username: @invitation.sender.username}
+      data = {invitation: {invitation: @invitation, sender: @invitation.sender}}
       Pusher.trigger(channel, 'new_invitation', data.to_json)
       render json: "Your invitation was successfully sent.".to_json
     else

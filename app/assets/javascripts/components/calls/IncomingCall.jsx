@@ -30,7 +30,6 @@ var IncomingCall = React.createClass({
     .fail(function(err) {
       console.log(err);
     });
-
   },
   acceptCall: function(e) {
     console.log("ACCEPT");

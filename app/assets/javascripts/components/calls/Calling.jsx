@@ -12,6 +12,9 @@ var Calling = React.createClass({
     $('.navbar').after(partial);
     removeFlash();
   },
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
+  },
   componentDidMount: function() {
     this.interval = setInterval(this.tick, 1000);
   },
