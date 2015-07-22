@@ -3,12 +3,17 @@ var Calling = React.createClass({
     return {timer: 0};
   },
   handleClick: function() {
+    clearInterval(this.interval);
+    this.setState({timer: 0});
     this.props.hangUp();
     var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
                       'Call ended</div></div>';
     $('.navbar').after(partial);
     removeFlash();
+  },
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
   },
   componentDidMount: function() {
     this.interval = setInterval(this.tick, 1000);

@@ -2,8 +2,9 @@ var Invitation = React.createClass({
   getInitialState: function() {
     return {showCall: false};
   },
-  hangUp: function() {
-    this.toggleCall();
+  callTimeout: function() {
+    console.log("TIMEOUT");
+    this.setState({showCall: false});
   },
   toggleCall: function() {
     this.setState({showCall: !this.state.showCall});
@@ -31,7 +32,7 @@ var Invitation = React.createClass({
   render: function() {
     var content;
     if (this.state.showCall) {
-      content = <Calling user={this.props.user} hangUp={this.hangUp}/>
+      content = <Calling user={this.props.user} hangUp={this.callTimeout}/>
     }
     return (
       <div className="call-wrapper">

@@ -13,25 +13,23 @@ var IncomingCall = React.createClass({
     removeFlash();
   },
   declineCall: function() {
-    console.log("DECLINE");
-    var invitationId = this.props.invitation.id;
+    var invitationId = this.props.invitation.invitation.id;
+    var recipientId = this.props.invitation.invitation.recipient_id;
+    var senderId = this.props.invitation.invitation.sender_id;
     $.ajax({
-      url: '/invitations',
-      method: 'delete',
+      url: '/invitations/decline/' + invitationId,
+      method: 'put',
       dataType: 'json',
-      data: {invitation: {recipient_id: this.props.invitation.recipient_id, sender_id: this.props.invitation.sender_id }}
+      data: {id: invitationId, invitation: {recipient_id: recipientId, sender_id: senderId }}
     })
     .done(function(data) {
-      // hide the <li> tag with the buttons
-      console.log("CHANGED TO DECLINED");
-      $('.incoming-call-wrapper').hide();
-      // target.parent().hide();
+      console.log("RECIPIENT DECLINES CALL", data);
+      this.props.declineCall(invitationId);
       $('#notification-list').toggle();
-    })
+    }.bind(this))
     .fail(function(err) {
       console.log(err);
     });
-
   },
   acceptCall: function(e) {
     console.log("ACCEPT");
@@ -51,11 +49,11 @@ var IncomingCall = React.createClass({
   render: function() {
     return (
       <div className="call-box">
-        <p className="calling-info">Incoming call from {this.props.username}...</p>
-        <img src={this.props.avatar_url} className="call-avatar"/>
+        <p className="calling-info">Incoming call from {this.props.invitation.sender.username}...</p>
+        <img src={this.props.invitation.sender.avatar_url} className="call-avatar"/>
         <div className="call-timer-phone">
           <form method="post" action="/chat_rooms" id="create_chat_room">
-            <input type="hidden" value={this.props.invitation.id} name="invitation[id]"/>
+            <input type="hidden" value={this.props.invitation.invitation.id} name="invitation[id]"/>
               <span onClick={this.acceptCall} className="glyphicon glyphicon-ok-circle"></span>
           </form>
           <a href="#"><span onClick={this.declineCall} className="glyphicon glyphicon-earphone delete_invitation" data-id={this.props.invitation.id}></span></a>
