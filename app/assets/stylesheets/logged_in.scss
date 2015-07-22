@@ -1,0 +1,78 @@
+#logged-in-wrapper {
+  #logged-in-row {
+    background: darken($blue, 5%);
+    color: white;
+    text-align: center;
+    padding: 1em;
+
+  }
+  #avatar-container {
+    img.avatar-image {
+    border-radius: 4px;
+      width: 46%;
+    }
+    h2 {
+      font-family: $title-font-family;
+      font-weight: 300;
+      font-size: 2em;
+    }
+    img#language-flag {
+      width: 45%;
+      height: 2.8em;
+    }
+  }
+  #profile-level-container {
+    margin-top: 5%;
+  }
+  .languages-holder {
+    font-weight: 300;
+    font-family: $sub-title-font-family;
+    height: 19em;
+    text-align: left;
+    background: $blue;
+    border-radius: 3px;
+    padding: 2em;
+    h4, p {
+      margin-top: .4em;
+    }
+    h4 {
+      font-weight: normal;
+    }
+  }
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid lighten($blue, 5%);
+    margin: 1em 0; padding: 0;
+  }
+  .language-flag {
+    width: 3em;
+    height: 2em;
+    margin-left: 1.5em;
+  }
+  .native-language-holder, .study-language-holder {
+    display: flex;
+  }
+  .progress {
+    background: #f2f2f2;
+    height: 2.8em;
+    .progress-bar {
+      color: #f2f2f2;
+    }
+    .progress-bar {
+        width: 10%;
+        padding-top: 8px;
+        font-size: 1.8em;
+    }
+  }
+  span {
+    font-weight: 300;
+  }
+}
+.tab-holder {
+  height: 5em;
+  background: lighten($blue, 2%);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
