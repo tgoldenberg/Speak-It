@@ -37,6 +37,16 @@ class InvitationsController < ApplicationController
     render json: "Call Cancelled".to_json
   end
 
+  def update_seen
+    invitations = Invitation.where(recipient_id: invitation_params[:recipient_id], seen: false)
+    invitations.each do |invitation|
+      invitation.seen = true
+      invitation.save
+    end
+    render json: "Invitations saved to seen".to_json
+  end
+
+
   private
 
   def invitation_params

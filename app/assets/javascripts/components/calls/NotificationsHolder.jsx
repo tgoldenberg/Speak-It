@@ -22,10 +22,10 @@ var NotificationsHolder = React.createClass({
     var pusher = new Pusher('18cc5c3d4ea4757ca628');
     var channelName = 'private-conversation.' + this.props.currentUser.id;
     var channel = pusher.subscribe(channelName);
-    var invitations = this.state.activeInvitations;
+    // var invitations = this.state.activeInvitations;
     channel.bind('new_invitation', function(data) {
       console.log("NEW INVITATION", data);
-      // this.setState({activeInvitations: [data.invitation]});
+      this.setState({activeInvitations: [data.invitation]});
       $('.notifications').addClass('shiny');
     }.bind(this));
   },

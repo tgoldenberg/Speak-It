@@ -17,23 +17,6 @@
     </ul>
   </div>
 </nav>
-<% if logged_in? && @active_invitations.length > 0 %>
+<% if logged_in? && (@active_invitations.length > 0 || @missed_calls.length > 0) %>
   <%= react_component("NotificationsHolder", {currentUser: current_user, active_invitations: @active_invitations.map{|invitation| {invitation: invitation, sender: invitation.sender}}, missed_calls: @missed_calls.map{|call| {call: call, sender: call.sender}}}, class: "react-notifications-holder") %>
 <% end %>
-
-<!-- <div>
-  <ul id="notification-list" style="display: none">
-    <% @active_invitations.each do |invitation| %>
-      <%= react_component("IncomingCall", {invitation: invitation, username: invitation.sender.username, avatar_url: invitation.sender.avatar_url}.to_json, class: 'incoming-call-wrapper') %>
-    <% end %>
-  </ul>
-</div>
-<div>
-  <ul id="missed-call-list" style="display: none">
-    <% @missed_calls.each do |invitation| %>
-      <li>
-        <p>Missed call from <%= invitation.sender.username %> about <%= time_ago_in_words(invitation.created_at) %></p>
-      </li>
-    <% end %>
-  </ul>
-</div> -->

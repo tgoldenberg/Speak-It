@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   put '/invitations/decline/:id' => 'invitations#recipient_decline', as: 'declined_invitation'
   delete '/invitations/:id' => 'invitations#sender_cancel', as: 'delete_invitation'
   post '/pusher/auth' => 'pusher#auth'
+  put '/invitations/seen' => 'invitations#update_seen', as: 'make_invitation_seen'
 end
