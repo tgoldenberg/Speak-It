@@ -1,53 +1,55 @@
-<h1 class="form-title">Signup</h1>
-<% if flash[:notice] %>
-  <p> <%= flash[:notice] %> </p>
-<% end %>
-<div class="container">
-<%= form_for @user, url: users_path, class: 'form-horizontal' do |f| %>
-  <div class="form-group">
-    <div class= "row non-select">
-      <%= f.label :username %>
-    </div>
+<div class="new_user_signup">
+  <h1 class="form-title">Signup</h1>
+  <% if flash[:notice] %>
+    <p> <%= flash[:notice] %> </p>
+  <% end %>
+  <div class="container">
+    <%= form_for @user, url: users_path, class: 'form-horizontal' do |f| %>
     <div class="row non-select">
-      <%= f.text_field :username, class: 'form-control' %>
-    </div>
-  </div>
-  <div class= "form-group">
-    <div class = "row non-select">
-      <%= f.label :password %>
-    </div>
-    <div class= "row non-select">
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
-  </div>
-  <div class= "form-group">
-    <div class= "row non-select">
-      <%= f.label :email %>
-    </div>
-    <div class= "row non-select">
-      <%= f.email_field :email, class: 'form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :native_language %>
-    <%= f.select(:native_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :study_language %>
-    <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :country %>
-    <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control"}) %>
-  </div>
-    <%= f.hidden_field :level, value: 1 %>
-  <div>
-    <%= f.submit "Submit", class: 'btn form-button' %>
-  </div>
- <% end %>
- </div>
+          <%= f.label :native_language %>
+        </div>
 
+      <div class="form-group">
+        <div class="row non-select">
+          <%= f.text_field :username, class: 'form-control', placeholder: "username" %>
+        </div>
+      </div><br/>
 
+      <div class= "form-group">
+        <div class= "row non-select">
+          <%= f.password_field :password, class: 'form-control', placeholder: "password" %>
+        </div>
+      </div><br/>
 
+      <div class= "form-group">
+        <div class= "row non-select">
+          <%= f.email_field :email, class: 'form-control', placeholder: "email" %>
+        </div>
+      </div><br/>
 
+      <div class="form-group">
+        <div class="row non-select">
+          <%= f.label :native_language %>
+        </div>
+        <%= f.select(:native_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
+      </div><br/>
 
+      <div class="form-group">
+        <div class="row non-select">
+          <%= f.label :study_language %>
+        </div>
+        <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
+      </div><br/>
+
+      <div class="form-group">
+        <%= f.label :country %>
+        <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control"}) %>
+      </div><br/>
+
+        <%= f.hidden_field :level, value: 1 %>
+      <div>
+        <%= f.submit "Submit", class: 'btn form-button' %>
+      </div>
+    <% end %>
+  </div>
+</div>
