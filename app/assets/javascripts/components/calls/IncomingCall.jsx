@@ -5,7 +5,21 @@ var IncomingCall = React.createClass({
   stopTimer: function() {
     clearInterval(this.interval);
     this.setState({timer: 0});
-    $('.calling-component').toggleClass('hidden');
+    var invitationId = this.props.invitation.invitation.id;
+    $.ajax({
+      method: "put",
+      url: "/invitations/miss/" + invitationId,
+      dataType: "json",
+      data: {id: invitationId}
+    })
+    .done(function(data) {
+      console.log(data);
+    })
+    .fail(function(err) {
+      console.log(err);
+    });
+
+    $('.call-box').toggleClass('hidden');
     var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
                       'Missed Call</div></div>';
@@ -36,9 +50,10 @@ var IncomingCall = React.createClass({
     $(e.target).parent().submit();
   },
   componentDidMount: function() {
-    $('.new_invitation').on('submit', function(e) {
-      this.interval = setInterval(this.tick, 1000);
-    }.bind(this));
+    this.interval = setInterval(this.tick, 1000);
+  },
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
   },
   tick: function() {
     this.setState({timer: this.state.timer + 1});

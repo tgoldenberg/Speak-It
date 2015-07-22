@@ -12,6 +12,16 @@ var Calling = React.createClass({
     $('.navbar').after(partial);
     removeFlash();
   },
+  handleTimeout: function() {
+    clearInterval(this.interval);
+    this.setState({timer: 0});
+    this.props.hangUp();
+    var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
+                    '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
+                      'Call timed out</div></div>';
+    $('.navbar').after(partial);
+    removeFlash();
+  },
   componentWillUnmount: function() {
     clearInterval(this.interval);
   },
@@ -21,7 +31,7 @@ var Calling = React.createClass({
   tick: function() {
     this.setState({timer: this.state.timer + 1});
     if (this.state.timer >= 10) {
-      this.handleClick();
+      this.handleTimeout();
     }
   },
   render: function() {

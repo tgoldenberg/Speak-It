@@ -34,6 +34,17 @@ body {
   list-style-type: none;
   z-index: 10;
 }
+#missed-call-list {
+  position: fixed;
+  right: 2%;
+  list-style-type: none;
+  z-index: 10;
+  background: $blue;
+  color: white;
+  padding: 7px;
+  border-radius: 3px;
+  text-align: center;
+}
 
 #flex-container {
   display: flex;
