@@ -37,38 +37,8 @@ class ChatRoomsController < ApplicationController
     @first_chat = @chat_room.chats.first
     @second_chat = @chat_room.chats.last
     @other_user = @chat_room.creator == current_user ? @chat_room.invitee : @chat_room.creator
-    # assign data for handing over to ReactJS component
-    @data = {chat_room: @chat_room,
-            chats: @chat_room.chats,
-            current_user: {
-              user: current_user,
-              country: current_user.try(:country),
-              country_image: view_context.asset_path(current_user.try(:country).try(:image_url)),
-              language: current_user.try(:native_language)
-            },
-            other_user: {
-              user: @other_user,
-              country: @other_user.country,
-              country_image: view_context.asset_path(@other_user.country.image_url),
-              language: @other_user.native_language
-            },
-            first_chat: {
-              chat: @first_chat,
-              student: @first_chat.student,
-              native_speaker: @first_chat.native_speaker,
-              topic: @first_chat.topic,
-              language: @first_chat.language,
-              level: @first_chat.level
-            },
-            second_chat: {
-              chat: @second_chat,
-              student: @second_chat.student,
-              native_speaker: @second_chat.native_speaker,
-              topic: @second_chat.topic,
-              language: @second_chat.language,
-              level: @second_chat.level
-            }
-          }
+    data_hash = {current_user: @user, other_user: @other_user, chat_room: @chat_room, first_chat: @first_chat, second_chat: @second_chat}
+    @data = ChatRoom.jsonify_data_for_reactjs(data_hash)
   end
 
   private
