@@ -18,11 +18,11 @@ To experience our app first hand click on the link to heroku here. https://aqueo
 
 <img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/home-page.png">
 
-Click sign up to login and fill out the form.
+#### Click sign up to login and fill out the form.
 
 <img src="https://raw.githubusercontent.com/nyc-dragonflies-2015/Speak-It/master/app/assets/images/sign-up.png">
 
-You will be redirected to your dashboard. Find an avaiable user and click the chat button.
+#### You will be redirected to your dashboard. Find an avaiable user and click the chat button.
 
 <img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/joseph_dashboard.png">
 
