@@ -1,15 +1,21 @@
 $(document).ready(function(){
-	
+
 	$('#available-tab').on('click',function(e){
 		e.preventDefault();
-		 console.log('available');
-		 $('#recent-table').hide();
-		 $('#available-table').show();
+		  if (!$('#available-tab').hasClass('active')) {
+				$('#recent-tab').removeClass('active');
+				$('#available-tab').addClass('active');
+		  }
+		  $('#recent-table').hide();
+		  $('#available-table').show();
 
 	})
 	$('#recent-tab').on('click',function(e){
 		e.preventDefault();
-		console.log('recent')
+		if (!$('#recent-tab').hasClass('active')) {
+			$('#available-tab').removeClass('active');
+			$('#recent-tab').addClass('active');
+		}
 		$('#available-table').hide();
 		$('#recent-table').show();
 	})

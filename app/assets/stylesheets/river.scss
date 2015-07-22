@@ -1,0 +1,31 @@
+#recent-table {
+  display: none;
+}
+#available-table {
+  thead {
+    tr {
+      th {
+      }
+    }
+  }
+  tbody {
+    tr {
+      border-left: 1px solid #e6e6e6;
+      border-right: 1px solid #e6e6e6;
+      td {
+        #init-chat-button {
+          background: lighten($blue, 8%);
+          height: 3em;
+          font-size: 1em;
+          width: 100%;
+        }
+      }
+      td.call-holder {
+        width: 100%;
+      }
+    }
+  }
+}
+.invitation-form-holder {
+  width: inherit;
+}
