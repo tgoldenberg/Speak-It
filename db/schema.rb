@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20150721142225) do
     t.integer  "level_id"
     t.datetime "created_at",                                                                                                                                   null: false
     t.datetime "updated_at",                                                                                                                                   null: false
-    t.datetime "last_seen_at",       default: '2015-07-22 03:11:48'
+    t.datetime "last_seen_at",       default: '2015-07-22 04:05:22'
   end
 
   add_index "users", ["country_id"], name: "index_users_on_country_id", using: :btree

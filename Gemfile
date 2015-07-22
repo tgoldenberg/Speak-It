@@ -13,6 +13,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'pusher'
 gem 'react-rails'
+gem 'bourbon'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-simple-peer'
