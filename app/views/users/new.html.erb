@@ -26,20 +26,21 @@
           <%= f.email_field :email, class: 'form-control', placeholder: "email" %>
         </div>
       </div><br/>
+      <div class="language-select-holder">
+        <div class="form-group">
+          <div class="row non-select">
+            <%= f.label :native_language %>
+          </div>
+          <%= f.select(:native_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
+        </div><br/>
 
-      <div class="form-group">
-        <div class="row non-select">
-          <%= f.label :native_language %>
-        </div>
-        <%= f.select(:native_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
-      </div><br/>
-
-      <div class="form-group">
-        <div class="row non-select">
-          <%= f.label :study_language %>
-        </div>
-        <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
-      </div><br/>
+        <div class="form-group">
+          <div class="row non-select">
+            <%= f.label :study_language %>
+          </div>
+          <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control"}) %>
+        </div><br/>
+      </div>
 
       <div class="form-group">
         <%= f.label :country %>
