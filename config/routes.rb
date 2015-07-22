@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   resources :users, only: [:create, :new]
-
+  get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create', as: 'create_session'
   delete '/logout' => 'sessions#destroy', as: 'logout'

@@ -21,13 +21,23 @@
 
 en:
   hello: "Hello world"
-
+  languages:
+    en: "English"
+    es: "Spanish"
   landing:
+    user: "username"
+    password: "password"
+    login: "Login"
+    title: "Practice language skills by talking with native speakers"
+    signup: "Sign Up"
+    subtitle: "Language is the key that unlocks a new culture"
+    subtitle_description: "A language is a living entity, not something to be learned from grammar alone. Improve your fluency and help others as well through peer-to-peer learning."
+    second_subtitle: "Our system pairs learners for shared collaboration"
+    second_description: "Conversation topics are selected according to skill level. Increase your selection of conversation topics by improving your ranking."
+    third_title: "Meet people around the world"
   signup:
   feedback:
   logged_in:
   chat_room:
   topic:
   notification:
-
-

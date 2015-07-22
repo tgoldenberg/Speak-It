@@ -1,2 +1,16 @@
 es:
   hello: "Hola mundo!"
+  languages:
+    en: "Ingles"
+    es: "Espanol"
+  landing:
+    user: "nombre de usuario"
+    password: "contraseña"
+    login: "iniciar sesión"
+    title: "Habilidades lingüísticas Práctica de hablar con hablantes nativos"
+    signup: "contratar"
+    subtitle: "El lenguaje es la llave que abre una nueva cultura."
+    subtitle_description: "Una lengua es un ente vivo , no algo que aprender de la gramática solo. Mejore su fluidez y ayudar a los demás , así a través del aprendizaje de igual a igual."
+    second_subtitle: "Nuestros pares sistema aprendices de colaboración compartida."
+    second_description: "Temas de conversación son seleccionados de acuerdo al nivel de habilidad. Aumenta tu selección de temas de conversación mediante la mejora de su ranking ."
+    third_title: "Conoce a la gente de todo el mundo"
