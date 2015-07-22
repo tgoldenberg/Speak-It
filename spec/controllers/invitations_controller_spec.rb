@@ -31,10 +31,10 @@ RSpec.describe InvitationsController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy" do
+  describe "DELETE #sender_cancel" do
     it "deletes the invitation" do
       expect{
-        delete :destroy, {invitation: {id: @saved_invitation.id}}
+        delete :sender_cancel, {id: @saved_invitation.id }
       }.to change(Invitation, :count).by(-1)
     end
   end

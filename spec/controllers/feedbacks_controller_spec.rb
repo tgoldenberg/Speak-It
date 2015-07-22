@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe FeedbacksController, type: :controller do
   before(:each) do
+    session[:user_id] = User.first.id
     @chat_room = ChatRoom.create(creator_id: User.first.id, invitee_id: User.last.id)
     @first_chat = Chat.create(student_id: @chat_room.creator_id,
       native_speaker_id: @chat_room.invitee_id,
