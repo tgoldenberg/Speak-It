@@ -33,6 +33,11 @@ body {
   right: 10%;
   list-style-type: none;
   z-index: 10;
+  background: $blue;
+  color: white;
+  padding: 7px;
+  border-radius: 3px;
+  text-align: center;
 }
 #missed-call-list {
   position: fixed;
@@ -48,10 +53,6 @@ body {
 
 #flex-container {
   display: flex;
-}
-
-#notification-list li {
-  padding: 0.5em 2em 0.5em 0.5em;
 }
 
 .glyphicon-ok-sign {
