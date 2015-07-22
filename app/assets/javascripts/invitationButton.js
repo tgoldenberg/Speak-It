@@ -10,6 +10,15 @@ var removeFlash = function() {
   }, 3500);
 };
 
+var createStars = function(e) {
+  var value = parseInt($(e)[0].value);
+  var stars = $(e).next().children();
+  stars.removeClass('bounceIn').addClass('hidden');
+  for (i=0; i<value; i++) {
+    $(stars[i]).addClass('bounceIn').removeClass('hidden');
+  }
+}
+
 var createFlag = function(e) {
   var images = ["https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg",
                 "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png"];
