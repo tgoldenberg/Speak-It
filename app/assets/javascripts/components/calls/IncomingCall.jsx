@@ -3,8 +3,7 @@ var IncomingCall = React.createClass({
     return {timer: 0};
   },
   stopTimer: function() {
-    clearInterval(this.interval);
-    this.setState({timer: 0});
+
     var invitationId = this.props.invitation.invitation.id;
     $.ajax({
       method: "put",
@@ -13,8 +12,9 @@ var IncomingCall = React.createClass({
       data: {id: invitationId}
     })
     .done(function(data) {
-      console.log(data);
-    })
+      console.log("TIMED OUT");
+      this.props.callTimeout(this.props.invitation);
+    }.bind(this))
     .fail(function(err) {
       console.log(err);
     });
@@ -57,7 +57,7 @@ var IncomingCall = React.createClass({
   },
   tick: function() {
     this.setState({timer: this.state.timer + 1});
-    if (this.state.timer >= 10) {
+    if (this.state.timer >= 5) {
       this.stopTimer();
     }
   },

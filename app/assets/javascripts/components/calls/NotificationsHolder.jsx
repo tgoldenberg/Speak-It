@@ -4,17 +4,20 @@ var NotificationsHolder = React.createClass({
   },
   declineCall: function(id) {
     console.log("DECLINED", id);
-    var result = [];
-    var invitations = this.state.activeInvitations;
-    invitations.forEach(function(invitation){
-      if (invitation.invitation.id != id) {
-        result.push(invitation);
-      }
-    });
-    this.setState({activeInvitations: result});
+    this.setState({activeInvitations: []});
     var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
                       'Call declined</div></div>';
+    $('.navbar').after(partial);
+    removeFlash();
+  },
+  callTimeout: function(invitation) {
+    var missedCalls = this.state.missedCalls;
+    var callObject = {call: invitation.invitation, sender: invitation.sender}
+    this.setState({activeInvitations: [], missedCalls: [callObject]});
+    var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
+                    '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
+                      'Call timed out</div></div>';
     $('.navbar').after(partial);
     removeFlash();
   },
@@ -32,7 +35,7 @@ var NotificationsHolder = React.createClass({
   render: function() {
     return (
       <div id="notifications-wrapper">
-        <IncomingCallHolder declineCall={this.declineCall} incomingCalls={this.state.activeInvitations} />
+        <IncomingCallHolder declineCall={this.declineCall} callTimeout={this.callTimeout} incomingCalls={this.state.activeInvitations} />
         <MissedCallList missedCalls={this.state.missedCalls}/>
       </div>
     );
