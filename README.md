@@ -1,4 +1,4 @@
-# Speak-It
+# Speak-It  <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/globe-logo.png" width="48">
 A user-to-user language learning / sharing web application
 
 ## Introduction: 
