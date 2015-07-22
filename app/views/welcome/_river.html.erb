@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @available_users.each do |user| %>
+      <% User.all.each do |user| %>
         <tr>
           <td> <img src= <%= user.avatar_url %> alt="avatar" class="user-avatar"></td>
           <td> <img src= <%= asset_path(user.country.image_url) %> alt="avatar" class="user-avatar"></td>

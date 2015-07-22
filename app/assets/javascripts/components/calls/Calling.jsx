@@ -26,7 +26,7 @@ var Calling = React.createClass({
     clearInterval(this.interval);
   },
   componentDidMount: function() {
-    this.interval = setInterval(this.tick, 1000);
+    // this.interval = setInterval(this.tick, 1000);
   },
   tick: function() {
     this.setState({timer: this.state.timer + 1});
