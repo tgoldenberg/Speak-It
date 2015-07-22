@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+
+  landing:
+  signup:
+  feedback:
+  logged_in:
+  chat_room:
+  topic:
+  notification:
+
+

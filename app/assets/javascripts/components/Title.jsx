@@ -25,8 +25,8 @@ var Title = React.createClass({
         </div>
 
         <div className="language-wrapper col-md-2">
-          <span>Language: {this.props.chat.language.name}</span>
-          <img id="language-flag" className="avatar-image" src={this.props.chat.language.img_url}/>
+          <span>Language: {this.props.chat.language.name} </span>
+          <img className="avatar-image" src={this.props.chat.language.img_url}/>
         </div>
 
         <div className="level-wrapper col-md-2">
