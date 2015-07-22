@@ -24,6 +24,7 @@
       <tr>
         <th>Avatar</th>
         <th>Country</th>
+        <th class="available-cell">Available</th>
         <th col-span="3">Chat</th>
       </tr>
     </thead>
@@ -31,8 +32,9 @@
       <% @available_recent_users.each do |user| %>
         <tr>
           <td> <img src= <%= user.avatar_url %> alt="avatar" class="user-avatar"></td>
-          <td> <img src= <%= asset_path(user.country.image_url) %> alt="avatar" class="user-avatar"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></td>
-          <td class="call-holder" col-span="3">
+          <td> <img src= <%= asset_path(user.country.image_url) %> alt="avatar" class="user-avatar"></td>
+          <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+          <td class="call-holder" col-span="2">
             <%= react_component("Invitation", {user: user, currentUser: current_user, language: user.native_language}.to_json, class: "invitation-form-holder") %>
           </td>
         </tr>
@@ -40,7 +42,8 @@
       <% @unavailable_recent_users.each do |user| %>
         <tr>
           <td> <img src= <%= user.avatar_url %> alt="avatar" class="user-avatar"></td>
-          <td> <img src= <%= asset_path(user.country.image_url) %> alt="avatar" class="user-avatar"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></td>
+          <td> <img src= <%= asset_path(user.country.image_url) %> alt="avatar" class="user-avatar"></td>
+          <td class="available-cell"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></td>
           <td class="call-holder" col-span="3">
             <%= react_component("Invitation", {user: user, currentUser: current_user, language: user.native_language}.to_json, class: "invitation-form-holder") %>
           </td>
