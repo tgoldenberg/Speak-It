@@ -22,7 +22,7 @@ var NotificationsHolder = React.createClass({
     removeFlash();
   },
   componentDidMount: function() {
-    var pusher = new Pusher('18cc5c3d4ea4757ca628');
+    var pusher = new Pusher('ef0f7a70a63dfc688ec4');
     var channelName = 'private-conversation.' + this.props.currentUser.id;
     var channel = pusher.subscribe(channelName);
     // var invitations = this.state.activeInvitations;
