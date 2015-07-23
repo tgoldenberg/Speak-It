@@ -69,3 +69,31 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  var countries = [
+    {name: "United States", image_url: '<%= ActionController::Base.helpers.asset_path("american-flag-medium.png") %>'},
+    {name: "Canada", image_url: '<%= ActionController::Base.helpers.asset_path("canadian-flag-medium.png") %>'},
+    {name: "Mexico", image_url: '<%= ActionController::Base.helpers.asset_path("mexican-flag-medium.png") %>'},
+    {name: "Spain", image_url: '<%= ActionController::Base.helpers.asset_path("spanish-flag-medium.png") %>'},
+    {name: "Argentina", image_url: '<%= ActionController::Base.helpers.asset_path("argentinian-flag-medium.png") %>'},
+    {name: "Columbia", image_url:  '<%= ActionController::Base.helpers.asset_path("colombian-flag-medium.png") %>'},
+    {name: "Peru", image_url: '<%= ActionController::Base.helpers.asset_path("peruvian-flag-medium.png") %>' },
+    {name: "United Kingdom", image_url: '<%= ActionController::Base.helpers.asset_path("british-flag-medium.png") %>'},
+    {name: "Venezuela", image_url: '<%= ActionController::Base.helpers.asset_path("venezuelan-flag-medium.png") %>'},
+    {name: "Ecuador", image_url: '<%= ActionController::Base.helpers.asset_path("ecuadorian-flag-medium.png") %>'},
+    {name: "Cuba", image_url: '<%= ActionController::Base.helpers.asset_path("cuban-flag-medium.png") %>'},
+    {name: "Uruguay", image_url: '<%= ActionController::Base.helpers.asset_path("uruguayan-flag-medium.png") %>'},
+    {name: "Costa Rica", image_url: '<%= ActionController::Base.helpers.asset_path("costa-rican-flag-medium.png") %>'},
+    {name: "Guatemala", image_url: '<%= ActionController::Base.helpers.asset_path("guatemalan-flag-medium.png") %>'},
+    {name: "Panama", image_url: '<%= ActionController::Base.helpers.asset_path("panamanian-flag-medium.png") %>'},
+    {name: "Chile", image_url: '<%= ActionController::Base.helpers.asset_path("chilean-flag-medium.png") %>'},
+    {name: "Dominican Republic", image_url: '<%= ActionController::Base.helpers.asset_path("dominican-republic-flag-medium.png") %>'}
+  ];
+  var createFlagForCountry = function(e) {
+    var value = parseInt($(e)[0].value);
+    var selectedCountry = countries[value -1];
+    $(e).next()[0].src = selectedCountry.image_url;
+  };
+
+</script>
