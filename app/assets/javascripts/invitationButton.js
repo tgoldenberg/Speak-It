@@ -57,7 +57,7 @@ var countries = [
 var createFlagForCountry = function(e) {
   var value = parseInt($(e)[0].value);
   var selectedCountry = countries[value -1];
-  $(e).next()[0].src = "/assets/" + selectedCountry.image_url;
+  $(e).next()[0].src = selectedCountry.image_url;
 };
 
 var toggleNotifications = function() {
