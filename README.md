@@ -11,7 +11,7 @@ Speak-It is a video chat application for users who want to directly learn a lang
 
 ## Getting Started:
 
-To experience our app first hand click on the link to heroku here. https://aqueous-sea-8405.herokuapp.com. Please give feedback on the overall experience!
+To experience our app first hand click on the link to heroku here. http://speakit-languageapp.herokuapp.com/. Please give feedback on the overall experience!
 
 ### Home page and sign up:
 
