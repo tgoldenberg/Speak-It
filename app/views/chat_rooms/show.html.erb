@@ -26,7 +26,7 @@ var mediaOptions = {
 };
 
 $(function() {
-  var pusher = new Pusher('ef0f7a70a63dfc688ec4');
+  var pusher = new Pusher('18cc5c3d4ea4757ca628');
 
   var myChannel = pusher.subscribe('private-conversation.' + "<%= current_user.id.to_s %>");
   var otherChannel = pusher.subscribe('private-conversation.' + "<%= @other_user.id.to_s %>");
