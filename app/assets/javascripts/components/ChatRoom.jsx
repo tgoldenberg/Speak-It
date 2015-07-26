@@ -4,9 +4,99 @@ var ChatRoom = React.createClass({
       turn: this.props.chat_room.turn,
       completed: this.props.chat_room.completed,
       visible: false,
-      currentChat: this.props.first_chat
+      currentChat: this.props.first_chat,
+      sendRTCSignal: false,
+      currentUserRTC: {},
+      pusherAPI: new Pusher('18cc5c3d4ea4757ca628'),
+      currentUserChannel: "",
+      otherUserChannel: "",
+      presenceChannel: ""
     }
   },
+  componentDidMount: function() {
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+    // set media options
+    var mediaOptions = {
+      audio: true,
+      video: {
+        mandatory: {
+          minWidth: 1280,
+          minHeight: 720
+        }
+      }
+    };
+
+    // set currentUser RTC and two channels
+    this.setState({currentUserRTC: {
+      name: this.props.current_user.user.username,
+      id: guid(),
+      stream: undefined },
+      currentUserChannel:  this.state.pusherAPI.subscribe('private-conversation.' + this.props.current_user.user.id),
+      otherUserChannel: this.state.pusherAPI.subscribe('private-conversation.' + this.props.other_user.user.id),
+      presenceChannel: this.state.pusherAPI.subscribe('presence-chat')
+    });
+
+    // get local media
+    navigator.getUserMedia(mediaOptions, function(stream) {
+      this.state.currentUserRTC.stream = stream;
+      var video = $('#localVideo')[0];
+      video.src = window.URL.createObjectURL(stream);
+      this.startRTCConnection();
+    }.bind(this), function() {});
+  },
+
+  startRTCConnection: function() {
+
+    // set initiator based on role in chat room
+    var initiator = false;
+    var peer;
+
+    if (this.props.current_user.user.id == this.props.chat_room.creator_id) {
+      initiator = true;
+      var peer = new SimplePeer({initiator: false, stream: this.state.currentUserRTC.stream, trickle: false});
+      console.log("PEER 1", peer);
+    } else {
+      var peer = new SimplePeer({initiator: true, stream: this.state.currentUserRTC.stream, trickle: false});
+      console.log("PEER 2", peer);
+    }
+
+    // when peer receives an offer
+    peer.on('signal', function(data) {
+      console.log("SIGNAL", data);
+      this.state.otherUserChannel.trigger('client-signal', {
+        data: data
+      });
+    }.bind(this));
+
+    // handle error messaging
+    peer.on('error', function (err) { console.log('error', err) })
+
+    // once stream has successfully been communicated
+    peer.on('stream', function(stream) {
+      console.log("stream", stream);
+      var video = $('#remoteVideoSmall')[0];
+      video.src = window.URL.createObjectURL(stream);
+      $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+    });
+
+    // once stream has closed
+    peer.on('close', function() {
+      console.log("CLOSE");
+    });
+
+    // once peer receives signal
+    this.state.currentUserChannel.bind('client-signal', function(signal) {
+      console.log("SIGNAL CLIENT", signal);
+      peer.signal(signal.data);
+    });
+  },
+
+
+
+
+
+
   changeVisibility: function(value) {
     this.setState({visible: value});
   },

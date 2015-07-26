@@ -1,87 +1,87 @@
 <%= react_component("ChatRoom", @data.to_json, class: "component") %>
 
-<script>
-var guid = (function() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-               .toString(16)
-               .substring(1);
-  }
-  return function() {
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-           s4() + '-' + s4() + s4() + s4();
-  };
-})();
-
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-var mediaOptions = {
-  audio: true,
-  video: {
-    mandatory: {
-      minWidth: 1280,
-      minHeight: 720
-    }
-  }
-};
-
-$(function() {
-  var pusher = new Pusher('18cc5c3d4ea4757ca628');
-
-  var myChannel = pusher.subscribe('private-conversation.' + "<%= current_user.id.to_s %>");
-  var otherChannel = pusher.subscribe('private-conversation.' + "<%= @other_user.id.to_s %>");
-
-  var currentUser = {
-    name: "<%= current_user.username %>",
-    id: guid(),
-    stream: undefined
-  };
-
-  navigator.getUserMedia(mediaOptions, function(stream) {
-    currentUser.stream = stream;
-    var video = $('#localVideo')[0];
-    video.src = window.URL.createObjectURL(stream);
-
-    start();
-  }, function() {});
-
-  function start() {
-    var initiator = false;
-    var peer;
-    if ("<%= current_user.id %>" == "<%= @chat_room.creator_id %>") {
-      initiator = true;
-      var peer = new SimplePeer({initiator: true, stream: currentUser.stream, trickle: false});
-    } else {
-      var peer = new SimplePeer({initiator: false, stream: currentUser.stream, trickle: false});
-    }
-    console.log(peer, initiator);
-
-    peer.on('signal', function(data) {
-      console.log("SIGNAL", data);
-      otherChannel.trigger('client-signal', {
-        data: data
-      });
-    });
-
-    peer.on('stream', function(stream) {
-      console.log("stream", stream);
-      var video = $('#remoteVideoSmall')[0];
-      video.src = window.URL.createObjectURL(stream);
-      $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
-    });
-
-    peer.on('close', function() {
-      // console.log("CLOSE");
-    });
-
-    myChannel.bind('client-signal', function(signal) {
-      console.log("SIGNAL", signal);
-      peer.signal(signal.data)
-    });
-
-    var speech = hark(currentUser.stream);
-    // console.log(speech);
-  };
-});
-
-</script>
+// <script>
+// var guid = (function() {
+//   function s4() {
+//     return Math.floor((1 + Math.random()) * 0x10000)
+//                .toString(16)
+//                .substring(1);
+//   }
+//   return function() {
+//     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+//            s4() + '-' + s4() + s4() + s4();
+//   };
+// })();
+//
+// navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+//
+// var mediaOptions = {
+//   audio: true,
+//   video: {
+//     mandatory: {
+//       minWidth: 1280,
+//       minHeight: 720
+//     }
+//   }
+// };
+//
+// $(function() {
+//   var pusher = new Pusher('18cc5c3d4ea4757ca628');
+//
+//   var myChannel = pusher.subscribe('private-conversation.' + "<%= current_user.id.to_s %>");
+//   var otherChannel = pusher.subscribe('private-conversation.' + "<%= @other_user.id.to_s %>");
+//
+//   var currentUser = {
+//     name: "<%= current_user.username %>",
+//     id: guid(),
+//     stream: undefined
+//   };
+//
+//   navigator.getUserMedia(mediaOptions, function(stream) {
+//     currentUser.stream = stream;
+//     var video = $('#localVideo')[0];
+//     video.src = window.URL.createObjectURL(stream);
+//
+//     start();
+//   }, function() {});
+//
+//   function start() {
+//     var initiator = false;
+//     var peer;
+//
+//     if ("<%= current_user.id %>" == "<%= @chat_room.creator_id %>") {
+//       initiator = true;
+//       var peer = new SimplePeer({initiator: true, stream: currentUser.stream, trickle: false});
+//       console.log("PEER 1", peer);
+//     } else {
+//       var peer = new SimplePeer({initiator: false, stream: currentUser.stream, trickle: false});
+//     }
+//
+//     peer.on('signal', function(data) {
+//       console.log("SIGNAL", data);
+//       otherChannel.trigger('client-signal', {
+//         data: data
+//       });
+//     });
+//
+//     peer.on('error', function (err) { console.log('error', err) })
+//
+//     peer.on('stream', function(stream) {
+//       console.log("stream", stream);
+//       var video = $('#remoteVideoSmall')[0];
+//       video.src = window.URL.createObjectURL(stream);
+//       $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+//     });
+//
+//     peer.on('close', function() {
+//       console.log("CLOSE");
+//     });
+//
+//     myChannel.bind('client-signal', function(signal) {
+//       console.log("SIGNAL CLIENT", signal);
+//       peer.signal(signal.data);
+//     });
+//   };
+// });
+//
+// </script>
