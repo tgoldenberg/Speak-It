@@ -40,5 +40,11 @@ zh-CN:
     available: "可用的"
     recent: "最近"
   chat_room:
+    initial_guidelines_title: "初步准则"
+    initial_guidelines_description: "您将获得2分钟每个会话。当你的母语，你都恳请不要提供指导，但简单地进行了交谈。作为一名学生，你跟它去尝试你最好的。如果必要的话，你可以使用的话，从你的母语，但不会得到充分的信用，如果你这样做。母语被要求基于语音，词汇和清晰度来判断学生的口语技能。"
+    second_chat_title: "准则第二聊天"
+    second_chat_description: "与第一次谈话好了，好样的！现在你的角色将切换。学生将成为母语，并且母语将成为学生。准备好接下来的谈话主题，好运！"
+    final_instructions_title: "包起来"
+    final_instructions_description: "伟大的工作，大家好！现在，你已经练习你的语言能力的机会，一定要感谢对方帮忙在你的努力去学习一门新语言。从这里你可以填写你的伴侣是如何做的评估。您也可以表明，他们可能会提高他们的流畅性方式。确保你做出具体的，可操作的，善良的反馈。保重！"
   topic:
   notification:
