@@ -140,19 +140,19 @@ var ChatRoom = React.createClass({
     var content = "";
     switch(this.state.turn) {
       case 0:
-        content = <InfoPanel chat={this.props.first_chat} first={true} changeTurn={this.changeTurn} />;
+        content = <InfoPanel text={this.props.initial_guidelines} chat={this.props.first_chat} first={true} changeTurn={this.changeTurn} />;
         break;
       case 1:
         content = <VideoChat makeVisible={this.changeVisibility} chat={this.props.first_chat} changeTurn={this.changeTurn} />;
         break;
       case 2:
-        content = <InfoPanel chat={this.props.second_chat} changeTurn={this.changeTurn} />;
+        content = <InfoPanel chat={this.props.second_chat} text={this.props.second_chat_guidelines} changeTurn={this.changeTurn} />;
         break;
       case 3:
         content = <VideoChat makeVisible={this.changeVisibility} chat={this.props.second_chat} changeTurn={this.changeTurn} />;
         break;
       case 4:
-        content = <FinalInstructions chatRoom={this.props.chat_room} changeTurn={this.changeTurn} />;
+        content = <FinalInstructions text={this.props.final_instructions} chatRoom={this.props.chat_room} changeTurn={this.changeTurn} />;
         break;
       default:
         content = <GameStats chatRoom={this.props}/>;
