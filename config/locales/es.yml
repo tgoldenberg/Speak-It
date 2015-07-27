@@ -38,3 +38,10 @@ es:
     country: "país"
     available: "disponible"
     recent: "reciente"
+  chat_room:
+    initial_guidelines_title: "Directrices iniciales"
+    initial_guidelines_description: "Se le dará 2 minutos para cada conversación . Cuando usted es el hablante nativo se ruega no proporcionar la instrucción, sino simplemente llevar una conversación. Como estudiante, usted simplemente le pide que lo mejor de ti . Usted puede utilizar las palabras de su lengua materna si es necesario , pero no recibirá el crédito completo si lo hace . Se les pide a los hablantes nativos de juzgar habilidades de hablar de los estudiantes sobre la base de la pronunciación, vocabulario, y la claridad ."
+    second_chat_title: "Directrices para Segundo de Chat"
+    second_chat_description: "Muy bien, buen trabajo con la primera conversación! Ahora sus papeles cambiarán . El alumno se convertirá en la lengua materna y la lengua materna se convertirá en el estudiante . ¡Prepárate para el próximo tema de conversación , y lo mejor de las suertes!"
+    final_instructions_title: "terminando"
+    final_instructions_description: "Buen trabajo a todos ! Ahora que usted ha tenido la oportunidad de practicar sus habilidades de lenguaje , asegúrese de que gracias entre sí para ayudar en su esfuerzo por aprender un nuevo idioma. Desde aquí se puede completar la evaluación de cómo hizo su pareja. También puede sugerir formas que podrían mejorar su fluidez . Asegúrate de hacer comentarios específicos , accionable y amable. Cuídate!"
