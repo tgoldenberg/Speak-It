@@ -4,13 +4,13 @@
   </div>
   <div id="profile-level-container" class="col-md-6">
     <div class = "row">
-      <p> Your Level </p>
+      <p> <%= t('logged_in.level') %></p>
       <div class="progress">
         <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @user.levelpercent%>">
           <%= @user.level.value %>
         </div>
       </div>
-      <p> Your Points </p>
+      <p> <%= t('logged_in.points') %> </p>
       <div class="progress">
         <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style= "width: <%= @user.points %>%" > <%= @user.points %>
         </div>
@@ -19,13 +19,13 @@
   </div>
   <div class="col-md-4">
     <div class="languages-holder">
-      <h4>My Mother Tongue</h4>
+      <h4> <%= t('logged_in.mother_tongue') %></h4>
       <div class="native-language-holder">
         <p><%= @user.native_language.name %></p>
         <img id="native-language-flag" class="language-flag" src="<%= @user.native_language.img_url %>"/>
       </div>
       <hr/>
-      <h4>My Study Language</h4>
+      <h4> <%= t('logged_in.study_language') %></h4>
       <div class="study-language-holder">
         <p><%= @user.study_language.name %></p>
         <img id="study-language-flag" class="language-flag" src="<%= @user.study_language.img_url %>">

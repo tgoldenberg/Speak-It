@@ -8,14 +8,14 @@
 
     <div id="speak-it-info" class="col-md-8">
       <h1 id="proxima-nova">SpeakIt <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"</span></h1>
-      <p>Practice language skills by talking with native speakers</p>
-      <%= link_to 'Sign Up', new_user_path, class: 'btn btn-lg btn-primary' %>
+      <p> <%= t('landing.title') %></p>
+      <%= link_to t('landing.signup'), new_user_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
   <div class="row" id="panel-2-holder">
     <div class="col-md-7" id="site-information">
-      <h1>Language is the key that unlocks a new culture</h1>
-      <p>A language is a living entity, not something to be learned from just learning grammar. Improve true fluency and help others do so as well through peer-to-peer learning.</p>
+      <h1> <%= t('landing.subtitle') %></h1>
+      <p> <%= t('landing.subtitle_description') %></p>
     </div>
     <div class="col-md-5 hidden-sm hidden-xs" id="logo-container">
       <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png" class="message-logo first" alt="">
@@ -26,11 +26,11 @@
     </div>
   </div>
   <div id="interact" class="row">
-    <h1 id="culture-quote">Our system pairs learners for shared collaboration</h1>
-    <p>Conversation topics are selected according to skill level. Increase your selection of conversation topics by improving your ranking</p>
+    <h1 id="culture-quote"> <%= t('landing.second_subtitle') %></h1>
+    <p> <%= t('landing.second_description') %></p>
   </div>
   <div id="meet-people" class="row">
-    <h2 class="meet-people-title"> Meet people around the world<h2>
+    <h2 class="meet-people-title"> <%= t('landing.third_title') %><h2>
     <div class="col-sm-4" id="person-1">
     </div>
     <div class="col-sm-4" id="person-2">

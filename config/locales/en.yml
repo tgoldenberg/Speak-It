@@ -36,8 +36,27 @@ en:
     second_description: "Conversation topics are selected according to skill level. Increase your selection of conversation topics by improving your ranking."
     third_title: "Meet people around the world"
   signup:
+    user: "username"
+    email: "email"
+    password: "password"
+    native_language: "Native language"
+    study_language: "Study language"
+    english: "English"
+    spanish: "Spanish"
+    country: "Country"
+    avatar: "Avatar"
+    avatar_description: "Your Gravatar Email Address"
+    submit: "Submit"
   feedback:
   logged_in:
+    level: "Your Level"
+    points: "Your Points"
+    mother_tongue: "My Mother Tongue"
+    study_language: "My Study Language"
+    avatar: "Avatar"
+    country: "Country"
+    available: "Available"
+    recent: "Recent"
   chat_room:
   topic:
   notification:

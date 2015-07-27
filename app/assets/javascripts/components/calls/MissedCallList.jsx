@@ -3,8 +3,8 @@ var MissedCallList = React.createClass({
     var content = <p>No notifications</p>;
 
     if (this.props.missedCalls.length > 0) {
-      content = this.props.missedCalls.map(function(missedCall) {
-        return <p>Missed call from {missedCall.sender.username.toUpperCase()} <br/><span className="notification-date" >at {new Date(missedCall.call.created_at).toLocaleString()}</span></p>
+      content = this.props.missedCalls.map(function(missedCall, idx) {
+        return <p key={idx}>Missed call from {missedCall.sender.username.toUpperCase()} <br/><span className="notification-date" >at {new Date(missedCall.call.created_at).toLocaleString()}</span></p>
       });
     }
 
