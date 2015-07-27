@@ -3,10 +3,12 @@ es:
   languages:
     en: "Ingles"
     es: "Espanol"
+    mn: "Mandarin"
   landing:
     user: "nombre de usuario"
     password: "contraseña"
     login: "iniciar sesión"
+    logout: "cancelar sesión"
     title: "Habilidades lingüísticas Práctica de hablar con hablantes nativos"
     signup: "contratar"
     subtitle: "El lenguaje es la llave que abre una nueva cultura."
