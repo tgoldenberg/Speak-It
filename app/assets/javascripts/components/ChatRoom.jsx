@@ -5,12 +5,11 @@ var ChatRoom = React.createClass({
       completed: this.props.chat_room.completed,
       visible: false,
       currentChat: this.props.first_chat,
-      sendRTCSignal: false,
+      initiator: false,
       currentUserRTC: {},
       pusherAPI: new Pusher('18cc5c3d4ea4757ca628'),
       currentUserChannel: "",
       otherUserChannel: "",
-      presenceChannel: ""
     }
   },
   componentDidMount: function() {
@@ -34,7 +33,6 @@ var ChatRoom = React.createClass({
       stream: undefined },
       currentUserChannel:  this.state.pusherAPI.subscribe('private-conversation.' + this.props.current_user.user.id),
       otherUserChannel: this.state.pusherAPI.subscribe('private-conversation.' + this.props.other_user.user.id),
-      presenceChannel: this.state.pusherAPI.subscribe('presence-chat')
     });
 
     // get local media
@@ -47,19 +45,36 @@ var ChatRoom = React.createClass({
   },
 
   startRTCConnection: function() {
-
     // set initiator based on role in chat room
-    var initiator = false;
-    var peer;
 
-    if (this.props.current_user.user.id == this.props.chat_room.creator_id) {
-      initiator = true;
-      var peer = new SimplePeer({initiator: false, stream: this.state.currentUserRTC.stream, trickle: false});
-      console.log("PEER 1", peer);
-    } else {
-      var peer = new SimplePeer({initiator: true, stream: this.state.currentUserRTC.stream, trickle: false});
-      console.log("PEER 2", peer);
-    }
+    var peer = new SimplePeer({initiator: this.state.initiator, stream: this.state.currentUserRTC.stream, trickle: false});
+    console.log("PEER 1", peer);
+
+    this.state.otherUserChannel.trigger('client-initiator', {
+      data: {initiator: false}
+    });
+
+    this.state.currentUserChannel.bind('client-initiator', function(data) {
+      peer = new SimplePeer({initiator: true, stream: this.state.currentUserRTC.stream, trickle: false });
+      console.log("NEW PEER", peer);
+      peer.on('signal', function(data) {
+        console.log("SIGNAL", data);
+        this.state.otherUserChannel.trigger('client-signal', {
+          data: data
+        });
+      }.bind(this));
+
+      // handle error messaging
+      peer.on('error', function (err) { console.log('error', err) })
+
+      // once stream has successfully been communicated
+      peer.on('stream', function(stream) {
+        console.log("stream", stream);
+        var video = $('#remoteVideoSmall')[0];
+        video.src = window.URL.createObjectURL(stream);
+        $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+      });
+    }.bind(this));
 
     // when peer receives an offer
     peer.on('signal', function(data) {
