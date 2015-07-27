@@ -12,7 +12,7 @@
         <button type="button" class="btn btn-default btn-lg missed">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         </button>
-        <li id='logout'> <%= link_to 'Logout', logout_path, method: 'delete' %> </li>
+        <li id='logout'> <%= link_to t('landing.logout'), logout_path, method: 'delete' %> </li>
       <% end %>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -25,6 +25,9 @@
           </li>
           <li>
             <%= link_to t('menu.languages.es'), change_locale_path(:es) %>
+          </li>
+          <li>
+            <%= link_to t('menu.languages.mn'), change_locale_path('zh-CN') %>
           </li>
         </ul>
       </li>
