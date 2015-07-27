@@ -18,6 +18,18 @@ class ChatRoom < ActiveRecord::Base
           country_image: ActionController::Base.helpers.asset_path(data_hash[:current_user].try(:country).try(:image_url)),
           language: data_hash[:current_user].try(:native_language)
         },
+        initial_guidelines: {
+          title: I18n.t('chat_room.initial_guidelines_title'),
+          description: I18n.t('chat_room.initial_guidelines_description')
+        },
+        second_chat_guidelines: {
+          title: I18n.t('chat_room.second_chat_title'),
+          description: I18n.t('chat_room.second_chat_description')
+        },
+        final_instructions: {
+          title: I18n.t('chat_room.final_instructions_title'),
+          description: I18n.t('chat_room.final_instructions_description')
+        },
         other_user: {
           user: data_hash[:other_user],
           country: data_hash[:other_user].country,
