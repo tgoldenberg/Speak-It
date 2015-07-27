@@ -107,11 +107,6 @@ var ChatRoom = React.createClass({
     });
   },
 
-
-
-
-
-
   changeVisibility: function(value) {
     this.setState({visible: value});
   },
