@@ -3,6 +3,8 @@ zh-CN:
     en: "英语"
     es: "西班牙语"
     mn: "中国"
+    English: "英语"
+    Spanish: "西班牙语"
   landing:
     user: "用户名"
     password: "密码"

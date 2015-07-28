@@ -4,6 +4,8 @@ es:
     en: "Ingles"
     es: "Espanol"
     mn: "Mandarin"
+    English: "Ingles"
+    Spanish: "Espanol"
   landing:
     user: "nombre de usuario"
     password: "contraseña"
