@@ -60,6 +60,7 @@ zh-CN:
     country: "国家"
     avatar: "头像"
     avatar_grabber: "您的Gravatar电子邮件地址"
+    avatar_description: "您的Gravatar电子邮件地址"
     submit: "提交"
   feedback:
   logged_in:
@@ -128,3 +129,5 @@ zh-CN:
     missed_message: "未接来电。"
     new_call: "从来电 "
     cancelled_call: "通话结束。"
+  topic:
+  notification:

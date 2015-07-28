@@ -36,7 +36,6 @@ en:
     declined_invitation: "Declined"
     missed_invitation: "Missed"
     invitation_cancel: "Call Cancelled"
-
   landing:
     user: "username"
     password: "password"
