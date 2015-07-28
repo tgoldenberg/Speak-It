@@ -38,7 +38,7 @@ var Invitation = React.createClass({
       <div>
 
       <div className="call-wrapper">
-        <button onClick={this.toggleCall} className="btn btn-primary" id="init-chat-button">Chat with <b>{this.props.user.username}</b> to learn <b>{this.props.language.name}</b>{content}</button>
+        <button onClick={this.toggleCall} className="btn btn-primary" id="init-chat-button"><b>{this.props.button}</b>{content}</button>
       </div>
 
       </div>

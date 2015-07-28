@@ -58,6 +58,8 @@ es:
     country: "país"
     available: "disponible"
     recent: "reciente"
+    invitation_button_first: "Habla con"
+    invitation_button_second: "para estudiar"
   chat_room:
     initial_guidelines_title: "Directrices iniciales"
     initial_guidelines_description: "Se le dará 2 minutos para cada conversación . Cuando usted es el hablante nativo se ruega no proporcionar la instrucción, sino simplemente llevar una conversación. Como estudiante, usted simplemente le pide que lo mejor de ti . Usted puede utilizar las palabras de su lengua materna si es necesario , pero no recibirá el crédito completo si lo hace . Se les pide a los hablantes nativos de juzgar habilidades de hablar de los estudiantes sobre la base de la pronunciación, vocabulario, y la claridad ."

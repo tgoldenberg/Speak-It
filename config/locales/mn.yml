@@ -59,6 +59,8 @@ zh-CN:
     country: "国家"
     available: "可用的"
     recent: "最近"
+    invitation_button_first: "和聊天"
+    invitation_button_second: "学习"
   chat_room:
     initial_guidelines_title: "初步准则"
     initial_guidelines_description: "您将获得2分钟每个会话。当你的母语，你都恳请不要提供指导，但简单地进行了交谈。作为一名学生，你跟它去尝试你最好的。如果必要的话，你可以使用的话，从你的母语，但不会得到充分的信用，如果你这样做。母语被要求基于语音，词汇和清晰度来判断学生的口语技能。"
