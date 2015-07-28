@@ -97,6 +97,17 @@ en:
     topic: "Topic: "
     level: "Level: ("
     seconds: "Seconds left: "
+    stats_title: "ChatRoom Stats"
+    feedback_button: "Give Feedback"
+    stats_participants: "Participants: "
+    stats_first_chat: "First chat: "
+    stats_second_chat: "Second chat: "
+    stats_first_topic: "First chat topic: "
+    stats_second_topic: "Second chat topic: "
+    stats_rating: "Rating: "
+    stats_comments: "Comments: "
+    stats_first_feedback: "First Chat Feedback"
+    stats_second_feedback: "Second Chat Feedback"
   topic:
   level:
     value_1: "beginner"
