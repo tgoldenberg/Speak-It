@@ -27,7 +27,7 @@ zh-CN:
     mandarin: "中国"
     country: "国家"
     avatar: "头像"
-    avatar_description: "您的Gravatar电子邮件地址"
+    avatar_grabber: "您的Gravatar电子邮件地址"
     submit: "提交"
   feedback:
   logged_in:

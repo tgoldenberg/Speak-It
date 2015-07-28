@@ -27,7 +27,7 @@ es:
     spanish: "español"
     country: "país"
     avatar: "Avatar"
-    avatar_description: "su dirección de correo electrónico Gravatar"
+    avatar_grabber: "su dirección de correo electrónico Gravatar"
     submit: "enviar"
   logged_in:
     level: "su nivel"

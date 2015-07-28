@@ -27,7 +27,7 @@ en:
     spanish: "Spanish"
     country: "Country"
     avatar: "Avatar"
-    avatar_description: "Your Gravatar Email Address"
+    avatar_grabber: "Your Gravatar Email Address"
     submit: "Submit"
   feedback:
   logged_in:
