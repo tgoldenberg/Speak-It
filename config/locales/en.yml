@@ -91,5 +91,22 @@ en:
     second_chat_description: "Alright, good job with the first conversation! Now your roles will switch. The student will become the native speaker, and the native speaker will become the student. Get ready for the next conversation topic, and best of luck!"
     final_instructions_title: "Wrapping Up"
     final_instructions_description: "Great job everyone! Now that you've had the opportunity of practicing your language skills, make sure you thank each other for helping out in your effort to learn a new language. From here you can fill out the assessment on how your partner did. You can also suggest ways that they might improve their fluency. Make sure you make specific, actionable, and kind feedback. Take care!"
+    native_speaker: "Native Speaker: "
+    student: "Student: "
+    language: "Language: "
+    topic: "Topic: "
+    level: "Level: ("
+    seconds: "Seconds left: "
   topic:
+  level:
+    value_1: "beginner"
+    value_2: "intermediate beginner"
+    value_3: "advanced beginner"
+    value_4: "low intermediate"
+    value_5: "mid intermediate"
+    value_6: "advanced intermediate"
+    value_7: "low advanced"
+    value_8: "mid advanced"
+    value_9: "high advanced"
+    value_10: "expert"
   notification:

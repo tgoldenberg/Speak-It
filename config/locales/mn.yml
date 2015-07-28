@@ -80,6 +80,12 @@ zh-CN:
     second_chat_description: "与第一次谈话好了，好样的！现在你的角色将切换。学生将成为母语，并且母语将成为学生。准备好接下来的谈话主题，好运！"
     final_instructions_title: "包起来"
     final_instructions_description: "伟大的工作，大家好！现在，你已经练习你的语言能力的机会，一定要感谢对方帮忙在你的努力去学习一门新语言。从这里你可以填写你的伴侣是如何做的评估。您也可以表明，他们可能会提高他们的流畅性方式。确保你做出具体的，可操作的，善良的反馈。保重！"
+    native_speaker: "母语："
+    student: "学生："
+    language: "语言："
+    topic: "主题："
+    level: "级别：("
+    seconds: "左秒: "
   feedback:
     one_star: "一星"
     two_stars: "两位明星"
@@ -92,4 +98,15 @@ zh-CN:
     title: "信息反馈"
     button: "提交反馈"
   topic:
+  level:
+    value_1: "初学者"
+    value_2: "中间初学者"
+    value_3: "先进的初学者"
+    value_4: "中间低"
+    value_5: "中间中旬"
+    value_6: "高级中间体"
+    value_7: "先进的低"
+    value_8: "先进中旬"
+    value_9: "先进的高"
+    value_10: "专家"
   notification:

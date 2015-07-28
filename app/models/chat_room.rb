@@ -10,7 +10,10 @@ class ChatRoom < ActiveRecord::Base
   end
 
   def self.jsonify_data_for_reactjs(data_hash)
-    {chat_room: data_hash[:chat_room],
+       {chat_room: data_hash[:chat_room],
+        helper_text: {
+          seconds: I18n.t('chat_room.seconds')
+        },
         chats: data_hash[:chat_room].chats,
         current_user: {
           user: data_hash[:current_user],
@@ -42,7 +45,15 @@ class ChatRoom < ActiveRecord::Base
           native_speaker: data_hash[:first_chat].native_speaker,
           topic: data_hash[:first_chat].topic,
           language: data_hash[:first_chat].language,
-          level: data_hash[:first_chat].level
+          level: data_hash[:first_chat].level,
+          text: {
+            native_speaker: I18n.t('chat_room.native_speaker') + data_hash[:first_chat].native_speaker.username.titleize,
+            student: I18n.t('chat_room.student') + data_hash[:first_chat].student.username.titleize,
+            topic: I18n.t('chat_room.topic') + data_hash[:first_chat].topic.name,
+            language: I18n.t('chat_room.language') + I18n.t('languages.' + data_hash[:first_chat].language.name) + " ",
+            level: I18n.t('chat_room.level') + data_hash[:first_chat].level.value.to_s + ") " + I18n.t('level.value_' + data_hash[:first_chat].level.value.to_s),
+            seconds: I18n.t('chat_room.seconds')
+          }
         },
         second_chat: {
           chat: data_hash[:second_chat],
@@ -50,7 +61,15 @@ class ChatRoom < ActiveRecord::Base
           native_speaker: data_hash[:second_chat].native_speaker,
           topic: data_hash[:second_chat].topic,
           language: data_hash[:second_chat].language,
-          level: data_hash[:second_chat].level
+          level: data_hash[:second_chat].level,
+          text: {
+            native_speaker: I18n.t('chat_room.native_speaker') + data_hash[:second_chat].native_speaker.username.titleize,
+            student: I18n.t('chat_room.student') + data_hash[:second_chat].student.username.titleize,
+            topic: I18n.t('chat_room.topic') + data_hash[:second_chat].topic.name,
+            language: I18n.t('chat_room.language') + I18n.t('languages.' + data_hash[:second_chat].language.name) + " ",
+            level: I18n.t('chat_room.level') + data_hash[:second_chat].level.value.to_s + ") " + I18n.t('level.value_' + data_hash[:second_chat].level.value.to_s),
+            seconds: I18n.t('chat_room.seconds')
+          }
         }
       }
   end

@@ -14,7 +14,6 @@ var ChatRoom = React.createClass({
   },
   componentDidMount: function() {
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
     // set media options
     var mediaOptions = {
       audio: true,
@@ -25,7 +24,6 @@ var ChatRoom = React.createClass({
         }
       }
     };
-
     // set currentUser RTC and two channels
     this.setState({currentUserRTC: {
       name: this.props.current_user.user.username,
@@ -46,7 +44,6 @@ var ChatRoom = React.createClass({
 
   startRTCConnection: function() {
     // set initiator based on role in chat room
-
     var peer = new SimplePeer({initiator: this.state.initiator, stream: this.state.currentUserRTC.stream, trickle: false});
     console.log("PEER 1", peer);
 
@@ -171,6 +168,7 @@ var ChatRoom = React.createClass({
           otherUser={this.props.other_user}
           completed={this.state.completed}
           chatRoom={this.props.chat_room}
+          helperText={this.props.helper_text}
           turn={this.state.turn}
           />
       </div>

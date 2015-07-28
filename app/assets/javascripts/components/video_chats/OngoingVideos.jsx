@@ -22,7 +22,9 @@ var OngoingVideos = React.createClass({
           </div>
           <div className="button-holder col-sm-8">
             <Timer
+              chatRoom={this.props.chatRoom}
               turn={this.props.turn}
+              helperText={this.props.helperText}
               handleChange={this.handleChange}/>
           </div>
         </div>

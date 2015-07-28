@@ -12,6 +12,7 @@ var SmallVideos = React.createClass({
         otherUser={this.props.otherUser}
         turn={this.props.turn}
         chatRoom={this.props.chatRoom}
+        helperText={this.props.helperText}
         changeTurn={this.changeTurn} />;
     }
     return (
