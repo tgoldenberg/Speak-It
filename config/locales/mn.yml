@@ -121,3 +121,10 @@ zh-CN:
     value_9: "先进的高"
     value_10: "专家"
   notification:
+  calls:
+    calling: "调用"
+    declined_message: "呼叫下降。"
+    timed_out_message: "调用超时。"
+    missed_message: "未接来电。"
+    new_call: "从来电 "
+    cancelled_call: "通话结束。"

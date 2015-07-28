@@ -118,3 +118,10 @@ es:
     value_8: "mediados avanzado"
     value_9: "avanzado alto"
     value_10: "experto"
+  calls:
+    calling: "Calling"
+    declined_message: "Call declined."
+    timed_out_message: "Call timed out."
+    missed_message: "Missed call."
+    new_call: "Incoming call from "
+    cancelled_call: "Call ended."

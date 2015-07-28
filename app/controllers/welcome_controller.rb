@@ -9,6 +9,14 @@ class WelcomeController < ApplicationController
       @available_users = User.get_available_users(@user)
       @available_recent_users = User.find_recent_users(@available_users, @user)
       @unavailable_recent_users = User.find_recent_users(User.get_unavailable_users(@user), @user)
+      @helper_text = {
+        calling: I18n.t('calls.calling'),
+        declined_message: I18n.t('calls.declined_message'),
+        timed_out_message: I18n.t('calls.timed_out_message'),
+        missed_message: I18n.t('calls.missed_message'),
+        new_call: I18n.t('calls.new_call'),
+        cancelled_call: I18n.t('calls.cancelled_call')
+      }
   	else
 	  	@user = User.new
   	end

@@ -8,7 +8,7 @@ var Calling = React.createClass({
     this.props.hangUp();
     var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
-                      'Call ended</div></div>';
+                      this.props.helperText.cancelled_call + '</div></div>';
     $('.navbar').after(partial);
     removeFlash();
   },
@@ -18,7 +18,7 @@ var Calling = React.createClass({
     this.props.hangUp();
     var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
-                      'Call timed out</div></div>';
+                      this.props.helperText.timed_out_message + '</div></div>';
     $('.navbar').after(partial);
     removeFlash();
   },
@@ -37,7 +37,7 @@ var Calling = React.createClass({
   render: function() {
     return (
       <div className="call-box">
-        <p className="calling-info">Calling {this.props.user.username}...</p>
+        <p className="calling-info">{this.props.helperText.calling} {this.props.user.username}...</p>
         <img src={this.props.user.avatar_url} className="call-avatar pulse"/>
         <div className="call-timer-phone">
           <span onClick={this.handleClick} className="glyphicon glyphicon-earphone"></span>

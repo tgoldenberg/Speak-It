@@ -32,7 +32,7 @@ var Invitation = React.createClass({
   render: function() {
     var content;
     if (this.state.showCall) {
-      content = <Calling user={this.props.user} hangUp={this.callTimeout}/>
+      content = <Calling user={this.props.user} helperText={this.props.helper_text} hangUp={this.callTimeout}/>
     }
     return (
       <div>
