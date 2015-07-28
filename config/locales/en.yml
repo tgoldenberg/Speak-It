@@ -24,6 +24,19 @@ en:
     UnitedStates: "United States"
     Uruguay: "Uruguay"
     Venezuela: "Venezuela"
+  flash:
+    successful_login: "Successfully logged in."
+    failed_login: "Invalid Username or Password"
+    successful_logout: "Successfully logged out."
+    successful_signup: "Successfully registered."
+    failed_signup_first: "A user with that username or email already exists"
+    failed_signup_second: "A user with that username already exists."
+    failed_invitation: "Sorry, your invitation could not be processed."
+    successful_invitation: "Your invitation was successfully sent."
+    declined_invitation: "Declined"
+    missed_invitation: "Missed"
+    invitation_cancel: "Call Cancelled"
+
   landing:
     user: "username"
     password: "password"
@@ -50,6 +63,16 @@ en:
     avatar_grabber: "Your Gravatar Email Address"
     submit: "Submit"
   feedback:
+    one_star: "One Star"
+    two_stars: "Two Stars"
+    three_stars: "Three Stars"
+    question_one: "On a scale of 1-3 stars, how was the learner's pronunciation?"
+    question_two: "On a scale of 1-3 stars, how was the learner's vocabulary?"
+    question_three: "On a scale of 1-3 stars, how descriptive was the learner?"
+    comment_instructions: "Feel free to leave a comment for the learner. Remember to be kind, actionable, and specific in your feedback."
+    comment_placeholder: "Place your feedback here"
+    title: "Feedback"
+    button: "Submit Feedback"
   logged_in:
     level: "Your Level"
     points: "Your Points"

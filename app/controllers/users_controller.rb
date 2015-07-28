@@ -13,14 +13,14 @@ class UsersController < ApplicationController
       @user.level = Level.find_beginner_language(user_params[:study_language_id])
       if @user.save
         session[:user_id] = @user.id
-        flash[:notice] = ["Successfully registered."]
+        flash[:notice] = [I18n.t('flash.successful_signup')]
         redirect_to root_path
       else
-        flash[:alert] = ["A user with that username or email already exists"]
+        flash[:alert] = [I18n.t('flash.failed_signup_first')]
         redirect_to new_user_path
       end
     else
-      flash[:alert] = ["A user with that username already exists."]
+      flash[:alert] = [I18n.t('flash.failed_signup_second')]
       redirect_to new_user_path
     end
   end
