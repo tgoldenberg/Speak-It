@@ -7,12 +7,12 @@ var ChatRoom = React.createClass({
       currentChat: this.props.first_chat,
       initiator: false,
       currentUserRTC: {},
-      pusherAPI: new Pusher('18cc5c3d4ea4757ca628'),
       currentUserChannel: "",
       otherUserChannel: ""
     }
   },
   componentDidMount: function() {
+    console.log("Mounted");
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     // set media options
     var mediaOptions = {
@@ -24,13 +24,14 @@ var ChatRoom = React.createClass({
         }
       }
     };
+    var pusher = new Pusher('18cc5c3d4ea4757ca628');
     // set currentUser RTC and two channels
     this.setState({currentUserRTC: {
       name: this.props.current_user.user.username,
       id: guid(),
       stream: undefined },
-      currentUserChannel:  this.state.pusherAPI.subscribe('private-conversation.' + this.props.current_user.user.id),
-      otherUserChannel: this.state.pusherAPI.subscribe('private-conversation.' + this.props.other_user.user.id),
+      currentUserChannel:  pusher.subscribe('private-conversation.' + this.props.current_user.user.id),
+      otherUserChannel: pusher.subscribe('private-conversation.' + this.props.other_user.user.id),
     });
 
     // get local media

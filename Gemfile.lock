@@ -252,6 +252,7 @@ DEPENDENCIES
   faker
   figaro
   flog
+  i18n
   jasmine-rails
   jbuilder (~> 2.0)
   jquery-rails

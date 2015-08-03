@@ -14,6 +14,7 @@ gem 'figaro'
 gem 'pusher'
 gem 'react-rails'
 gem 'bourbon'
+gem 'i18n'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-simple-peer'
