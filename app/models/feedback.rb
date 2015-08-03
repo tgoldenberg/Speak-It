@@ -9,7 +9,7 @@ class Feedback < ActiveRecord::Base
   MAX_POINTS_FOR_LEVEL = 100
 
   def self.possible_ratings_for_select_list
-    [["One Star", 1], ["Two Stars", 2], ["Three Stars", 3]]
+    [[I18n.t('feedback.one_star'), 1], [I18n.t('feedback.two_stars'), 2], [I18n.t('feedback.three_stars'), 3]]
   end
 
   def self.adjust_level_points_for_user(feedback, user)

@@ -35,7 +35,7 @@ var Timer = React.createClass({
   render: function() {
     return (
       <div className="timer-wrapper">
-        <p className="timer-text">Seconds left:</p>
+        <p className="timer-text"> {this.props.helperText.seconds}</p>
         <div className="timer-holder">
           <span id="seconds-display">
             {this.state.secondsLeft}

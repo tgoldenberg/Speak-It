@@ -12,7 +12,7 @@
           <td> <img src= <%= user.avatar_url %> alt="avatar" class="user-avatar"></td>
           <td> <img src= <%= asset_path(user.country.image_url) %> alt="avatar" class="user-avatar"></td>
           <td class="call-holder" col-span="3">
-            <%= react_component("Invitation", {user: user, currentUser: current_user, language: user.native_language}.to_json, class: "invitation-form-holder") %>
+            <%= react_component("Invitation", {user: user, currentUser: current_user, helper_text: @helper_text, language: user.native_language, button: t('logged_in.invitation_button_first') + " " + user.username + " " + t('logged_in.invitation_button_second') + " " + t('languages.' + user.native_language.name)}.to_json, class: "invitation-form-holder") %>
           </td>
         </tr>
       <% end %>
@@ -35,7 +35,7 @@
           <td> <img src= <%= asset_path(user.country.image_url) %> alt="avatar" class="user-avatar"></td>
           <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
           <td class="call-holder" col-span="2">
-            <%= react_component("Invitation", {user: user, currentUser: current_user, language: user.native_language}.to_json, class: "invitation-form-holder") %>
+            <%= react_component("Invitation", {user: user, currentUser: current_user, helper_text: @helper_text, language: user.native_language, button: t('logged_in.invitation_button_first') + " " + user.username + " " + t('logged_in.invitation_button_second') + " " + t('languages.' + user.native_language.name)}.to_json, class: "invitation-form-holder") %>
           </td>
         </tr>
       <% end %>
@@ -45,7 +45,7 @@
           <td> <img src= <%= asset_path(user.country.image_url) %> alt="avatar" class="user-avatar"></td>
           <td class="available-cell"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></td>
           <td class="call-holder" col-span="3">
-            <%= react_component("Invitation", {user: user, currentUser: current_user, language: user.native_language}.to_json, class: "invitation-form-holder") %>
+            <%= react_component("Invitation", {user: user, currentUser: current_user, helper_text: @helper_text, language: user.native_language, button: t('logged_in.invitation_button_first') + " " + user.username + " " + t('logged_in.invitation_button_second') + " " + t('languages.' + user.native_language.name)}.to_json, class: "invitation-form-holder") %>
           </td>
         </tr>
       <% end %>

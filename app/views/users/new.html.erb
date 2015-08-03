@@ -58,7 +58,7 @@
       <div class="form-group row">
         <div class="non-select">
           <%= f.label :avatar_url, value: t('signup.avatar') %>
-          <%= react_component("AvatarGrabber") %>
+          <%= react_component("AvatarGrabber", {text: t('signup.avatar_grabber')}.to_json) %>
         </div>
       </div>
       <%= f.hidden_field :avatar_url, value: "https://i1.wp.com/design.atlassian.com/1.4/images/avatars/default-user/192/user-avatar-blue-96%402x.png?ssl=1", id: "hidden-avatar-field" %>

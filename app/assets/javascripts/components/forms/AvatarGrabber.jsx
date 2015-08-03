@@ -14,7 +14,7 @@ var AvatarGrabber = React.createClass({
   render: function() {
     return (
       <div className="container">
-        <input onChange={this.handleChange} value={this.state.text} type="text" placeholder="Your Gravatar Email Address" id="select-box" className="form-control col-xs-6"/>
+        <input onChange={this.handleChange} value={this.state.text} type="text" placeholder={this.props.text} id="select-box" className="form-control col-xs-6"/>
         <img src={this.state.url} className="image-box col-xs-6" id="avatar-image"></img>
       </div>
     );

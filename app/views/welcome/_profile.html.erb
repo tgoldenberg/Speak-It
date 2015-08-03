@@ -1,6 +1,6 @@
 <div class="row" id="logged-in-row">
   <div id= "avatar-container" class="col-md-2">
-  	<span><img src= <%= @user.avatar_url %> alt="profile_pic" class="avatar-image"><h2><%= @user.username.titleize %></h2> <div><img src="<%= asset_path(@user.country.image_url) %>" alt="flag" id="language-flag" /></div> <%= @user.country.name %></span>
+  	<span><img src= <%= @user.avatar_url %> alt="profile_pic" class="avatar-image"><h2><%= @user.username.titleize %></h2> <div><img src="<%= asset_path(@user.country.image_url) %>" alt="flag" id="language-flag" /></div> <%= t('countries.' + @user.country.name.split(" ").join("")) %></span>
   </div>
   <div id="profile-level-container" class="col-md-6">
     <div class = "row">
@@ -21,13 +21,13 @@
     <div class="languages-holder">
       <h4> <%= t('logged_in.mother_tongue') %></h4>
       <div class="native-language-holder">
-        <p><%= @user.native_language.name %></p>
+        <p><%= t('languages.' + @user.native_language.name) %></p>
         <img id="native-language-flag" class="language-flag" src="<%= @user.native_language.img_url %>"/>
       </div>
       <hr/>
       <h4> <%= t('logged_in.study_language') %></h4>
       <div class="study-language-holder">
-        <p><%= @user.study_language.name %></p>
+        <p><%= t('languages.' + @user.study_language.name) %></p>
         <img id="study-language-flag" class="language-flag" src="<%= @user.study_language.img_url %>">
       </div>
     </div>

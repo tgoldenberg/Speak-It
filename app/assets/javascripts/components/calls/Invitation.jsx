@@ -32,13 +32,13 @@ var Invitation = React.createClass({
   render: function() {
     var content;
     if (this.state.showCall) {
-      content = <Calling user={this.props.user} hangUp={this.callTimeout}/>
+      content = <Calling user={this.props.user} helperText={this.props.helper_text} hangUp={this.callTimeout}/>
     }
     return (
       <div>
 
       <div className="call-wrapper">
-        <button onClick={this.toggleCall} className="btn btn-primary" id="init-chat-button">Chat with <b>{this.props.user.username}</b> to learn <b>{this.props.language.name}</b>{content}</button>
+        <button onClick={this.toggleCall} className="btn btn-primary" id="init-chat-button"><b>{this.props.button}</b>{content}</button>
       </div>
 
       </div>

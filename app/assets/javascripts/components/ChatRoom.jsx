@@ -14,7 +14,6 @@ var ChatRoom = React.createClass({
   },
   componentDidMount: function() {
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
     // set media options
     var mediaOptions = {
       audio: true,
@@ -25,7 +24,6 @@ var ChatRoom = React.createClass({
         }
       }
     };
-
     // set currentUser RTC and two channels
     this.setState({currentUserRTC: {
       name: this.props.current_user.user.username,
@@ -46,7 +44,6 @@ var ChatRoom = React.createClass({
 
   startRTCConnection: function() {
     // set initiator based on role in chat room
-
     var peer = new SimplePeer({initiator: this.state.initiator, stream: this.state.currentUserRTC.stream, trickle: false});
     console.log("PEER 1", peer);
 
@@ -107,11 +104,6 @@ var ChatRoom = React.createClass({
     });
   },
 
-
-
-
-
-
   changeVisibility: function(value) {
     this.setState({visible: value});
   },
@@ -145,19 +137,19 @@ var ChatRoom = React.createClass({
     var content = "";
     switch(this.state.turn) {
       case 0:
-        content = <InfoPanel chat={this.props.first_chat} first={true} changeTurn={this.changeTurn} />;
+        content = <InfoPanel text={this.props.initial_guidelines} chat={this.props.first_chat} first={true} changeTurn={this.changeTurn} />;
         break;
       case 1:
         content = <VideoChat makeVisible={this.changeVisibility} chat={this.props.first_chat} changeTurn={this.changeTurn} />;
         break;
       case 2:
-        content = <InfoPanel chat={this.props.second_chat} changeTurn={this.changeTurn} />;
+        content = <InfoPanel chat={this.props.second_chat} text={this.props.second_chat_guidelines} changeTurn={this.changeTurn} />;
         break;
       case 3:
         content = <VideoChat makeVisible={this.changeVisibility} chat={this.props.second_chat} changeTurn={this.changeTurn} />;
         break;
       case 4:
-        content = <FinalInstructions chatRoom={this.props.chat_room} changeTurn={this.changeTurn} />;
+        content = <FinalInstructions text={this.props.final_instructions} chatRoom={this.props.chat_room} changeTurn={this.changeTurn} />;
         break;
       default:
         content = <GameStats chatRoom={this.props}/>;
@@ -176,6 +168,7 @@ var ChatRoom = React.createClass({
           otherUser={this.props.other_user}
           completed={this.state.completed}
           chatRoom={this.props.chat_room}
+          helperText={this.props.helper_text}
           turn={this.state.turn}
           />
       </div>
