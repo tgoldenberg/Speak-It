@@ -9,7 +9,7 @@ var ChatRoom = React.createClass({
       currentUserRTC: {},
       pusherAPI: new Pusher('18cc5c3d4ea4757ca628'),
       currentUserChannel: "",
-      otherUserChannel: "",
+      otherUserChannel: ""
     }
   },
   componentDidMount: function() {
