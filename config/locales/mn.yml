@@ -5,6 +5,7 @@ zh-CN:
     mn: "中国"
     English: "英语"
     Spanish: "西班牙语"
+    Mandarin: "中国"
   countries:
     Argentina: "阿根廷"
     Canada: "加拿大"
@@ -23,6 +24,9 @@ zh-CN:
     UnitedStates: "美国"
     Uruguay: "乌拉圭"
     Venezuela: "委内瑞拉"
+    China: "中国"
+    Malaysia: "马来西亚"
+    Taiwan: "台湾"
   flash:
     successful_login: "成功登录。"
     failed_login: "无效的用户名或密码"

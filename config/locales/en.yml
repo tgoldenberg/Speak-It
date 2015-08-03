@@ -6,6 +6,7 @@ en:
     mn: "Mandarin"
     English: "English"
     Spanish: "Spanish"
+    Mandarin: "Mandarin"
   countries:
     Argentina: "Argentina"
     Canada: "Canada"
@@ -24,6 +25,9 @@ en:
     UnitedStates: "United States"
     Uruguay: "Uruguay"
     Venezuela: "Venezuela"
+    China: "China"
+    Malaysia: "Malaysia"
+    Taiwan: "Taiwan"
   flash:
     successful_login: "Successfully logged in."
     failed_login: "Invalid Username or Password"
