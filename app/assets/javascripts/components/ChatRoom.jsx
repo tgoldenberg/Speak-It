@@ -45,6 +45,7 @@ var ChatRoom = React.createClass({
   },
 
   startRTCConnection: function() {
+    console.log(this.state);
     console.log("start RTC Connection");
     // set initiator based on role in chat room
     var peer = new SimplePeer({initiator: this.state.initiator, stream: this.state.currentUserRTC.stream, trickle: false});
