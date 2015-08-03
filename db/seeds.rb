@@ -2,7 +2,9 @@ require 'faker'
 
 LANGUAGES = [
             {name: "English", code: "en", img_url: "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg"},
-            {name: "Spanish", code: "es", img_url: "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png"}]
+            {name: "Spanish", code: "es", img_url: "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png"},
+            {name: "Mandarin", code: "mn", img_url: "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/chinese.png"}
+          ]
 
 LEVELS = [
   {name: "beginner", value: 1},
@@ -114,7 +116,10 @@ COUNTRIES = [
   {name: "Guatemala", image_url: "guatemalan-flag-medium.png"},
   {name: "Panama", image_url: "panamanian-flag-medium.png"},
   {name: "Chile", image_url: "chilean-flag-medium.png"},
-  {name: "Dominican Republic", image_url: "dominican-republic-flag-medium.png"}
+  {name: "Dominican Republic", image_url: "dominican-republic-flag-medium.png"},
+  {name: "China", image_url: "chinese-flag-medium.png"},
+  {name: "Taiwan", image_url: "taiwan-flag-medium.jpg"},
+  {name: "Malaysia", image_url: "malaysia-flag-medium.png"}
 ]
 
 TOPICS = [
