@@ -9,6 +9,7 @@ var NotificationsHolder = React.createClass({
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
                       this.props.helper_text.declined + '</div></div>';
     $('.navbar').after(partial);
+    removeGradientPulse();
     removeFlash();
   },
   callTimeout: function(invitation) {
@@ -16,7 +17,7 @@ var NotificationsHolder = React.createClass({
     var missedCalls = this.state.missedCalls;
     var callObject = {call: invitation.invitation, sender: invitation.sender}
     this.setState({activeInvitations: [], missedCalls: [callObject]});
-    console.log(this.state);
+    removeGradientPulse();
     var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
                       this.props.helper_text.time_out + '</div></div>';

@@ -11,9 +11,7 @@ var removeFlash = function() {
 };
 
 var removeGradientPulse = function() {
-  $('.notifications').on('click', function(e) {
-    $('.notifications').removeClass('gradient-pulse');
-  });
+  $('.notifications').removeClass('gradient-pulse');
 }
 
 var createStars = function(e) {

@@ -65,7 +65,7 @@ var IncomingCall = React.createClass({
   render: function() {
     return (
       <div className="call-box">
-        <p className="calling-info">Incoming call from {this.props.invitation.sender.username}...</p>
+        <p className="calling-info">{this.props.helperText.missed} {this.props.invitation.sender.username}...</p>
         <img src={this.props.invitation.sender.avatar_url} className="call-avatar pulse"/>
         <div className="call-timer-phone">
           <form method="post" action="/chat_rooms" id="create_chat_room">
