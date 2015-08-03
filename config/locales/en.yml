@@ -76,6 +76,8 @@ en:
     comment_placeholder: "Place your feedback here"
     title: "Feedback"
     button: "Submit Feedback"
+    success: "Successfully sent feedback."
+    fail: "Feedback could not be sent."
   logged_in:
     level: "Your Level"
     points: "Your Points"
@@ -133,6 +135,3 @@ en:
     incoming_call: "Incoming call from "
     no_active: "No active calls"
     no_missed: "No missed calls"
-  feedback:
-    success: "Successfully sent feedback."
-    fail: "Feedback could not be sent."

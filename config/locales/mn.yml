@@ -113,6 +113,8 @@ zh-CN:
     comment_placeholder: "这里将您的意见"
     title: "信息反馈"
     button: "提交反馈"
+    success: "成功发送反馈。"
+    fail: "反馈无法发送。"
   topic:
   level:
     value_1: "初学者"
@@ -136,6 +138,3 @@ zh-CN:
     no_active: "没有有效呼叫"
     no_missed: "没有未接来电"
   topic:
-  feedback:
-    success: "成功发送反馈。"
-    fail: "反馈无法发送。"

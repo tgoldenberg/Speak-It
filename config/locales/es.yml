@@ -111,6 +111,8 @@ es:
     comment_placeholder: "Coloque aquí sus comentarios"
     title: "Retroalimentación"
     button: "Enviar Comentarios"
+    success: "Successfully sent feedback."
+    fail: "Feedback could not be sent."
   level:
     value_1: "principiante"
     value_2: "Principiante Intermedio"
@@ -132,6 +134,3 @@ es:
     incoming_call: "Incoming call from "
     no_active: "No active calls"
     no_missed: "No missed calls"
-feedback:
-  success: "Successfully sent feedback."
-  fail: "Feedback could not be sent."
