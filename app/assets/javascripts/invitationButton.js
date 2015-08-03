@@ -59,5 +59,6 @@ var toggleNotifications = function() {
       });
     }
     $('#missed-call-list').toggleClass('hidden');
+    $('.call-box').removeClass('hidden');
   });
 };
