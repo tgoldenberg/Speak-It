@@ -128,3 +128,6 @@ es:
     incoming_call: "Incoming call from "
     no_active: "No active calls"
     no_missed: "No missed calls"
+feedback:
+  success: "Successfully sent feedback."
+  fail: "Feedback could not be sent."

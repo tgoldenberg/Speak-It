@@ -132,4 +132,6 @@ zh-CN:
     no_active: "没有有效呼叫"
     no_missed: "没有未接来电"
   topic:
-  notification:
+  feedback:
+    success: "成功发送反馈。"
+    fail: "反馈无法发送。"
