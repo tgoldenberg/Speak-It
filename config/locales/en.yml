@@ -119,7 +119,6 @@ en:
     value_8: "mid advanced"
     value_9: "high advanced"
     value_10: "expert"
-  notification:
   calls:
     calling: "Calling"
     declined_message: "Call declined."
@@ -127,3 +126,6 @@ en:
     missed_message: "Missed call."
     new_call: "Incoming call from "
     cancelled_call: "Call ended."
+    incoming_call: "Incoming call from "
+    no_active: "No active calls"
+    no_missed: "No missed calls"

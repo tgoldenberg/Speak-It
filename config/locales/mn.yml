@@ -121,7 +121,6 @@ zh-CN:
     value_8: "先进中旬"
     value_9: "先进的高"
     value_10: "专家"
-  notification:
   calls:
     calling: "调用"
     declined_message: "呼叫下降。"
@@ -129,5 +128,8 @@ zh-CN:
     missed_message: "未接来电。"
     new_call: "从来电 "
     cancelled_call: "通话结束。"
+    incoming_call: "从来电 "
+    no_active: "没有有效呼叫"
+    no_missed: "没有未接来电"
   topic:
   notification:

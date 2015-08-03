@@ -125,3 +125,6 @@ es:
     missed_message: "Missed call."
     new_call: "Incoming call from "
     cancelled_call: "Call ended."
+    incoming_call: "Incoming call from "
+    no_active: "No active calls"
+    no_missed: "No missed calls"
