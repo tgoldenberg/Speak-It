@@ -35,6 +35,7 @@ var ChatRoom = React.createClass({
 
     // get local media
     navigator.getUserMedia(mediaOptions, function(stream) {
+      console.log(this.state);
       this.state.currentUserRTC.stream = stream;
       var video = $('#localVideo')[0];
       video.src = window.URL.createObjectURL(stream);
@@ -43,6 +44,7 @@ var ChatRoom = React.createClass({
   },
 
   startRTCConnection: function() {
+    console.log("start RTC Connection");
     // set initiator based on role in chat room
     var peer = new SimplePeer({initiator: this.state.initiator, stream: this.state.currentUserRTC.stream, trickle: false});
     console.log("PEER 1", peer);
