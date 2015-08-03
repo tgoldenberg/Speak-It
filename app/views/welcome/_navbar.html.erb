@@ -35,5 +35,5 @@
   </div>
 </nav>
 <% if logged_in? %>
-  <%= react_component("NotificationsHolder", {currentUser: current_user, active_invitations: @active_invitations.map{|invitation| {invitation: invitation, sender: invitation.sender}}, missed_calls: @missed_calls.map{|call| {call: call, sender: call.sender}}}, class: "react-notifications-holder") %>
+  <%= react_component("NotificationsHolder", {currentUser: current_user, helper_text: notification_helper_text, active_invitations: @active_invitations.map{|invitation| {invitation: invitation, sender: invitation.sender}}, missed_calls: @missed_calls.map{|call| {call: call, sender: call.sender}}}, class: "react-notifications-holder") %>
 <% end %>

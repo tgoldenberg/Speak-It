@@ -22,7 +22,7 @@ var IncomingCall = React.createClass({
     $('.call-box').toggleClass('hidden');
     var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
                     '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
-                      'Missed Call</div></div>';
+                      this.props.helperText.missed + '</div></div>';
     $('.navbar').after(partial);
     removeFlash();
   },
@@ -65,7 +65,7 @@ var IncomingCall = React.createClass({
   render: function() {
     return (
       <div className="call-box">
-        <p className="calling-info">Incoming call from {this.props.invitation.sender.username}...</p>
+        <p className="calling-info">{this.props.helperText.missed} {this.props.invitation.sender.username}...</p>
         <img src={this.props.invitation.sender.avatar_url} className="call-avatar pulse"/>
         <div className="call-timer-phone">
           <form method="post" action="/chat_rooms" id="create_chat_room">
@@ -78,28 +78,3 @@ var IncomingCall = React.createClass({
     );
   }
 });
-
-
-// function for listening to a button click in order to delete an invitation
-// var deleteInvitation = function() {
-//   $('.delete_invitation').on('click', function(e) {
-//     var target = $(e.target);
-//     e.preventDefault();
-//     var invitationId = parseInt($(this).data('id'));
-//     // call to the invitations#destroy action
-    // $.ajax({
-    //   url: '/invitations',
-    //   method: 'delete',
-    //   dataType: 'json',
-    //   data: {invitation: {id: invitationId}}
-    // })
-    // .done(function(data) {
-    //   // hide the <li> tag with the buttons
-    //   target.parent().hide();
-    //   $('#notification-list').toggle();
-    // })
-    // .fail(function(err) {
-    //   console.log(err);
-    // });
-//   });
-// };

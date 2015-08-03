@@ -11,9 +11,7 @@ var removeFlash = function() {
 };
 
 var removeGradientPulse = function() {
-  $('.notifications').on('click', function(e) {
-    $('.notifications').removeClass('gradient-pulse');
-  });
+  $('.notifications').removeClass('gradient-pulse');
 }
 
 var createStars = function(e) {
@@ -30,7 +28,9 @@ var createStars = function(e) {
 
 var createFlag = function(e) {
   var images = ["https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg",
-                "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png"];
+                "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png",
+                "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/chinese.png"
+              ];
   console.log("GIVE ME A FLAG", e);
   var value = parseInt($(e)[0].value);
   $(e).next()[0].src = images[value-1];
@@ -59,5 +59,6 @@ var toggleNotifications = function() {
       });
     }
     $('#missed-call-list').toggleClass('hidden');
+    $('.call-box').removeClass('hidden');
   });
 };

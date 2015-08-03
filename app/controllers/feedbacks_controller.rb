@@ -14,10 +14,10 @@ class FeedbacksController < ApplicationController
     user = feedback.recipient
     Feedback.adjust_level_points_for_user(feedback, user)
     if feedback.save
-      flash[:notice] = ["Successfully sent feedback."]
+      flash[:notice] = [I18n.t('feedback.success')]
       redirect_to root_path
     else
-      flash[:alert] = ["Feedback could not be sent."]
+      flash[:alert] = [I18n.t('feedback.fail')]
       redirect_to new_feedback_path
     end
   end

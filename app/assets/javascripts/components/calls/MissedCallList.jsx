@@ -1,6 +1,6 @@
 var MissedCallList = React.createClass({
   render: function() {
-    var content = <p>No notifications</p>;
+    var content = <p>{this.props.helperText.no_missed}</p>;
 
     if (this.props.missedCalls.length > 0) {
       content = this.props.missedCalls.map(function(missedCall, idx) {

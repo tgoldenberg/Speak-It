@@ -40,7 +40,8 @@ var ChatRoom = React.createClass({
       this.state.currentUserRTC.stream = stream;
       var video = $('#localVideo')[0];
       video.src = window.URL.createObjectURL(stream);
-      setTimeout(this.startRTCConnection, 1000);
+      // setTimeout(this.startRTCConnection, 1000);
+      setTimeout(this.startRTCConnection, 100);
     }.bind(this), function() {});
   },
 

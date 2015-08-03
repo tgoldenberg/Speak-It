@@ -5,6 +5,7 @@ zh-CN:
     mn: "中国"
     English: "英语"
     Spanish: "西班牙语"
+    Mandarin: "中国"
   countries:
     Argentina: "阿根廷"
     Canada: "加拿大"
@@ -23,6 +24,9 @@ zh-CN:
     UnitedStates: "美国"
     Uruguay: "乌拉圭"
     Venezuela: "委内瑞拉"
+    China: "中国"
+    Malaysia: "马来西亚"
+    Taiwan: "台湾"
   flash:
     successful_login: "成功登录。"
     failed_login: "无效的用户名或密码"
@@ -109,6 +113,8 @@ zh-CN:
     comment_placeholder: "这里将您的意见"
     title: "信息反馈"
     button: "提交反馈"
+    success: "成功发送反馈。"
+    fail: "反馈无法发送。"
   topic:
   level:
     value_1: "初学者"
@@ -121,7 +127,6 @@ zh-CN:
     value_8: "先进中旬"
     value_9: "先进的高"
     value_10: "专家"
-  notification:
   calls:
     calling: "调用"
     declined_message: "呼叫下降。"
@@ -129,5 +134,7 @@ zh-CN:
     missed_message: "未接来电。"
     new_call: "从来电 "
     cancelled_call: "通话结束。"
+    incoming_call: "从来电 "
+    no_active: "没有有效呼叫"
+    no_missed: "没有未接来电"
   topic:
-  notification:

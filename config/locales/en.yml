@@ -6,6 +6,7 @@ en:
     mn: "Mandarin"
     English: "English"
     Spanish: "Spanish"
+    Mandarin: "Mandarin"
   countries:
     Argentina: "Argentina"
     Canada: "Canada"
@@ -24,6 +25,9 @@ en:
     UnitedStates: "United States"
     Uruguay: "Uruguay"
     Venezuela: "Venezuela"
+    China: "China"
+    Malaysia: "Malaysia"
+    Taiwan: "Taiwan"
   flash:
     successful_login: "Successfully logged in."
     failed_login: "Invalid Username or Password"
@@ -72,6 +76,8 @@ en:
     comment_placeholder: "Place your feedback here"
     title: "Feedback"
     button: "Submit Feedback"
+    success: "Successfully sent feedback."
+    fail: "Feedback could not be sent."
   logged_in:
     level: "Your Level"
     points: "Your Points"
@@ -119,7 +125,6 @@ en:
     value_8: "mid advanced"
     value_9: "high advanced"
     value_10: "expert"
-  notification:
   calls:
     calling: "Calling"
     declined_message: "Call declined."
@@ -127,3 +132,6 @@ en:
     missed_message: "Missed call."
     new_call: "Incoming call from "
     cancelled_call: "Call ended."
+    incoming_call: "Incoming call from "
+    no_active: "No active calls"
+    no_missed: "No missed calls"
