@@ -6,7 +6,12 @@ var Timer = React.createClass({
     }
     return {
       secondsLeft: seconds,
-      turn: this.props.turn
+      turn: this.props.turn,
+      otherDone: false,
+      selfDone: false,
+      pusher: new Pusher('18cc5c3d4ea4757ca628'),
+      currentUserChannel: "",
+      otherUserChannel: ""
     };
   },
   tick: function() {
@@ -24,7 +29,7 @@ var Timer = React.createClass({
         content = "Game Stats";
       }
       this.props.handleChange();
-      this.setState({secondsLeft: content, turn: turn});
+      this.setState({secondsLeft: content, turn: turn, done: false});
     } else {
       this.setState({secondsLeft: this.state.secondsLeft - 1});
     }
@@ -33,15 +38,41 @@ var Timer = React.createClass({
     if (this.props.turn == 1 || this.props.turn == 3) {
       this.interval = setInterval(this.tick, 1000);
     }
+    var currentUserChannel = this.state.pusher.subscribe('private-conversation.' + this.props.currentUser.user.id);
+    var otherUserChannel = this.state.pusher.subscribe('private-conversation.' + this.props.otherUser.user.id);
+
+    this.setState({currentUserChannel: currentUserChannel, otherUserChannel: otherUserChannel });
+    currentUserChannel.bind('client-done', function(data) {
+      console.log("client-done", data);
+      console.log("pusher state", this.state);
+      if (this.state.selfDone == true) {
+        this.props.handleChange();
+        this.setState({secondsLeft: 20, selfDone: false, otherDone: false});
+        this.interval = setInterval(this.tick, 1000);
+      } else {
+        this.setState({otherDone: true});
+      }
+    }.bind(this))
   },
   componentWillUnmount: function() {
     clearInterval(this.interval);
   },
   handleClick: function() {
+    console.log("click state", this.state);
     if (this.props.turn != 1 && this.props.turn != 3) {
-      this.props.handleChange();
-      this.setState({secondsLeft: 20});
-      this.interval = setInterval(this.tick, 1000);
+      if (this.state.otherDone == true) {
+        this.props.handleChange();
+        this.setState({secondsLeft: 20, selfDone: false, otherDone: false});
+        this.interval = setInterval(this.tick, 1000);
+        this.state.otherUserChannel.trigger('client-done', {
+          data: {done: true}
+        })
+      } else {
+        this.setState({selfDone: true});
+        this.state.otherUserChannel.trigger('client-done', {
+          data: {done: true}
+        });
+      }
     } else {
       this.setState({secondsLeft: "Start"});
     }
