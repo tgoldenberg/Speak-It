@@ -1,14 +1,16 @@
 .timer-holder {
   background: darken($blue, 15%);
   color: white;
-  width: inherit;
   margin: auto;
+  min-width: 8em;
+  padding-left: 25px;
+  padding-right: 25px;
   height: 5em;
   display: block;
   border-radius: 3px;
 }
 .timer-wrapper {
-  width: 55%;
+  min-width: 45%;
   margin: auto;
   text-align: center;
   display: flex;
