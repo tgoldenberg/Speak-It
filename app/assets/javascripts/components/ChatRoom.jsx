@@ -119,6 +119,16 @@ var ChatRoom = React.createClass({
     var completed = this.props.chat_room.completed;
     var creatorId = this.props.chat_room.creator_id;
     var inviteeId = this.props.chat_room.invitee_id;
+    var currentChat;
+    if (turn >= 5) {
+      completed = true;
+    }
+    if (turn >= 2) {
+      currentChat = this.props.second_chat;
+    } else {
+      currentChat = this.props.first_chat;
+    }
+    this.setState({turn: turn, completed: completed, currentChat: currentChat});
     $.ajax({
       method: 'put',
       action: 'chat_rooms/' + this.props.chat_room.id,
@@ -126,14 +136,7 @@ var ChatRoom = React.createClass({
     })
     .done(function(data) {
       console.log(data);
-      var turn = data.turn;
-      var completed = data.completed;
-      var currentChat = this.state.currentChat;
-      if (data.turn == 2) {
-        currentChat = this.props.second_chat;
-      }
-      this.setState({turn: turn, completed: completed, currentChat: currentChat })
-    }.bind(this))
+    })
     .fail(function(err) {
       console.log(err);
     });
