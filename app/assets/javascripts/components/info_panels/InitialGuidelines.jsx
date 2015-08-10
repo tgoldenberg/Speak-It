@@ -9,7 +9,6 @@ var InitialGuidelines = React.createClass({
           <h4>{this.props.text.description}</h4>
         </div>
       </div>
-
     );
   }
 });

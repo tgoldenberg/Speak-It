@@ -8,11 +8,11 @@ var ChatRoom = React.createClass({
       initiator: false,
       currentUserRTC: {},
       currentUserChannel: "",
-      otherUserChannel: ""
+      otherUserChannel: "",
+      pusher: new Pusher('18cc5c3d4ea4757ca628')
     }
   },
   componentDidMount: function() {
-    console.log("Mounted");
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     // set media options
     var mediaOptions = {
@@ -114,7 +114,7 @@ var ChatRoom = React.createClass({
   },
   changeTurn: function() {
     var turn = this.state.turn+1;
-    console.log(turn);
+    // console.log(turn);
     var chatRoomId = this.props.chat_room.id;
     var completed = this.props.chat_room.completed;
     var creatorId = this.props.chat_room.creator_id;
@@ -129,16 +129,25 @@ var ChatRoom = React.createClass({
       currentChat = this.props.first_chat;
     }
     this.setState({turn: turn, completed: completed, currentChat: currentChat});
+    this.ajaxUpdate({
+      chatRoomId: chatRoomId,
+      completed: completed,
+      creatorId: creatorId,
+      inviteeId: inviteeId,
+      turn: turn
+    });
+  },
+  ajaxUpdate: function(data) {
     $.ajax({
       method: 'put',
       action: 'chat_rooms/' + this.props.chat_room.id,
-      data: {id: chatRoomId, chat_room: {completed: completed, creator_id: creatorId, invitee_id: inviteeId, turn: turn}}
+      data: {id: data.chatRoomId, chat_room: {completed: data.completed, creator_id: data.creatorId, invitee_id: data.inviteeId, turn: data.turn}}
     })
     .done(function(data) {
-      console.log(data);
+      // console.log(data);
     })
     .fail(function(err) {
-      console.log(err);
+      // console.log(err);
     });
   },
   render: function() {
@@ -178,6 +187,7 @@ var ChatRoom = React.createClass({
           chatRoom={this.props.chat_room}
           helperText={this.props.helper_text}
           turn={this.state.turn}
+          pusher={this.state.pusher}
           />
       </div>
     );

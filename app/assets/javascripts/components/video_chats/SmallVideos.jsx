@@ -5,7 +5,7 @@ var SmallVideos = React.createClass({
   render: function() {
     var content = <div></div>;
     if (this.props.completed == true) {
-      content = <div></div>;
+      content = <div id="completed-video"></div>;
     } else {
       content = <OngoingVideos
         currentUser={this.props.currentUser}
@@ -13,6 +13,7 @@ var SmallVideos = React.createClass({
         turn={this.props.turn}
         chatRoom={this.props.chatRoom}
         helperText={this.props.helperText}
+        pusher={this.props.pusher}
         changeTurn={this.changeTurn} />;
     }
     return (

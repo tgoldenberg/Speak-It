@@ -9,7 +9,7 @@ var Timer = React.createClass({
       turn: this.props.turn,
       otherDone: false,
       selfDone: false,
-      pusher: new Pusher('18cc5c3d4ea4757ca628'),
+      pusher: this.props.pusher,
       currentUserChannel: "",
       otherUserChannel: ""
     };
@@ -17,7 +17,7 @@ var Timer = React.createClass({
   tick: function() {
     if (this.state.secondsLeft <= 0) {
       clearInterval(this.interval);
-      var turn = this.props.turn;
+      var turn = this.state.turn;
       var content = "Start";
       if (turn == undefined) {
         turn = 1;
@@ -43,8 +43,8 @@ var Timer = React.createClass({
 
     this.setState({currentUserChannel: currentUserChannel, otherUserChannel: otherUserChannel });
     currentUserChannel.bind('client-done', function(data) {
-      console.log("client-done", data);
-      console.log("pusher state", this.state);
+      // console.log("client-done", data);
+      // console.log("pusher state", this.state);
       if (this.state.selfDone == true) {
         this.props.handleChange();
         this.setState({secondsLeft: 20, selfDone: false, otherDone: false});
@@ -58,7 +58,7 @@ var Timer = React.createClass({
     clearInterval(this.interval);
   },
   handleClick: function() {
-    console.log("click state", this.state);
+    // console.log("click state", this.state);
     if (this.props.turn != 1 && this.props.turn != 3 && this.props.turn != 4) {
       if (this.state.otherDone == true) {
         this.props.handleChange();
@@ -69,7 +69,7 @@ var Timer = React.createClass({
         })
       } else {
         this.setState({selfDone: true});
-        $('.other-player-waiting').removeClass('hidden');
+        document.getElementById('other-player-waiting').className = '';
         this.state.otherUserChannel.trigger('client-done', {
           data: {done: true}
         });
@@ -82,13 +82,13 @@ var Timer = React.createClass({
   },
   render: function() {
     if (this.props.turn == 1 || this.props.turn == 3) {
-      $('.other-player-waiting').addClass('hidden');
+      document.getElementById('other-player-waiting').className = 'hidden';
     }
     return (
       <div className="timer-wrapper">
         <p className="timer-text"> {this.props.helperText.seconds}</p>
         <div className="timer-holder">
-          <p className="other-player-waiting hidden">Waiting for other player...</p>
+          <p id="other-player-waiting" className="hidden">Waiting for other player...</p>
           <span id="seconds-display" onClick={this.handleClick}>
             {this.state.secondsLeft}
           </span>
