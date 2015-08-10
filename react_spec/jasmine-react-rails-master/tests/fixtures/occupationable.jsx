@@ -266,12 +266,20 @@ var props = {
   second_chat_guidelines: {
     description: "Alright, good job with the first conversation! Now your roles will switch. The student will become the native speaker, and the native speaker will become the student. Get ready for the next conversation topic, and best of luck!",
     title: "Guidelines for Second Chat"
+  },
+  handleChange: function() {
+  },
+  changeTurn: function() {
+
   }
 }
 var Channel = function(channel) {
   this.channel = channel;
   this.bind = function(otherChannel) {
-    console.log(otherChannel);
+    // console.log(otherChannel);
+  };
+  this.trigger = function(otherChannel) {
+    // console.log(otherChannel);
   }
 };
 var Pusher = function(appKey) {
@@ -280,8 +288,6 @@ var Pusher = function(appKey) {
     return new Channel(channel);
   };
 };
-
-
 
 module.exports = {
   props: props,
