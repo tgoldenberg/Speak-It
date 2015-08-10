@@ -69,6 +69,7 @@ var Timer = React.createClass({
         })
       } else {
         this.setState({selfDone: true});
+        $('.other-player-waiting').removeClass('hidden');
         this.state.otherUserChannel.trigger('client-done', {
           data: {done: true}
         });
@@ -80,10 +81,14 @@ var Timer = React.createClass({
     }
   },
   render: function() {
+    if (this.props.turn == 1 || this.props.turn == 3) {
+      $('.other-player-waiting').addClass('hidden');
+    }
     return (
       <div className="timer-wrapper">
         <p className="timer-text"> {this.props.helperText.seconds}</p>
         <div className="timer-holder">
+          <p className="other-player-waiting hidden">Waiting for other player...</p>
           <span id="seconds-display" onClick={this.handleClick}>
             {this.state.secondsLeft}
           </span>

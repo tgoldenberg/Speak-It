@@ -5,7 +5,6 @@
   min-width: 8em;
   padding-left: 25px;
   padding-right: 25px;
-  height: 5em;
   display: block;
   border-radius: 3px;
 }
@@ -14,6 +13,9 @@
   margin: auto;
   text-align: center;
   display: flex;
+}
+.other-player-waiting {
+  margin-bottom: 0px;
 }
 .timer-text {
   line-height: .5;
