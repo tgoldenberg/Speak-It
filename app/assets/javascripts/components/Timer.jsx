@@ -59,7 +59,7 @@ var Timer = React.createClass({
   },
   handleClick: function() {
     console.log("click state", this.state);
-    if (this.props.turn != 1 && this.props.turn != 3) {
+    if (this.props.turn != 1 && this.props.turn != 3 && this.props.turn != 4) {
       if (this.state.otherDone == true) {
         this.props.handleChange();
         this.setState({secondsLeft: 20, selfDone: false, otherDone: false});
@@ -73,6 +73,8 @@ var Timer = React.createClass({
           data: {done: true}
         });
       }
+    } else if (this.props.turn == 4) {
+      this.props.handleChange();
     } else {
       this.setState({secondsLeft: "Start"});
     }
