@@ -1,17 +1,21 @@
 .timer-holder {
   background: darken($blue, 15%);
   color: white;
-  width: inherit;
   margin: auto;
-  height: 5em;
+  min-width: 8em;
+  padding-left: 25px;
+  padding-right: 25px;
   display: block;
   border-radius: 3px;
 }
 .timer-wrapper {
-  width: 45%;
+  min-width: 45%;
   margin: auto;
   text-align: center;
   display: flex;
+}
+.other-player-waiting {
+  margin-bottom: 0px;
 }
 .timer-text {
   line-height: .5;
