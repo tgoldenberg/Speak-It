@@ -5,7 +5,7 @@ var SmallVideos = React.createClass({
   render: function() {
     var content = <div></div>;
     if (this.props.completed == true) {
-      content = <div></div>;
+      content = <div id="completed-video"></div>;
     } else {
       content = <OngoingVideos
         currentUser={this.props.currentUser}
