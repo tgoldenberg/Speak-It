@@ -9,7 +9,7 @@ var Timer = React.createClass({
       turn: this.props.turn,
       otherDone: false,
       selfDone: false,
-      pusher: new Pusher('18cc5c3d4ea4757ca628'),
+      pusher: this.props.pusher,
       currentUserChannel: "",
       otherUserChannel: ""
     };

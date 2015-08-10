@@ -8,7 +8,8 @@ var ChatRoom = React.createClass({
       initiator: false,
       currentUserRTC: {},
       currentUserChannel: "",
-      otherUserChannel: ""
+      otherUserChannel: "",
+      pusher: new Pusher('18cc5c3d4ea4757ca628')
     }
   },
   componentDidMount: function() {
@@ -178,6 +179,7 @@ var ChatRoom = React.createClass({
           chatRoom={this.props.chat_room}
           helperText={this.props.helper_text}
           turn={this.state.turn}
+          pusher={this.state.pusher}
           />
       </div>
     );

@@ -26,6 +26,7 @@ var OngoingVideos = React.createClass({
               currentUser={this.props.currentUser}
               otherUser={this.props.otherUser}
               turn={this.props.turn}
+              pusher={this.props.pusher}
               helperText={this.props.helperText}
               handleChange={this.handleChange}/>
           </div>
