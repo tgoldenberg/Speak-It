@@ -3,7 +3,7 @@ var rewire = require('rewire');
 var ChatRoomModule = rewire(__component_base + '/ChatRoom');
 var ChatRoom = ChatRoomModule.component;
 
-fdescribe('ChatRoom', function(done){
+describe('ChatRoom', function(done){
   var variables = require('../fixtures/occupationable');
   var props = variables.props;
   var pusher = variables.pusher;
@@ -48,6 +48,13 @@ fdescribe('ChatRoom', function(done){
       subject.changeTurn();
       expect(subject.state.turn).toEqual(1);
       done();
-    })
+    });
+
+    it('should end the conversation', function(done) {
+      subject.setState({turn: 4});
+      subject.changeTurn();
+      expect(subject.state.completed).toEqual(true);
+      done();
+    });
   });
 });
