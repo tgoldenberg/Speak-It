@@ -16,7 +16,7 @@
   font-size: .8em;
 }
 .form-icon {
-  top: 3em;
+  top: 2.4em;
   left: 15%;
   font-size: 1.2em;
   color: #bbb;
@@ -33,7 +33,7 @@
     .form-control {
       width: 50%;
       margin: auto;
-      margin-top: 1em;
+      margin-top: .2em;
     }
     .form-control#right-form {
       margin-left: 0;
@@ -41,10 +41,36 @@
   }
   .submit-button-holder {
     text-align: left;
-    input {
+
+    input, .btn-lg {
       width: 75%;
       margin-left: 12%;
       min-width: 11em;
+    }
+    .btn-lg.facebook-login {
+      background: darken($blue, 10%);
+      border: 0px;
+      margin-top: .5em;
+      &:hover {
+        background: darken($blue, 15%);
+      }
+    }
+  }
+}
+.submit-button-holder {
+  text-align: left;
+
+  .btn-lg {
+    width: 75%;
+    margin-left: 12%;
+    min-width: 11em;
+  }
+  .btn-lg.facebook-login {
+    background: darken($blue, 10%);
+    border: 0px;
+    margin-top: .5em;
+    &:hover {
+      background: darken($blue, 15%);
     }
   }
 }
