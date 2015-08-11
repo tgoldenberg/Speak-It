@@ -121,12 +121,9 @@ span.glyphicon-globe {
   display: flex;
   padding-left: 20%;
   padding-right: 20%;
-  @media screen and (max-width: 800px) {
-    padding-left: 0%;
-    padding-right: 0%;
-  }
   #facebook-signup {
     margin-top: 0px;
+    min-width: 12em;
     @media screen and (max-width: 600px) {
       margin-right: 0px;
     }
@@ -140,7 +137,7 @@ span.glyphicon-globe {
     margin-left: .5em;
     margin-right: .5em;
     margin-bottom: 1em;
-    min-width: 7em;
+    min-width: 9em;
     height: 3em;
     padding: 14px 16px;
   }
