@@ -62,11 +62,19 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      p auth
       user.provider = auth.provider
       user.uid = auth.uid
       user.username = auth.info.name
+      user.email = auth.info.name.split(" ").map {|name| name.downcase }.join("") + "@facebook.com"
+      user.password = (0...8).map { (65 + rand(26)).chr }.join
+      user.native_language_id = 1
+      user.study_language_id = 2
+      user.country_id = 1
+      user.level_id = 1
+      user.avatar_url = auth.info.image
       user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.oauth_token_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
   end
