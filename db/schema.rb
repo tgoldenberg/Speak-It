@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721142225) do
+ActiveRecord::Schema.define(version: 20150811163037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,18 +93,22 @@ ActiveRecord::Schema.define(version: 20150721142225) do
   add_index "topics", ["level_id"], name: "index_topics_on_level_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                                                                                                                                     null: false
-    t.string   "email",                                                                                                                                        null: false
-    t.string   "password_digest",                                                                                                                              null: false
+    t.string   "username",                                                                                                                                         null: false
+    t.string   "email",                                                                                                                                            null: false
+    t.string   "password_digest",                                                                                                                                  null: false
     t.integer  "country_id"
     t.integer  "native_language_id"
     t.integer  "study_language_id"
-    t.string   "avatar_url",         default: "https://i1.wp.com/design.atlassian.com/1.4/images/avatars/default-user/192/user-avatar-blue-96%402x.png?ssl=1"
-    t.integer  "points",             default: 0
+    t.string   "avatar_url",             default: "https://i1.wp.com/design.atlassian.com/1.4/images/avatars/default-user/192/user-avatar-blue-96%402x.png?ssl=1"
+    t.integer  "points",                 default: 0
     t.integer  "level_id"
-    t.datetime "created_at",                                                                                                                                   null: false
-    t.datetime "updated_at",                                                                                                                                   null: false
-    t.datetime "last_seen_at",       default: '2015-08-03 19:14:38'
+    t.datetime "created_at",                                                                                                                                       null: false
+    t.datetime "updated_at",                                                                                                                                       null: false
+    t.datetime "last_seen_at",           default: '2015-08-03 19:14:38'
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_token_expires_at"
   end
 
   add_index "users", ["country_id"], name: "index_users_on_country_id", using: :btree
