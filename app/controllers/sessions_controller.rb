@@ -16,11 +16,19 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
+    @omniauth = env["omniauth.auth"]
+    if !env["omniauth.auth"]
+      flash[:alert] = ["Invalid token."]
+      redirect_to root_path
+    end
     @user = User.from_omniauth(env["omniauth.auth"])
     if @user.id
       session[:user_id] = @user.id
       redirect_to root_path
     end
+    @new_user = User.new
+    @countries_select_array = Country.countries_as_select_list
+    @languages_select_array = Language.languages_as_select_list
   end
 
   def omniauth_select_languages
