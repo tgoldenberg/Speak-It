@@ -15,6 +15,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def omniauth
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to root_url
+  end
+
   def destroy
     session[:user_id] = nil
     flash[:notice] = [I18n.t('flash.successful_logout')]
