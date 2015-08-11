@@ -1,1 +1,87 @@
-<h1>OMNIAUTH SELECT LANGUAGES</h1>
+<div class="new_user_signup">
+  <h1 class="form-title" id="omniauth-signup-title"> Complete Your Registration <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"</span></h1>
+  <div class="container omniauth-user-signup">
+    <%= form_for @new_user, url: users_path do |f| %>
+
+      <%= f.hidden_field :username, value: @user.username %>
+      <%= f.hidden_field :password, value: @user.password %>
+      <%= f.hidden_field :email, value: @user.email %>
+      <div class="container">
+
+
+        <div class="form-group col-md-6">
+          <div class="non-select">
+            <%= f.label t('signup.native_language') %>
+            <%= f.select(:native_language_id, options_for_select(@languages_select_array), {},{class: "form-control", id: "omniauth-select", onChange: "omniauthCreateFlag(this);"}) %>
+          </div>
+          <div class="container omniauth-flag">
+            <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box"></img>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="non-select">
+            <%= f.label t('signup.study_language') %>
+            <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control",  id: "omniauth-select", onChange: "omniauthCreateFlag(this);"}) %>
+          </div>
+          <div class="container omniauth-flag">
+            <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box"></img>
+          </div>
+        </div>
+      </div>
+      <br/>
+      <hr/>
+
+
+      <div class="form-group col-xs-6 col-xs-offset-3 omniauth-country-select">
+        <div class="non-select">
+          <%= f.label t('signup.country') %>
+          <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control", id: "omniauth-select", onChange: "createFlagForCountry(this);"}) %>
+        </div>
+        <div class="omniauth-flag non-select">
+          <img src="<%= asset_path("argentinian-flag-medium.png") %>" class="image-box col-xs-6"></img>
+        </div>
+      </div>
+
+      <%= f.hidden_field :avatar_url, value: @user.avatar_url %>
+      <%= f.hidden_field :level, value: 1 %>
+      <div>
+        <%= f.submit t('signup.submit'), class: 'btn btn-lg btn-primary form-control', id: 'form-button' %>
+      </div>
+    <% end %>
+  </div>
+  <br/>
+  <br/>
+</div>
+
+
+<script>
+  var countries = [
+    {name: "United States", image_url: '<%= ActionController::Base.helpers.asset_path("american-flag-medium.png") %>'},
+    {name: "Canada", image_url: '<%= ActionController::Base.helpers.asset_path("canadian-flag-medium.png") %>'},
+    {name: "Mexico", image_url: '<%= ActionController::Base.helpers.asset_path("mexican-flag-medium.png") %>'},
+    {name: "Spain", image_url: '<%= ActionController::Base.helpers.asset_path("spanish-flag-medium.png") %>'},
+    {name: "Argentina", image_url: '<%= ActionController::Base.helpers.asset_path("argentinian-flag-medium.png") %>'},
+    {name: "Columbia", image_url:  '<%= ActionController::Base.helpers.asset_path("colombian-flag-medium.png") %>'},
+    {name: "Peru", image_url: '<%= ActionController::Base.helpers.asset_path("peruvian-flag-medium.png") %>' },
+    {name: "United Kingdom", image_url: '<%= ActionController::Base.helpers.asset_path("british-flag-medium.png") %>'},
+    {name: "Venezuela", image_url: '<%= ActionController::Base.helpers.asset_path("venezuelan-flag-medium.png") %>'},
+    {name: "Ecuador", image_url: '<%= ActionController::Base.helpers.asset_path("ecuadorian-flag-medium.png") %>'},
+    {name: "Cuba", image_url: '<%= ActionController::Base.helpers.asset_path("cuban-flag-medium.png") %>'},
+    {name: "Uruguay", image_url: '<%= ActionController::Base.helpers.asset_path("uruguayan-flag-medium.png") %>'},
+    {name: "Costa Rica", image_url: '<%= ActionController::Base.helpers.asset_path("costa-rican-flag-medium.png") %>'},
+    {name: "Guatemala", image_url: '<%= ActionController::Base.helpers.asset_path("guatemalan-flag-medium.png") %>'},
+    {name: "Panama", image_url: '<%= ActionController::Base.helpers.asset_path("panamanian-flag-medium.png") %>'},
+    {name: "Chile", image_url: '<%= ActionController::Base.helpers.asset_path("chilean-flag-medium.png") %>'},
+    {name: "Dominican Republic", image_url: '<%= ActionController::Base.helpers.asset_path("dominican-republic-flag-medium.png") %>'},
+    {name: "China", image_url: '<%= ActionController::Base.helpers.asset_path("chinese-flag-medium.png") %>'},
+    {name: "Malaysia", image_url: '<%= ActionController::Base.helpers.asset_path("malaysia-flag-medium.png") %>'},
+    {name: "Taiwan", image_url: '<%= ActionController::Base.helpers.asset_path("taiwan-flag-medium.jpg") %>'}
+  ];
+  var createFlagForCountry = function(e) {
+    var value = parseInt($(e)[0].value);
+    var selectedCountry = countries[value -1];
+    $(e).parent().next().children().first()[0].src = selectedCountry.image_url;
+  };
+
+</script>
