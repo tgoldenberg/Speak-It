@@ -9,7 +9,10 @@
     <div id="speak-it-info" class="col-md-8">
       <h1 id="proxima-nova">SpeakIt <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"</span></h1>
       <p> <%= t('landing.title') %></p>
-      <%= link_to t('landing.signup'), new_user_path, class: 'btn btn-lg btn-primary' %>
+      <div class="flex-container col-xs-12 signup-button-holder">
+        <%= link_to t('landing.signup'), new_user_path, class: 'btn btn-lg btn-primary col-sm-6 col-xs-12', id: "signup-button" %>
+        <%= link_to 'Signup with Facebook', "/auth/facebook", class: 'btn btn-lg btn-primary facebook-login col-xs-6 hidden-xs', id: 'facebook-signup' %>
+      </div>
     </div>
   </div>
   <div class="row" id="panel-2-holder">

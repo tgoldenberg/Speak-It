@@ -59,4 +59,19 @@ class User < ActiveRecord::Base
   def levelpercent
     (self.level.value * 10).to_s + "%"
   end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.username = auth.info.name
+      user.email = auth.info.name.split(" ").map {|name| name.downcase }.join("") + "@facebook.com"
+      user.password = auth[:extra][:raw_info][:email] || (0...8).map { (65 + rand(26)).chr }.join
+      user.level_id = 1
+      user.avatar_url = auth.info.image
+      user.oauth_token = auth.credentials.token
+      user.oauth_token_expires_at = Time.at(auth.credentials.expires_at)
+    end
+  end
+
 end

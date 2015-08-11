@@ -2,7 +2,47 @@
   margin: 0px;
   text-align: center;
 }
-
+.omniauth-user-signup {
+  .non-select {
+    display: flex;
+    .form-control#omniauth-select {
+      max-width: 10px;
+      min-width: 15em;
+      margin-left: 0;
+    }
+    label {
+      margin-right: 1em;
+      width: initial;
+    }
+  }
+  .omniauth-flag {
+    img.image-box {
+      width: 39%;
+      height: 16em;
+      margin-left: 0;
+    }
+  }
+}
+#omniauth-signup-title {
+  font-size: 3em;
+  line-height: 2.6;
+}
+.omniauth-country-select {
+  .non-select {
+    padding-left: 24%;
+    padding-right: 15%;
+  }
+  .omniauth-flag {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding: 3%;
+    img.image-box {
+      margin: auto;
+      margin-top: 2em;
+      width: 75%;
+    }
+  }
+}
 .form-title {
   text-align: center;
   padding-top: .3em;
@@ -30,6 +70,7 @@
   background: $blue;
   margin-top: -20px;
   height: initial;
+  overflow-x: hidden;
 }
 #new_user {
   .form-group {
@@ -53,7 +94,7 @@
   }
 }
 i.registration-icon {
-  top: 55px;
+  top: 42px;
   font-size: 1.4em;
   right: 22.5%;
   color: #bbb;

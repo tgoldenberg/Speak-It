@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :country_id, :native_language_id,
-      :study_language_id, :avatar_url, :points, :level_id, :last_seen_at)
+      :study_language_id, :avatar_url, :points, :level_id, :last_seen_at, :provider, :uid, :oauth_token, :oauth_token_expires_at)
   end
 
 end
