@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   post 'auth/:provider/callback', to: 'sessions#omniauth'
   post 'auth/failure', to: redirect('/')
+  get 'sessions/omniauth_select_languages', to: 'sessions#omniauth_select_languages', as: 'omniauth_select_languages'
 end
