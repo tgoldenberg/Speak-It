@@ -4,7 +4,7 @@ var TitleModule = rewire(__component_base + '/Title');
 var Title = TitleModule.component;
 
 describe('Title', function(done){
-  var variables = require('../fixtures/occupationable');
+  var variables = require('../fixtures/props');
   var props = variables.props;
 
   beforeEach(function(done) {

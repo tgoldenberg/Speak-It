@@ -4,7 +4,7 @@ var ChatRoomModule = rewire(__component_base + '/ChatRoom');
 var ChatRoom = ChatRoomModule.component;
 
 describe('ChatRoom', function(done){
-  var variables = require('../fixtures/occupationable');
+  var variables = require('../fixtures/props');
   var props = variables.props;
   var pusher = variables.pusher;
   var guid = function() {};

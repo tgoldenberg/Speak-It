@@ -3,14 +3,14 @@ var Invitation = React.createClass({
     return {showCall: false};
   },
   callTimeout: function() {
-    console.log("TIMEOUT");
+    // console.log("TIMEOUT");
     this.setState({showCall: false});
   },
   toggleCall: function() {
     this.setState({showCall: !this.state.showCall});
 
     if (!this.state.showCall) {
-      console.log("create invitation");
+      // console.log("create invitation");
       var senderId = this.props.currentUser.id;
       var recipientId = this.props.user.id;
       $.ajax({
@@ -19,7 +19,7 @@ var Invitation = React.createClass({
         data: {invitation: {sender_id: senderId, recipient_id: recipientId }}
       })
       .done(function(data) {
-        console.log(data);
+        // console.log(data);
       });
     } else {
       var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
@@ -36,11 +36,9 @@ var Invitation = React.createClass({
     }
     return (
       <div>
-
-      <div className="call-wrapper">
-        <button onClick={this.toggleCall} className="btn btn-primary" id="init-chat-button"><b>{this.props.button}</b>{content}</button>
-      </div>
-
+        <div className="call-wrapper">
+          <button onClick={this.toggleCall} className="btn btn-primary" id="init-chat-button"><b>{this.props.button}</b>{content}</button>
+        </div>
       </div>
     );
   }

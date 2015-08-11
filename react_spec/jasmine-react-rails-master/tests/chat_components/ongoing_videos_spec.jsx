@@ -4,7 +4,7 @@ var OngoingVideosModule = rewire(__component_base + '/video_chats/OngoingVideos'
 var OngoingVideos = OngoingVideosModule.component;
 
 describe('OngoingVideos', function(done){
-  var variables = require('../fixtures/occupationable');
+  var variables = require('../fixtures/props');
   var props = variables.props;
 
   beforeEach(function(done) {
