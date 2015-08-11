@@ -64,13 +64,15 @@
     width: 75%;
     margin-left: 12%;
     min-width: 11em;
-  }
-  .btn-lg.facebook-login {
-    background: darken($blue, 10%);
-    border: 0px;
     margin-top: .5em;
-    &:hover {
-      background: darken($blue, 15%);
-    }
+  }
+}
+.btn-lg.facebook-login {
+  min-width: 11em;
+  background: darken($blue, 10%);
+  border: 0px;
+  margin-top: .5em;
+  &:hover {
+    background: darken($blue, 15%);
   }
 }

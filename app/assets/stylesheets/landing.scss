@@ -29,11 +29,10 @@
   text-align: center;
   padding-top: 1.5em;
 
-.message-box-logo {
-  width: 1em;
-  margin-top: -40px;
-}
-
+  .message-box-logo {
+    width: 1em;
+    margin-top: -40px;
+  }
 
   h1 {
     font-family: $title-font-family;
@@ -118,4 +117,28 @@ span.glyphicon-globe {
     width: 75%;
   }
 }
+.flex-container.signup-button-holder {
+  display: flex;
+  padding-left: 20%;
+  padding-right: 20%;
+  #facebook-signup {
+    margin-top: 0px;
+    @media screen and (max-width: 600px) {
+      margin-right: 0px;
+    }
+  }
+  #signup-button {
+    @media screen and (max-width: 600px) {
+      margin-left: 0px;
+    }
+  }
+  .btn-lg {
+    margin-left: .5em;
+    margin-right: .5em;
+    margin-bottom: 1em;
+    min-width: 7em;
+    height: 3em;
+    padding: 14px 16px;
 
+  }
+}
