@@ -6,6 +6,10 @@
       <%= f.hidden_field :username, value: @user.username %>
       <%= f.hidden_field :password, value: @user.password %>
       <%= f.hidden_field :email, value: @user.email %>
+      <%= f.hidden_field :provider, value: @omniauth.provider %>
+      <%= f.hidden_field :uid, value: @omniauth.uid %>
+      <%= f.hidden_field :oauth_token, value: @omniauth.credentials.token %>
+      <%= f.hidden_field :oauth_token_expires_at, value: Time.at(@omniauth.credentials.expires_at) %>
       <div class="container">
 
 
