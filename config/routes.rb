@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   delete '/invitations/:id' => 'invitations#sender_cancel', as: 'delete_invitation'
   post '/pusher/auth' => 'pusher#auth'
   put '/invitations/seen' => 'invitations#update_seen', as: 'make_invitation_seen'
-  match 'auth/:provider/callback', to: 'sessions#omniauth'
-  match 'auth/failure', to: redirect('/')
+  get 'auth/:provider/callback', to: 'sessions#omniauth'
+  get 'auth/failure', to: redirect('/')
+  post 'auth/:provider/callback', to: 'sessions#omniauth'
+  post 'auth/failure', to: redirect('/')
 end
