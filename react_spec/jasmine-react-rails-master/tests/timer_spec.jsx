@@ -33,14 +33,16 @@ describe('Timer', function(done){
     });
 
     it('starts the second chat instructions when the timer runs out', function(done) {
-      subject.setState({turn: 1, secondsLeft: 0});
+      subject = jasmineReact.render(<Timer turn={1} chatRoom={props.chat_room} handleChange={props.handleChange} currentUser={props.current_user} pusher={new variables.pusher} otherUser={props.other_user} helperText={props.helper_text}/>);
+      subject.setState({secondsLeft: 0});
       subject.tick();
       expect(subject.state.secondsLeft).toEqual("Start");
       done();
     });
 
     it('starts the second chat when both players hit the start button', function(done) {
-      subject.setState({turn: 2, otherDone: true});
+      subject = jasmineReact.render(<Timer turn={2} chatRoom={props.chat_room} handleChange={props.handleChange} currentUser={props.current_user} pusher={new variables.pusher} otherUser={props.other_user} helperText={props.helper_text}/>);
+      subject.setState({otherDone: true});
       subject.handleClick();
       expect(subject.state.secondsLeft).toEqual(20);
       done();
@@ -54,7 +56,8 @@ describe('Timer', function(done){
     });
 
     it('gives final instructions after the second chat', function(done){
-      subject.setState({turn: 3, secondsLeft: 0});
+      subject = jasmineReact.render(<Timer turn={3} chatRoom={props.chat_room} handleChange={props.handleChange} currentUser={props.current_user} pusher={new variables.pusher} otherUser={props.other_user} helperText={props.helper_text}/>);
+      subject.setState({secondsLeft: 0});
       subject.tick();
       expect(subject.state.secondsLeft).toEqual("Game Stats");
       done();
