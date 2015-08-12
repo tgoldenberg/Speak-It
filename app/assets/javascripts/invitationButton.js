@@ -10,6 +10,13 @@ var removeFlash = function() {
   }, 3500);
 };
 
+var createPartial = function(content) {
+  var partial = '<div class="notice"><div id="alert" class="alert alert-danger" role="alert">' +
+                  '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
+                    content + '</div></div>';
+  return partial;
+}
+
 var removeGradientPulse = function() {
   $('.notifications').removeClass('gradient-pulse');
 }
