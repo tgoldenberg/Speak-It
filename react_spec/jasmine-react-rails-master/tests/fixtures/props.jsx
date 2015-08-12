@@ -150,7 +150,9 @@ var props = {
     stats_second_feedback: "Second Chat Feedback",
     stats_second_topic: "Second chat topic: ",
     stats_title: "ChatRoom Stats",
-    no_active: "No active calls"
+    no_active: "No active calls",
+    incoming: "Incoming call from ",
+    no_missed: "No missed calls."
   },
   initial_guidelines:{
     description: "You will be given 2 minutes for each conversation. When you are the native speaker you are kindly asked not to provide instruction, but to simply carry a conversation. As a student, you are simply asked to try your best. You may use words from your native language if necessary, but will not get full credit if you do so. Native speakers are asked to judge the student's speaking skills based on pronunciation, vocabulary, and clarity.",
@@ -267,6 +269,13 @@ var props = {
   second_chat_guidelines: {
     description: "Alright, good job with the first conversation! Now your roles will switch. The student will become the native speaker, and the native speaker will become the student. Get ready for the next conversation topic, and best of luck!",
     title: "Guidelines for Second Chat"
+  },
+  invitation: {
+    id: 1,
+    sender_id: 1,
+    recipient_id: 2,
+    created_at: "2015-08-03T19:19:38.858Z",
+    language: "Spanish"
   },
   handleChange: function() {
   },
