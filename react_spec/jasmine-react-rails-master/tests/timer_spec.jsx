@@ -5,7 +5,7 @@ var ReactHelper = require(react_helper_path);
 var Timer = require(__component_base + '/Timer').component;
 
 describe('Timer', function(done){
-  var variables = require('./fixtures/occupationable');
+  var variables = require('./fixtures/props');
   var props = variables.props;
 
   var value = 0;

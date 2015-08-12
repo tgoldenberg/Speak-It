@@ -4,7 +4,7 @@ var SmallVideosModule = rewire(__component_base + '/video_chats/SmallVideos');
 var SmallVideos = SmallVideosModule.component;
 
 describe('SmallVideos', function(done){
-  var variables = require('../fixtures/occupationable');
+  var variables = require('../fixtures/props');
   var props = variables.props;
 
   beforeEach(function(done) {

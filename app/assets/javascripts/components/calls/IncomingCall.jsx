@@ -3,8 +3,12 @@ var IncomingCall = React.createClass({
     return {timer: 0};
   },
   stopTimer: function() {
-
+    clearInterval(this.interval);
+    this.setState({timer: 0});
     var invitationId = this.props.invitation.invitation.id;
+    this.createMissedCall(invitationId);
+  },
+  createMissedCall: function(id) {
     $.ajax({
       method: "put",
       url: "/invitations/miss/" + invitationId,
@@ -12,42 +16,54 @@ var IncomingCall = React.createClass({
       data: {id: invitationId}
     })
     .done(function(data) {
-      console.log("TIMED OUT");
       this.props.callTimeout(this.props.invitation);
-    }.bind(this))
-    .fail(function(err) {
-      console.log(err);
-    });
+    }.bind(this));
 
     $('.call-box').toggleClass('hidden');
-    var partial = '<div class="notice"><div class="alert alert-danger" role="alert">' +
-                    '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
-                      this.props.helperText.missed + '</div></div>';
+    var partial = createPartial(this.props.helperText.missed);
+    this.appendFlash(partial);
+  },
+  appendFlash: function(partial) {
     $('.navbar').after(partial);
     removeFlash();
   },
-  declineCall: function() {
-    var invitationId = this.props.invitation.invitation.id;
-    var recipientId = this.props.invitation.invitation.recipient_id;
-    var senderId = this.props.invitation.invitation.sender_id;
+  createDeclinedCall: function(options) {
+    var invitationId = options.invitationId;
+    var senderId = options.senderId;
+    var recipientId = options.recipientId;
+    var decline = this.props.declineCall;
     $.ajax({
       url: '/invitations/decline/' + invitationId,
       method: 'put',
       dataType: 'json',
-      data: {id: invitationId, invitation: {recipient_id: recipientId, sender_id: senderId }}
+      data: {id: invitationId,
+             invitation:
+               {
+                 recipient_id: recipientId,
+                 sender_id: senderId
+              }
+            }
     })
     .done(function(data) {
-      console.log("RECIPIENT DECLINES CALL", data);
-      this.props.declineCall(invitationId);
+    decline(invitationId);
       $('#notification-list').toggle();
-
-    }.bind(this))
-    .fail(function(err) {
-      console.log(err);
     });
   },
+  declineCall: function() {
+    clearInterval(this.interval);
+    this.setState({timer: 0});
+    var invitationId = this.props.invitation.invitation.id;
+    var recipientId = this.props.invitation.invitation.recipient_id;
+    var senderId = this.props.invitation.invitation.sender_id;
+    this.createDeclinedCall(
+                            {
+                              invitationId: invitationId,
+                              senderId: senderId,
+                              recipientId: recipientId
+                            }
+                          );
+  },
   acceptCall: function(e) {
-    console.log("ACCEPT");
     $(e.target).parent().submit();
   },
   componentDidMount: function() {
@@ -63,16 +79,28 @@ var IncomingCall = React.createClass({
     }
   },
   render: function() {
+    var callNotificationMessage = this.props.helperText.incoming;
+    callNotificationMessage += " " + this.props.invitation.sender.username + "...";
     return (
       <div className="call-box">
-        <p className="calling-info">{this.props.helperText.missed} {this.props.invitation.sender.username}...</p>
+        <p className="calling-info" id="calling_info">{callNotificationMessage}</p>
         <img src={this.props.invitation.sender.avatar_url} className="call-avatar pulse"/>
         <div className="call-timer-phone">
           <form method="post" action="/chat_rooms" id="create_chat_room">
-            <input type="hidden" value={this.props.invitation.invitation.id} name="invitation[id]"/>
-              <span onClick={this.acceptCall} className="glyphicon glyphicon-ok-circle"></span>
+            <input
+              type="hidden"
+              value={this.props.invitation.invitation.id}
+              name="invitation[id]"
+            />
+            <span onClick={this.acceptCall} className="glyphicon glyphicon-ok-circle"></span>
           </form>
-          <a href="#"><span onClick={this.declineCall} className="glyphicon glyphicon-earphone delete_invitation" data-id={this.props.invitation.id}></span></a>
+          <a href="#">
+            <span
+              onClick={this.declineCall}
+              className="glyphicon glyphicon-earphone delete_invitation"
+              data-id={this.props.invitation.id}>
+            </span>
+          </a>
         </div>
       </div>
     );

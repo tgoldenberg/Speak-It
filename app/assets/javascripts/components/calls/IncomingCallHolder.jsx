@@ -5,20 +5,27 @@ var IncomingCallHolder = React.createClass({
   callTimeout: function(invitation) {
     this.props.callTimeout(invitation);
   },
+  buildNotification: function(content) {
+    return <ul id="notification-list" style={{display: 'none'}}>{content}</ul>;
+  },
   render: function() {
-    var incomingCalls = this.props.incomingCalls;
-    var content;
-    var callList;
-    if (this.props.incomingCalls.length > 0) {
-      callList = incomingCalls.map(function(call, idx) {
-        return <IncomingCall invitation={call} key={idx} callTimeout={this.callTimeout} declineCall={this.declineCall} helperText={this.props.helperText} />
-      }.bind(this));
-        content = <ul id="notification-list" style={{display: 'none'}}>
-          <div>{callList}</div>
-        </ul>;
-    } else {
-      content = <ul id="notification-list" style={{display: 'none'}}><div className="call-box no-calls"><p>{this.props.helperText.no_active}</p></div></ul>;
-    }
+    var callList = this.props.incomingCalls.map(function(call, idx) {
+      return <IncomingCall
+                invitation={call}
+                key={idx}
+                callTimeout={this.callTimeout}
+                declineCall={this.declineCall}
+                helperText={this.props.helperText} />;
+    }.bind(this));
+
+    var activeCalls = this.buildNotification(<div>{callList}</div>);
+
+    var noCalls = this.buildNotification(
+      <div className="call-box no-calls">
+        <p id="no_calls">{this.props.helperText.no_active}</p>
+      </div>
+    );
+    var content = this.props.incomingCalls.length > 0 ? activeCalls : noCalls;
 
     return (
       <div>

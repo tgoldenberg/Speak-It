@@ -17,13 +17,13 @@ var Timer = React.createClass({
   tick: function() {
     if (this.state.secondsLeft <= 0) {
       clearInterval(this.interval);
-      var turn = this.state.turn;
+      var turn = this.props.turn;
       var content = "Start";
       if (turn == undefined) {
         turn = 1;
       }
       if (turn == 0 || turn == 2) {
-        seconds = 20;
+        content = 20;
       }
       if (turn >= 3) {
         content = "Game Stats";
@@ -43,8 +43,6 @@ var Timer = React.createClass({
 
     this.setState({currentUserChannel: currentUserChannel, otherUserChannel: otherUserChannel });
     currentUserChannel.bind('client-done', function(data) {
-      // console.log("client-done", data);
-      // console.log("pusher state", this.state);
       if (this.state.selfDone == true) {
         this.props.handleChange();
         this.setState({secondsLeft: 20, selfDone: false, otherDone: false});
@@ -58,7 +56,6 @@ var Timer = React.createClass({
     clearInterval(this.interval);
   },
   handleClick: function() {
-    // console.log("click state", this.state);
     if (this.props.turn != 1 && this.props.turn != 3 && this.props.turn != 4) {
       if (this.state.otherDone == true) {
         this.props.handleChange();
