@@ -11,8 +11,8 @@ var AvatarGrabber = React.createClass({
   },
   validateURL: function(value) {
     var url = get_gravatar(value);
-    this.setURL(url)
     this.setState({url: url, text: value});
+    this.setURL(url)
   },
   setURL: function(url) {
     $('#hidden-avatar-field').val(url);

@@ -3,7 +3,7 @@ var AvatarGrabber = require(__component_base + '/forms/AvatarGrabber').component
 
 describe('AvatarGrabber', function(done){
   beforeEach(function(done) {
-    get_gravatar = function() {};
+    get_gravatar = function(content) { return content;};
     subject = jasmineReact.render(<AvatarGrabber/>);
     subject.setURL = function() {};
     done();
@@ -32,7 +32,6 @@ describe('AvatarGrabber', function(done){
     it('does not accept an invalid URL', function(done) {
       var domElement = TestUtils.findRenderedDOMComponentWithClass(subject, 'form-control');
       TestUtils.Simulate.change(domElement, { target: { value: "user" } });
-      subject.handleChange();
       expect(subject.state.url).toEqual("https://i1.wp.com/design.atlassian.com/1.4/images/avatars/default-user/192/user-avatar-blue-96%402x.png?ssl=1");
       done();
     });

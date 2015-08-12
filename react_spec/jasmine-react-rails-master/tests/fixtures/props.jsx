@@ -149,7 +149,8 @@ var props = {
     stats_second_chat: "Second chat: ",
     stats_second_feedback: "Second Chat Feedback",
     stats_second_topic: "Second chat topic: ",
-    stats_title: "ChatRoom Stats"
+    stats_title: "ChatRoom Stats",
+    no_active: "No active calls"
   },
   initial_guidelines:{
     description: "You will be given 2 minutes for each conversation. When you are the native speaker you are kindly asked not to provide instruction, but to simply carry a conversation. As a student, you are simply asked to try your best. You may use words from your native language if necessary, but will not get full credit if you do so. Native speakers are asked to judge the student's speaking skills based on pronunciation, vocabulary, and clarity.",
