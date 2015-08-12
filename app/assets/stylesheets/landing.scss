@@ -9,6 +9,10 @@
 #login-col {
   padding-bottom: 2.5em;
   padding-top: .7em;
+  @media screen and (max-width: 768px) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 
 #culture-quote {
@@ -28,6 +32,9 @@
   padding-bottom: 2em;
   text-align: center;
   padding-top: 1.5em;
+  @media screen and (max-width: 768px) {
+    padding-top: 0;
+  }
 
   .message-box-logo {
     width: 1em;
@@ -69,8 +76,18 @@ h2 {
     font-size: 1.5em;
     width: 40%;
     margin-left: 5%;
-    @media screen and (max-width: 500px) {
-      width: 85%;
+    @media screen and (max-width: 800px) {
+      width: 80%;
+      margin: auto;
+      margin-left: none;
+    }
+  }
+  h1 {
+    margin-top: 1em;
+    @media screen and (max-width: 800px) {
+      width: 80%;
+      margin: auto;
+      margin-top: 1em;
     }
   }
 }
@@ -87,6 +104,10 @@ span.glyphicon-globe {
 }
 
 .navbar-right {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   margin-right: 2em;
 }
@@ -118,14 +139,24 @@ span.glyphicon-globe {
   }
 }
 .flex-container.signup-button-holder {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  padding-left: 20%;
-  padding-right: 20%;
+  margin: auto;
+  padding-left: 15%;
+  padding-right: 10%;
   #facebook-signup {
     margin-top: 0px;
     min-width: 12em;
-    @media screen and (max-width: 600px) {
-      margin-right: 0px;
+
+
+    @media screen and (min-width: 768px) {
+      padding: 14px 7px;
+      font-size: 1.2em;
+      height: 3.2em;
+      padding-top: 1em;
     }
   }
   #signup-button {

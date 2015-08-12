@@ -51,6 +51,7 @@
       background: darken($blue, 10%);
       border: 0px;
       margin-top: .5em;
+
       &:hover {
         background: darken($blue, 15%);
       }
@@ -72,6 +73,10 @@
   background: darken($blue, 10%);
   border: 0px;
   margin-top: .5em;
+  min-width: 14em;
+  font-size: 1em;
+  height: 3.3em;
+  padding-top: 1em;
   &:hover {
     background: darken($blue, 15%);
   }

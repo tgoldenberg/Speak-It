@@ -43,6 +43,10 @@
     }
   }
 }
+
+.submit-button-holder {
+  text-align: center;
+}
 .form-title {
   text-align: center;
   padding-top: .3em;
@@ -127,6 +131,7 @@ label {
   text-align: left;
   margin-left: 2%;
 }
+
 #form-button {
   @include button(darken($blue, 50%), flat);
   height: 2em;
