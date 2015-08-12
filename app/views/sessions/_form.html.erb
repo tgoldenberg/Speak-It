@@ -12,5 +12,5 @@
   </div>
 <% end %>
 <div class="submit-button-holder" id="landing-login-field">
-  <%= link_to t('landing.fb_login'), "/auth/facebook", class: 'btn btn-lg btn-primary facebook-login' %>
+  <a href="/auth/facebook" class="btn btn-lg btn-primary facebook-login"><img class="fb-logo visible-lg" src="<%= asset_path('fb') %>"/> <%= t('landing.fb_login') %></a>
 </div>

@@ -48,12 +48,12 @@
       min-width: 11em;
     }
     .btn-lg.facebook-login {
-      background: darken($blue, 10%);
+      background: #2d4373;
       border: 0px;
       margin-top: .5em;
 
       &:hover {
-        background: darken($blue, 15%);
+        background: darken(#2d4373, 10%);
       }
     }
   }
@@ -70,14 +70,22 @@
 }
 .btn-lg.facebook-login {
   min-width: 11em;
-  background: darken($blue, 10%);
+  background: #2d4373;
   border: 0px;
   margin-top: .5em;
   min-width: 14em;
   font-size: 1em;
   height: 3.3em;
   padding-top: 1em;
+  @media screen and (min-width: 1200px) {
+    padding-left: 4px;
+  }
   &:hover {
-    background: darken($blue, 15%);
+    background: darken(#2d4373, 10%);
+  }
+  .fb-logo {
+    margin-top: -.7em;
+    width: 2.7em;
+    float: left;
   }
 }

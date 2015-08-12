@@ -11,7 +11,9 @@
       <p> <%= t('landing.title') %></p>
       <div class="flex-container col-xs-12 signup-button-holder">
         <%= link_to t('landing.signup'), new_user_path, class: 'btn btn-lg btn-primary col-sm-6 col-xs-12', id: "signup-button" %>
-        <%= link_to t('landing.fb_signup'), "/auth/facebook", class: 'btn btn-lg btn-primary facebook-login col-xs-6 hidden-xs', id: 'facebook-signup' %>
+        <a href="/auth/facebook" class="btn btn-lg btn-primary facebook-login col-xs-6 hidden-xs" id="facebook-signup">
+          <img class="fb-logo visible-lg" src="<%= asset_path('fb')%>"/><%= t('landing.fb_signup') %>
+        </a>
       </div>
     </div>
   </div>
