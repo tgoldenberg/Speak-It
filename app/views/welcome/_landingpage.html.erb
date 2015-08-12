@@ -1,17 +1,17 @@
 <div id="main-container" class="container-fluid">
   <div id= "welcome-bar" class= "row">
-    <div id= "login-col" class= "col-md-4">
+    <div id= "login-col" class= "col-sm-4">
       <div>
         <%= render partial: "sessions/form" %>
       </div>
     </div>
 
-    <div id="speak-it-info" class="col-md-8">
+    <div id="speak-it-info" class="col-sm-8">
       <h1 id="proxima-nova">SpeakIt <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"</span></h1>
       <p> <%= t('landing.title') %></p>
       <div class="flex-container col-xs-12 signup-button-holder">
         <%= link_to t('landing.signup'), new_user_path, class: 'btn btn-lg btn-primary col-sm-6 col-xs-12', id: "signup-button" %>
-        <%= link_to 'Signup with Facebook', "/auth/facebook", class: 'btn btn-lg btn-primary facebook-login col-xs-6 hidden-xs', id: 'facebook-signup' %>
+        <%= link_to t('landing.fb_signup'), "/auth/facebook", class: 'btn btn-lg btn-primary facebook-login col-xs-6 hidden-xs', id: 'facebook-signup' %>
       </div>
     </div>
   </div>
