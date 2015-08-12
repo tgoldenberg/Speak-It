@@ -55,7 +55,13 @@ var IncomingCall = React.createClass({
     var invitationId = this.props.invitation.invitation.id;
     var recipientId = this.props.invitation.invitation.recipient_id;
     var senderId = this.props.invitation.invitation.sender_id;
-    this.createDeclinedCall({invitationId: invitationId, senderId: senderId, recipientId: recipientId});
+    this.createDeclinedCall(
+                            {
+                              invitationId: invitationId,
+                              senderId: senderId,
+                              recipientId: recipientId
+                            }
+                          );
   },
   acceptCall: function(e) {
     $(e.target).parent().submit();

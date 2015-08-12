@@ -5,7 +5,9 @@ var Title = React.createClass({
       <div className="titleBar row">
         <div className="avatar-wrapper">
           <div className="avatar-image">
-            <span><img className="avatar-image" src={this.props.chat.native_speaker.avatar_url}/></span>
+            <span>
+              <img className="avatar-image" src={this.props.chat.native_speaker.avatar_url}/>
+            </span>
           </div>
           <div className="avatar-info">
             <span id="title_native">{this.props.chat.text.native_speaker}</span>
@@ -13,7 +15,9 @@ var Title = React.createClass({
         </div>
         <div className="avatar-wrapper">
           <div className="avatar-image">
-            <span><img className="avatar-image" src={this.props.chat.student.avatar_url} alt="student"/></span>
+            <span>
+              <img className="avatar-image" src={this.props.chat.student.avatar_url} alt="student"/>
+            </span>
           </div>
           <div className="avatar-info">
             <span id="title_student">{this.props.chat.text.student}</span>
@@ -32,7 +36,6 @@ var Title = React.createClass({
         <div className="level-wrapper col-md-2">
           <span id="title_level">{this.props.chat.text.level}</span>
         </div>
-
       </div>
       <LargeVideo/>
       </div>

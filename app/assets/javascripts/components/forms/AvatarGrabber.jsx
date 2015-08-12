@@ -27,7 +27,11 @@ var AvatarGrabber = React.createClass({
           placeholder={this.props.text}
           id="select-box"
           className="form-control col-xs-6"/>
-        <img src={this.state.url} className="image-box col-xs-6" id="avatar-image"></img>
+        <img
+          src={this.state.url}
+          className="image-box col-xs-6"
+          id="avatar-image">
+        </img>
       </div>
     );
   }
