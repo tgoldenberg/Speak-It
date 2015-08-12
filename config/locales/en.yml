@@ -45,6 +45,8 @@ en:
     password: "password"
     login: "Login"
     logout: "Logout"
+    fb_login: "Login with Facebook"
+    fb_signup: "Signup with Facebook"
     title: "Practice language skills by talking with native speakers"
     signup: "Sign Up"
     subtitle: "Language is the key that unlocks a new culture"
