@@ -17,13 +17,13 @@ var Timer = React.createClass({
   tick: function() {
     if (this.state.secondsLeft <= 0) {
       clearInterval(this.interval);
-      var turn = this.state.turn;
+      var turn = this.props.turn;
       var content = "Start";
       if (turn == undefined) {
         turn = 1;
       }
       if (turn == 0 || turn == 2) {
-        seconds = 20;
+        content = 20;
       }
       if (turn >= 3) {
         content = "Game Stats";
