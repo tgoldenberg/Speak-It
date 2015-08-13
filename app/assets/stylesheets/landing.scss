@@ -67,26 +67,30 @@ h2 {
 #interact {
   height: 30em;
   text-align: left;
-  background-image: url(https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/brazil7.jpg);
+  background-image: url(asset_path('brazil7'));
   background-size: cover;
+  @media screen and (max-width: 1188px) {
+    height: 40em;
+  }
   p {
     font-family: $sub-title-font-family;
     text-align: center;
     font-weight: 300;
     line-height: 1.5;
     font-size: 1.5em;
+    margin-top: 1em;
     width: 40%;
     margin-left: 5%;
-    @media screen and (max-width: 800px) {
-      width: 80%;
+    @media screen and (max-width: 768px) {
+      width: 75%;
       margin: auto;
       margin-left: none;
     }
   }
   h1 {
     margin-top: 1em;
-    @media screen and (max-width: 800px) {
-      width: 80%;
+    @media screen and (max-width: 768px) {
+      width: 75%;
       margin: auto;
       margin-top: 1em;
     }
@@ -119,19 +123,19 @@ span.glyphicon-globe {
 
 #person-1 {
   height: 300px;
-  background-image: url(http://www.wikihow.com/images/1/17/Look-Good-on-a-Webcam-Step-3.jpg);
+  background-image: url(asset_path('person-1'));
   background-size: cover;
 }
 
 #person-2 {
   height: 300px;
-  background-image: url(http://cache-blog.credit.com/wp-content/uploads/2014/11/webcam-spying.jpg);
+  background-image: url(asset_path('person-2'));
   background-size: cover;
 }
 
 #person-3 {
   height: 300px;
-  background-image: url(http://i3.minus.com/ibb3K5GMdmRkkX.jpg);
+  background-image: url(asset_path('person-3'));
   background-size: cover;
 }
 #new_user {
