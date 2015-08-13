@@ -113,7 +113,7 @@ var Timer = React.createClass({
     }
     return (
       <div className="timer-wrapper">
-        <p className="timer-text"> {this.state.message}</p>
+        <p className="timer-text hidden-sm hidden-xs"> {this.state.message}</p>
         <div className="timer-holder">
           <p id="other-player-waiting" className="hidden">Waiting for other player...</p>
           <span id="seconds-display" onClick={this.handleClick}>

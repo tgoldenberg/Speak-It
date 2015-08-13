@@ -5,3 +5,13 @@ h4 {
 .no-padding, .component, .infoPanel {
   height: inherit;
 }
+#initial_guidelines_logo {
+  width: 1.8em;
+  margin-left: .3em;
+}
+.infoPanel {
+  h1 {
+    font-weight: 400;
+    font-size: 3em;
+  }
+}
