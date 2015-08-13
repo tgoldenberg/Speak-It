@@ -1,72 +1,93 @@
 <div class="new_user_signup">
-  <h1 class="form-title"> <%= t('signup.signup') %> <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"</span></h1>
-  <div class="container">
+  <h1 class="form-title">
+    <%= t('signup.signup') %>
+    <span>
+      <img class="message-box-logo" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"/>
+    </span>
+    <span class="new-user-subtitle"><br/>Language is the key that unlocks a new culture.</span>
+  </h1>
+
+  <div class="container-fluid">
     <%= form_for @user, url: users_path, class: 'form-horizontal' do |f| %>
+      <div class="row" id="new_user_first_panel">
+        <div class="col-md-8">
+          <div class="form-group">
+            <div class="row non-select">
+              <i class="glyphicon glyphicon-user registration-icon"></i>
+              <%= f.text_field :username, class: 'form-control', placeholder: t('signup.user') %>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <div class="row non-select">
-          <i class="glyphicon glyphicon-user registration-icon"></i>
-          <%= f.text_field :username, class: 'form-control', placeholder: t('signup.user') %>
-        </div>
-      </div>
+          <div class= "form-group">
+            <div class= "row non-select">
+              <i class="glyphicon glyphicon-lock registration-icon"></i>
+              <%= f.password_field :password, class: 'form-control', placeholder: t('signup.password') %>
+            </div>
+          </div>
 
-      <div class= "form-group">
-        <div class= "row non-select">
-          <i class="glyphicon glyphicon-lock registration-icon"></i>
-          <%= f.password_field :password, class: 'form-control', placeholder: t('signup.password') %>
+          <div class= "form-group">
+            <div class= "row non-select">
+              <i class="glyphicon glyphicon-envelope registration-icon"></i>
+              <%= f.email_field :email, class: 'form-control', placeholder: t('signup.email') %>
+            </div>
+          </div><br/>
         </div>
-      </div>
-
-      <div class= "form-group">
-        <div class= "row non-select">
-          <i class="glyphicon glyphicon-envelope registration-icon"></i>
-          <%= f.email_field :email, class: 'form-control', placeholder: t('signup.email') %>
+        <div class="col-md-4 visible-lg visible-md" id="new_user_sidebar">
+          <h1>Create your Personal Account</h1>
+          <p>By providing your mother tongue and the language you would like to learn, SpeakIt will pair you with native speakers to practice your language skills.</p>
         </div>
-      </div><br/>
-
-      <div class="form-group row">
-        <div class="non-select">
-          <%= f.label t('signup.native_language') %>
-        </div>
-        <div class="container">
-          <%= f.select(:native_language_id, options_for_select(@languages_select_array), {},{class: "form-control col-xs-6", id: "select-box", onChange: "createFlag(this);"}) %>
-          <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box col-xs-6"></img>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <div class="non-select">
-          <%= f.label t('signup.study_language') %>
-        </div>
-        <div class="container">
-          <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control col-xs-6",  id: "select-box", onChange: "createFlag(this);"}) %>
-          <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box col-xs-6"></img>
-        </div>
+        <br/>
       </div>
 
 
-      <div class="form-group row">
-        <div class="non-select">
-          <%= f.label t('signup.country') %>
-          <div class="container">
-            <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control col-xs-6", id: "select-box", onChange: "createFlagForCountry(this);"}) %>
-            <img src="<%= asset_path("argentinian-flag-medium.png") %>" class="image-box col-xs-6"></img>
+      <div class="row" id="new_user_languages">
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="container">
+              <%= f.label t('signup.native_language'), class: 'col-xs-2 col-xs-offset-1' %>
+              <%= f.select(:native_language_id, options_for_select(@languages_select_array), {},{class: "form-control col-xs-3", id: "select-box", onChange: "createFlag(this);"}) %>
+              <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box col-xs-4 col-xs-offset-1"></img>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="container">
+              <%= f.label t('signup.study_language'), class: 'col-xs-2 col-xs-offset-1' %>
+              <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control col-xs-3",  id: "select-box", onChange: "createFlag(this);"}) %>
+              <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box col-xs-4 col-xs-offset-1"></img>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="container">
+              <%= f.label t('signup.country'), class: 'col-xs-2 col-xs-offset-1' %>
+              <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control col-xs-3", id: "select-box", onChange: "createFlagForCountry(this);"}) %>
+              <img src="<%= asset_path("argentinian-flag-medium.png") %>" class="image-box col-xs-4 col-xs-offset-1"></img>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="container">
+              <%= f.label :avatar_url, value: t('signup.avatar'), class: 'col-xs-2 col-xs-offset-1' %>
+              <%= react_component("AvatarGrabber", {text: t('signup.avatar_grabber')}.to_json) %>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="col-md-6">
 
-      <div class="form-group row">
-        <div class="non-select">
-          <%= f.label :avatar_url, value: t('signup.avatar') %>
-          <%= react_component("AvatarGrabber", {text: t('signup.avatar_grabber')}.to_json) %>
         </div>
       </div>
+
       <%= f.hidden_field :avatar_url, value: "https://i1.wp.com/design.atlassian.com/1.4/images/avatars/default-user/192/user-avatar-blue-96%402x.png?ssl=1", id: "hidden-avatar-field" %>
       <%= f.hidden_field :level, value: 1 %>
-      <div>
-        <%= f.submit t('signup.submit'), class: 'btn btn-lg btn-primary form-control', id: 'form-button' %>
+      <div id="new_user_submit" class="row">
+        <div class="col-xs-5 col-xs-offset-2 submit-holder">
+          <%= f.submit t('signup.submit'), class: 'btn btn-lg btn-primary form-control', id: 'form-button' %>
+        </div>
       </div>
     <% end %>
+  </div>
+  <div id="new_user_footer">
   </div>
 </div>
 

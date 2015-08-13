@@ -3,6 +3,9 @@
   margin-top: -.2em;
   width: 2em;
 }
+.navbar {
+  z-index: 9999999;
+}
 .shiny {
   background: red;
 }
@@ -31,7 +34,7 @@
       height: 3.4em;
     }
     .form-control {
-      width: 50%;
+      width: 85%;
       margin: auto;
       margin-top: .2em;
     }
