@@ -16,15 +16,15 @@ To experience our app first hand click on the link: <a href="http://speakit-lang
 ### Home page and sign up:
 
 
-<img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/home-page.png">
+<img src="https://raw.githubusercontent.com/nyc-dragonflies-2015/Speak-It/master/app/assets/images/speakit-landing.png">
 
 #### Click sign up to login and fill out the form.
 
-<img src="https://raw.githubusercontent.com/nyc-dragonflies-2015/Speak-It/master/app/assets/images/sign-up.png">
+<img src="https://raw.githubusercontent.com/nyc-dragonflies-2015/Speak-It/master/app/assets/images/speakit-signup.png">
 
 #### You will be redirected to your dashboard. Find an avaiable user and click the chat button.
 
-<img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/joseph_dashboard.png">
+<img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/speakit-profile.png">
 
 #### After you connect via chat you will be lead to a webcam where you will speak with a timer with the user first in your study language then you native language you will be given a timer to speak based on your level of language.
 
