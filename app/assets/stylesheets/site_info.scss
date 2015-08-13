@@ -30,24 +30,29 @@
   height: 100%;
   padding: 1em;
   padding-left: 3em;
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
   .message-logo {
-    width: 6em;
+    width: 5.7em;
     margin-left: .8em;
   }
   .message-logo.first {
-    margin-top: 14em;
+    margin-top: 13em;
   }
   .message-logo.second {
     margin-top: 1em;
   }
   .message-logo.third {
-    margin-top: 10em;
+    margin-top: 7em;
+    margin-left: 3em;
   }
   .message-logo.fourth {
-
+    margin-bottom: 7em;
   }
   .message-logo.fifth {
-    margin-bottom: 10em;
+    margin-bottom: 0;
+    margin-left: 1em;
     @media screen and (max-width: 1380px) {
       display: none;
     }
