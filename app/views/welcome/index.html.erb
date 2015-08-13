@@ -3,11 +3,12 @@
   </head>
   <body>
     <% if logged_in? %>
-      <div class="container" id="logged-in-wrapper">
+      <div class="container-fluid" id="logged-in-wrapper">
         <%= render partial: "welcome/profile" %>
         <%= render partial: "welcome/tabletab" %>
         <%= render partial: "welcome/river" %>
       </div>
+      <%= render partial: "welcome/footer" %>
     <% else %>
       <%= render partial: "welcome/landingpage" %>
     <% end %>
