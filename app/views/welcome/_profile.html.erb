@@ -1,23 +1,37 @@
 <div class="row" id="logged-in-row">
-  <div id= "avatar-container" class="col-md-2">
-  	<span><img src= <%= @user.avatar_url %> alt="profile_pic" class="avatar-image"><h2><%= @user.username.titleize %></h2> <div><img src="<%= asset_path(@user.country.image_url) %>" alt="flag" id="language-flag" /></div> <%= t('countries.' + @user.country.name.split(" ").join("")) %></span>
+  <div id= "avatar-container" class="col-md-2 col-sm-3 col-xs-3">
+  	<span>
+      <div>
+        <img src= <%= @user.avatar_url %> alt="profile_pic" class="avatar-image"/>
+        <h2><%= @user.username.titleize %></h2>
+      </div>
+      <div>
+        <div>
+          <img src="<%= asset_path(@user.country.image_url) %>" alt="flag" id="language-flag" />
+        </div>
+        <span id="country_name">
+          <%= t('countries.' + @user.country.name.split(" ").join("")) %>
+        </span>
+      </div>
+    </span>
   </div>
-  <div id="profile-level-container" class="col-md-6">
+
+  <div id="profile-level-container" class="col-md-6 col-sm-4">
     <div class = "row">
-      <p> <%= t('logged_in.level') %></p>
+      <p class="level-text"> <%= t('logged_in.level') %></p>
       <div class="progress">
         <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @user.levelpercent%>">
           <%= @user.level.value %>
         </div>
       </div>
-      <p> <%= t('logged_in.points') %> </p>
+      <p class="level-text"> <%= t('logged_in.points') %> </p>
       <div class="progress">
         <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style= "width: <%= @user.points %>%" > <%= @user.points %>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-5">
     <div class="languages-holder">
       <h4> <%= t('logged_in.mother_tongue') %></h4>
       <div class="native-language-holder">
@@ -34,3 +48,8 @@
   </div>
 </div>
 <div class="tab-holder row"></div>
+<script>
+  $(function() {
+    $('#recent-tab').click();
+  });
+</script>

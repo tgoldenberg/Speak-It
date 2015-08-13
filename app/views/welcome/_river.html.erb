@@ -1,3 +1,4 @@
+<div id="available-table-wrapper">
   <table id="available-table" class="table table-striped">
     <thead>
       <tr>
@@ -7,7 +8,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @available_users.each do |user| %>
+      <% @available_users.each_with_index do |user, idx| %>
         <tr>
           <td> <img src= <%= user.avatar_url %> alt="avatar" class="user-avatar"></td>
           <td> <img src= <%= asset_path(user.country.image_url) %> alt="avatar" class="user-avatar"></td>
@@ -16,9 +17,20 @@
           </td>
         </tr>
       <% end %>
+      <tr class="filler">
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="filler">
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
-
+</div>
+<div id="recent-table-wrapper">
   <table id="recent-table" class="table table-striped">
     <thead>
       <tr>
@@ -49,5 +61,18 @@
           </td>
         </tr>
       <% end %>
+      <tr class="filler">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="filler">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
+</div>

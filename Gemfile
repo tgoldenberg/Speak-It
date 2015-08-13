@@ -14,6 +14,7 @@ gem 'figaro'
 gem 'pusher'
 gem 'react-rails'
 gem 'bourbon'
+gem 'neat'
 gem 'i18n'
 gem 'omniauth-facebook'
 

@@ -20,6 +20,7 @@ var AvatarGrabber = React.createClass({
   render: function() {
     return (
       <div className="container">
+        <i className="glyphicon glyphicon-user hidden-sm hidden-xs hidden-md" id="gravatar-icon"></i>
         <input
           onChange={this.handleChange}
           value={this.state.text}

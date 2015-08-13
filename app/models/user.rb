@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   end
 
   def levelpercent
-    (self.level.value * 10).to_s + "%"
+    (self.level.value * 20).to_s + "%"
   end
 
   def self.from_omniauth(auth)

@@ -7,6 +7,7 @@ en:
     English: "English"
     Spanish: "Spanish"
     Mandarin: "Mandarin"
+    lang: "language"
   countries:
     Argentina: "Argentina"
     Canada: "Canada"
@@ -45,6 +46,8 @@ en:
     password: "password"
     login: "Login"
     logout: "Logout"
+    fb_login: "Login with Facebook"
+    fb_signup: "Signup with Facebook"
     title: "Practice language skills by talking with native speakers"
     signup: "Sign Up"
     subtitle: "Language is the key that unlocks a new culture"
@@ -53,7 +56,7 @@ en:
     second_description: "Conversation topics are selected according to skill level. Increase your selection of conversation topics by improving your ranking."
     third_title: "Meet people around the world"
   signup:
-    signup: "Signup"
+    signup: "Join SpeakIt"
     user: "username"
     email: "email"
     password: "password"

@@ -1,17 +1,19 @@
 <div id="main-container" class="container-fluid">
   <div id= "welcome-bar" class= "row">
-    <div id= "login-col" class= "col-md-4">
+    <div id= "login-col" class= "col-sm-4">
       <div>
         <%= render partial: "sessions/form" %>
       </div>
     </div>
 
-    <div id="speak-it-info" class="col-md-8">
-      <h1 id="proxima-nova">SpeakIt <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"</span></h1>
+    <div id="speak-it-info" class="col-sm-8">
+      <h1 id="proxima-nova">SpeakIt <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"/></span></h1>
       <p> <%= t('landing.title') %></p>
       <div class="flex-container col-xs-12 signup-button-holder">
         <%= link_to t('landing.signup'), new_user_path, class: 'btn btn-lg btn-primary col-sm-6 col-xs-12', id: "signup-button" %>
-        <%= link_to 'Signup with Facebook', "/auth/facebook", class: 'btn btn-lg btn-primary facebook-login col-xs-6 hidden-xs', id: 'facebook-signup' %>
+        <a href="/auth/facebook" class="btn btn-lg btn-primary facebook-login col-xs-6 hidden-xs" id="facebook-signup">
+          <img class="fb-logo visible-lg" src="<%= asset_path('fb')%>"/><%= t('landing.fb_signup') %>
+        </a>
       </div>
     </div>
   </div>
@@ -32,7 +34,7 @@
     <h1 id="culture-quote"> <%= t('landing.second_subtitle') %></h1>
     <p> <%= t('landing.second_description') %></p>
   </div>
-  <div id="meet-people" class="row">
+  <div id="meet-people" class="row hidden-xs hidden-sm hidden-md">
     <h2 class="meet-people-title"> <%= t('landing.third_title') %><h2>
     <div class="col-sm-4" id="person-1">
     </div>
@@ -42,3 +44,29 @@
     </div>
   </div>
 </div>
+<footer class="footer" role="contentinfo">
+  <div class="footer-logo">
+    <img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"/>
+  </div>
+  <div class="footer-links">
+    <ul>
+      <li><h3>Content</h3></li>
+      <li><a href="javascript:void(0)">About</a></li>
+      <li><a href="mailto:thomasagoldenberg@gmail.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><h3>Follow Us</h3></li>
+      <li><a href="https://www.facebook.com/speakitlanguageapp">Facebook</a></li>
+      <li><a href="https://twitter.com/tomgoldenberg">Twitter</a></li>
+    </ul>
+    <ul>
+      <li><h3>Legal</h3></li>
+      <li><a href="javascript:void(0)">Terms and Conditions</a></li>
+      <li><a href="javascript:void(0)">Privacy Policy</a></li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <p>All materials contained in this Website are protected by copyright laws, and may not be reproduced, republished, displayed, or otherwise exploited in any manner without the express prior written permission of the Website owner(s). </p>
+</footer>

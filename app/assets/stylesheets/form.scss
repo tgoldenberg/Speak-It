@@ -43,13 +43,19 @@
     }
   }
 }
+
+.submit-button-holder {
+  text-align: center;
+}
 .form-title {
   text-align: center;
-  padding-top: .3em;
+  padding-top: .5em;
+  padding-bottom: .5em;
   color: white;
+  border-bottom: 1px solid #f7f7f7;
   font-family: $title-font-family;
   font-weight: $title-font-weight;
-  line-height: 2;
+  /* line-height: 2; */
   background: darken($blue, 10%);
   font-size: 4em;
 
@@ -67,36 +73,131 @@
 	margin-top: 10px;
 }
 .new_user_signup {
+  width: -moz-fit-content;
   background: $blue;
   margin-top: -20px;
-  height: initial;
+  height: inherit;
   overflow-x: hidden;
+  .new-user-subtitle {
+    font-size: .5em;
+    font-weight: 300;
+  }
+  #form-button {
+    margin-bottom: 2em;
+  }
+  #new_user_submit {
+    .row {
+      text-align: center;
+      .btn {
+        width: 28%;
+        margin-left: 0;
+      }
+    }
+  }
+  #new_user_languages {
+    padding-top: 3em;
+    .form-group {
+      height: 6em;
+    }
+    label {
+      font-size: 1.6em;
+      line-height: 2;
+      @media(max-width: 1207px) {
+        line-height: 1.4;
+      }
+    }
+    .image-box {
+      width: 11em;
+      margin-left: 5%;
+      margin-top: -0.5em;
+      height: 5em;
+    }
+    .image-box#avatar-image {
+      width: 8em;
+    }
+  }
+}
+#new_user_footer {
+  padding-top: 1em;
+  text-align: center;
+  img {
+    width: 4em;
+  }
+}
+#first_panel_container.last-field {
+  @media(max-width: 768px) {
+    padding-left: 0;
+  }
+}
+.container#first_panel_container {
+  @media screen and (min-width: 880px) {
+    width: 900px;
+  }
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+}
+#gravatar-icon {
+  top: 19px;
+  font-size: 1.4em;
+  color: #bbb;
+  right: 50%;
+  z-index: 9999;
 }
 #new_user {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .form-group {
     .form-control {
-      width: 50%;
+      width: 85%;
       margin-top: 1em;
       padding-left: 3em;
     }
   }
-
+  #new_user_sidebar {
+    color: white;
+    h1 {
+      font-size: 3em;
+      font-weight: 300;
+      text-align: center;
+    }
+    p {
+      font-weight: 300;
+      font-size: 1.2em;
+      text-align: center;
+    }
+  }
+  #new_user_first_panel {
+    border-bottom: 1px solid lighten($blue, 10%);
+    width: 95%;
+    margin: auto;
+    padding-bottom: 1em;
+  }
+  .non-select {
+    text-align: left;
+  }
   .form-control#select-box {
     max-width: 30em;
-    margin-left: 25.5%;
     min-width: 22em;
-    height: 2.9em;
+    height: 3.7em;
     @media screen and (max-width: 970px) {
       min-width: 11em;
-      max-width: 15em;
+      max-width: 25em;
     }
-
   }
+}
+#new_user_footer {
+  border-top: 1px solid lighten($blue, 10%);
+  height: 3em;
+  width: 60%;
+  margin: auto;
 }
 i.registration-icon {
   top: 42px;
   font-size: 1.4em;
-  right: 22.5%;
+  left: 9.5%;
   color: #bbb;
 }
 .image-box {
@@ -127,6 +228,7 @@ label {
   text-align: left;
   margin-left: 2%;
 }
+
 #form-button {
   @include button(darken($blue, 50%), flat);
   height: 2em;
@@ -140,6 +242,7 @@ label {
   }
   @media screen and (max-width: 500px) {
     min-width: 5em;
+    margin-top: 3em;
   }
 
 }
