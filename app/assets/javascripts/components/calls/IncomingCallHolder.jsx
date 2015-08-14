@@ -18,10 +18,10 @@ var IncomingCallHolder = React.createClass({
                 helperText={this.props.helperText} />;
     }.bind(this));
 
-    var activeCalls = this.buildNotification(<div>{callList}</div>);
+    var activeCalls = this.buildNotification(<div id="incoming_calls">{callList}</div>);
 
     var noCalls = this.buildNotification(
-      <div className="call-box no-calls">
+      <div className="call-box no-calls hidden-xs hidden-sm" id="incoming_calls">
         <p id="no_calls">{this.props.helperText.no_active}</p>
       </div>
     );

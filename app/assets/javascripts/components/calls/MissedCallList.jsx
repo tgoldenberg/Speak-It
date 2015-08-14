@@ -19,7 +19,7 @@ var MissedCallList = React.createClass({
     return (
       <div>
         <ul id="missed-call-list" className="hidden">
-          <div className="call-box">
+          <div className="call-box hidden-sm hidden-xs" id="missed_calls">
           {content}
           </div>
         </ul>
