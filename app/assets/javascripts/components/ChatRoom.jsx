@@ -94,10 +94,12 @@ var ChatRoom = React.createClass({
                             );
 
     this.state.otherUserChannel.trigger('client-initiator', {
+      console.log("Trigger initiator", peer);
       data: {initiator: false}
     });
 
     this.state.currentUserChannel.bind('client-initiator', function(data) {
+      console.log("Receive initiator", data);
       peer = new SimplePeer(
                             {
                               initiator: true,
@@ -117,6 +119,7 @@ var ChatRoom = React.createClass({
     this.peerClose(peer);
 
     this.state.currentUserChannel.bind('client-signal', function(signal) {
+      console.log("Receive signal", data);
       peer.signal(signal.data);
     });
   },
