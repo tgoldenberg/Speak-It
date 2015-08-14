@@ -1,5 +1,8 @@
 var ChatRoom = React.createClass({
   getInitialState: function() {
+    var pusher = new Pusher('18cc5c3d4ea4757ca628');
+    var currentUserChannel = 'private-conversation.' + this.props.current_user.user.id;
+    var otherUserChannel = 'private-conversation.' + this.props.other_user.user.id;
     return {
       turn: this.props.chat_room.turn,
       completed: this.props.chat_room.completed,
@@ -7,9 +10,9 @@ var ChatRoom = React.createClass({
       currentChat: this.props.first_chat,
       initiator: false,
       currentUserRTC: {},
-      currentUserChannel: "",
-      otherUserChannel: "",
-      pusher: new Pusher('18cc5c3d4ea4757ca628')
+      currentUserChannel: pusher.subscribe(currentUserChannel),
+      otherUserChannel: pusher.subscribe(otherUserChannel),
+      pusher: pusher
     }
   },
 
