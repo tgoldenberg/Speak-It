@@ -8,6 +8,10 @@
   padding-bottom: .5em;
   display: block;
   border-radius: 3px;
+  @media(max-width: 600px) {
+    min-width: 7em;
+    margin-left: 1em;
+  }
 }
 #timer_holder {
   cursor: pointer;
@@ -32,4 +36,7 @@
   font-size: 2.5em;
   font-weight: 300;
   line-height: 1.6;
+  @media(max-width: 600px) {
+    font-size: 2em;
+  }
 }
