@@ -7,7 +7,9 @@
   padding-right: 11px;
   padding-bottom: .5em;
   display: block;
-  border-radius: 3px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px grey;
+  border: 1px solid lighten($blue, 10%);
   @media(max-width: 600px) {
     min-width: 7em;
     margin-left: 1em;
@@ -20,6 +22,10 @@
   min-width: 45%;
   margin: auto;
   text-align: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
 }
 #other-player-waiting {

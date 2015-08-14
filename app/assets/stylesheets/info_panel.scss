@@ -1,7 +1,36 @@
 h4 {
   line-height: 1.8;
 }
-
+.guidelines {
+  h4 {
+    font-size: 1.5em;
+    font-weight: 300;
+    line-height: 2.2;
+    letter-spacing: 1.5px;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+    margin-top: 1em;
+    @media(max-width: 1256px) {
+      line-height: 1.6;
+    }
+    @media(max-width: 992px) {
+      line-height: 1.5;
+      font-size: 1.4em;
+    }
+    @media(max-width: 768px) {
+      line-height: 1.3;
+      font-size: 1.2em;
+    }
+    @media(max-width: 568px) {
+      line-height: 1.2;
+      font-size: 1.1em;
+    }
+  }
+}
+.container-fluid.no-padding {
+  overflow: hidden;
+}
 .no-padding, .component, .infoPanel {
   height: inherit;
 }
@@ -10,7 +39,61 @@ h4 {
   margin-left: .3em;
 }
 .infoPanel {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    .tip-holder {
+      min-height: 80em;
+      p {
+        font-weight: 300;
+        font-size: 1.5em;
+        letter-spacing: 1.2px;
+        line-height: 1.2;
+      }
+      li {
+        list-style-type: none;
+        font-size: 1.2em;
+        font-weight: 300;
+        width: 95%;
+        margin: auto;
+        margin-top: .4em;
+        line-height: 1.7;
+      }
+    }
+    .title-holder {
+      background: darken($blue, 15%);
+      padding-top: 2em;
+      padding-bottom: 1em;
+      color: white;
+      height: inherit;
+    }
+    .well {
+      text-align: center;
+      background: lighten($blue, 5%);
+      color: whitesmoke;
+      border-radius: 6px;
+      border: none;
+      height: 10em;
+      @media(max-width: 992px) {
+        height: 7em;
+      }
+
+      h1 {
+        font-weight: 300;
+        padding-top: 3%;
+        @media(max-width: 992px) {
+          padding-top: 0;
+          margin-top: 12px;
+        }
+      }
+    }
+  }
   .titleBar {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
     height: 7em;
     .topic-wrapper {
       #title_topic {
@@ -36,6 +119,11 @@ h4 {
     }
     .avatar-wrapper {
       padding-left: 1em;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
       .avatar-info {
         width: 8em;
         @media(max-width: 768px) {
@@ -49,6 +137,6 @@ h4 {
   }
   h1 {
     font-weight: 400;
-    font-size: 3em;
+    font-size: 2.6em;
   }
 }

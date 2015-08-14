@@ -11,17 +11,19 @@ var Title = React.createClass({
     return (
       <div>
       <div className="titleBar row">
-        <div className="avatar-wrapper hidden-xs">
+        <div className="avatar-wrapper hidden-xs col-sm-3">
           <div className="avatar-image">
             <span>
               <img className="avatar-image" src={this.props.chat.native_speaker.avatar_url}/>
             </span>
           </div>
+
           <div className="avatar-info">
             <span id="title_native"><b>{native}:</b><br/>{nativeName}</span>
           </div>
         </div>
-        <div className="avatar-wrapper hidden-xs">
+        <div style={{clear:"both"}}></div>
+        <div className="avatar-wrapper hidden-xs col-sm-3">
           <div className="avatar-image">
             <span>
               <img className="avatar-image" src={this.props.chat.student.avatar_url} alt="student"/>
@@ -31,6 +33,7 @@ var Title = React.createClass({
             <span id="title_student"><b>{student}:</b><br/>{studentName}</span>
           </div>
         </div>
+        <div style={{clear:"both"}}></div>
 
         <div className="topic-wrapper col-sm-6">
           <h2 id="title_topic"><b>{topic}:</b> {topicName}</h2>
@@ -45,6 +48,7 @@ var Title = React.createClass({
           <span id="title_level">{this.props.chat.text.level}</span>
         </div>
       </div>
+      <div style={{clear:"both"}}></div>
       <LargeVideo/>
       </div>
     );

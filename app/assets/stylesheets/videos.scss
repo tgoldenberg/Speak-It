@@ -1,4 +1,8 @@
 .videos {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
 }
 #remoteVideoLarge {
@@ -22,6 +26,10 @@
     background: black;
   }
   .local-video, .remote-video {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
   }
   #remoteVideoSmall {
@@ -42,6 +50,10 @@
   }
 }
 .button-holder {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
 }
 .change-turn-button {
