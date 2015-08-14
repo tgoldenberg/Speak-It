@@ -1,61 +1,74 @@
 <div id="feedback-form-wrapper">
-  <h1 class="form-title"> <%= t('feedback.title') %></h1>
+  <div id="wrapper">
+    <h1 class="form-title"> <%= t('feedback.title') %>
+      <span>
+        <img class="message-box-logo" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"/>
+      </span>
+    </h1>
 
-  <div class="container">
-  <%= form_for @feedback, url: create_feedback_path, method: 'post' do |f| %>
-  <div class="form-group">
-    <div class="row non-select">
-      <p class="feedback-instruction"> <%= t('feedback.question_one') %></p>
+    <div class="container-fluid">
+      <%= form_for @feedback, url: create_feedback_path, method: 'post' do |f| %>
+
+        <div class="form-group">
+          <div class="row non-select">
+            <p class="feedback-instruction"> <%= t('feedback.question_one') %></p>
+          </div>
+          <div class= "row non-select" id="new_feedback_field">
+            <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control", onChange: "createStars(this);"}) %>
+            <div class="stars-container">
+              <span class="glyphicon glyphicon-star animated bounceIn"></span>
+              <span class="glyphicon glyphicon-star animated hidden"></span>
+              <span class="glyphicon glyphicon-star animated hidden"></span>
+            </div>
+          </div>
+         </div>
+
+        <div class="form-group">
+          <div class="row non-select" id="new_feedback_field">
+            <p class="feedback-instruction"> <%= t('feedback.question_two') %></p>
+          </div>
+          <div class= "row non-select" id="new_feedback_field">
+            <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control", onChange: "createStars(this);"}) %>
+            <div class="stars-container">
+              <span class="glyphicon glyphicon-star animated bounceIn"></span>
+              <span class="glyphicon glyphicon-star animated hidden"></span>
+              <span class="glyphicon glyphicon-star animated hidden"></span>
+            </div>
+          </div>
+         </div>
+
+        <div class="form-group">
+          <div class="row non-select" id="new_feedback_field">
+            <p class="feedback-instruction"> <%= t('feedback.question_three') %></p>
+          </div>
+          <div class= "row non-select" id="new_feedback_field">
+            <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control", onChange: "createStars(this);"}) %>
+            <div class="stars-container">
+              <span class="glyphicon glyphicon-star animated bounceIn"></span>
+              <span class="glyphicon glyphicon-star animated hidden"></span>
+              <span class="glyphicon glyphicon-star animated hidden"></span>
+            </div>
+          </div>
+         </div>
+
+         <%= f.hidden_field :rating, value: 0, id: "hidden_rating_field" %>
+
+         <div class="form-group">
+           <div class="row non-select" id="new_feedback_field">
+             <p class="feedback-instruction"> <%= t('feedback.comment_instructions') %></p>
+           </div>
+           <div class="row non-select" id="new_feedback_field">
+             <%= f.text_area :comment, class: 'form-control', id: 'comment-field', placeholder: t('feedback.comment_placeholder') %>
+            </div>
+          </div>
+        </div>
+
+        <%= f.hidden_field :chat_id, value: @chat.id %>
+        <%= f.hidden_field :sender_id, value: current_user.id %>
+        <%= f.hidden_field :recipient_id, value: @chat.student_id %>
+
+        <%= f.submit t('feedback.button'), class: 'btn btn-primary form-button' %>
+      <% end %>
     </div>
-    <div class= "row non-select">
-      <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control", onChange: "createStars(this);"}) %>
-      <div class="stars-container">
-        <span class="glyphicon glyphicon-star animated"></span>
-        <span class="glyphicon glyphicon-star animated hidden"></span>
-        <span class="glyphicon glyphicon-star animated hidden"></span>
-      </div>
-    </div>
-   </div>
-  <div class="form-group">
-    <div class="row non-select">
-      <p class="feedback-instruction"> <%= t('feedback.question_two') %></p>
-    </div>
-    <div class= "row non-select">
-      <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control", onChange: "createStars(this);"}) %>
-      <div class="stars-container">
-        <span class="glyphicon glyphicon-star animated"></span>
-        <span class="glyphicon glyphicon-star animated hidden"></span>
-        <span class="glyphicon glyphicon-star animated hidden"></span>
-      </div>
-    </div>
-   </div>
-  <div class="form-group">
-    <div class="row non-select">
-      <p class="feedback-instruction"> <%= t('feedback.question_three') %></p>
-    </div>
-    <div class= "row non-select">
-      <%= f.select(:rating, options_for_select(@ratings), {}, {class: "form-control", onChange: "createStars(this);"}) %>
-      <div class="stars-container">
-        <span class="glyphicon glyphicon-star animated"></span>
-        <span class="glyphicon glyphicon-star animated hidden"></span>
-        <span class="glyphicon glyphicon-star animated hidden"></span>
-      </div>
-    </div>
-   </div>
-   <%= f.hidden_field :rating, value: 0, id: "hidden_rating_field" %>
-   <div class="form-group">
-     <div class="row non-select">
-       <p class="feedback-instruction"> <%= t('feedback.comment_instructions') %></p>
-     </div>
-     <div class="row non-select">
-       <%= f.text_area :comment,class: 'form-control', id: 'comment-field', placeholder: t('feedback.comment_placeholder') %>
-      </div>
-    </div>
-  </div>
-    <%= f.hidden_field :chat_id, value: @chat.id %>
-    <%= f.hidden_field :sender_id, value: current_user.id %>
-    <%= f.hidden_field :recipient_id, value: @chat.student_id %>
-    <%= f.submit t('feedback.button'), class: 'btn btn-primary form-button' %>
-  <% end %>
   </div>
 </div>

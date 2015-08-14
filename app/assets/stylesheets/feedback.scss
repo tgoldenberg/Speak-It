@@ -2,11 +2,17 @@
   background: $blue;
   color: white;
   text-align: center;
-  height: initial;
+  padding-bottom: 4em;
+  height: inherit;
+  #wrapper {
+    background: $blue;
+    padding-bottom: 4em;
+  }
+
   .form-title {
     margin: 0;
     font-size: 3em;
-    padding-top: 0;
+    padding: 1em;
   }
   .feedback-instruction {
     margin-top: 1em;
@@ -19,5 +25,32 @@
     width: 50%;
     text-align: center;
     margin: auto;
+  }
+  select, input {
+    text-align: center;
+    margin: auto;
+    min-width: 0;
+  }
+  #new_feedback_field {
+    width: 40%;
+    @media(max-width: 758px) {
+      width: 85%;
+    }
+  }
+  .form-button {
+    font-family: $sub-title-font-family;
+    font-size: 1.8em;
+    letter-spacing: 1.2px;
+    font-weight: 300;
+    box-shadow: -2px 2px 2px darken($blue, 15%);
+    line-height: 2;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .glyphicon.glyphicon-star {
+    font-size: 2.5em;
+    margin-top: 5px;
+    color: lighten(#DAA520, 5%);
+
   }
 }
