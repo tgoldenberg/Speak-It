@@ -104,9 +104,10 @@
 }
 
 .gradient-pulse {
- background: linear-gradient(105deg, #662424, #e33317);
-background-size: 400% 400%;
-color: white;
+ /* background: linear-gradient(105deg, #662424, #e33317); */
+ background: linear-gradient(105deg, lighten(green, 5%), darken(green, 5%));
+  background-size: 400% 400%;
+  color: white;
 
 -webkit-animation: gradient-pulse 1s ease infinite;
 -moz-animation: gradient-pulse 1s ease infinite;
