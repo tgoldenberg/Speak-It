@@ -33,13 +33,13 @@
   </div>
   <div class="col-md-4 col-sm-5">
     <div class="languages-holder">
-      <h4> <%= t('logged_in.mother_tongue') %></h4>
+      <h4><b> <%= t('logged_in.mother_tongue') %></b></h4>
       <div class="native-language-holder">
         <p><%= t('languages.' + @user.native_language.name) %></p>
         <img id="native-language-flag" class="language-flag" src="<%= @user.native_language.img_url %>"/>
       </div>
       <hr/>
-      <h4> <%= t('logged_in.study_language') %></h4>
+      <h4><b><%= t('logged_in.study_language') %></b></h4>
       <div class="study-language-holder">
         <p><%= t('languages.' + @user.study_language.name) %></p>
         <img id="study-language-flag" class="language-flag" src="<%= @user.study_language.img_url %>">

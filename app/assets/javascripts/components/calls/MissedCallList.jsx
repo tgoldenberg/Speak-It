@@ -9,7 +9,6 @@ var MissedCallList = React.createClass({
           .splice(0,2)
           .join(":")
           .split(" ");
-        callDate[0] += ",";
         callDate = callDate.join(" ");
 
         var text = "Missed call from " + missedCall.sender.username.toUpperCase() + " \n";

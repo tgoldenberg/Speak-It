@@ -6,7 +6,7 @@ var OngoingVideos = React.createClass({
     return (
       <div id="smallVideos">
         <div className="videos container-fluid">
-          <div className="local-video col-sm-2">
+          <div className="local-video col-lg-2 col-sm-4 hidden-xs">
             <video
               id="localVideo"
               autoPlay={true}
@@ -26,7 +26,7 @@ var OngoingVideos = React.createClass({
               </span>
             </div>
           </div>
-          <div className="remote-video col-sm-2">
+          <div className="remote-video col-lg-2 col-sm-4 col-xs-6">
             <video id="remoteVideoSmall"
               autoPlay={true}
               muted={false}>

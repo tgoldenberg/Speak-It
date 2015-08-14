@@ -5,6 +5,13 @@
 }
 .navbar {
   z-index: 9999999;
+  button.btn-default {
+    border-color: #c6c6c6;
+    margin-left: 8px;
+    margin-top: 2px;
+    border-radius: 3px;
+    color: #777;
+  }
 }
 .shiny {
   background: red;

@@ -11,9 +11,9 @@ var IncomingCall = React.createClass({
   createMissedCall: function(id) {
     $.ajax({
       method: "put",
-      url: "/invitations/miss/" + invitationId,
+      url: "/invitations/miss/" + id,
       dataType: "json",
-      data: {id: invitationId}
+      data: {id: id}
     })
     .done(function(data) {
       this.props.callTimeout(this.props.invitation);
