@@ -1,5 +1,8 @@
 var ChatRoom = React.createClass({
   getInitialState: function() {
+    var currentUserChannel = 'private-conversation.' + this.props.current_user.user.id;
+    var otherUserChannel = 'private-conversation.' + this.props.other_user.user.id;
+    var pusher = new Pusher('18cc5c3d4ea4757ca628');
     return {
       turn: this.props.chat_room.turn,
       completed: this.props.chat_room.completed,
@@ -7,14 +10,22 @@ var ChatRoom = React.createClass({
       currentChat: this.props.first_chat,
       initiator: false,
       currentUserRTC: {},
-      currentUserChannel: "",
-      otherUserChannel: "",
-      pusher: new Pusher('18cc5c3d4ea4757ca628')
+      currentUserChannel: pusher.subscribe(currentUserChannel),
+      otherUserChannel: pusher.subscribe(otherUserChannel),
+      pusher: pusher
     }
   },
 
   componentDidMount: function() {
     this.initiateLocalMedia();
+  },
+
+  componentWillUnmount: function() {
+    var callback = function(data) {};
+    this.state.currentUserChannel.unbind('client-signal', callback);
+    this.state.currentUserChannel.unbind('client-initiator', callback);
+    this.state.otherUserChannel.unbind('client-signal', callback);
+    this.state.otherUserChannel.unbind('client-initiator', callback);
   },
 
   initiateLocalMedia: function() {
@@ -37,18 +48,16 @@ var ChatRoom = React.createClass({
   },
 
   setCurrentUserRTCInfo: function(stream) {
-    var pusher = this.state.pusher;
-    var currentUserChannel = 'private-conversation.' + this.props.current_user.user.id;
-    var otherUserChannel = 'private-conversation.' + this.props.other_user.user.id;
+    // var pusher = this.state.pusher;
+    // var currentUserChannel = 'private-conversation.' + this.props.current_user.user.id;
+    // var otherUserChannel = 'private-conversation.' + this.props.other_user.user.id;
     this.setState(
       {
         currentUserRTC: {
           name: this.props.current_user.user.username,
           id: guid(),
           stream: stream
-        },
-        currentUserChannel: pusher.subscribe(currentUserChannel),
-        otherUserChannel: pusher.subscribe(otherUserChannel)
+        }
       }
     );
   },
@@ -213,6 +222,8 @@ var ChatRoom = React.createClass({
           helperText={this.props.helper_text}
           turn={this.state.turn}
           pusher={this.state.pusher}
+          currentUserChannel={this.state.currentUserChannel}
+          otherUserChannel={this.state.otherUserChannel}
           />
       </div>
     );

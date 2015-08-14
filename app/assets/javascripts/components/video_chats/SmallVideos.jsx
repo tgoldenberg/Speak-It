@@ -11,6 +11,8 @@ var SmallVideos = React.createClass({
                             chatRoom={this.props.chatRoom}
                             helperText={this.props.helperText}
                             pusher={this.props.pusher}
+                            currentUserChannel={this.props.currentUserChannel}
+                            otherUserChannel={this.props.otherUserChannel}
                             changeTurn={this.changeTurn}
                           />;
     var content = this.props.completed ? completedContent : incompleteContent;
