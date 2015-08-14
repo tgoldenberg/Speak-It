@@ -14,7 +14,7 @@ var Title = React.createClass({
         <div className="avatar-wrapper hidden-xs col-sm-3">
           <div className="avatar-image">
             <span>
-              <img className="avatar-image" src={this.props.chat.native_speaker.avatar_url}/>
+              <img className="avatar-image" id="avatar_image" src={this.props.chat.native_speaker.avatar_url}/>
             </span>
           </div>
 
@@ -36,15 +36,15 @@ var Title = React.createClass({
         <div style={{clear:"both"}}></div>
 
         <div className="topic-wrapper col-sm-6">
-          <h2 id="title_topic animated bounceIn"><b>{topic}:</b> {topicName}</h2>
+          <h2 id="title_topic"><b>{topic}:</b> {topicName}</h2>
         </div>
 
-        <div className="language-wrapper col-md-2 hidden-sm">
+        <div className="language-wrapper col-md-2 hidden-sm" id="language_wrapper">
           <span id="title_language"><b>{language}:</b><br/>{languageName}</span>
-          <img className="avatar-image hidden-sm hidden-xs" src={this.props.chat.language.img_url}/>
+          <img className="avatar-image hidden-sm hidden-xs" id="title_language_image" src={this.props.chat.language.img_url}/>
         </div>
 
-        <div className="level-wrapper col-lg-2 hidden-md hidden-sm hidden-xs">
+        <div className="level-wrapper col-lg-2 hidden-md hidden-sm hidden-xs" id="level_wrapper">
           <span id="title_level">{this.props.chat.text.level}</span>
         </div>
       </div>

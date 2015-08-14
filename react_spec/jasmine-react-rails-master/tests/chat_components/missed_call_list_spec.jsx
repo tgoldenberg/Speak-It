@@ -36,7 +36,7 @@ describe('MissedCallList', function(done){
                                       missedCalls={missedCalls}
                                       helperText={props.helper_text}
                                     />);
-      expect(document.getElementById('missed_call').innerHTML).toEqual('Missed call from MARCOS \nat Mon, Aug 10 2015 10:04');
+      expect(document.getElementById('missed_call').innerHTML).toEqual('Missed call from MARCOS \nat Mon Aug 10 2015 10:04');
       done();
     });
   });

@@ -48,3 +48,25 @@
     }
   }
 }
+#game_stats_table {
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  padding-bottom: 4em;
+  thead {
+    border: none;
+    tr {
+      border: none;
+      th:nth-child(1) {
+        border-top-right-radius: inherit;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td:nth-child(1) {
+        width: 11em;
+        font-weight: bold;
+      }
+    }
+  }
+}
