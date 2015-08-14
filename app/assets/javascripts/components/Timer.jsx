@@ -26,6 +26,7 @@ var Timer = React.createClass({
       var turn = this.props.turn;
       var message = "Ready to begin? ";
       var content = "Start";
+      document.getElementById('timer_holder').style.setProperty('cursor', 'pointer');
       if (turn == undefined) {
         turn = 1;
       }
@@ -113,6 +114,7 @@ var Timer = React.createClass({
     if (this.props.turn == 1 || this.props.turn == 3) {
       document.getElementById('other-player-waiting').className = 'hidden';
       document.getElementById('seconds-display').style.lineHeight = 2;
+      document.getElementById('timer_holder').style.setProperty('cursor', 'text');
     }
     return (
       <div className="timer-wrapper">

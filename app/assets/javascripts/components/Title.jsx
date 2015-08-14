@@ -36,7 +36,7 @@ var Title = React.createClass({
         <div style={{clear:"both"}}></div>
 
         <div className="topic-wrapper col-sm-6">
-          <h2 id="title_topic"><b>{topic}:</b> {topicName}</h2>
+          <h2 id="title_topic animated bounceIn"><b>{topic}:</b> {topicName}</h2>
         </div>
 
         <div className="language-wrapper col-md-2 hidden-sm">
