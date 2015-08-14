@@ -2,13 +2,33 @@
   margin: 0px;
   text-align: center;
 }
+#new_omniauth {
+  width: 100%;
+}
 .omniauth-user-signup {
+  #form-button {
+    margin-top: 0;
+  }
+  .form-button {
+    font-family: $sub-title-font-family;
+    font-size: 1.8em;
+    letter-spacing: 1.2px;
+    font-weight: 300;
+    box-shadow: -2px 2px 2px darken($blue, 15%);
+    line-height: 2;
+    padding-left: 1em;
+    padding-right: 1em;
+    background: blue;
+    color: white;
+    background: darken($blue, 10%);
+    &:hover {
+      background: darken($blue, 2%)
+    }
+  }
   .non-select {
     display: flex;
     .form-control#omniauth-select {
-      max-width: 10px;
       min-width: 15em;
-      margin-left: 0;
     }
     label {
       margin-right: 1em;
@@ -17,29 +37,46 @@
   }
   .omniauth-flag {
     img.image-box {
-      width: 39%;
-      height: 16em;
-      margin-left: 0;
+      margin: auto;
+      margin-top: 2em;
+      width: 29%;
+      height: 12em;
+      margin-left: 9%;
+      @media(max-width: 992px) {
+        height: 8em;
+      }
+    }
+    img.image-box.language-flag {
+      box-shadow: -2px 2px 2px #555;
     }
   }
 }
 #omniauth-signup-title {
   font-size: 3em;
   line-height: 2.6;
+  .message-box-logo {
+    width: 1.8em;
+  }
 }
 .omniauth-country-select {
   .non-select {
-    padding-left: 24%;
-    padding-right: 15%;
+    padding-left: 10%;
+    padding-right: 10%;
+    max-width: 50em;
+    margin: auto;
   }
   .omniauth-flag {
     padding-left: 15%;
     padding-right: 15%;
     padding: 3%;
+    clear: both;
+    text-align: center;
     img.image-box {
       margin: auto;
       margin-top: 2em;
-      width: 75%;
+      width: 29%;
+      height: inherit;
+      float: none;
     }
   }
 }
@@ -49,7 +86,7 @@
 }
 .form-title {
   text-align: center;
-  padding-top: .5em;
+  padding-top: .8em;
   padding-bottom: .5em;
   color: white;
   letter-spacing: .5px;
@@ -59,7 +96,14 @@
   /* line-height: 2; */
   background: darken($blue, 10%);
   font-size: 4em;
-
+  margin-bottom: 1em;
+  p {
+    font-weight: 300;
+    font-size: 0.5em;
+    width: 50%;
+    margin: auto;
+    line-height: 1.6;
+  }
 }
 .message-box-logo {
   width: 1em;
