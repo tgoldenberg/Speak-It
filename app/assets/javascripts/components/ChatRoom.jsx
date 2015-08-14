@@ -63,6 +63,7 @@ var ChatRoom = React.createClass({
   },
   peerStream: function(peer) {
     peer.on('stream', function(stream) {
+      console.log("STREAM", stream);
       var video = $('#remoteVideoSmall')[0];
       video.src = window.URL.createObjectURL(stream);
       $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
@@ -70,6 +71,7 @@ var ChatRoom = React.createClass({
   },
   peerSignal: function(peer) {
     peer.on('signal', function(data) {
+      console.log("SIGNAL", data);
       this.state.otherUserChannel.trigger('client-signal', {
         data: data
       });
@@ -94,7 +96,6 @@ var ChatRoom = React.createClass({
                             );
 
     this.state.otherUserChannel.trigger('client-initiator', {
-      console.log("Trigger initiator", peer);
       data: {initiator: false}
     });
 
