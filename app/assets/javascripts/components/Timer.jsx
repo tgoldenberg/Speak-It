@@ -14,10 +14,7 @@ var Timer = React.createClass({
       message: message,
       turn: this.props.turn,
       otherDone: false,
-      selfDone: false,
-      pusher: this.props.pusher,
-      currentUserChannel: "",
-      otherUserChannel: ""
+      selfDone: false
     };
   },
   tick: function() {
@@ -55,11 +52,8 @@ var Timer = React.createClass({
     if (this.props.turn == 1 || this.props.turn == 3) {
       this.interval = setInterval(this.tick, 1000);
     }
-    var currentUserChannel = this.state.pusher.subscribe('private-conversation.' + this.props.currentUser.user.id);
-    var otherUserChannel = this.state.pusher.subscribe('private-conversation.' + this.props.otherUser.user.id);
 
-    this.setState({currentUserChannel: currentUserChannel, otherUserChannel: otherUserChannel });
-    currentUserChannel.bind('client-done', function(data) {
+    this.props.currentUserChannel.bind('client-done', function(data) {
       if (this.state.selfDone == true) {
         this.props.handleChange();
         this.setState(
@@ -78,6 +72,8 @@ var Timer = React.createClass({
   },
   componentWillUnmount: function() {
     clearInterval(this.interval);
+    var callback = function(data) {};
+    this.props.currentUserChannel.unbind('client-done', callback);
   },
   handleClick: function() {
     if (this.props.turn != 1 && this.props.turn != 3 && this.props.turn != 4) {
@@ -92,7 +88,7 @@ var Timer = React.createClass({
                       }
                     );
         this.interval = setInterval(this.tick, 1000);
-        this.state.otherUserChannel.trigger('client-done', {
+        this.props.otherUserChannel.trigger('client-done', {
           data: {done: true}
         })
       } else {
@@ -100,7 +96,7 @@ var Timer = React.createClass({
         document.getElementById('other-player-waiting').className = '';
         document.getElementById('seconds-display').style.lineHeight = 1.3;
         document.getElementById('timer_holder').style.setProperty('cursor', 'wait');
-        this.state.otherUserChannel.trigger('client-done', {
+        this.props.otherUserChannel.trigger('client-done', {
           data: {done: true}
         });
       }
