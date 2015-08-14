@@ -15,7 +15,7 @@ var OngoingVideos = React.createClass({
 
             <div className="video-info-wrapper">
               <p id="local-video-username">
-                {this.props.currentUser.user.username.toUpperCase()}
+                Me
               </p>
               <span>
                 <img

@@ -16,21 +16,6 @@ describe('Title', function(done){
   });
 
   describe('.initialState', function(done) {
-    it('displays the native speaker', function(done) {
-      expect(document.getElementById('title_native').innerHTML).toEqual('Native Speaker: Marcos');
-      done();
-    });
-
-    it('displays the student information', function(done) {
-      expect(document.getElementById('title_student').innerHTML).toEqual('Student: Alex');
-      done();
-    });
-
-    it('displays the topic', function(done) {
-      expect(document.getElementById('title_topic').innerHTML).toEqual('Topic: Where do you live?');
-      done();
-    });
-
     it('displays the level', function(done) {
       expect(document.getElementById('title_level').innerHTML).toEqual('Level: (1) beginner');
       done();
@@ -38,7 +23,7 @@ describe('Title', function(done){
 
     it('changes information when the currentChat changes', function(done) {
       subject = jasmineReact.render(<Title chat={props.second_chat}/>);
-      expect(document.getElementById('title_native').innerHTML).toEqual('Native Speaker: Alex');
+      expect(document.getElementById('avatar_image').src).toEqual('http://www.gravatar.com/avatar/35db3bb05d401f30e8f56885aa194e11.jpg?s=80');
       done();
     });
   });

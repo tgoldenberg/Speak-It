@@ -194,7 +194,7 @@ var ChatRoom = React.createClass({
     }
     return content;
   },
-  
+
   render: function() {
     var content = this.setContent();
     return (

@@ -39,6 +39,8 @@ $(function() {
   removeFlash();
   toggleNotifications();
   removeGradientPulse();
+  $('#missed_calls').css({"right":"+=30px"});
+  $('#notification-list .call-box').css({"right":"+=100px"});
   var pusher = new Pusher('18cc5c3d4ea4757ca628');
   var channelName = 'private-conversation.' + '<%= current_user ? current_user.id.to_s : 'null' %>';
   var channel = pusher.subscribe(channelName);

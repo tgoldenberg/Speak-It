@@ -1,6 +1,13 @@
-<div class="new_user_signup">
-  <h1 class="form-title" id="omniauth-signup-title"> Complete Your Registration <span><img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"</span></h1>
-  <div class="container omniauth-user-signup">
+<div class="new_user_signup" id="new_omniauth">
+  <div class="form-title" id="omniauth-signup-title">
+    <h1>
+      <span class="animated bounceIn"> Complete Your Registration
+        <img class="message-box-logo hidden-sm hidden-xs" src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/logo.png"/>
+      </span>
+    </h1>
+    <p>Just select your mother tongue and the language you would like to learn, along with your country!</p>
+  </div>
+  <div class="container-fluid omniauth-user-signup">
     <%= form_for @new_user, url: users_path do |f| %>
 
       <%= f.hidden_field :username, value: @user.username %>
@@ -13,23 +20,23 @@
       <div class="container">
 
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-sm-6">
           <div class="non-select">
             <%= f.label t('signup.native_language') %>
             <%= f.select(:native_language_id, options_for_select(@languages_select_array), {},{class: "form-control", id: "omniauth-select", onChange: "omniauthCreateFlag(this);"}) %>
           </div>
           <div class="container omniauth-flag">
-            <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box"></img>
+            <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box language-flag"></img>
           </div>
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-sm-6">
           <div class="non-select">
             <%= f.label t('signup.study_language') %>
             <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control",  id: "omniauth-select", onChange: "omniauthCreateFlag(this);"}) %>
           </div>
           <div class="container omniauth-flag">
-            <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box"></img>
+            <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box language-flag"></img>
           </div>
         </div>
       </div>
@@ -37,20 +44,20 @@
       <hr/>
 
 
-      <div class="form-group col-xs-6 col-xs-offset-3 omniauth-country-select">
+      <div class="form-group omniauth-country-select">
         <div class="non-select">
           <%= f.label t('signup.country') %>
           <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control", id: "omniauth-select", onChange: "createFlagForCountry(this);"}) %>
         </div>
-        <div class="omniauth-flag non-select">
+        <div class="omniauth-flag container">
           <img src="<%= asset_path("argentinian-flag-medium.png") %>" class="image-box col-xs-6"></img>
         </div>
       </div>
 
       <%= f.hidden_field :avatar_url, value: @user.avatar_url %>
       <%= f.hidden_field :level, value: 1 %>
-      <div>
-        <%= f.submit t('signup.submit'), class: 'btn btn-lg btn-primary form-control', id: 'form-button' %>
+      <div style="text-align: center;">
+        <%= f.submit t('signup.submit'), class: 'btn btn-lg form-button' %>
       </div>
     <% end %>
   </div>

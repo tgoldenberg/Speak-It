@@ -19,7 +19,9 @@ body {
   margin-top: 20px;
   margin-bottom: 20px
 }
-
+.call-box {
+  right: inherit;
+}
 #notification-list {
   position: fixed;
   right: 10%;
@@ -33,7 +35,7 @@ body {
     left:77px;
   }
   .call-box {
-    right: -73px;
+    right: inherit;
   }
 }
 #missed-call-list {

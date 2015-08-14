@@ -1,11 +1,26 @@
 var GameStats = React.createClass({
+  componentDidMount: function() {
+    document.body.style.overflow = "auto";
+    document.getElementById('title_topic').innerHTML = "";
+    document.getElementById('title_level').className = "hidden";
+    $('.container-fluid.no-padding').css({'overflow':'auto'});
+  },
   render: function() {
     return (
-      <div className="container">
+      <div className="container-fluid no-padding">
         <div className="guidelines col-md-10 col-md-offset-1">
           <br/>
-          <button className="btn btn-lg btn-success"><a href={"/feedbacks/new?chat_room_id=" + this.props.chatRoom.chat_room.id} >{this.props.chatRoom.helper_text.feedback_button}</a></button><br/><br/>
-          <table className="table table-striped table-bordered">
+          <div className="timer-wrapper new-feedback-wrapper">
+            <div className="timer-holder animated bounceInLeft" id="timer_holder">
+              <a id="new_feedback_link" href={"/feedbacks/new?chat_room_id=" + this.props.chatRoom.chat_room.id}>
+                <span id="seconds-display">
+                  {this.props.chatRoom.helper_text.feedback_button}
+                </span>
+              </a>
+            </div>
+          </div>
+          <br/><br/>
+          <table className="table table-striped table-bordered" id="game_stats_table">
             <thead>
               <tr>
                 <th colSpan="3">{this.props.chatRoom.helper_text.stats_title}</th>
