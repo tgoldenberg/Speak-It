@@ -17,7 +17,7 @@ describe('OngoingVideos', function(done){
 
   describe('.initialState', function(done) {
     it('display the participant video', function(done) {
-      expect(document.getElementById('local-video-username').innerHTML).toEqual('ALEX');
+      expect(document.getElementById('local-video-username').innerHTML).toEqual('Me');
       done();
     });
 
