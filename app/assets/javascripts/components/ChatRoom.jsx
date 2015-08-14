@@ -1,8 +1,5 @@
 var ChatRoom = React.createClass({
   getInitialState: function() {
-    var currentUserChannel = 'private-conversation.' + this.props.current_user.user.id;
-    var otherUserChannel = 'private-conversation.' + this.props.other_user.user.id;
-    var pusher = new Pusher('18cc5c3d4ea4757ca628');
     return {
       turn: this.props.chat_room.turn,
       completed: this.props.chat_room.completed,
@@ -10,9 +7,9 @@ var ChatRoom = React.createClass({
       currentChat: this.props.first_chat,
       initiator: false,
       currentUserRTC: {},
-      currentUserChannel: pusher.subscribe(currentUserChannel),
-      otherUserChannel: pusher.subscribe(otherUserChannel),
-      pusher: pusher
+      currentUserChannel: "",
+      otherUserChannel: "",
+      pusher: new Pusher('18cc5c3d4ea4757ca628');
     }
   },
 
@@ -48,22 +45,23 @@ var ChatRoom = React.createClass({
   },
 
   setCurrentUserRTCInfo: function(stream) {
-    // var pusher = this.state.pusher;
-    // var currentUserChannel = 'private-conversation.' + this.props.current_user.user.id;
-    // var otherUserChannel = 'private-conversation.' + this.props.other_user.user.id;
+    var pusher = this.state.pusher;
+    var currentUserChannel = 'private-conversation.' + this.props.current_user.user.id;
+    var otherUserChannel = 'private-conversation.' + this.props.other_user.user.id;
     this.setState(
       {
         currentUserRTC: {
           name: this.props.current_user.user.username,
           id: guid(),
           stream: stream
-        }
+        },
+        currentUserChannel: pusher.subscribe(currentUserChannel),
+        otherUserChannel: pusher.subscribe(otherUserChannel)
       }
     );
   },
   peerStream: function(peer) {
     peer.on('stream', function(stream) {
-      console.log("STREAM", stream);
       var video = $('#remoteVideoSmall')[0];
       video.src = window.URL.createObjectURL(stream);
       $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
@@ -71,7 +69,6 @@ var ChatRoom = React.createClass({
   },
   peerSignal: function(peer) {
     peer.on('signal', function(data) {
-      console.log("SIGNAL", data);
       this.state.otherUserChannel.trigger('client-signal', {
         data: data
       });
@@ -100,7 +97,6 @@ var ChatRoom = React.createClass({
     });
 
     this.state.currentUserChannel.bind('client-initiator', function(data) {
-      console.log("Receive initiator", data);
       peer = new SimplePeer(
                             {
                               initiator: true,
@@ -120,7 +116,6 @@ var ChatRoom = React.createClass({
     this.peerClose(peer);
 
     this.state.currentUserChannel.bind('client-signal', function(signal) {
-      console.log("Receive signal", data);
       peer.signal(signal.data);
     });
   },
