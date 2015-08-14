@@ -70,3 +70,18 @@
     }
   }
 }
+#no_available {
+  .glyphicon.glyphicon-remove-sign {
+    font-size: 2em;
+    margin-left: .4em;
+  }
+  .call-holder {
+    padding-left: 1em;
+  }
+  td {
+    font-size: 1.4em;
+    b {
+      vertical-align: top;
+    }
+  }
+}
