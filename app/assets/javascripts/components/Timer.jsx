@@ -97,6 +97,8 @@ var Timer = React.createClass({
       } else {
         this.setState({selfDone: true});
         document.getElementById('other-player-waiting').className = '';
+        document.getElementById('seconds-display').style.lineHeight = 1.3;
+        document.getElementById('timer_holder').style.setProperty('cursor', 'wait');
         this.state.otherUserChannel.trigger('client-done', {
           data: {done: true}
         });
@@ -110,11 +112,12 @@ var Timer = React.createClass({
   render: function() {
     if (this.props.turn == 1 || this.props.turn == 3) {
       document.getElementById('other-player-waiting').className = 'hidden';
+      document.getElementById('seconds-display').style.lineHeight = 2;
     }
     return (
       <div className="timer-wrapper">
         <p className="timer-text hidden-sm hidden-xs"> {this.state.message}</p>
-        <div className="timer-holder">
+        <div className="timer-holder" id="timer_holder">
           <p id="other-player-waiting" className="hidden">Waiting for other player...</p>
           <span id="seconds-display" onClick={this.handleClick}>
             {this.state.secondsLeft}

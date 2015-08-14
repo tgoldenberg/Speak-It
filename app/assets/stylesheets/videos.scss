@@ -7,12 +7,13 @@
   background: black;
 }
 #smallVideos {
+  height: 8em;
   position: fixed;
   bottom: 0;
   width: 100%;
   background: #f7f7f7;
   padding-top: 1em;
-  @media screen and (max-height: 400px) {
+  @media screen and (max-height: 500px) {
     display: none;
   }
   #localVideo {
@@ -20,13 +21,15 @@
     width: 9em;
     background: black;
   }
+  .local-video, .remote-video {
+    display: flex;
+  }
   #remoteVideoSmall {
     height: 6em;
     width: 9em;
     background: black;
   }
   .video-info-wrapper {
-    display: flex;
     padding: .3em;
     p {
       margin-top: 6px;
@@ -50,6 +53,7 @@
   text-align: center;
   width: inherit;
 }
+
 html, body {
   height: 100%;
 }

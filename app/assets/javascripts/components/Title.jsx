@@ -8,8 +8,6 @@ var Title = React.createClass({
     var languageName = this.props.chat.text.language.split(":")[1];
     var topic = this.props.chat.text.topic.split(":")[0];
     var topicName = this.props.chat.text.topic.split(":")[1];
-    console.log(native);
-    console.log(nativeName);
     return (
       <div>
       <div className="titleBar row">
