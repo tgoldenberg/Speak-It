@@ -1,8 +1,8 @@
 function get_gravatar(email, size) {
-    console.log(email);
-    var size = size || 80;
-    return 'http://www.gravatar.com/avatar/' + md5(email) + '.jpg?s=' + size;
+  var size = size || 80;
+  return 'http://www.gravatar.com/avatar/' + md5(email) + '.jpg?s=' + size;
 }
+
 var removeFlash = function() {
   setTimeout(function(){
     $('.notice').remove();
@@ -29,7 +29,6 @@ var createStars = function(e) {
     $(stars[i]).addClass('bounceIn').removeClass('hidden');
   }
   var total = 10 - $('.hidden').length;
-  console.log("total", total);
   $('#hidden_rating_field').val(total);
 };
 
@@ -38,7 +37,6 @@ var createFlag = function(e) {
                 "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png",
                 "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/chinese.png"
               ];
-  console.log("GIVE ME A FLAG", e);
   var value = parseInt($(e)[0].value);
   $(e).next()[0].src = images[value-1];
 };
@@ -47,11 +45,9 @@ var omniauthCreateFlag = function(e) {
                 "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png",
                 "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/chinese.png"
               ];
-  console.log("GIVE ME A FLAG", e);
   var value = parseInt($(e)[0].value);
   $(e).parent().next().children().first()[0].src = images[value-1];
 };
-
 
 var toggleNotifications = function() {
   $('.notifications').on('click', function(e) {

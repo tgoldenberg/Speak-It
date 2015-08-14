@@ -1,8 +1,12 @@
 var NotificationsHolder = React.createClass({
   getInitialState: function() {
+    var pusher = new Pusher('18cc5c3d4ea4757ca628');
+    var channel = pusher.subscribe('private-conversation.' + this.props.currentUser.id);
     return {
       activeInvitations: this.props.active_invitations,
-      missedCalls: this.props.missed_calls
+      missedCalls: this.props.missed_calls,
+      pusher: pusher,
+      channel: channel
     };
   },
   declineCall: function() {
@@ -23,12 +27,14 @@ var NotificationsHolder = React.createClass({
     removeFlash();
   },
   componentDidMount: function() {
-    var pusher = new Pusher('18cc5c3d4ea4757ca628');
-    var channel = pusher.subscribe('private-conversation.' + this.props.currentUser.id);
-    channel.bind('new_invitation', function(data) {
+    this.state.channel.bind('new_invitation', function(data) {
       this.setState({activeInvitations: [data.invitation]});
       $('.notifications').addClass('gradient-pulse');
     }.bind(this));
+  },
+  componentWillUnMount: function() {
+    var callback = function(data) {};
+    this.state.channel.unbind('new_invitation', callback);
   },
   render: function() {
     return (

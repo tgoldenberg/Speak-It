@@ -49,6 +49,11 @@ $(function() {
     console.log(data);
     window.location = "/chat_rooms/" + data;
   });
+  var callback = function(data){};
+  function unbindEvent() {
+    channel.unbind('create_chat_room', callback);
+  }
+  window.onbeforeunload = unbindEvent;
 });
 </script>
 </body>
