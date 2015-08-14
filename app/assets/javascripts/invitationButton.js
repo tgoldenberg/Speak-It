@@ -66,15 +66,11 @@ var toggleNotifications = function() {
         method: "put",
         url: "/invitations/seen",
         data: {invitation: {recipient_id: currentUser}}
-      })
-      .done(function(data) {
-        console.log(data);
-      })
-      .fail(function(err) {
-        console.log(err);
       });
     }
     $('#missed-call-list').toggleClass('hidden');
+    // Remove gradient pulse
+    $('.missed').removeClass('gradient-pulse-red');
     $('.call-box').removeClass('hidden');
   });
 };
