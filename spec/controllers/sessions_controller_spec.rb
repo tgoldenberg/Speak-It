@@ -8,12 +8,6 @@ RSpec.describe SessionsController, type: :controller do
     @level =  FactoryGirl.create(:level, language_id: @native_language.id)
     @registered_user =  FactoryGirl.create(:user, native_language_id: @native_language.id, study_language_id: @study_language.id, country_id: @country.id, level_id: @level.id)
   end
-    describe "GET #new" do
-    it "allows a user to log in" do
-      get :new
-      expect(assigns(:user)).to be_a User
-    end
-  end
 
   describe "GET #create" do
     it "logs in a registered user" do

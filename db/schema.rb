@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20150811163037) do
     t.integer  "level_id"
     t.datetime "created_at",                                                                                                                                       null: false
     t.datetime "updated_at",                                                                                                                                       null: false
-    t.datetime "last_seen_at",           default: '2015-08-03 19:14:38'
+    t.datetime "last_seen_at",           default: '2015-08-15 15:00:53'
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"

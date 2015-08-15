@@ -17,6 +17,8 @@ gem 'bourbon'
 gem 'neat'
 gem 'i18n'
 gem 'omniauth-facebook'
+gem "capistrano", "~> 3.1"
+gem "capistrano-rails", "~> 1.1"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-simple-peer'

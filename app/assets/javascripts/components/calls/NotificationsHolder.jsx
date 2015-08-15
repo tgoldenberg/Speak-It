@@ -18,8 +18,11 @@ var NotificationsHolder = React.createClass({
     var callObject = {call: invitation.invitation, sender: invitation.sender}
     this.setState({activeInvitations: [], missedCalls: [callObject]});
     removeGradientPulse();
-    $('.missed').addClass('gradient-pulse-red');
+    this.addGradientPulse();
     this.appendFlash(this.props.helper_text.time_out);
+  },
+  addGradientPulse: function() {
+    $('.missed').addClass('gradient-pulse-red');
   },
   appendFlash: function(message) {
     var partial = createPartial(message);
