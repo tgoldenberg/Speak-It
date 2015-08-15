@@ -291,6 +291,9 @@ var Channel = function(channel) {
   this.trigger = function(otherChannel) {
     // console.log(otherChannel);
   }
+  this.unbind = function(event) {
+    // console.log(event);
+  }
 };
 var Pusher = function(appKey) {
   this.appKey = appKey;
