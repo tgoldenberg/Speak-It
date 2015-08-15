@@ -3,7 +3,7 @@ var Timer = React.createClass({
     var seconds = "Start";
     var message = "Ready to begin? "
     if (this.props.turn == 1 || this.props.turn == 3) {
-      seconds = 20;
+      seconds = 90;
       message = this.props.helperText.seconds;
     }
     if (this.props.turn >= 4) {
@@ -28,7 +28,7 @@ var Timer = React.createClass({
         turn = 1;
       }
       if (turn == 0 || turn == 2) {
-        content = 20;
+        content = 90;
         message = this.props.helperText.seconds;
       }
       if (turn >= 3) {
@@ -58,7 +58,7 @@ var Timer = React.createClass({
         this.props.handleChange();
         this.setState(
                       {
-                        secondsLeft: 20,
+                        secondsLeft: 90,
                         selfDone: false,
                         otherDone: false,
                         message: this.props.helperText.seconds
@@ -81,7 +81,7 @@ var Timer = React.createClass({
         this.props.handleChange();
         this.setState(
                       {
-                        secondsLeft: 20,
+                        secondsLeft: 90,
                         selfDone: false,
                         message: this.props.helperText.seconds,
                         otherDone: false
