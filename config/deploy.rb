@@ -18,15 +18,15 @@ set :ssh_options, {
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml .rbenv-vars .ruby-version}
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{.rbenv-vars bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 set :default_env, { path: "/opt/rbenv/shims:$PATH" }
 
-set :bundle_bins, fetch(:bundle_bins, []).push("unicorn")
+# set :bundle_bins, fetch(:bundle_bins, []).push("unicorn")
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
