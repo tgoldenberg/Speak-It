@@ -285,12 +285,9 @@ var props = {
 }
 var Channel = function(channel) {
   this.channel = channel;
-  this.bind = function(otherChannel) {
-    // console.log(otherChannel);
-  };
-  this.trigger = function(otherChannel) {
-    // console.log(otherChannel);
-  }
+  this.bind = function(otherChannel) {};
+  this.trigger = function(otherChannel) {};
+  this.unbind = function(event) {};
 };
 var Pusher = function(appKey) {
   this.appKey = appKey;

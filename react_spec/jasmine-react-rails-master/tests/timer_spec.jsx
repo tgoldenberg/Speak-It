@@ -6,11 +6,23 @@ var Timer = require(__component_base + '/Timer').component;
 
 describe('Timer', function(done){
   var variables = require('./fixtures/props');
+  var pusher = new variables.pusher("app-key");
+  var otherUserChannel = pusher.subscribe('private-conversation.1');
+  var currentUserChannel = pusher.subscribe('private-conversation.2');
   var props = variables.props;
 
   var value = 0;
   beforeEach(function(done) {
-    subject = jasmineReact.render(<Timer turn={value} chatRoom={props.chat_room} handleChange={props.handleChange} currentUser={props.current_user} pusher={new variables.pusher} otherUser={props.other_user} helperText={props.helper_text}/>);
+    subject = jasmineReact.render(<Timer
+                                    turn={value}
+                                    chatRoom={props.chat_room}
+                                    handleChange={props.handleChange}
+                                    currentUser={props.current_user}
+                                    pusher={pusher}
+                                    otherUserChannel={otherUserChannel}
+                                    currentUserChannel={currentUserChannel}
+                                    otherUser={props.other_user}
+                                    helperText={props.helper_text}/>);
     done();
   });
 
@@ -33,7 +45,16 @@ describe('Timer', function(done){
     });
 
     it('starts the second chat instructions when the timer runs out', function(done) {
-      subject = jasmineReact.render(<Timer turn={1} chatRoom={props.chat_room} handleChange={props.handleChange} currentUser={props.current_user} pusher={new variables.pusher} otherUser={props.other_user} helperText={props.helper_text}/>);
+      subject = jasmineReact.render(<Timer
+                                      turn={1}
+                                      chatRoom={props.chat_room}
+                                      handleChange={props.handleChange}
+                                      currentUser={props.current_user}
+                                      pusher={pusher}
+                                      otherUserChannel={otherUserChannel}
+                                      currentUserChannel={currentUserChannel}
+                                      otherUser={props.other_user}
+                                      helperText={props.helper_text}/>);
       subject.setState({secondsLeft: 0});
       subject.tick();
       expect(subject.state.secondsLeft).toEqual("Start");
@@ -41,7 +62,16 @@ describe('Timer', function(done){
     });
 
     it('starts the second chat when both players hit the start button', function(done) {
-      subject = jasmineReact.render(<Timer turn={2} chatRoom={props.chat_room} handleChange={props.handleChange} currentUser={props.current_user} pusher={new variables.pusher} otherUser={props.other_user} helperText={props.helper_text}/>);
+      subject = jasmineReact.render(<Timer
+                                      turn={0}
+                                      chatRoom={props.chat_room}
+                                      handleChange={props.handleChange}
+                                      currentUser={props.current_user}
+                                      pusher={pusher}
+                                      otherUserChannel={otherUserChannel}
+                                      currentUserChannel={currentUserChannel}
+                                      otherUser={props.other_user}
+                                      helperText={props.helper_text}/>);
       subject.setState({otherDone: true});
       subject.handleClick();
       expect(subject.state.secondsLeft).toEqual(20);
@@ -56,7 +86,16 @@ describe('Timer', function(done){
     });
 
     it('gives final instructions after the second chat', function(done){
-      subject = jasmineReact.render(<Timer turn={3} chatRoom={props.chat_room} handleChange={props.handleChange} currentUser={props.current_user} pusher={new variables.pusher} otherUser={props.other_user} helperText={props.helper_text}/>);
+      subject = jasmineReact.render(<Timer
+                                      turn={4}
+                                      chatRoom={props.chat_room}
+                                      handleChange={props.handleChange}
+                                      currentUser={props.current_user}
+                                      pusher={pusher}
+                                      otherUserChannel={otherUserChannel}
+                                      currentUserChannel={currentUserChannel}
+                                      otherUser={props.other_user}
+                                      helperText={props.helper_text}/>);
       subject.setState({secondsLeft: 0});
       subject.tick();
       expect(subject.state.secondsLeft).toEqual("Game Stats");
