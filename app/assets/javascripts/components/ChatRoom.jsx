@@ -98,20 +98,34 @@ var ChatRoom = React.createClass({
 
   startRTCConnection: function(initiator) {
     console.log("initiate connection");
+    var customConfig;
+
+    // Call XirSys ICE servers
+    $.ajax({
+      url: "https://service.xirsys.com/ice",
+      data: {
+        ident: "tgoldenberg",
+        secret: "d0abb006-43d9-11e5-b113-5f60ee8ba8ea",
+        domain: "speakitlanguages.com",
+        application: "default",
+        room: "default",
+        secure: 1
+      },
+      success: function (data, status) {
+        // data.d is where the iceServers object lives
+        customConfig = data.d;
+        console.log(customConfig);
+      },
+      async: false
+    });
+
+    // PeerJS object
     var peer = new SimplePeer(
                               {
                                 initiator: this.state.initiator,
                                 stream: this.state.currentUserRTC.stream,
                                 trickle: false,
-                                config: {'iceServers': [
-                                                         { url: 'stun:stun.l.google.com:19302' },
-                                                         { url: 'turn:numb.viagenie.ca:3478', credential: 'muazkh', username:'webrtc@live.com' },
-                                                         { url: 'turn:numb.viagenie.ca', credential: 'muazkh', username:'webrtc@live.com' },
-                                                         { url: 'turn:numb.viagenie.ca:3478', credential: 'peerjsdemo', username:'p.srikanta@gmail.com' },
-                                                         { url: 'turn:192.158.29.39:3478?transport=udp', credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=', username:'28224511:1379330808' },
-                                                         { url: 'turn:192.158.29.39:3478?transport=tcp', credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=', username:'28224511:1379330808' }
-                                                     ]
-                                }
+                                config: customConfig
                               }
                             );
     console.log("False Peer", peer);
@@ -126,15 +140,7 @@ var ChatRoom = React.createClass({
                               initiator: true,
                               stream: this.state.currentUserRTC.stream,
                               trickle: false,
-                              config: {'iceServers': [
-                                                       { url: 'stun:stun.l.google.com:19302' },
-                                                       { url: 'turn:numb.viagenie.ca:3478', credential: 'muazkh', username:'webrtc@live.com' },
-                                                       { url: 'turn:numb.viagenie.ca', credential: 'muazkh', username:'webrtc@live.com' },
-                                                       { url: 'turn:numb.viagenie.ca:3478', credential: 'peerjsdemo', username:'p.srikanta@gmail.com' },
-                                                       { url: 'turn:192.158.29.39:3478?transport=udp', credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=', username:'28224511:1379330808' },
-                                                       { url: 'turn:192.158.29.39:3478?transport=tcp', credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=', username:'28224511:1379330808' }
-                                                   ]
-                              }
+                              customConfig
                             }
                           );
       console.log("Initiator peer", peer);
