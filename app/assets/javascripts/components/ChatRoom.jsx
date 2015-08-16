@@ -69,19 +69,17 @@ var ChatRoom = React.createClass({
   },
   peerStream: function(peer) {
     peer.on('stream', function(stream) {
-      window.myStream = stream;
-      console.log(window.myStream);
-      console.log("receive stream", stream);
+      // window.myStream = stream;
+      // console.log(window.myStream);
+      // console.log("receive stream", stream);
       var video = $('#remoteVideoSmall')[0];
-      console.log(video);
       video.src = URL.createObjectURL(stream);
-      console.log(video);
       $('#remoteVideoLarge')[0].src = URL.createObjectURL(stream);
     });
   },
   peerSignal: function(peer) {
     peer.on('signal', function(data) {
-      console.log("Signaling", data);
+      // console.log("Signaling", data);
       this.state.otherUserChannel.trigger('client-signal', {
         data: data
       });
@@ -97,7 +95,6 @@ var ChatRoom = React.createClass({
   },
 
   startRTCConnection: function(initiator) {
-    console.log("initiate connection");
     var customConfig;
 
     // Call XirSys ICE servers
@@ -128,13 +125,12 @@ var ChatRoom = React.createClass({
                                 config: customConfig
                               }
                             );
-    console.log("False Peer", peer);
     this.state.otherUserChannel.trigger('client-initiator', {
       data: {initiator: false}
     });
 
     this.state.currentUserChannel.bind('client-initiator', function(data) {
-      console.log("receive initiator", data);
+      // console.log("receive initiator", data);
       peer = new SimplePeer(
                             {
                               initiator: true,
@@ -143,14 +139,13 @@ var ChatRoom = React.createClass({
                               customConfig
                             }
                           );
-      console.log("Initiator peer", peer);
 
       this.peerSignal(peer);
       this.peerError(peer);
       peer.on('stream', function(stream) {
-        window.myStream = stream;
-        console.log(window.myStream);
-        console.log("receive stream", stream);
+        // window.myStream = stream;
+        // console.log(window.myStream);
+        // console.log("receive stream", stream);
         var video = $('#remoteVideoSmall')[0];
         video.src = URL.createObjectURL(stream);
         $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
@@ -160,9 +155,9 @@ var ChatRoom = React.createClass({
     this.peerSignal(peer);
     this.peerError(peer);
     peer.on('stream', function(stream) {
-      window.myStream = stream;
-      console.log(window.myStream);
-      console.log("receive stream", stream);
+      // window.myStream = stream;
+      // console.log(window.myStream);
+      // console.log("receive stream", stream);
       var video = $('#remoteVideoSmall')[0];
       video.src = URL.createObjectURL(stream);
       $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
@@ -170,7 +165,7 @@ var ChatRoom = React.createClass({
     this.peerClose(peer);
 
     this.state.currentUserChannel.bind('client-signal', function(signal) {
-      console.log("Receive signal", signal);
+      // console.log("Receive signal", signal);
       peer.signal(signal.data);
     });
   },
