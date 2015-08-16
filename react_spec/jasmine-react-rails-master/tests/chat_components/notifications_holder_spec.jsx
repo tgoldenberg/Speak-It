@@ -21,6 +21,7 @@ describe('NotificationsHolder', function(done){
                                     helper_text={props.helper_text}
                                      />);
     subject.appendFlash = function() {};
+    subject.addGradientPulse = function() {};
     done();
   });
 

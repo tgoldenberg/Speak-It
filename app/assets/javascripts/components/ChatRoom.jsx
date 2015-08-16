@@ -76,12 +76,12 @@ var ChatRoom = React.createClass({
       console.log(video);
       video.src = URL.createObjectURL(stream);
       console.log(video);
-      $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+      $('#remoteVideoLarge')[0].src = URL.createObjectURL(stream);
     });
   },
   peerSignal: function(peer) {
     peer.on('signal', function(data) {
-      console.log("signal", data);
+      console.log("Signaling", data);
       this.state.otherUserChannel.trigger('client-signal', {
         data: data
       });
@@ -128,9 +128,7 @@ var ChatRoom = React.createClass({
         console.log(window.myStream);
         console.log("receive stream", stream);
         var video = $('#remoteVideoSmall')[0];
-        console.log(video);
         video.src = URL.createObjectURL(stream);
-        console.log(video);
         $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
       });
     }.bind(this));
@@ -142,9 +140,7 @@ var ChatRoom = React.createClass({
       console.log(window.myStream);
       console.log("receive stream", stream);
       var video = $('#remoteVideoSmall')[0];
-      console.log(video);
       video.src = URL.createObjectURL(stream);
-      console.log(video);
       $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
     });
     this.peerClose(peer);
