@@ -70,6 +70,7 @@ var ChatRoom = React.createClass({
   peerStream: function(peer) {
     peer.on('stream', function(stream) {
       console.log("receive stream", stream);
+      debugger
       var video = $('#remoteVideoSmall')[0];
       video.src = window.URL.createObjectURL(stream);
       $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
