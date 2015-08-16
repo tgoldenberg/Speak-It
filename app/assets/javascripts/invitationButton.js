@@ -2,7 +2,7 @@ function get_gravatar(email, size) {
   var size = size || 80;
   return 'http://www.gravatar.com/avatar/' + md5(email) + '.jpg?s=' + size;
 }
-
+var myStream; 
 var removeFlash = function() {
   setTimeout(function(){
     $('.notice').remove();

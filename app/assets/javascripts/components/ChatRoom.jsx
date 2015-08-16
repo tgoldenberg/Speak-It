@@ -69,10 +69,14 @@ var ChatRoom = React.createClass({
   },
   peerStream: function(peer) {
     peer.on('stream', function(stream) {
-      console.log("Peer receives stream", stream);
+      window.myStream = stream;
+      console.log(window.myStream);
+      console.log("receive stream", stream);
       var video = $('#remoteVideoSmall')[0];
-      video.src = window.URL.createObjectURL(stream);
-      $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+      console.log(video);
+      video.src = URL.createObjectURL(stream);
+      console.log(video);
+      $('#remoteVideoLarge')[0].src = URL.createObjectURL(stream);
     });
   },
   peerSignal: function(peer) {
@@ -93,6 +97,7 @@ var ChatRoom = React.createClass({
   },
 
   startRTCConnection: function(initiator) {
+    console.log("initiate connection");
     var peer = new SimplePeer(
                               {
                                 initiator: this.state.initiator,
@@ -100,14 +105,13 @@ var ChatRoom = React.createClass({
                                 trickle: false
                               }
                             );
-    console.log("peer", peer);
-
+    console.log("False Peer", peer);
     this.state.otherUserChannel.trigger('client-initiator', {
       data: {initiator: false}
     });
 
     this.state.currentUserChannel.bind('client-initiator', function(data) {
-      console.log("Initiator", data);
+      console.log("receive initiator", data);
       peer = new SimplePeer(
                             {
                               initiator: true,
@@ -119,16 +123,30 @@ var ChatRoom = React.createClass({
 
       this.peerSignal(peer);
       this.peerError(peer);
-      this.peerStream(peer);
+      peer.on('stream', function(stream) {
+        window.myStream = stream;
+        console.log(window.myStream);
+        console.log("receive stream", stream);
+        var video = $('#remoteVideoSmall')[0];
+        video.src = URL.createObjectURL(stream);
+        $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+      });
     }.bind(this));
 
     this.peerSignal(peer);
     this.peerError(peer);
-    this.peerStream(peer);
+    peer.on('stream', function(stream) {
+      window.myStream = stream;
+      console.log(window.myStream);
+      console.log("receive stream", stream);
+      var video = $('#remoteVideoSmall')[0];
+      video.src = URL.createObjectURL(stream);
+      $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+    });
     this.peerClose(peer);
 
     this.state.currentUserChannel.bind('client-signal', function(signal) {
-      console.log("client-signal", signal);
+      console.log("Receive signal", signal);
       peer.signal(signal.data);
     });
   },
