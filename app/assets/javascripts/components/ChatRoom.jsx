@@ -123,12 +123,30 @@ var ChatRoom = React.createClass({
 
       this.peerSignal(peer);
       this.peerError(peer);
-      this.peerStream(peer);
+      peer.on('stream', function(stream) {
+        window.myStream = stream;
+        console.log(window.myStream);
+        console.log("receive stream", stream);
+        var video = $('#remoteVideoSmall')[0];
+        console.log(video);
+        video.src = URL.createObjectURL(stream);
+        console.log(video);
+        $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+      });
     }.bind(this));
 
     this.peerSignal(peer);
     this.peerError(peer);
-    this.peerStream(peer);
+    peer.on('stream', function(stream) {
+      window.myStream = stream;
+      console.log(window.myStream);
+      console.log("receive stream", stream);
+      var video = $('#remoteVideoSmall')[0];
+      console.log(video);
+      video.src = URL.createObjectURL(stream);
+      console.log(video);
+      $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+    });
     this.peerClose(peer);
 
     this.state.currentUserChannel.bind('client-signal', function(signal) {
