@@ -43,7 +43,11 @@ var ChatRoom = React.createClass({
       this.setCurrentUserRTCInfo(stream);
       var video = $('#localVideo')[0];
       video.src = window.URL.createObjectURL(stream);
-      setTimeout(this.startRTCConnection, 100);
+      if (this.props.current_user.user.id == this.props.chat_room.creator_id) {
+        setTimeout(this.startRTCConnection, 100);
+      } else {
+        setTimeout(this.startRTCConnection, 200);
+      }
     }.bind(this), function() {});
   },
 
@@ -65,6 +69,7 @@ var ChatRoom = React.createClass({
   },
   peerStream: function(peer) {
     peer.on('stream', function(stream) {
+      console.log("receive stream", stream);
       var video = $('#remoteVideoSmall')[0];
       video.src = window.URL.createObjectURL(stream);
       $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
@@ -72,6 +77,7 @@ var ChatRoom = React.createClass({
   },
   peerSignal: function(peer) {
     peer.on('signal', function(data) {
+      console.log("signal", data);
       this.state.otherUserChannel.trigger('client-signal', {
         data: data
       });
@@ -87,6 +93,7 @@ var ChatRoom = React.createClass({
   },
 
   startRTCConnection: function(initiator) {
+    console.log("initiate connection");
     var peer = new SimplePeer(
                               {
                                 initiator: this.state.initiator,
@@ -94,12 +101,13 @@ var ChatRoom = React.createClass({
                                 trickle: false
                               }
                             );
-
+    console.log("False Peer", peer);
     this.state.otherUserChannel.trigger('client-initiator', {
       data: {initiator: false}
     });
 
     this.state.currentUserChannel.bind('client-initiator', function(data) {
+      console.log("receive initiator", data);
       peer = new SimplePeer(
                             {
                               initiator: true,
@@ -107,6 +115,7 @@ var ChatRoom = React.createClass({
                               trickle: false
                             }
                           );
+      console.log("Initiator peer", peer);
 
       this.peerSignal(peer);
       this.peerError(peer);
@@ -119,6 +128,7 @@ var ChatRoom = React.createClass({
     this.peerClose(peer);
 
     this.state.currentUserChannel.bind('client-signal', function(signal) {
+      console.log("Receive signal", signal);
       peer.signal(signal.data);
     });
   },
