@@ -114,7 +114,7 @@ var ChatRoom = React.createClass({
       success: function (data, status) {
         // data.d is where the iceServers object lives
         customConfig = data.d;
-        console.log(customConfig);
+        // console.log(customConfig);
       },
       async: false
     });

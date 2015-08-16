@@ -40,7 +40,7 @@ describe('Timer', function(done){
     it('Starts Timer when turn is 1', function(done) {
       subject.setState({otherDone: true});
       subject.handleClick();
-      expect(subject.state.secondsLeft).toEqual(20);
+      expect(subject.state.secondsLeft).toEqual(90);
       done();
     });
 
@@ -74,7 +74,7 @@ describe('Timer', function(done){
                                       helperText={props.helper_text}/>);
       subject.setState({otherDone: true});
       subject.handleClick();
-      expect(subject.state.secondsLeft).toEqual(20);
+      expect(subject.state.secondsLeft).toEqual(90);
       done();
     });
 
