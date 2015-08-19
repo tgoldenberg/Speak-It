@@ -24,7 +24,8 @@ To experience our app first hand click on the link: <a href="https://speakitlang
 
 <img src="https://raw.githubusercontent.com/nyc-dragonflies-2015/Speak-It/master/app/assets/images/speakit-signup.png">
 
-#### You will be redirected to your dashboard. Find an avaiable user and click the chat button.
+***
+You will be redirected to your dashboard. Find an avaiable user and click the chat button.
 
 <img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/speakit-profile.png">
 
