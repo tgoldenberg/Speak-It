@@ -1,17 +1,19 @@
 # Speak-It  <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/globe-logo.png" width="48">
-A user-to-user language learning / sharing web application
+An online gamified language-exchange utilizing video conferencing technology, currently with support for English, Spanish, and Mandarin.
 
 ## Introduction:
 
 <img src="https://raw.githubusercontent.com/nyc-dragonflies-2015/Speak-It/master/app/assets/images/Read-me-quote.png">
 
-Speak-It is a video chat application for users who want to directly learn a language with a native speaker. Users login with their study language and native language. From the menu, a user can send an invitation to another user who natively speaks in the user's study language and wishes to learn the user's native language. Once the recipient accepts the invitation, both users are redirected to a webcam where they switch roles as the native speaker and the student. Speak-It seeks to simplify language learning and transform it into a more cultural and social experience.
+When you start as a user on SpeakIt, you will select your native language, or language in which you display perfect fluency, and your study language; the language you would like to learn. Once you are signed in, either through our Facebook login or by filling out our user registration, you will be able to see logged-in users who are fluent in the language you are studying and wish to learn the language you are fluent in. 
+
+	From your home page, you will have access to a recent user tab and an available user tab. By clicking the available tab, you can view all the users online at that moment that you can initiate a conversation with. Also note that the SpeakIt website is optimized for translation into Mandarin and Spanish. 	
 ****
 
 
 ## Getting Started:
 
-To experience our app first hand click on the link: <a href="http://speakit-languageapp.herokuapp.com/">SpeakIt</a>. Please give feedback on the overall experience!
+To experience our app first hand click on the link: <a href="https://speakitlanguages.com/">SpeakIt</a>. Please give feedback on the overall experience!
 
 ### Home page and sign up:
 
@@ -26,7 +28,7 @@ To experience our app first hand click on the link: <a href="http://speakit-lang
 
 <img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/speakit-profile.png">
 
-#### After you connect via chat you will be lead to a webcam where you will speak with a timer with the user first in your study language then you native language you will be given a timer to speak based on your level of language.
+#### After the video chat, each user will provide instructional feedback for the language learner.
 
 <img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/joseph-chat-room.png">
 
