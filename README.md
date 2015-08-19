@@ -1,5 +1,5 @@
 # Speak-It  <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/globe-logo.png" width="48">
-An online gamified language-exchange utilizing video conferencing technology, currently with support for English, Spanish, and Mandarin.
+An online language-exchange utilizing video conferencing technology, currently with support for English, Spanish, and Mandarin.
 
 ## Introduction:
 
