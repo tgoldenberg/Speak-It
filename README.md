@@ -7,7 +7,7 @@ An online language-exchange utilizing video conferencing technology, currently w
 
 When you start as a user on SpeakIt, you will select your native language, or language in which you display perfect fluency, and your study language; the language you would like to learn. Once you are signed in, either through our Facebook login or by filling out our user registration, you will be able to see logged-in users who are fluent in the language you are studying and wish to learn the language you are fluent in. 
 
-	From your home page, you will have access to a recent user tab and an available user tab. By clicking the available tab, you can view all the users online at that moment that you can initiate a conversation with. Also note that the SpeakIt website is optimized for translation into Mandarin and Spanish. 	
+From your home page, you will have access to a recent user tab and an available user tab. By clicking the available tab, you can view all the users online at that moment that you can initiate a conversation with. Also note that the SpeakIt website is optimized for translation into Mandarin and Spanish. 	
 ****
 
 
