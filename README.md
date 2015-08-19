@@ -28,4 +28,5 @@ To experience our app first hand click on the link: <a href="https://speakitlang
 
 <img src="https://github.com/nyc-dragonflies-2015/Speak-It/blob/master/app/assets/images/speakit-profile.png">
 
-#### After the video chat, each user will provide instructional feedback for the language learner.
+***
+After the video chat, each user will provide instructional feedback for the language learner.
