@@ -44,9 +44,9 @@ var ChatRoom = React.createClass({
       var video = $('#localVideo')[0];
       video.src = window.URL.createObjectURL(stream);
       if (this.props.current_user.user.id == this.props.chat_room.creator_id) {
-        setTimeout(this.startRTCConnection, 100);
-      } else {
         setTimeout(this.startRTCConnection, 200);
+      } else {
+        setTimeout(this.startRTCConnection, 400);
       }
     }.bind(this), function() {});
   },
@@ -71,7 +71,7 @@ var ChatRoom = React.createClass({
     peer.on('stream', function(stream) {
       // window.myStream = stream;
       // console.log(window.myStream);
-      // console.log("receive stream", stream);
+      console.log("receive stream", stream);
       var video = $('#remoteVideoSmall')[0];
       video.src = URL.createObjectURL(stream);
       $('#remoteVideoLarge')[0].src = URL.createObjectURL(stream);
@@ -79,7 +79,7 @@ var ChatRoom = React.createClass({
   },
   peerSignal: function(peer) {
     peer.on('signal', function(data) {
-      // console.log("Signaling", data);
+      console.log("Signaling", data);
       this.state.otherUserChannel.trigger('client-signal', {
         data: data
       });
@@ -145,7 +145,7 @@ var ChatRoom = React.createClass({
       peer.on('stream', function(stream) {
         // window.myStream = stream;
         // console.log(window.myStream);
-        // console.log("receive stream", stream);
+        console.log("receive stream", stream);
         var video = $('#remoteVideoSmall')[0];
         video.src = URL.createObjectURL(stream);
         $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
@@ -157,7 +157,7 @@ var ChatRoom = React.createClass({
     peer.on('stream', function(stream) {
       // window.myStream = stream;
       // console.log(window.myStream);
-      // console.log("receive stream", stream);
+      console.log("receive stream", stream);
       var video = $('#remoteVideoSmall')[0];
       video.src = URL.createObjectURL(stream);
       $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
@@ -165,7 +165,7 @@ var ChatRoom = React.createClass({
     this.peerClose(peer);
 
     this.state.currentUserChannel.bind('client-signal', function(signal) {
-      // console.log("Receive signal", signal);
+      console.log("Receive signal", signal);
       peer.signal(signal.data);
     });
   },
