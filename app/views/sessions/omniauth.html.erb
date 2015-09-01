@@ -26,7 +26,7 @@
             <%= f.select(:native_language_id, options_for_select(@languages_select_array), {},{class: "form-control", id: "omniauth-select", onChange: "omniauthCreateFlag(this);"}) %>
           </div>
           <div class="container omniauth-flag">
-            <img src='<%= asset_path("languages/english.jpg")%>' class="image-box language-flag"></img>
+            <img src='<%= asset_path("languages/english.png")%>' class="image-box language-flag"></img>
           </div>
         </div>
 
@@ -36,7 +36,7 @@
             <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control",  id: "omniauth-select", onChange: "omniauthCreateFlag(this);"}) %>
           </div>
           <div class="container omniauth-flag">
-            <img src='<%= asset_path("languages/english.jpg")%>' class="image-box language-flag"></img>
+            <img src='<%= asset_path("languages/english.png")%>' class="image-box language-flag"></img>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@
       </div>
       <div>
         <div>
-          <img src="<%= asset_path(@user.country.image_url) %>" alt="flag" id="language-flag" />
+          <img src='<%= asset_path(@user.country.image_url) %>' alt="flag" id="language-flag" />
         </div>
         <span id="country_name">
           <%= t('countries.' + @user.country.name.split(" ").join("")) %>
@@ -36,13 +36,13 @@
       <h4><b> <%= t('logged_in.mother_tongue') %></b></h4>
       <div class="native-language-holder">
         <p><%= t('languages.' + @user.native_language.name) %></p>
-        <img id="native-language-flag" class="language-flag" src="<%= @user.native_language.img_url %>"/>
+        <img id="native-language-flag" class="language-flag" src='<%= asset_path("languages/#{@user.native_language.name.downcase}.png")%>'/>
       </div>
       <hr/>
       <h4><b><%= t('logged_in.study_language') %></b></h4>
       <div class="study-language-holder">
         <p><%= t('languages.' + @user.study_language.name) %></p>
-        <img id="study-language-flag" class="language-flag" src="<%= @user.study_language.img_url %>">
+        <img id="study-language-flag" class="language-flag" src='<%= asset_path("languages/#{@user.study_language.name.downcase}.png")%>'>
       </div>
     </div>
   </div>
