@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.3.5'
+lock '3.4'
 set :application, 'SpeakIt'
 set :repo_url, 'git@github.com:tgoldenberg/Speak-It.git'
 

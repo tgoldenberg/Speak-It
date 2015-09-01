@@ -17,7 +17,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'i18n'
 gem 'omniauth-facebook'
-gem "capistrano", "~> 3.1"
+gem "capistrano", "~> 3.3.5"
 gem "capistrano-rails", "~> 1.1"
 gem 'librarian-chef'
 
