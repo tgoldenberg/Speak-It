@@ -30,7 +30,8 @@ class ChatRoom < ActiveRecord::Base
           user: data_hash[:current_user],
           country: data_hash[:current_user].try(:country),
           country_image: ActionController::Base.helpers.asset_path(data_hash[:current_user].try(:country).try(:image_url)),
-          language: data_hash[:current_user].try(:native_language)
+          language: data_hash[:current_user].try(:native_language),
+          language_flag: ActionController::Base.helpers.asset_path("languages/#{data_hash[:current_user].try(:language).try(:name).downcase}.png")
         },
         initial_guidelines: {
           title: I18n.t('chat_room.initial_guidelines_title'),
@@ -48,7 +49,8 @@ class ChatRoom < ActiveRecord::Base
           user: data_hash[:other_user],
           country: data_hash[:other_user].country,
           country_image: ActionController::Base.helpers.asset_path(data_hash[:other_user].country.image_url),
-          language: data_hash[:other_user].native_language
+          language: data_hash[:other_user].native_language,
+          language_flag: ActionController::Base.helpers.asset_path("languages/#{data_hash[:other_user].try(:language).try(:name).downcase}.png")
         },
         first_chat: {
           chat: data_hash[:first_chat],
