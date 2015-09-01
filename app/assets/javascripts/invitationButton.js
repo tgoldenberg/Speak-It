@@ -2,7 +2,7 @@ function get_gravatar(email, size) {
   var size = size || 80;
   return 'http://www.gravatar.com/avatar/' + md5(email) + '.jpg?s=' + size;
 }
-var myStream; 
+var myStream;
 var removeFlash = function() {
   setTimeout(function(){
     $('.notice').remove();
@@ -40,14 +40,7 @@ var createFlag = function(e) {
   var value = parseInt($(e)[0].value);
   $(e).next()[0].src = images[value-1];
 };
-var omniauthCreateFlag = function(e) {
-  var images = ["https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg",
-                "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/spain.png",
-                "https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/chinese.png"
-              ];
-  var value = parseInt($(e)[0].value);
-  $(e).parent().next().children().first()[0].src = images[value-1];
-};
+
 
 var toggleNotifications = function() {
   $('.notifications').on('click', function(e) {

@@ -46,15 +46,14 @@
         </div>
         <br/>
       </div>
-
-
+      
       <div class="row" id="new_user_languages">
         <div class="col-md-6">
           <div class="form-group">
             <div class="container" id="first_panel_container" style="clear: both;">
               <%= f.label t('signup.native_language'), class: 'col-sm-2 col-sm-offset-1' %>
               <%= f.select(:native_language_id, options_for_select(@languages_select_array), {},{class: "form-control col-xs-3", id: "select-box", onChange: "createFlag(this);"}) %>
-              <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box col-xs-5"></img>
+              <img src='<%= asset_path("english.jpg")%>' class="image-box col-xs-5"></img>
             </div>
           </div>
 
@@ -70,7 +69,7 @@
             <div class="container" id="first_panel_container" style="clear: both;">
               <%= f.label t('signup.country'), class: 'col-sm-2 col-sm-offset-1' %>
               <%= f.select(:country_id, options_for_select(@countries_select_array), {}, {class: "form-control col-xs-3", id: "select-box", onChange: "createFlagForCountry(this);"}) %>
-              <img src="<%= asset_path("argentinian-flag-medium.png") %>" class="image-box col-xs-5"></img>
+              <img src='<%= asset_path("argentinian-flag-medium.png") %>' class="image-box col-xs-5"></img>
             </div>
           </div>
 
@@ -100,6 +99,14 @@
 </div>
 
 <script>
+  var omniauthCreateFlag = function(e) {
+    var images = ['<%= ActionController::Base.helpers.asset_path("english.jpg") %>',
+                  '<%= ActionController::Base.helpers.asset_path("chinese.png") %>',
+                  '<%= ActionController::Base.helpers.asset_path("spain.png") %>'];
+    var value = parseInt($(e)[0].value);
+    $(e).parent().next().children().first()[0].src = images[value-1];
+  };
+
   var countries = [
     {name: "United States", image_url: '<%= ActionController::Base.helpers.asset_path("american-flag-medium.png") %>'},
     {name: "Canada", image_url: '<%= ActionController::Base.helpers.asset_path("canadian-flag-medium.png") %>'},
