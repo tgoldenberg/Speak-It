@@ -30,8 +30,9 @@ class ChatRoom < ActiveRecord::Base
           user: data_hash[:current_user],
           country: data_hash[:current_user].try(:country),
           country_image: ActionController::Base.helpers.asset_path(data_hash[:current_user].try(:country).try(:image_url)),
-          language: data_hash[:current_user].try(:native_language)
-        },
+          language: data_hash[:current_user].try(:native_language),
+          language_flag: ActionController::Base.helpers.asset_path("languages/#{data_hash[:current_user].try(:native_language).name.downcase}.png")
+         },
         initial_guidelines: {
           title: I18n.t('chat_room.initial_guidelines_title'),
           description: I18n.t('chat_room.initial_guidelines_description')
