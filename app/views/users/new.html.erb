@@ -104,7 +104,7 @@ var createFlag = function(e) {
                 '<%= ActionController::Base.helpers.asset_path("languages/spain.png") %>',
                 '<%= ActionController::Base.helpers.asset_path("languages/chinese.png") %>'];
   var value = parseInt($(e)[0].value);
-  $(e).parent().next().children().first()[0].src = images[value-1];
+  $(e).next()[0].src = images[value-1];
 };
 
   var countries = [
