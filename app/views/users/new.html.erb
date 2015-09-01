@@ -46,7 +46,7 @@
         </div>
         <br/>
       </div>
-      
+
       <div class="row" id="new_user_languages">
         <div class="col-md-6">
           <div class="form-group">
@@ -61,7 +61,7 @@
             <div class="container" id="first_panel_container" style="clear: both;">
               <%= f.label t('signup.study_language'), class: 'col-sm-2 col-sm-offset-1' %>
               <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control col-xs-3",  id: "select-box", onChange: "createFlag(this);"}) %>
-              <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box col-xs-5"></img>
+              <img src='<%= asset_path("english.jpg")%>' class="image-box col-xs-5"></img>
             </div>
           </div>
 
