@@ -53,7 +53,7 @@
             <div class="container" id="first_panel_container" style="clear: both;">
               <%= f.label t('signup.native_language'), class: 'col-sm-2 col-sm-offset-1' %>
               <%= f.select(:native_language_id, options_for_select(@languages_select_array), {},{class: "form-control col-xs-3", id: "select-box", onChange: "createFlag(this);"}) %>
-              <img src='<%= asset_path("/languages/english.jpg")%>' class="image-box col-xs-5"></img>
+              <img src='<%= asset_path("languages/english.jpg")%>' class="image-box col-xs-5"></img>
             </div>
           </div>
 
@@ -100,9 +100,9 @@
 
 <script>
   var omniauthCreateFlag = function(e) {
-    var images = ['<%= ActionController::Base.helpers.asset_path("english.jpg") %>',
-                  '<%= ActionController::Base.helpers.asset_path("chinese.png") %>',
-                  '<%= ActionController::Base.helpers.asset_path("spain.png") %>'];
+    var images = ['<%= ActionController::Base.helpers.asset_path("languages/english.jpg") %>',
+                  '<%= ActionController::Base.helpers.asset_path("languages/chinese.png") %>',
+                  '<%= ActionController::Base.helpers.asset_path("languages/spain.png") %>'];
     var value = parseInt($(e)[0].value);
     $(e).parent().next().children().first()[0].src = images[value-1];
   };
