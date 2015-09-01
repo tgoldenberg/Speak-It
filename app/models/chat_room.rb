@@ -57,6 +57,7 @@ class ChatRoom < ActiveRecord::Base
           native_speaker: data_hash[:first_chat].native_speaker,
           topic: data_hash[:first_chat].topic,
           language: data_hash[:first_chat].language,
+          language_flag: ActionController::Base.helpers.asset_path("languages/#{data_hash[:first_chat].native_language.name.downcase}.png"),
           level: data_hash[:first_chat].level,
           text: {
             native_speaker: I18n.t('chat_room.native_speaker') + data_hash[:first_chat].native_speaker.username.titleize,
@@ -72,6 +73,7 @@ class ChatRoom < ActiveRecord::Base
           native_speaker: data_hash[:second_chat].native_speaker,
           topic: data_hash[:second_chat].topic,
           language: data_hash[:second_chat].language,
+          language_flag: ActionController::Base.helpers.asset_path("languages/#{data_hash[:second_chat].native_language.name.downcase}.png"),
           level: data_hash[:second_chat].level,
           text: {
             native_speaker: I18n.t('chat_room.native_speaker') + data_hash[:second_chat].native_speaker.username.titleize,
