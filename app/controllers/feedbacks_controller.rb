@@ -23,7 +23,10 @@ class FeedbacksController < ApplicationController
   end
 
   def show
+    @user = current_user
     @feedback = Feedback.find(params[:id])
+    @active_invitations = User.get_active_invitations(@user)
+    @missed_calls = User.get_missed_calls(@user)
   end
 
   private
