@@ -26,7 +26,7 @@
             <%= f.select(:native_language_id, options_for_select(@languages_select_array), {},{class: "form-control", id: "omniauth-select", onChange: "omniauthCreateFlag(this);"}) %>
           </div>
           <div class="container omniauth-flag">
-            <img src="https://raw.githubusercontent.com/tgoldenberg/Speakit-Static/master/app/assets/images/english.jpg" class="image-box language-flag"></img>
+            <img src='<%= asset_path("languages/english.jpg")%>' class="image-box language-flag"></img>
           </div>
         </div>
 
@@ -36,7 +36,7 @@
             <%= f.select(:study_language_id, options_for_select(@languages_select_array), {}, {class: "form-control",  id: "omniauth-select", onChange: "omniauthCreateFlag(this);"}) %>
           </div>
           <div class="container omniauth-flag">
-            <img src='<%= asset_path("english.jpg")%>' class="image-box language-flag"></img>
+            <img src='<%= asset_path("languages/english.jpg")%>' class="image-box language-flag"></img>
           </div>
         </div>
       </div>
@@ -68,9 +68,9 @@
 
 <script>
   var omniauthCreateFlag = function(e) {
-    var images = ['<%= ActionController::Base.helpers.asset_path("english.jpg") %>',
-                  '<%= ActionController::Base.helpers.asset_path("chinese.png") %>',
-                  '<%= ActionController::Base.helpers.asset_path("spain.png") %>'];
+    var images = ['<%= ActionController::Base.helpers.asset_path("languages/english.jpg") %>',
+                  '<%= ActionController::Base.helpers.asset_path("languages/chinese.png") %>',
+                  '<%= ActionController::Base.helpers.asset_path("languages/spain.png") %>'];
     var value = parseInt($(e)[0].value);
     $(e).parent().next().children().first()[0].src = images[value-1];
   };
