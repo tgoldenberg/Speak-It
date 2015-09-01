@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   belongs_to :level
   has_many :created_chat_rooms, class_name: "ChatRoom", foreign_key: :creator_id
   has_many :invited_chat_rooms, class_name: "ChatRoom", foreign_key: :invitee_id
+  has_many :recent_invitors, through: :created_chat_rooms, source: :invitee
+  has_many :recent_invitees, through: :invited_chat_rooms, source: :creator
   has_many :sent_feedback, class_name: "Feedback", foreign_key: :sender_id
   has_many :received_feedback, class_name: "Feedback", foreign_key: :recipient_id
   has_many :educational_chats, class_name: "Chat", foreign_key: :student_id
@@ -29,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def self.get_unavailable_users(current_user)
-    User.users_levels_countries_languages.where("last_seen_at <= ? and id != ? and native_language_id = ? and study_language_id = ?", 5.minutes.ago, current_user.id, current_user.study_language_id, current_user.native_language_id)
+    User.users_levels_countries_languages.where("id != ? and native_language_id = ? and study_language_id = ?", current_user.id, current_user.study_language_id, current_user.native_language_id)
   end
 
   def self.get_missed_calls(current_user)
@@ -40,16 +42,14 @@ class User < ActiveRecord::Base
     current_user.received_invitations.where(seen: false, missed: false, declined: false).pluck('DISTINCT sender_id').map{ |sender_id| Invitation.find_by(recipient_id: current_user.id, sender_id: sender_id, seen: false, declined: false, missed: false) }.reverse
   end
 
-  def self.find_recent_users(users, current_user)
-    recent_users = []
-    users.each do |user|
-      current_user.native_speaker_chats.where("created_at > ?", 1.weeks.ago).select(:student_id).distinct.each do |chat|
-        if (chat.student_id == user.id)
-          recent_users << user
-        end
-      end
+  def self.find_recent_users(users, current_user, available_users=[])
+    recents = (current_user.recent_invitees + current_user.recent_invitors).uniq
+    result = recents.map{|recent| recent if users.include?(recent)}.compact
+    if available_users.count > 0
+      # binding.pry
+      result.map!{|recent| recent if !available_users.include?(recent)}.compact
     end
-    recent_users
+    return result.compact
   end
 
   def topics
