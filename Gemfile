@@ -20,6 +20,7 @@ gem 'omniauth-facebook'
 gem "capistrano", "~> 3.3.5"
 gem "capistrano-rails", "~> 1.1"
 gem 'librarian-chef'
+gem 'rb-readline'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-simple-peer'

@@ -24,7 +24,7 @@ set :linked_files, %w{config/database.yml .rbenv-vars .ruby-version}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
  # prevent capistrano-bundler from setting the --binstubs option when running bundle install.
-set :bundle_binstubs, nil
+# set :bundle_binstubs, nil
 
 # Default value for default_env is {}
 set :default_env, { path: "/opt/rbenv/shims:$PATH" }
