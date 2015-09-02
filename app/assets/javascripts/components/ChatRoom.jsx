@@ -40,14 +40,16 @@ var ChatRoom = React.createClass({
       }
     };
     navigator.getUserMedia(mediaOptions, function(stream) {
-      this.setCurrentUserRTCInfo(stream);
-      var video = $('#localVideo')[0];
-      video.src = window.URL.createObjectURL(stream);
-      if (this.props.current_user.user.id == this.props.chat_room.creator_id) {
-        setTimeout(this.startRTCConnection, 200);
-      } else {
-        setTimeout(this.startRTCConnection, 400);
-      }
+      var p1 = new Promise(function(resolve, reject){
+        this.setCurrentUserRTCInfo(stream);
+        resolve();
+      }.bind(this));
+      var p2 = p1.then(function(resolve, reject) {
+        var video = $('#localVideo')[0];
+        video.src = window.URL.createObjectURL(stream);
+        // if (this.props.current_user.user.id == this.props.chat_room.creator_id) {
+        this.startRTCConnection();
+      }.bind(this));
     }.bind(this), function() {});
   },
 
@@ -61,15 +63,12 @@ var ChatRoom = React.createClass({
           name: this.props.current_user.user.username,
           id: guid(),
           stream: stream
-        },
-        currentUserChannel: pusher.subscribe(currentUserChannel),
-        otherUserChannel: pusher.subscribe(otherUserChannel)
+        }
       }
     );
   },
   peerStream: function(peer) {
     peer.on('stream', function(stream) {
-      // window.myStream = stream;
       // console.log(window.myStream);
       console.log("receive stream", stream);
       var video = $('#remoteVideoSmall')[0];
@@ -97,18 +96,24 @@ var ChatRoom = React.createClass({
   startRTCConnection: function(initiator) {
     var customConfig;
     // Call XirSys ICE servers
-    $.ajax({
-      url: "https://service.xirsys.com/ice",
-      data: {
-        ident: "tgoldenberg",
-        secret: "d0abb006-43d9-11e5-b113-5f60ee8ba8ea",
-        domain: "speakitlanguages.com",
-        application: "default",
-        room: "default",
-        secure: 1
-      }
-    })
-    .done(function(data, status){
+    var p1 = new Promise(function(resolve, reject) {
+      $.ajax({
+        url: "https://service.xirsys.com/ice",
+        data: {
+          ident: "tgoldenberg",
+          secret: "d0abb006-43d9-11e5-b113-5f60ee8ba8ea",
+          domain: "speakitlanguages.com",
+          application: "default",
+          room: "default",
+          secure: 1
+        }
+      })
+      .done(function(data, status) {
+        resolve(data, status);
+      });
+    });
+
+    p1.then(function(data, status){
       customConfig = data.d;
     // PeerJS object
       var peer = new SimplePeer(
@@ -137,7 +142,6 @@ var ChatRoom = React.createClass({
         this.peerSignal(peer);
         this.peerError(peer);
         peer.on('stream', function(stream) {
-          // window.myStream = stream;
           // console.log(window.myStream);
           console.log("receive stream", stream);
           var video = $('#remoteVideoSmall')[0];
@@ -149,7 +153,6 @@ var ChatRoom = React.createClass({
       this.peerSignal(peer);
       this.peerError(peer);
       peer.on('stream', function(stream) {
-        // window.myStream = stream;
         // console.log(window.myStream);
         console.log("receive stream", stream);
         var video = $('#remoteVideoSmall')[0];
@@ -163,9 +166,6 @@ var ChatRoom = React.createClass({
         peer.signal(signal.data);
       });
     }.bind(this))
-    .fail(function(err) {
-      console.log(err);
-    });
   },
 
   changeVisibility: function(value) {
