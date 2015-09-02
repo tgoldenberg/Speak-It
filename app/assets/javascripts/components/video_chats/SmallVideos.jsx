@@ -2,7 +2,7 @@ var SmallVideos = React.createClass({
   changeTurn: function() {
     if (this.props.turn == 0 || this.props.turn == 2) {
       $('#smallVideos').css({
-         "background-color": "rgba(247,247,247,.3)"
+         "background-color": "rgba(247,247,247,0.3)"
       });
     } else {
       $('#smallVideos').css({
