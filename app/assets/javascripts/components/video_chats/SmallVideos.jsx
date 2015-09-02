@@ -1,5 +1,14 @@
 var SmallVideos = React.createClass({
   changeTurn: function() {
+    if (this.props.turn == 0 || this.props.turn == 2) {
+      $('#smallVideos').css({
+         "background-color": "rgba(247,247,247,.3)"
+      });
+    } else {
+      $('#smallVideos').css({
+        "background-color": "rgba(247,247,247,1)"
+      });
+    }
     this.props.changeTurn();
   },
   setContent: function() {
@@ -21,7 +30,7 @@ var SmallVideos = React.createClass({
   render: function() {
     var content = this.setContent();
     return (
-      <div>
+      <div id="bottom-panel-container">
         {content}
       </div>
     );
