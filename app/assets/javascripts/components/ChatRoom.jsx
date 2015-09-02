@@ -96,7 +96,6 @@ var ChatRoom = React.createClass({
 
   startRTCConnection: function(initiator) {
     var customConfig;
-
     // Call XirSys ICE servers
     $.ajax({
       url: "https://service.xirsys.com/ice",
@@ -107,38 +106,45 @@ var ChatRoom = React.createClass({
         application: "default",
         room: "default",
         secure: 1
-      },
-      success: function (data, status) {
-        // data.d is where the iceServers object lives
-        customConfig = data.d;
-        // console.log(customConfig);
-      },
-      async: false
-    });
-
+      }
+    })
+    .done(function(data, status){
+      customConfig = data.d;
     // PeerJS object
-    var peer = new SimplePeer(
+      var peer = new SimplePeer(
+                                {
+                                  initiator: this.state.initiator,
+                                  stream: this.state.currentUserRTC.stream,
+                                  trickle: false,
+                                  config: customConfig
+                                }
+                              );
+      this.state.otherUserChannel.trigger('client-initiator', {
+        data: {initiator: false}
+      });
+
+      this.state.currentUserChannel.bind('client-initiator', function(data) {
+        // console.log("receive initiator", data);
+        peer = new SimplePeer(
                               {
-                                initiator: this.state.initiator,
+                                initiator: true,
                                 stream: this.state.currentUserRTC.stream,
                                 trickle: false,
-                                config: customConfig
+                                customConfig
                               }
                             );
-    this.state.otherUserChannel.trigger('client-initiator', {
-      data: {initiator: false}
-    });
 
-    this.state.currentUserChannel.bind('client-initiator', function(data) {
-      // console.log("receive initiator", data);
-      peer = new SimplePeer(
-                            {
-                              initiator: true,
-                              stream: this.state.currentUserRTC.stream,
-                              trickle: false,
-                              customConfig
-                            }
-                          );
+        this.peerSignal(peer);
+        this.peerError(peer);
+        peer.on('stream', function(stream) {
+          // window.myStream = stream;
+          // console.log(window.myStream);
+          console.log("receive stream", stream);
+          var video = $('#remoteVideoSmall')[0];
+          video.src = URL.createObjectURL(stream);
+          $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
+        });
+      }.bind(this));
 
       this.peerSignal(peer);
       this.peerError(peer);
@@ -150,23 +156,15 @@ var ChatRoom = React.createClass({
         video.src = URL.createObjectURL(stream);
         $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
       });
-    }.bind(this));
+      this.peerClose(peer);
 
-    this.peerSignal(peer);
-    this.peerError(peer);
-    peer.on('stream', function(stream) {
-      // window.myStream = stream;
-      // console.log(window.myStream);
-      console.log("receive stream", stream);
-      var video = $('#remoteVideoSmall')[0];
-      video.src = URL.createObjectURL(stream);
-      $('#remoteVideoLarge')[0].src = window.URL.createObjectURL(stream);
-    });
-    this.peerClose(peer);
-
-    this.state.currentUserChannel.bind('client-signal', function(signal) {
-      console.log("Receive signal", signal);
-      peer.signal(signal.data);
+      this.state.currentUserChannel.bind('client-signal', function(signal) {
+        console.log("Receive signal", signal);
+        peer.signal(signal.data);
+      });
+    }.bind(this))
+    .fail(function(err) {
+      console.log(err);
     });
   },
 
