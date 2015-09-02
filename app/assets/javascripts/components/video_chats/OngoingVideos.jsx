@@ -4,7 +4,7 @@ var OngoingVideos = React.createClass({
   },
   render: function() {
     return (
-      <div id="smallVideos">
+      <div id="smallVideos" className={this.props.transparency}>
         <div className="videos container-fluid">
           <div className="local-video col-lg-2 col-sm-4 hidden-xs">
             <video

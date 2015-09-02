@@ -10,6 +10,9 @@
   width: 100%;
   background: black;
 }
+#smallVideos.transparent {
+  background-color: rgba(247,247,247, 0.3);
+}
 #smallVideos {
   height: 8em;
   position: fixed;

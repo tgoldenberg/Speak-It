@@ -1,21 +1,27 @@
 var SmallVideos = React.createClass({
+  getInitialState: function() {
+    return {transparency: ""};
+  },
   changeTurn: function() {
     console.log("Turn", this.props.turn);
     console.log("transparency", $('#smallVideos').css("background-color"));
     if (this.props.turn == 0 || this.props.turn == 2) {
-      $('#smallVideos').css({
-         "background-color": "rgba(247,247,247,0.3)"
-      });
+      this.setState({transparency: "transparent"});
+      // $('#smallVideos').css({
+      //    "background-color": "rgba(247,247,247,0.3)"
+      // });
     } else {
-      $('#smallVideos').css({
-        "background-color": "rgba(247,247,247,1)"
-      });
+      // $('#smallVideos').css({
+      //   "background-color": "rgba(247,247,247,1)"
+      // });
+      this.setState({transparency: ""});
     }
     this.props.changeTurn();
   },
   setContent: function() {
     var completedContent = <div id="completed-video"></div>;
     var incompleteContent = <OngoingVideos
+                            transparency={this.state.transparency}
                             currentUser={this.props.currentUser}
                             otherUser={this.props.otherUser}
                             turn={this.props.turn}
