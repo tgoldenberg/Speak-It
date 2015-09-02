@@ -27,6 +27,7 @@
               <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             </button>
           </li>
+          <li> <%= link_to 'Edit Account', edit_user_path(current_user) %></li>
           <li id='logout'> <%= link_to t('landing.logout'), logout_path, method: 'delete' %> </li>
         <% end %>
         <li class="dropdown">

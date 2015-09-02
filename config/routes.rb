@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   post 'web_rtc/connect' => 'web_rtc#connect', as: 'rtc_connect'
 
   root 'welcome#index'
-  resources :users, only: [:create, :new]
+  resources :users, only: [:create, :new, :edit, :destroy, :update, :show]
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create', as: 'create_session'

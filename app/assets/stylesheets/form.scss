@@ -2,6 +2,12 @@
   margin: 0px;
   text-align: center;
 }
+.delete-account-link {
+  text-align: center;
+  a {
+    color: white;
+  }
+}
 #new_omniauth {
   width: 100%;
 }

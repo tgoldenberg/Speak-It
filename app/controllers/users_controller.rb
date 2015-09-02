@@ -25,6 +25,36 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    @countries_select_array = Country.countries_as_select_list
+    @languages_select_array = Language.languages_as_select_list
+    @active_invitations = User.get_active_invitations(@user)
+    @missed_calls = User.get_missed_calls(@user)
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.assign_attributes(user_params)
+    if @user.save
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    session[:user_id] = nil 
+    flash[:notice] = ["Account deleted successfully"]
+    redirect_to root_path
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
   private
 
   def user_params
