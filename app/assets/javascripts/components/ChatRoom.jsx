@@ -47,8 +47,11 @@ var ChatRoom = React.createClass({
       var p2 = p1.then(function(resolve, reject) {
         var video = $('#localVideo')[0];
         video.src = window.URL.createObjectURL(stream);
-        // if (this.props.current_user.user.id == this.props.chat_room.creator_id) {
-        this.startRTCConnection();
+        if (this.props.current_user.user.id == this.props.chat_room.creator_id) {
+          setTimeout(this.startRTCConnection, 200);
+        } else {
+          setTimeout(this.startRTCConnection, 100);
+        }
       }.bind(this));
     }.bind(this), function() {});
   },
