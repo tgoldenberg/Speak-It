@@ -8,6 +8,8 @@
 
   <div class="container-fluid">
     <%= form_for @user, url: user_path(@user), method: "put", class: 'form-horizontal' do |f| %>
+	<div class="new_user" id="new_user">
+		
       <div class="row" id="new_user_first_panel">
         <div class="col-sm-8">
           <div class="form-group">
@@ -79,6 +81,7 @@
           <%= f.submit t('signup.submit'), class: 'btn btn-lg btn-primary form-control', id: 'form-button' %>
         </div>
       </div>
+	</div>
     <% end %>
   </div>
   <div id="new_user_footer">

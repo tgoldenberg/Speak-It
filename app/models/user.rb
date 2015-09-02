@@ -42,11 +42,12 @@ class User < ActiveRecord::Base
     current_user.received_invitations.where(seen: false, missed: false, declined: false).pluck('DISTINCT sender_id').map{ |sender_id| Invitation.find_by(recipient_id: current_user.id, sender_id: sender_id, seen: false, declined: false, missed: false) }.reverse
   end
 
-  def self.find_recent_users(users, current_user, available_users=[])
+  def self.find_recent_users(current_user, available_users, unavailable)
     recents = (current_user.recent_invitees + current_user.recent_invitors).uniq
-    result = recents.map{|recent| recent if users.include?(recent)}.compact
-    if available_users.count > 0
-      # binding.pry
+    result = recents.compact
+    if !unavailable
+      result.map!{|recent| recent if available_users.include?(recent)}.compact
+    else 
       result.map!{|recent| recent if !available_users.include?(recent)}.compact
     end
     return result.compact
