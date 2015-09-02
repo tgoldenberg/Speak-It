@@ -77,8 +77,9 @@
       <%= f.hidden_field :avatar_url, value: "https://i1.wp.com/design.atlassian.com/1.4/images/avatars/default-user/192/user-avatar-blue-96%402x.png?ssl=1", id: "hidden-avatar-field" %>
       <%= f.hidden_field :level, value: 1 %>
       <div id="new_user_submit" class="row">
-        <div class="col-xs-6 col-xs-offset-2 submit-holder">
+        <div class="row submit-holder">
           <%= f.submit t('signup.submit'), class: 'btn btn-lg btn-primary form-control', id: 'form-button' %>
+	    <p class="delete-account-link"><%= link_to 'Delete Account', user_path(current_user), method: :delete %></p>
         </div>
       </div>
 	</div>
