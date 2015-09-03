@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def self.get_available_users(current_user)
-    User.users_levels_countries_languages.where("last_seen_at > ? and id != ? and native_language_id = ? and study_language_id = ?", 5.minutes.ago, current_user.id, current_user.study_language_id, current_user.native_language_id)
+    User.users_levels_countries_languages.where("last_seen_at > ? and id != ? and native_language_id = ? and study_language_id = ?", 2.minutes.ago, current_user.id, current_user.study_language_id, current_user.native_language_id)
   end
 
   def self.get_unavailable_users(current_user)
