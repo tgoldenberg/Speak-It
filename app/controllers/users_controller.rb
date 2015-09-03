@@ -25,6 +25,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def available_users
+    @user = User.find(params[:user_id].to_i)
+    @available_users_count = params[:available_users_count].to_i
+    @new_available_users_count = User.get_available_users(@user).count 
+    users_bool = false
+    if @new_available_users_count > @available_users_count
+      users_bool = "more users";
+    elsif 
+      @new_available_users_count < @available_users_count 
+      users_bool = "less users";
+    end
+    render json: users_bool.to_json
+  end
+
   def edit
     @user = User.find(params[:id])
     @countries_select_array = Country.countries_as_select_list

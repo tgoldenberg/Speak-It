@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   post 'web_rtc/connect' => 'web_rtc#connect', as: 'rtc_connect'
 
   root 'welcome#index'
+  get 'users/available_users' => 'users/available_users', as: "available_users"
   resources :users, only: [:create, :new, :edit, :destroy, :update, :show]
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
   get '/login' => 'sessions#new', as: 'login'
@@ -24,4 +25,5 @@ Rails.application.routes.draw do
   post 'auth/:provider/callback', to: 'sessions#omniauth'
   post 'auth/failure', to: redirect('/')
   get 'sessions/omniauth_select_languages', to: 'sessions#omniauth_select_languages', as: 'omniauth_select_languages'
+  
 end
