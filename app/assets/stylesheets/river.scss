@@ -26,6 +26,16 @@
     }
   }
 }
+.tab-holder {
+  .btn {
+    background: #0284cf;
+    height: 3em;
+    font-size: 1.4em;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 5px;
+  }
+}
 #recent-table {
   td.available-cell, th.available-cell {
     @media screen and (max-width: 600px) {

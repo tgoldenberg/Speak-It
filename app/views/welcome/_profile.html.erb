@@ -53,5 +53,31 @@
   // Set to recent tab
   $(function() {
     $('#recent-tab').click();
+
+   function getUsers() {
+    $.ajax({
+      url: "/users/available_users",
+      method: "get",
+      data: {user_id: "<%= current_user.id %>", available_users_count: "<%= @available_users.count %>"}
+    })
+    .done(function(data) {
+      console.log("repeat");
+      if (data == "more users" && $('.tab-holder .refresh-link').length == 0) {
+        console.log("change DOM");
+        $('.tab-holder').append('<a class="refresh-link" href="/"><button class="btn btn-primary btn-lg" id="init-chat-button">New users have joined - click to refresh</button></a>');
+      } else if (data == "less users" && $('.tab-holder .refresh-link').length == 0) {
+        $('.tab-holder').append('<a class="refresh-link" href="/"><button class="btn btn-primary btn-lg" id="init-chat-button">Available users have changed - click to refresh</button></a>');
+      }
+    })
+    .fail(function(err) {
+      console.log(err);
+    });
+   } 
+  var userInterval = setInterval(getUsers, 5000);
+
+   function unbindInterval() {
+    clearInterval(userInterval);
+  }
+  window.onbeforeunload = unbindInterval;
   });
 </script>
