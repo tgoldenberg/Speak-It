@@ -22,6 +22,20 @@ class User < ActiveRecord::Base
   validates :native_language_id, presence: true
   validates :study_language_id, presence: true
 
+  def self.get_stats(user)
+     return {
+      chats: user.educational_chats.order("created_at DESC").first(20),
+      feedback: user.received_feedback,
+      given_feedback: user.sent_feedback,
+      user: user,
+      native_language: user.native_language,
+      study_language: user.study_language,
+      country: user.country,
+      level: user.level,
+      topics: user.level.topics
+    }.to_json
+  end
+
   def self.users_levels_countries_languages
     User.all.includes(:level, :country, :native_language, :study_language, :native_speaker_chats)
   end
