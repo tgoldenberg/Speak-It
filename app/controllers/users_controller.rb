@@ -67,6 +67,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @active_invitations = User.get_active_invitations(@user)
+    @missed_calls = User.get_missed_calls(@user)
+    @data_hash = User.get_stats(@user)
   end
 
   private

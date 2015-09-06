@@ -18,6 +18,9 @@
 //= require md5
 //= require invitationButton
 //= require riverTab
-//= require components
+//= require d3
+//= require react-d3
+//= require react-d3-components
 //= require simplepeer
+//= require components
 //= require hark

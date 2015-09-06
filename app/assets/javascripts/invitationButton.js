@@ -30,6 +30,7 @@ var createStars = function(e) {
   }
   var total = 10 - $('.hidden').length;
   $('#hidden_rating_field').val(total);
+  console.log(total);
 };
 
 var toggleNotifications = function() {

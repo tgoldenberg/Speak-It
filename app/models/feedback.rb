@@ -1,4 +1,5 @@
 class Feedback < ActiveRecord::Base
+  after_create :adjust_points
   belongs_to :chat
   validates_presence_of :rating
   belongs_to :sender, class_name: "User"
@@ -7,6 +8,14 @@ class Feedback < ActiveRecord::Base
   RESET_POINTS = 0
   POINTS_ADJUSTMENT_FACTOR = 10
   MAX_POINTS_FOR_LEVEL = 100
+
+  def adjust_points
+    user = self.recipient
+    # binding.pry
+    if user 
+      Feedback.adjust_level_points_for_user(self, user)
+    end
+  end
 
   def self.possible_ratings_for_select_list
     [[I18n.t('feedback.one_star'), 1], [I18n.t('feedback.two_stars'), 2], [I18n.t('feedback.three_stars'), 3]]
