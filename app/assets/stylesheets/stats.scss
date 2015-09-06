@@ -12,6 +12,10 @@
   font-size: 2em;
 }
 .feedback-holder {
+  .tiny-font {
+      font-size: 0.9em;
+      font-weight: 300;
+  }
   table.table.feedback-table {
     border: none;
   }

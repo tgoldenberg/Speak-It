@@ -5,6 +5,7 @@ var Feedback = React.createClass({
 		var pronunciation = this.props.feedback.pronunciation;
 		var vocabulary = this.props.feedback.vocabulary;
 		var descriptive = this.props.feedback.descriptive;
+		var author = this.props.feedback.author;
 		var total = pronunciation + vocabulary + descriptive;
 		function prettyDate(date, startDate) {
 		  var secs = Math.floor((date.getTime() - startDate.getTime()) / 1000);
@@ -17,8 +18,9 @@ var Feedback = React.createClass({
 		var receivedDate = prettyDate(new Date(), new Date(this.props.feedback.created_at));
 		return (
 			<div className="well feedback-holder">
-				<p>Received on: {receivedDate}</p>
-				<p>{comment}</p>
+				<p>Submitted by: {author}</p>
+				<p>Message: {comment}</p>
+				<p className="tiny-font">Received on: {receivedDate}</p>
 				<table className="table table-striped table-bordered feedback-table">
 					<thead>
 						<tr>

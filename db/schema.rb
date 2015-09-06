@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906222313) do
+ActiveRecord::Schema.define(version: 20150906230822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150906222313) do
     t.integer  "pronunciation"
     t.integer  "vocabulary"
     t.integer  "descriptive"
+    t.string   "author"
   end
 
   add_index "feedbacks", ["chat_id"], name: "index_feedbacks_on_chat_id", using: :btree
