@@ -40,7 +40,7 @@ var Stats = React.createClass({
 					  </li><li className="tab-header-and-content">
 					    <a href="javascript:void(0)" className="tab-link">Chats</a>
 					    <div className="tab-content">
-					    	<h1>My Chats</h1>
+					    	<ChatList />
 					    </div>
 					  </li>
 					</ul>
