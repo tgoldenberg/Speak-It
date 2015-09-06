@@ -11,8 +11,7 @@ class FeedbacksController < ApplicationController
 
   def create
     feedback = Feedback.new(feedback_params)
-    # user = feedback.recipient
-    # Feedback.adjust_level_points_for_user(feedback, user)
+    feedback.rating = feedback.pronunciation + feedback.vocabulary + feedback.descriptive
     if feedback.save
       flash[:notice] = [I18n.t('feedback.success')]
       redirect_to root_path
@@ -32,6 +31,6 @@ class FeedbacksController < ApplicationController
   private
 
   def feedback_params
-    params.require(:feedback).permit(:rating, :comment, :chat_id, :sender_id, :recipient_id)
+    params.require(:feedback).permit(:rating, :comment, :chat_id, :sender_id, :recipient_id, :pronunciation, :vocabulary, :descriptive)
   end
 end

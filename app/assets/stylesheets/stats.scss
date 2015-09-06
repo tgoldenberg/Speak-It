@@ -8,6 +8,22 @@
 	    margin-left: 10%;
 	}
 }
+#feedbacks-header {
+  font-size: 2em;
+}
+.feedback-holder {
+  table.table.feedback-table {
+    border: none;
+  }
+  thead {
+    tr {
+      height: 30px;
+      th {
+        border: none;
+      }
+    }
+  }
+}
 .stats-wrapper {
 	text-align: center;
 	background: white;

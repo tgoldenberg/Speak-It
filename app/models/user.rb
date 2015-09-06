@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   def self.get_stats(user)
      return {
       chats: user.educational_chats.order("created_at DESC").first(100),
-      feedback: user.received_feedback,
+      feedback: user.received_feedback.order("created_at DESC").first(25),
       given_feedback: user.sent_feedback,
       user: user,
       native_language: user.native_language,

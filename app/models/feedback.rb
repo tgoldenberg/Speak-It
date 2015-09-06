@@ -11,8 +11,10 @@ class Feedback < ActiveRecord::Base
 
   def adjust_points
     user = self.recipient
-    binding.pry
-    Feedback.adjust_level_points_for_user(self, user)
+    # binding.pry
+    if user 
+      Feedback.adjust_level_points_for_user(self, user)
+    end
   end
 
   def self.possible_ratings_for_select_list
