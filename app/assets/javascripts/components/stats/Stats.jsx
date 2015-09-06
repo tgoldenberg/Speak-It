@@ -37,6 +37,11 @@ var Stats = React.createClass({
 					    <div className="tab-content">
 					    	<FeedbackStats chats={this.props.chats} feedbacks={this.props.feedback} />
 					    </div>
+					  </li><li className="tab-header-and-content">
+					    <a href="javascript:void(0)" className="tab-link">Chats</a>
+					    <div className="tab-content">
+					    	<h1>My Chats</h1>
+					    </div>
 					  </li>
 					</ul>
 				</div>
