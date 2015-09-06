@@ -1,14 +1,15 @@
 var LineChart = ReactD3.LineChart;
 var Brush = ReactD3.Brush;
 
-
-var MonthlyChart = React.createClass({
+var GrowthChart = React.createClass({
 	getInitialState: function() {
 		var now = new Date();
 		var dates = []; 
-		var chats = this.props.chats
-		var numChats = 0;
-		for (i=30; i>=0; i--){
+		var totalPoints = this.props.points;
+		console.log(totalPoints);
+		var feedbacks = this.props.feedbacks
+		numFeedbacks = 0;
+		for (i=7; i>=0; i--){
 			var next = now - i*1000*3600*24
 			dates.push(new Date(next))
 			// console.log(dates);
@@ -18,42 +19,42 @@ var MonthlyChart = React.createClass({
 			var month = myDate.getMonth(); 
 			var date = myDate.getDate();
 			var count = 0;
-			chats.map(function(chat) {
-				var tempDate = new Date(chat.created_at)
+			feedbacks.map(function(feedback) {
+				var tempDate = new Date(feedback.created_at)
 				var tempDateDate = tempDate.getDate();
 				var tempDateMonth = tempDate.getMonth();
 				if (tempDateDate == date && tempDateMonth == month) {
 					count += 1;
-					numChats += 1;
+					numFeedbacks += 1;
 				}
 			});
 			return {x: myDate, y: count}
 		});
 		console.log(dates)
 		return {
-			data: {label: '', values: dates},
+			data: {label: 'user chats', values: dates},
 			xScale: d3.time.scale().domain([dates[0].x, dates[dates.length-1].x]).range([0, 800]),
             xScaleBrush: d3.time.scale().domain([dates[0].x, dates[dates.length-1].x]).range([0, 400 - 70]),
-            numChats: numChats
+            numFeedbacks: numFeedbacks
 		}
 	},
 	render: function() {
 		return (
 			    <div className="line-chart-wrapper">
-				    <p className="line-chart-header"> Chats this month </p>
+			    	<p className="line-chart-header"> Weekly Growth </p>
 	                <LineChart 
 	                	data={this.state.data}
 	                	width={1000}
 	                	height={300}
 	                	margin={{top: 10, bottom: 50, left: 50, right: 20}}
 	                	xScale={this.state.xScale}
-	                	xAxis={{tickValues: this.state.xScale.ticks(d3.time.week, 1), tickFormat: d3.time.format("%m/%d")}}
+	                	xAxis={{tickValues: this.state.xScale.ticks(d3.time.day, 1), tickFormat: d3.time.format("%m/%d")}}
 	                	yAxis={{label: "user chats"}}
-	                	
+	                	stroke={{strokeDasharray: "4 4 4", strokeWidth: "4 4 4"}}
 	                >
 	                </LineChart>
 
-                <p className="num-chats">Chats this month: {this.state.numChats}</p>
+                <p className="num-chats">Growth this week: {this.state.numFeedbacks}</p>
                 </div>
 		)
 	},

@@ -7,6 +7,7 @@ var WeeklyChart = React.createClass({
 		var now = new Date();
 		var dates = []; 
 		var chats = this.props.chats
+		numChats = 0;
 		for (i=7; i>=0; i--){
 			var next = now - i*1000*3600*24
 			dates.push(new Date(next))
@@ -23,6 +24,7 @@ var WeeklyChart = React.createClass({
 				var tempDateMonth = tempDate.getMonth();
 				if (tempDateDate == date && tempDateMonth == month) {
 					count += 1;
+					numChats += 1;
 				}
 			});
 			return {x: myDate, y: count}
@@ -30,13 +32,15 @@ var WeeklyChart = React.createClass({
 		console.log(dates)
 		return {
 			data: {label: 'user chats', values: dates},
-			xScale: d3.time.scale().domain([dates[0].x, dates[dates.length-1].x]).range([0, 600]),
-            xScaleBrush: d3.time.scale().domain([dates[0].x, dates[dates.length-1].x]).range([0, 400 - 70])
+			xScale: d3.time.scale().domain([dates[0].x, dates[dates.length-1].x]).range([0, 800]),
+            xScaleBrush: d3.time.scale().domain([dates[0].x, dates[dates.length-1].x]).range([0, 400 - 70]),
+            numChats: numChats
 		}
 	},
 	render: function() {
 		return (
-			    <div>
+			    <div className="line-chart-wrapper">
+			    	<p className="line-chart-header"> Weekly Chat Activity </p>
 	                <LineChart 
 	                	data={this.state.data}
 	                	width={1000}
@@ -49,9 +53,7 @@ var WeeklyChart = React.createClass({
 	                >
 	                </LineChart>
 
-                <div className="brush" style={{float: 'none'}}>
-               
-                </div>
+                <p className="num-chats">Chats this week: {this.state.numChats}</p>
                 </div>
 		)
 	},

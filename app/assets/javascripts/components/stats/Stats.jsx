@@ -1,36 +1,44 @@
-var LineChart = ReactD3.LineChart;
-var Brush = ReactD3.Brush;
+
 
 var Stats = React.createClass({
-	getInitialState: function() {
-		return {chart: "Week"};
-	},
-	changeChart: function(e) {
-		this.setState({chart: $(e.target).html()});
+	componentDidMount: function() {
+		$(document).ready(function () {
+		  $('.accordion-tabs').each(function(index) {
+		    $(this).children('li').first().children('a').addClass('is-active').next().addClass('is-open').show();
+		  });
+		  $('.accordion-tabs').on('click', 'li > a.tab-link', function(event) {
+		    if (!$(this).hasClass('is-active')) {
+		      event.preventDefault();
+		      var accordionTabs = $(this).closest('.accordion-tabs');
+		      accordionTabs.find('.is-open').removeClass('is-open').hide();
+
+		      $(this).next().toggleClass('is-open').toggle();
+		      accordionTabs.find('.is-active').removeClass('is-active');
+		      $(this).addClass('is-active');
+		    } else {
+		      event.preventDefault();
+		    }
+		  });
+		});
+
 	},
 	render: function() {
-		var chart = this.state.chart;
-		switch(chart) {
-			case "Week":
-			chart = <WeeklyChart chats={this.props.chats} />;
-			break;
-			case "Month":
-				chart = <MonthlyChart chats={this.props.chats}/>;
-				break;
-			case "Quarter":
-				chart = <QuarterlyChart chats={this.props.chats}/>;
-				break;
-			default: 
-				chart = <WeeklyChart chats={this.props.chats}/>;
-		}
 		return (
-				<div className="stats-holder">
-					<div className="date-selector">
-			    		<span onClick={this.changeChart} className="btn btn-primary">Week</span>
-			    		<span onClick={this.changeChart} className="btn btn-primary">Month</span>
-			    		<span onClick={this.changeChart} className="btn btn-primary">Quarter</span>
-			    	</div>
-					<div>{chart}</div>	
+				<div>
+					<ul className="accordion-tabs">
+					  <li className="tab-header-and-content">
+					    <a href="javascript:void(0)" className="is-active tab-link">Activity</a>
+					    <div className="tab-content">
+						    <Activity chats={this.props.chats} feedbacks={this.props.feedback} points={this.props.level.value*100 - 100 + this.props.user.points}/>
+					    </div>
+					  </li>
+					  <li className="tab-header-and-content">
+					    <a href="javascript:void(0)" className="tab-link">Feedback</a>
+					    <div className="tab-content">
+					    	<FeedbackStats chats={this.props.chats} feedbacks={this.props.feedback} />
+					    </div>
+					  </li>
+					</ul>
 				</div>
 		)
 					
