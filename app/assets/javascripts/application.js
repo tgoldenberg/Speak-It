@@ -21,6 +21,6 @@
 //= require d3
 //= require react-d3
 //= require react-d3-components
-//= require components
 //= require simplepeer
+//= require components
 //= require hark
