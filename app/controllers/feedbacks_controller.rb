@@ -11,8 +11,8 @@ class FeedbacksController < ApplicationController
 
   def create
     feedback = Feedback.new(feedback_params)
-    user = feedback.recipient
-    Feedback.adjust_level_points_for_user(feedback, user)
+    # user = feedback.recipient
+    # Feedback.adjust_level_points_for_user(feedback, user)
     if feedback.save
       flash[:notice] = [I18n.t('feedback.success')]
       redirect_to root_path
